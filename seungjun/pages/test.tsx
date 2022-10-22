@@ -1,10 +1,10 @@
 import styles from'../../styles/Common.module.css'
 
-const about = () => {
+const test = () => {
   return (
     <div>
     </div>
   )
 }
 
-export default about
+export default test

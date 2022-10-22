@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.MainContainer {
+.Container {
   display: flex;
   margin: 0;
   padding: 0;
@@ -24,8 +24,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 12vw;
-  margin:0;
-  padding:0;
+  padding-bottom: 14vh;
 }
 
 .MenuItem {
