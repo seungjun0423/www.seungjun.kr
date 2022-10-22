@@ -10,9 +10,15 @@
   align-items: center;
 }
 
+.MainContainer {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
 .MenuWrapper {
   background-color: wheat;
-  display: block;
+  display: inline-block;
   margin:0;
   padding:0;
   width: 15vw;
@@ -20,5 +26,15 @@
 }
 
 .MenuItem {
-    padding: 13vh;
+  padding: 11.5vh;
+}
+
+.MainWrapper {
+  background-color: grey;
+  width: 100vw;
+  height: 100vh;
+}
+
+.MainContent {
+
 }
