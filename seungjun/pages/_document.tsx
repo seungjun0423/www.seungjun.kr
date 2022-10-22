@@ -5,7 +5,6 @@ export default class CustomDocument extends Document {
     return (
       <Html>
         <Head>
-          
           <meta charSet='utf-8' />
           <title>SeungJun</title>
           <meta name="description" content="Seungjun Lee Private Web Page" />
