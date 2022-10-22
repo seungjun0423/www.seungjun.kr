@@ -7,16 +7,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <meta charSet='utf-8'></meta>
         <title>SeungJun</title>
         <meta name="description" content="Seungjun Lee Private Web Page" />
         <link rel="shortcut icon"  href="/logo.png" />
-        <script>
-          (function(j,ennifer) {
-          j['dmndata']=[];j['jenniferFront']=function(args){window.dmndata.push(args)};
-          j['dmnaid']=ennifer;j['dmnatime']=new Date();j['dmnanocookie']=false;j['dmnajennifer']='JENNIFER_FRONT@INTG';
-        }(window, 'efce11dc'));
-        </script>
-        <script async src="https://d-collect.jennifersoft.com/efce11dc/demian.js"></script>
+        
       </Head>
       <Component {...pageProps} />
     </>
