@@ -6,12 +6,11 @@ const Main = () => {
   return (
     <div className={styles.MainContainer}>
       <div className={styles.MenuWrapper}>
-        <h1 className={styles.MenuItem}>1</h1>
+        <h1 className={styles.MenuItem}>Introduce</h1>
         <h1 className={styles.MenuItem}>2</h1>
         <h1 className={styles.MenuItem}>3</h1>
       </div>
         <div className={styles.MainWrapper}>
-          hi
         </div>
     </div>
   )

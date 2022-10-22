@@ -18,15 +18,17 @@
 
 .MenuWrapper {
   background-color: wheat;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 12vw;
   margin:0;
   padding:0;
-  width: 15vw;
-  height: 100vh;
 }
 
 .MenuItem {
-  padding: 11.5vh;
 }
 
 .MainWrapper {
