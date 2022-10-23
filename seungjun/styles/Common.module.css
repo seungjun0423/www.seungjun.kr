@@ -7,13 +7,13 @@
   width: 100vw;
   justify-content: center;
   align-items: center;
+  border:groove;
 }
 
 .Container {
   display: flex;
   margin: 0;
   padding: 0;
-  border:groove;
 }
 
 .MenuWrapper {
@@ -36,4 +36,14 @@
 
 .MainContent {
 
+}
+
+.AboutWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
