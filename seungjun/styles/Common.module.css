@@ -1,8 +1,7 @@
 .HeaderWrapper {
-  background-color: skyblue;
   margin:0;
   padding:0;
-  color: white;
+  color: skyblue;
   display: flex;
   height: 17vh;
   width: 100vw;
@@ -14,10 +13,10 @@
   display: flex;
   margin: 0;
   padding: 0;
+  border:groove;
 }
 
 .MenuWrapper {
-  background-color: wheat;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -31,7 +30,6 @@
 }
 
 .MainWrapper {
-  background-color: grey;
   width: 100vw;
   height: 100vh;
 }
