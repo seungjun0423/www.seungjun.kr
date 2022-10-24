@@ -1,4 +1,5 @@
 .HeaderWrapper {
+  background-color:  whitesmoke;
   margin:0;
   padding:0;
   color: skyblue;
@@ -46,5 +47,19 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  margin:4vh;
+}
+
+.AboutName {
+  padding-top: 26vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AboutElement {
+  margin-top:9vh;
+  padding-bottom: 7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

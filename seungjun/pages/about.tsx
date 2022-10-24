@@ -7,11 +7,11 @@ const about = () => {
   return (
     <div>
       <Header></Header>
-      <div className={styles.AboutWrapper}>
+      <div className={styles.AboutName}>
         <h1>이승준(1994.04.23~)</h1>
         <h2>Web Engineer</h2>
 
-        <div className={styles.AboutWrapper}>
+        <div className={styles.AboutElement}>
           <h2>학력</h2>
           <br />
           <div>
@@ -21,7 +21,7 @@ const about = () => {
           </div>
         </div>
         
-        <div className={styles.AboutWrapper}>
+        <div className={styles.AboutElement}>
           <h2>이력</h2>
           <br />
           <div >
@@ -31,7 +31,7 @@ const about = () => {
           </div>
         </div>
 
-        <div className={styles.AboutWrapper}>
+        <div className={styles.AboutElement}>
           <h2>기술</h2>
           <br />
           <div>
@@ -39,7 +39,7 @@ const about = () => {
           </div>
         </div>
 
-        <div className={styles.AboutWrapper}>
+        <div className={styles.AboutElement}>
           <h2>연락</h2>
           <br />
           <div>
