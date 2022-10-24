@@ -5,7 +5,7 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <div className={styles.FooterWrapper}>
-      <a href='sibonum@gmail.com'>
+      <a href='sibonum@gmail.com' className={styles.FooterIcon}>
       <Image src="/email.png" width={55} height={60}></Image>
       </a>
       <a href='https://github.com/seungjun0423'>
