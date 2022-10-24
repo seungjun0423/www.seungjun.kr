@@ -1,5 +1,7 @@
 import styles from '../styles/Common.module.css'
 import Header from './components/Header'
+import Image from 'next/image'
+
 
 const about = () => {
   return (
@@ -33,7 +35,7 @@ const about = () => {
           <h2>기술</h2>
           <br />
           <div>
-            
+            <span>JavaScript, React.js, Node.JS, Git, Python</span>
           </div>
         </div>
 

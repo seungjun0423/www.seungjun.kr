@@ -4,10 +4,12 @@
   color: skyblue;
   display: flex;
   height: 17vh;
-  width: 100vw;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  border:groove;
+  border-bottom: inset;
+  border-color: #a6b1b2;
+  position: fixed;
 }
 
 .Container {
@@ -23,7 +25,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 12vw;
-  padding-bottom: 14vh;
+  padding-top: 14vh;
 }
 
 .MenuItem {
@@ -44,5 +46,5 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  margin:5vh;
+  margin:4vh;
 }
