@@ -1,7 +1,7 @@
 .HeaderWrapper {
   background-color:  #fddcdb;
   padding:0;
-  color: skyblue;
+  color:white;
   display: flex;
   height: 20vh;
   width: 100%;
@@ -11,7 +11,12 @@
   overflow:visible;
 }
 
-.TitleImage{
+.FooterWrapper {
+  display: flex;
+  background-color:  #fddcdb;
+  justify-content: right;
+  width: 100%;
+  height: 9vh;
 }
 
 .Container {

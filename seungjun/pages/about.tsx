@@ -38,20 +38,6 @@ const about = () => {
             <span>JavaScript, React.js, Node.JS, Git, Python</span>
           </div>
         </div>
-
-        <div className={styles.AboutElement}>
-          <h2>연락</h2>
-          <br />
-          <div>
-            <h4>E-mail</h4> 
-            : <a href='sibonum@gmail.com'>sibonum@gmail.com</a> <br /><br />
-            <h4>Github</h4>
-            : <a href='https://github.com/seungjun0423'>https://github.com/seungjun0423</a> <br /><br />
-            <h4>Notion</h4>
-            : <a href='https://seungjun0423.notion.site'>https://seungjun0423.notion.site</a>
-          </div>
-        </div>
-
       </div>
     </div>
   )

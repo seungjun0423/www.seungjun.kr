@@ -6,7 +6,9 @@ import Image from 'next/image'
 const Header = () => {
   return (
     <div className={styles.HeaderWrapper}>
-      <Image src="/no-background.svg" width={800} height={600} className={styles.TitleImage}/> 
+      <Link href="/">
+        <Image src="/no-background.svg" width={800} height={600} className={styles.TitleImage}/> 
+      </Link>
     </div>
   )
 }
