@@ -1,16 +1,17 @@
 .HeaderWrapper {
-  background-color:  whitesmoke;
-  margin:0;
+  background-color:  #fddcdb;
   padding:0;
   color: skyblue;
   display: flex;
-  height: 17vh;
+  height: 20vh;
   width: 100%;
   justify-content: center;
   align-items: center;
-  border-bottom: inset;
-  border-color: #a6b1b2;
   position: fixed;
+  overflow:visible;
+}
+
+.TitleImage{
 }
 
 .Container {

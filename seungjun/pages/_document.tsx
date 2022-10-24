@@ -8,7 +8,7 @@ export default class CustomDocument extends Document {
           <meta charSet='utf-8' />
           <title>SeungJun</title>
           <meta name="description" content="Seungjun Lee Private Web Page" />
-          <link rel="shortcut icon"  href="/logo.png" />
+          <link rel="shortcut icon"  href="/head.svg" />
           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         </Head>
         <body>

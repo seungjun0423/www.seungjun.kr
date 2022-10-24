@@ -6,8 +6,7 @@ import Image from 'next/image'
 const Header = () => {
   return (
     <div className={styles.HeaderWrapper}>
-      <Image src="/icon-192x192.png" width={100} height={100}/> 
-      <h1><Link href="/">Seungjun Lee</Link></h1>
+      <Image src="/no-background.svg" width={800} height={600} className={styles.TitleImage}/> 
     </div>
   )
 }
