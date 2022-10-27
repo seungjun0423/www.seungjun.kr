@@ -1,18 +1,3 @@
-
-.HeaderWrapper {
-  background-color:  #fddcdb;
-  padding:0;
-  color:white;
-  display: flex;
-  height: 25vh;  
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  overflow:visible;
-  z-index: 3;
-}
-
-
 @media screen and (max-width:400px){
   .HeaderWrapper {
     background-color:  #fddcdb;
@@ -33,7 +18,7 @@
   display: flex;
   flex-wrap: nowrap;
   padding-left: 4em;
-  padding-top: 4.5em;
+  padding-top: 10em;
 }
 
   .MenuItem {
@@ -44,22 +29,42 @@
   .AboutElement {
     display: flex;
   }
-  
-  .contents1{
-    padding: 6em;
+
+
+  .FooterWrapper {
+    display: flex;
+    background-color:  #fddcdb;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    padding-right: 3vw;
   }
 
-  .contents2{
-    padding: 6em;
-  }
-
-  .contents3{
-    padding-left: 1em;
-    padding-right: 1em;
+  .FooterIcon {
+    padding: 0.8vw;
   }
 }
 
+/*------------------------upper is media query---------------------------------*/
 
+.link:hover { 
+  curosr : url("/cursor.png") 30 30,  auto; 
+}
+
+
+.HeaderWrapper {
+  background-color:  #fddcdb;
+  padding:0;
+  color:white;
+  display: flex;
+  height: 25vh;  
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow:visible;
+  z-index: 3;
+}
 
 .FooterWrapper {
   display: flex;
@@ -68,11 +73,13 @@
   align-items: center;
   width: 100%;
   height: 10vh;
+  padding-right: 3vw;
 }
 
 .FooterIcon {
-  margin-right: 0.8vw;
+  padding: 0.75vw;
 }
+
 
 .Container {
   display: flex;
@@ -89,17 +96,12 @@
   width: 12vw;
 }
 
-.MenuItem {
-}
 
 .MainWrapper {
   width: 100vw;
   height: 100vh;
 }
 
-.MainContent {
-
-}
 
 .AboutWrapper {
   display: flex;
@@ -110,7 +112,7 @@
 }
 
 .AboutName {
-  padding-top: 26vh;
+  padding-top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
