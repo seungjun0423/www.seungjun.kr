@@ -1,16 +1,16 @@
 'use client';
 
-type Props = {
+type Params = {
 	params: {
 		slug: string;
 	};
 };
 
-export default function Post( { params }: Props ) {
+export default function Write({params}: Params ) {
   return (
     <div>
 			<h1>
-				{params.slug}this is study
+				writing {params.slug}
 			</h1>
     </div>
   )

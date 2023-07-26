@@ -1,6 +1,6 @@
 'use client';
 
-export default function Post( ) {
+export default function Study( ) {
   return (
     <div>
 			<h1>
