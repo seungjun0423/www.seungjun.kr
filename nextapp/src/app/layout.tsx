@@ -1,5 +1,5 @@
-import './globals.css';
-import styles from './layout.module.css';
+import '../styles/globals.css';
+import styles from '../styles/layout.module.css';
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,14 +18,32 @@ export default function RootLayout({
     <html lang="ko">
 			<head />
       <body >
-				<header>
-					<nav>
-						<h1>seungjun blog</h1>
-						<a href=''>Contact</a>
-						<a href=''>About</a>
+				<header className={styles.header}>
+					<h1>Blog</h1>
+					<nav className={styles.nav}>
 					</nav>
 				</header>
-				{children}
+				
+				<div className={styles.main}>
+					<div className={styles.menubar}>
+						<a>
+							study
+						</a>
+						<a>
+							profile
+						</a>
+						<a>
+							etc
+						</a>
+					</div>
+					<div className={styles.contents}>
+						{children}
+					</div>
+				</div>
+				
+				<footer className={styles.footer}>
+					풋터입니다
+				</footer>
 			</body>
     </html>
   )

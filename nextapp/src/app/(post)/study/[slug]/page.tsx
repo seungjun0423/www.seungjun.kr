@@ -9,9 +9,7 @@ type Params = {
 export default function Study( { params }: Params ) {
   return (
     <div>
-			<h1>
-				{params.slug} this is study
-			</h1>
+			{params.slug} this is study
     </div>
   )
 }
