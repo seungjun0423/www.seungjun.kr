@@ -26,15 +26,15 @@ export default function RootLayout({
 				
 				<div className={styles.main}>
 					<div className={styles.menubar}>
-						<a>
+						<div>
 							study
-						</a>
-						<a>
+						</div>
+						<div>
 							profile
-						</a>
-						<a>
+						</div>
+						<div>
 							etc
-						</a>
+						</div>
 					</div>
 					<div className={styles.contents}>
 						{children}
