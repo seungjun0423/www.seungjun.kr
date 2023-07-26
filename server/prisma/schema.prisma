@@ -3,9 +3,22 @@
 
 generator client {
   provider = "prisma-client-js"
+	output = "./"
 }
 
+//데이터 베이스 연동
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @default(autoincrement()) @id
+  name  String
+	age Int
+	phone Int
+  email String  @unique
+	password String
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
 }
