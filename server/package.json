@@ -30,6 +30,7 @@
     "@nestjs/passport": "^10.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@types/cookie-parser": "^1.4.3",
+    "@types/js-yaml": "^4.0.5",
     "@types/passport-jwt": "^3.0.9",
     "@types/passport-local": "^1.0.35",
     "@yarnpkg/pnpify": "^4.0.0-rc.48",
