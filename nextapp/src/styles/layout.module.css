@@ -29,7 +29,7 @@
 	height: 100vh;
 }
 
-.menubar {
+.sidebar {
 	display: flex;
 	width: 300px;
 	height: 100%;
@@ -40,13 +40,15 @@
 	border-right: 1px solid;
 }
 
-.menubar div {
+.sidebar a {
 	margin-top: 5rem;
+	text-decoration: none;
+	color: black;
 }
 
 .contents {
 	width: 100%;
-	padding: 5rem;
+	padding: 2rem;
 	font-size: 2rem;
 }
 

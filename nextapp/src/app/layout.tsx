@@ -33,16 +33,16 @@ export default function RootLayout({
 				</header>
 				
 				<div className={styles.main}>
-					<div className={styles.menubar}>
-						<div>
+					<div className={styles.sidebar}>
+						<Link href={'/study'}>
 							study
-						</div>
-						<div>
+						</Link>
+						<Link href={'/profile'}>
 							profile
-						</div>
-						<div>
+						</Link>
+						<Link href={'/etc'}>
 							etc
-						</div>
+						</Link>
 					</div>
 					<div className={styles.contents}>
 						{children}
