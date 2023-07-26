@@ -16,3 +16,6 @@ export default function Post( { params }: Props ) {
   )
 }
 
+export function generateStaticParams() {
+
+}
