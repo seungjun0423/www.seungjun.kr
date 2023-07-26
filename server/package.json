@@ -6,6 +6,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+		"generate": "pnpify prisma generate",
+    "migrate": "prisma migrate dev",
+    "copy-files": "cpx \"src/config/*.yaml\" dist/config",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
