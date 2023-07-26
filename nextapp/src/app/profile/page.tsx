@@ -1,9 +1,9 @@
 'use client';
 
-export default function Home() {
+export default function Profile() {
   return (
     <div>
-			hi
+			my profile
     </div>
 
   )

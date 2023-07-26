@@ -1,10 +1,9 @@
 'use client';
 
-export default function Home() {
+export default function Write( ) {
   return (
     <div>
-			hi
+				writing
     </div>
-
   )
 }
