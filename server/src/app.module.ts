@@ -3,11 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
+import { config } from './config/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      // load: [config],
+      load: [config],
       cache: true,
       isGlobal: true,
     }),
