@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaService } from './prisma/prisma.service';
 import { PostModule } from './post/post.module';
@@ -16,7 +15,6 @@ import config from './config/config';
       cache: true,
       isGlobal: true,
     }),
-    UserModule,
     PostModule,
     EditModule,
     AdminModule,
