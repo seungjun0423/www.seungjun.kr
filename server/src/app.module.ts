@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaService } from './prisma/prisma.service';
+import { PostModule } from './post/post.module';
+import { EditModule } from './edit/edit.module';
+import { AdminModule } from './admin/admin.module';
 import config from './config/config';
 
 @Module({
@@ -14,6 +17,9 @@ import config from './config/config';
       isGlobal: true,
     }),
     UserModule,
+    PostModule,
+    EditModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
