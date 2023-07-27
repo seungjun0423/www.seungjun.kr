@@ -18,7 +18,7 @@ async function main() {
   const port = configService.get<string>('server.port');
 
   app.enableCors();
-  app.use(cookieParser());
+  // app.use(cookieParser());
   await app.listen(port);
 }
 main();
