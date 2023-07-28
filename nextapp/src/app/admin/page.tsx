@@ -1,8 +1,8 @@
 
-export default function Login() {
+export default function Admin() {
   return (
     <div>
-			login
+			admin
     </div>
 
   )
