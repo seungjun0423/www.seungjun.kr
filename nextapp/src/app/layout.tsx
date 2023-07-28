@@ -28,7 +28,7 @@ export default function RootLayout({
 				<header className={styles.header}>
 					<Link className={styles.title} href={'/'}>Blog</Link>
 					<Link className={styles.nav} href={'/login'}>
-						login
+						Admin
 					</Link>
 				</header>
 				
