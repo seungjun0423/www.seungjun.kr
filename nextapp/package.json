@@ -19,6 +19,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^4.10.1",
+    "react-markdown": "^8.0.7",
     "typescript": "5.0.4"
   },
   "packageManager": "yarn@3.5.1"

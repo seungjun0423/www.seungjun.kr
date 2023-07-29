@@ -5,10 +5,10 @@ import { Open_Sans, Nanum_Gothic } from 'next/font/google';
 import Link from 'next/link';
 
 const sans = Open_Sans({ subsets: ['latin']});
-const gothic = Nanum_Gothic({
-	weight:"700",
-	subsets: ['latin'],
-});
+// const gothic = Nanum_Gothic({
+// 	weight:"700",
+// 	subsets: ['latin'],
+// });
 
 export const metadata: Metadata = {
   title: '이승준의 블로그',
