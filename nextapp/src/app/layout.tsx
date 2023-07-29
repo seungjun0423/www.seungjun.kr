@@ -46,37 +46,39 @@ export default function RootLayout({
   return (
     <html lang="ko">
 			<head />
-      <body >
-				<header className={styles.header}>
-					<Link className={styles.title} href={'/'}>Blog</Link>
-					<Link className={styles.nav} href={'/admin'}>
-						Admin
-					</Link>
-				</header>
-				
-				<div className={styles.main}>
-					<div className={styles.sidebar}>
-						{
-							dummy.map( el => {
-								return (
-								<Link key={el.title} href={`/${el.title}`}>
-									{el.title}
-								</Link>
-								)
-							})
-						}
+			<StyledComponentsRegistry>
+				<body >
+					<header className={styles.header}>
+						<Link className={styles.title} href={'/'}>Blog</Link>
+						<Link className={styles.nav} href={'/admin'}>
+							Admin
+						</Link>
+					</header>
+
+					<div className={styles.main}>
+						<div className={styles.sidebar}>
+							{
+								dummy.map( el => {
+									return (
+										<Link key={el.title} href={`/${el.title}`}>
+										{el.title}
+									</Link>
+									)
+								})
+							}
+						</div>
+						<div className={styles.contents}>
+							{children}
+						</div>
 					</div>
-					<div className={styles.contents}>
-						{children}
-					</div>
-				</div>
-				
-				<footer className={styles.footer}>
-					<text>
-						풋터입니다
-					</text>
-				</footer>
-			</body>
+						
+					<footer className={styles.footer}>
+						<text>
+							풋터입니다
+						</text>
+					</footer>
+				</body>
+			</StyledComponentsRegistry>
     </html>
   )
 }
