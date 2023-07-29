@@ -11,12 +11,12 @@ body {
 
 @media(max-width: 1024px){
 	html {
-		font-size: 12px;
+		font-size: 14px;
 	}
 }
 
 @media(max-width: 768px){
 	html {
-		font-size: 10px;
+		font-size: 12px;
 	}
 }

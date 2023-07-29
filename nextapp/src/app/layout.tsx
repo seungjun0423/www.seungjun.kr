@@ -7,6 +7,8 @@ import StyledComponentsRegistry from '../styles/registry';
 import { Open_Sans, Nanum_Gothic } from 'next/font/google';
 import Link from 'next/link';
 
+import Sidebar from 'components/Sidebar';
+
 const sans = Open_Sans({ subsets: ['latin']});
 // const gothic = Nanum_Gothic({
 // 	weight:"700",
@@ -22,21 +24,6 @@ export const metadata: Metadata = {
 	// 	icon: favicon,
 	// },
 }
-
-let dummy = [
-	{
-		title: 'study',
-		subCategory: ['html', 'css', 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm']
-	},
-	{
-		title: 'profile',
-		subCategory: [ 'age', 'career', 'teck stack', 'recent interest']
-	},
-	{
-		title: 'etc',
-		subCategory: ['schedule', 'reading', 'hobby']
-	} 
-]
 
 export default function RootLayout({
   children,
@@ -56,17 +43,7 @@ export default function RootLayout({
 					</header>
 
 					<div className={styles.main}>
-						<div className={styles.sidebar}>
-							{
-								dummy.map( el => {
-									return (
-										<Link key={el.title} href={`/${el.title}`}>
-										{el.title}
-									</Link>
-									)
-								})
-							}
-						</div>
+						<Sidebar />
 						<div className={styles.contents}>
 							{children}
 						</div>
