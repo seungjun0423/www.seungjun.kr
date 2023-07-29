@@ -11,7 +11,7 @@
 }
 
 .title {
-	font-size: 5rem;
+	font-size: 3rem;
 	text-decoration: none;
 	color: black;
 }
@@ -29,27 +29,10 @@
 	height: 100vh;
 }
 
-.sidebar {
-	display: flex;
-	width: 300px;
-	height: 100%;
-	font-size: 3rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	border-right: 1px solid;
-}
-
-.sidebar a {
-	margin-top: 5rem;
-	text-decoration: none;
-	color: black;
-}
-
 .contents {
 	width: 100%;
 	padding: 2rem;
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 
 .footer {

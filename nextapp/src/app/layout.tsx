@@ -1,14 +1,19 @@
 import { Metadata } from 'next';
 import '../styles/globals.css';
 import styles from '../styles/layout.module.css';
+
+import StyledComponentsRegistry from '../styles/registry';
+
 import { Open_Sans, Nanum_Gothic } from 'next/font/google';
 import Link from 'next/link';
 
+import Sidebar from 'components/Sidebar';
+
 const sans = Open_Sans({ subsets: ['latin']});
-const gothic = Nanum_Gothic({
-	weight:"700",
-	subsets: ['latin'],
-});
+// const gothic = Nanum_Gothic({
+// 	weight:"700",
+// 	subsets: ['latin'],
+// });
 
 export const metadata: Metadata = {
   title: '이승준의 블로그',
@@ -20,21 +25,6 @@ export const metadata: Metadata = {
 	// },
 }
 
-let dummy = [
-	{
-		title: 'study',
-		subCategory: ['html', 'css', 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm']
-	},
-	{
-		title: 'profile',
-		subCategory: [ 'age', 'career', 'teck stack', 'recent interest']
-	},
-	{
-		title: 'etc',
-		subCategory: ['schedule', 'reading', 'hobby']
-	} 
-]
-
 export default function RootLayout({
   children,
 }: {
@@ -43,37 +33,29 @@ export default function RootLayout({
   return (
     <html lang="ko">
 			<head />
-      <body >
-				<header className={styles.header}>
-					<Link className={styles.title} href={'/'}>Blog</Link>
-					<Link className={styles.nav} href={'/admin'}>
-						Admin
-					</Link>
-				</header>
-				
-				<div className={styles.main}>
-					<div className={styles.sidebar}>
-						{
-							dummy.map( el => {
-								return (
-								<Link key={el.title} href={`/${el.title}`}>
-									{el.title}
-								</Link>
-								)
-							})
-						}
+			<StyledComponentsRegistry>
+				<body >
+					<header className={styles.header}>
+						<Link className={styles.title} href={'/'}>Blog</Link>
+						<Link className={styles.nav} href={'/admin'}>
+							Admin
+						</Link>
+					</header>
+
+					<div className={styles.main}>
+						<Sidebar />
+						<div className={styles.contents}>
+							{children}
+						</div>
 					</div>
-					<div className={styles.contents}>
-						{children}
-					</div>
-				</div>
-				
-				<footer className={styles.footer}>
-					<text>
-						풋터입니다
-					</text>
-				</footer>
-			</body>
+						
+					<footer className={styles.footer}>
+						<text>
+							저작권자: 이승준
+						</text>
+					</footer>
+				</body>
+			</StyledComponentsRegistry>
     </html>
   )
 }
