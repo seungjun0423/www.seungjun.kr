@@ -1,4 +1,3 @@
-'use client';
 
 type Params = {
 	params: {
@@ -6,7 +5,7 @@ type Params = {
 	};
 };
 
-export default function Write({params}: Params ) {
+export default function Post({params}: Params ) {
   return (
     <div>
 			<h1>

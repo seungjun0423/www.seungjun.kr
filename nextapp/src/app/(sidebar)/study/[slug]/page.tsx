@@ -1,4 +1,3 @@
-'use client';
 
 type Params = {
 	params: {
@@ -6,10 +5,10 @@ type Params = {
 	};
 };
 
-export default function Study( { params }: Params ) {
+export default function Study( { params: { slug } }: Params ) {
   return (
     <div>
-			{params.slug} this is study
+			{slug} this is study
     </div>
   )
 }
