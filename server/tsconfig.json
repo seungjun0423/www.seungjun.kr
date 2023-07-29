@@ -19,6 +19,7 @@
 //     "noFallthroughCasesInSwitch": false
 //   }
 // }
+
 {
   "compilerOptions": {
     "module": "commonjs",
