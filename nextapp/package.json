@@ -12,6 +12,7 @@
     "@types/node": "20.2.3",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "@types/react-icons": "^3.0.0",
     "axios": "^1.4.0",
     "eslint": "8.41.0",
     "eslint-config-next": "latest",

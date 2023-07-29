@@ -247,6 +247,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-icons@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/react-icons@npm:3.0.0"
+  dependencies:
+    react-icons: "*"
+  checksum: 885a9e9d43fd5543c3405b75b7d4f910492bd3bf2a2aa0a6784c6566fc3a9804bd0f6b0678779b4a15df642c35db0069a1d3f3f2c548bfc8414d5abe1fcc6469
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*, @types/react@npm:18.2.6":
   version: 18.2.6
   resolution: "@types/react@npm:18.2.6"
@@ -2173,6 +2182,7 @@ __metadata:
     "@types/node": 20.2.3
     "@types/react": 18.2.6
     "@types/react-dom": 18.2.4
+    "@types/react-icons": ^3.0.0
     axios: ^1.4.0
     eslint: 8.41.0
     eslint-config-next: latest
@@ -2486,7 +2496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^4.10.1":
+"react-icons@npm:*, react-icons@npm:^4.10.1":
   version: 4.10.1
   resolution: "react-icons@npm:4.10.1"
   peerDependencies:
