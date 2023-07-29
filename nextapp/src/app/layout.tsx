@@ -74,7 +74,7 @@ export default function RootLayout({
 						
 					<footer className={styles.footer}>
 						<text>
-							풋터입니다
+							저작권자: 이승준
 						</text>
 					</footer>
 				</body>
