@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import '../styles/globals.css';
 import styles from '../styles/layout.module.css';
+
+import StyledComponentsRegistry from '../styles/registry';
+
 import { Open_Sans, Nanum_Gothic } from 'next/font/google';
 import Link from 'next/link';
 
