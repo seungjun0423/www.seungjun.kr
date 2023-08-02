@@ -32,6 +32,7 @@ export default function Sidebar() {
 	const [ categories, setCategories ] = useState({});
 	
 	useEffect(() => {
+		// Todo: 서버 작업 후 데이터 교체 필요 
 		setCategories(dummy.map(el=> {
 			Object.defineProperty(el, `spread`, {
 				value: false,
@@ -45,6 +46,7 @@ export default function Sidebar() {
 
 	const spreadHandler = (el: any) => {
 		let find = dummy.filter( ak => ak.title === el )[0];
+		// Todo: 에러 해결 필요
 		find.spread = !find.spread;
 		
 		let others = dummy.filter( ak => ak.title !== el);
