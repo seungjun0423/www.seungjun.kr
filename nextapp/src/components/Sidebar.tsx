@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const Leftbar = styled.div`
+const Sidebars = styled.aside`
 	display: flex;
 	width: 300px;
 	height: 100%;
@@ -38,7 +38,7 @@ export default function Sidebar() {
 	}, []);
 
   return (
-    <Leftbar>
+    <Sidebars>
 				{
 					dummy.map( el => (
 							<Wrapper key={el.title}>
@@ -46,7 +46,7 @@ export default function Sidebar() {
 									<Title>
 										{ el.title }
 									</Title>
-										{ 
+										{/* { 
 											el.subCategory.map( val => (
 												<SubTitle key={val}>
 													<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black'}}>
@@ -54,14 +54,14 @@ export default function Sidebar() {
 													</Link>
 												</SubTitle>
 											))
-										}
+										} */}
 								</Link>
 							</Wrapper>
 						)
 					)
 				}
-    </Leftbar>
-  )
+    </Sidebars>
+  );
 };
 
 const dummy = [

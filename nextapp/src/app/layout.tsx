@@ -36,7 +36,8 @@ export default function RootLayout({
 			<head />
 			<StyledComponentsRegistry>
 				<body >
-					<Header></Header>
+
+					<Header />
 
 					<div className={styles.main}>
 						<Sidebar />
@@ -45,9 +46,10 @@ export default function RootLayout({
 						</div>
 					</div>
 						
-					<Footer></Footer>
+					<Footer />
+
 				</body>
 			</StyledComponentsRegistry>
     </html>
-  )
-}
+  );
+};

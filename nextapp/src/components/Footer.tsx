@@ -15,8 +15,8 @@ export default function Footer() {
 	return (
 		<Footers>
 			<p style={{margin: '1.5rem'}}>
-				저작권자: 이승준
+				Copyright 2023. LEE SEUNGJUN All Rights Reserved 
 			</p>
 		</Footers>
-	)
-}
+	);
+};
