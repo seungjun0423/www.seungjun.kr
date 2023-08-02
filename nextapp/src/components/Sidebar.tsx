@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const Leftbar = styled.div`
+const Sidebars = styled.aside`
 	display: flex;
 	width: 300px;
 	height: 100%;
@@ -15,66 +15,91 @@ const Leftbar = styled.div`
 
 const Wrapper = styled.span`
 	margin-top: 5rem;
-`
+`;
 
-const Title = styled.div`
+const Category = styled.div`
 	display: flex;
 	flex-direction: column;
 	font-size: 2.5rem;
 	color: black;
 `;
 
-const SubTitle = styled.div`
-	/* display:none; */
+const SubCategory = styled.div`
 	font-size: 1.5rem;
-`
+`;
 
 export default function Sidebar() {
-	const [state, setstate] = useState();
+	const [ categories, setCategories ] = useState({});
 	
 	useEffect(() => {
-	
+		// Todo: 서버 작업 후 데이터 교체 필요 
+		setCategories(dummy.map(el=> {
+			Object.defineProperty(el, `spread`, {
+				value: false,
+				writable: true,
+				enumerable: true,
+				configurable: true,
+			});
+			return el;
+		}));
 	}, []);
 
+	const spreadHandler = (el: any) => {
+		let find = dummy.filter( ak => ak.title === el )[0];
+		// Todo: 에러 해결 필요
+		find.spread = !find.spread;
+		
+		let others = dummy.filter( ak => ak.title !== el);
+		others = others.map(el => {el.spread = false; return el});
+		others.push(find);
+
+		setCategories(others);
+	}
+
   return (
-    <Leftbar>
-				{
-					dummy.map( el => {
-						return (
-							<Wrapper key={el.title}>
-								<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
-									<Title>
-										{ el.title }
-										{ 
-											el.subCategory.map( val => {
-												return (
-													<SubTitle key={val}>
-														{val}
-													</SubTitle>
-												)
-											})
-										}
-									</Title>
-								</Link>
-							</Wrapper>
-						)
-					})
-				}
-    </Leftbar>
-  )
+    <Sidebars>
+				<Link href={'/Edit'} style={{ textDecoration: 'none', color: 'black' }}>
+					Edit
+				</Link>
+			{
+				dummy.map( (el,index) => (
+						<Wrapper key={index}>
+							<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
+								<Category onClick={ () => spreadHandler(el.title)}>
+									{ el.title }
+								</Category>
+									{ el.spread ? 
+										el.subCategory.map( (val,index) => (
+											<SubCategory key={index}>
+												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black' }}>
+													{val}
+												</Link>
+											</SubCategory>
+										)) : <></>
+									}
+							</Link>
+						</Wrapper>
+					)
+				)
+			}
+    </Sidebars>
+  );
 };
 
 const dummy = [
 	{
 		title: 'study',
+		priority: 0 ,
 		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm']
 	},
 	{
 		title: 'profile',
-		subCategory: [ 'age', 'career', 'teck stack']
+		priority: 1,
+		subCategory: [ 'age', 'career', 'tech']
 	},
 	{
 		title: 'etc',
+		priority: 2,
 		subCategory: ['schedule', 'reading', 'hobby']
 	} 
 ];
