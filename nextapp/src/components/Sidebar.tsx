@@ -15,7 +15,7 @@ const Sidebars = styled.aside`
 
 const Wrapper = styled.span`
 	margin-top: 5rem;
-`
+`;
 
 const Category = styled.div`
 	display: flex;
@@ -30,42 +30,56 @@ const SubCategory = styled.div`
 	/* color: black; */
 `;
 
-const Edit = styled.button`
-	background-color: transparent;
-	border: 0;
-	margin-top: 1rem;
-	cursor: pointer;
-`;
-
 export default function Sidebar() {
-	const [state, setstate] = useState();
+	const [ categories, setCategories ] = useState({});
+	// console.log(categories);
 	
 	useEffect(() => {
-	
+		setCategories(dummy.map(el=> {
+			Object.defineProperty(el, `spread`, {
+				value: false,
+				writable: true,
+				enumerable: true,
+				configurable: true,
+			});
+			return el;
+		}));
 	}, []);
+
+	const spreadHandler = (el: any) => {
+		let find = dummy.filter( ak => ak.title === el )[0];
+		find.spread = !find.spread;
+		let others = dummy.filter( ak => ak.title !== el);
+		others.map(el=> {
+			el.spread = false;
+			return el;
+		})
+		console.log(others);
+		// console.log(find);
+		setCategories({...categories, find});
+		console.log('wow', categories);
+	}
 
   return (
     <Sidebars>
-			<Edit value={'Edit'}>
 				<Link href={'/Edit'} style={{ textDecoration: 'none', color: 'black' }}>
 					Edit
 				</Link>
-			</Edit>
 			{
-				dummy.map( el => (
-						<Wrapper key={el.title}>
+				dummy.map( (el,index) => (
+						<Wrapper key={index}>
 							<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
-								<Category>
+								<Category onClick={ () => spreadHandler(el.title)}>
 									{ el.title }
 								</Category>
-									{ 
-										el.subCategory.map( val => (
-											<SubCategory key={val}>
-												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black'}}>
+									{ el.spread ? 
+										el.subCategory.map( (val,index) => (
+											<SubCategory key={index}>
+												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black' }}>
 													{val}
 												</Link>
 											</SubCategory>
-										))
+										)) : <></>
 									}
 							</Link>
 						</Wrapper>
@@ -79,16 +93,19 @@ export default function Sidebar() {
 const dummy = [
 	{
 		title: 'study',
+		priority: 0 ,
 		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm']
 		// subCategory: []
 	},
 	{
 		title: 'profile',
-		subCategory: [ 'age', 'career', 'teck stack']
+		priority: 1,
+		subCategory: [ 'age', 'career', 'tech']
 		// subCategory: []
 	},
 	{
 		title: 'etc',
+		priority: 2,
 		subCategory: ['schedule', 'reading', 'hobby']
 		// subCategory: []
 	} 
