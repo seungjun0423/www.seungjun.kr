@@ -28,7 +28,14 @@ const SubTitle = styled.div`
 	/* display:none; */
 	font-size: 1.5rem;
 	/* color: black; */
-`
+`;
+
+const Edit = styled.button`
+	background-color: transparent;
+	border: 0;
+	margin-top: 1rem;
+	cursor: pointer;
+`;
 
 export default function Sidebar() {
 	const [state, setstate] = useState();
@@ -39,27 +46,30 @@ export default function Sidebar() {
 
   return (
     <Sidebars>
-				{
-					dummy.map( el => (
-							<Wrapper key={el.title}>
-								<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
-									<Title>
-										{ el.title }
-									</Title>
-										{/* { 
-											el.subCategory.map( val => (
-												<SubTitle key={val}>
-													<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black'}}>
-														{val}
-													</Link>
-												</SubTitle>
-											))
-										} */}
-								</Link>
-							</Wrapper>
-						)
+			<Edit value={'Edit'}>
+				Edit
+			</Edit>
+			{
+				dummy.map( el => (
+						<Wrapper key={el.title}>
+							<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
+								<Title>
+									{ el.title }
+								</Title>
+									{/* { 
+										el.subCategory.map( val => (
+											<SubTitle key={val}>
+												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black'}}>
+													{val}
+												</Link>
+											</SubTitle>
+										))
+									} */}
+							</Link>
+						</Wrapper>
 					)
-				}
+				)
+			}
     </Sidebars>
   );
 };
