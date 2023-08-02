@@ -29,11 +29,18 @@ const SubCategory = styled.div`
 `;
 
 export default function Sidebar() {
-	const [ categories, setCategories ] = useState({});
+	const [ categories, setCategories ] = useState([
+		{
+			title: '',
+			priority: 0 ,
+			subCategory: [''],
+			spread: false,
+		},
+	]);
 	
 	useEffect(() => {
 		// Todo: 서버 작업 후 데이터 교체 필요 
-		setCategories(dummy.map(el=> {
+		let data = dummy.map(el=> {
 			Object.defineProperty(el, `spread`, {
 				value: false,
 				writable: true,
@@ -41,11 +48,12 @@ export default function Sidebar() {
 				configurable: true,
 			});
 			return el;
-		}));
+		});
+		setCategories(data);
 	}, []);
 
 	const spreadHandler = (el: any) => {
-		let find = dummy.filter( ak => ak.title === el )[0];
+		let find = categories.filter( ak => ak.title === el )[0];
 		// Todo: 에러 해결 필요
 		find.spread = !find.spread;
 		
@@ -90,16 +98,19 @@ const dummy = [
 	{
 		title: 'study',
 		priority: 0 ,
-		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm']
+		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm'],
+		spread: false,
 	},
 	{
 		title: 'profile',
 		priority: 1,
-		subCategory: [ 'age', 'career', 'tech']
+		subCategory: [ 'age', 'career', 'tech'],
+		spread: false,
 	},
 	{
 		title: 'etc',
 		priority: 2,
-		subCategory: ['schedule', 'reading', 'hobby']
+		subCategory: ['schedule', 'reading', 'hobby'],
+		spread: false,
 	} 
 ];
