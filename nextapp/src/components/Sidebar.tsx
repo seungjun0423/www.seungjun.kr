@@ -27,6 +27,7 @@ const Title = styled.div`
 const SubTitle = styled.div`
 	/* display:none; */
 	font-size: 1.5rem;
+	/* color: black; */
 `
 
 export default function Sidebar() {
@@ -39,26 +40,25 @@ export default function Sidebar() {
   return (
     <Leftbar>
 				{
-					dummy.map( el => {
-						return (
+					dummy.map( el => (
 							<Wrapper key={el.title}>
 								<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
 									<Title>
 										{ el.title }
-										{ 
-											el.subCategory.map( val => {
-												return (
-													<SubTitle key={val}>
-														{val}
-													</SubTitle>
-												)
-											})
-										}
 									</Title>
+										{ 
+											el.subCategory.map( val => (
+												<SubTitle key={val}>
+													<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black'}}>
+														{val}
+													</Link>
+												</SubTitle>
+											))
+										}
 								</Link>
 							</Wrapper>
 						)
-					})
+					)
 				}
     </Leftbar>
   )
@@ -71,10 +71,12 @@ const dummy = [
 	},
 	{
 		title: 'profile',
-		subCategory: [ 'age', 'career', 'teck stack']
+		// subCategory: [ 'age', 'career', 'teck stack']
+		subCategory: []
 	},
 	{
 		title: 'etc',
-		subCategory: ['schedule', 'reading', 'hobby']
+		// subCategory: ['schedule', 'reading', 'hobby']
+		subCategory: []
 	} 
 ];
