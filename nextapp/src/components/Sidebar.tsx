@@ -25,14 +25,11 @@ const Category = styled.div`
 `;
 
 const SubCategory = styled.div`
-	/* display:none; */
 	font-size: 1.5rem;
-	/* color: black; */
 `;
 
 export default function Sidebar() {
 	const [ categories, setCategories ] = useState({});
-	// console.log(categories);
 	
 	useEffect(() => {
 		setCategories(dummy.map(el=> {
@@ -49,15 +46,12 @@ export default function Sidebar() {
 	const spreadHandler = (el: any) => {
 		let find = dummy.filter( ak => ak.title === el )[0];
 		find.spread = !find.spread;
+		
 		let others = dummy.filter( ak => ak.title !== el);
-		others.map(el=> {
-			el.spread = false;
-			return el;
-		})
-		console.log(others);
-		// console.log(find);
-		setCategories({...categories, find});
-		console.log('wow', categories);
+		others = others.map(el => {el.spread = false; return el});
+		others.push(find);
+
+		setCategories(others);
 	}
 
   return (
@@ -95,18 +89,15 @@ const dummy = [
 		title: 'study',
 		priority: 0 ,
 		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm']
-		// subCategory: []
 	},
 	{
 		title: 'profile',
 		priority: 1,
 		subCategory: [ 'age', 'career', 'tech']
-		// subCategory: []
 	},
 	{
 		title: 'etc',
 		priority: 2,
 		subCategory: ['schedule', 'reading', 'hobby']
-		// subCategory: []
 	} 
 ];
