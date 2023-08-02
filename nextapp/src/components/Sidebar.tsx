@@ -17,14 +17,14 @@ const Wrapper = styled.span`
 	margin-top: 5rem;
 `
 
-const Title = styled.div`
+const Category = styled.div`
 	display: flex;
 	flex-direction: column;
 	font-size: 2.5rem;
 	color: black;
 `;
 
-const SubTitle = styled.div`
+const SubCategory = styled.div`
 	/* display:none; */
 	font-size: 1.5rem;
 	/* color: black; */
@@ -47,24 +47,26 @@ export default function Sidebar() {
   return (
     <Sidebars>
 			<Edit value={'Edit'}>
-				Edit
+				<Link href={'/Edit'} style={{ textDecoration: 'none', color: 'black' }}>
+					Edit
+				</Link>
 			</Edit>
 			{
 				dummy.map( el => (
 						<Wrapper key={el.title}>
 							<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
-								<Title>
+								<Category>
 									{ el.title }
-								</Title>
-									{/* { 
+								</Category>
+									{ 
 										el.subCategory.map( val => (
-											<SubTitle key={val}>
+											<SubCategory key={val}>
 												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black'}}>
 													{val}
 												</Link>
-											</SubTitle>
+											</SubCategory>
 										))
-									} */}
+									}
 							</Link>
 						</Wrapper>
 					)
@@ -78,15 +80,16 @@ const dummy = [
 	{
 		title: 'study',
 		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm']
+		// subCategory: []
 	},
 	{
 		title: 'profile',
-		// subCategory: [ 'age', 'career', 'teck stack']
-		subCategory: []
+		subCategory: [ 'age', 'career', 'teck stack']
+		// subCategory: []
 	},
 	{
 		title: 'etc',
-		// subCategory: ['schedule', 'reading', 'hobby']
-		subCategory: []
+		subCategory: ['schedule', 'reading', 'hobby']
+		// subCategory: []
 	} 
 ];
