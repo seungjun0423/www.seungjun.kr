@@ -5,9 +5,10 @@ import styles from '../styles/layout.module.css';
 import StyledComponentsRegistry from '../styles/registry';
 
 import { Open_Sans, Nanum_Gothic } from 'next/font/google';
-import Link from 'next/link';
 
+import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
+import Footer from 'components/Footer';
 
 const sans = Open_Sans({ subsets: ['latin']});
 // const gothic = Nanum_Gothic({
@@ -35,12 +36,7 @@ export default function RootLayout({
 			<head />
 			<StyledComponentsRegistry>
 				<body >
-					<header className={styles.header}>
-						<Link className={styles.title} href={'/'}>Blog</Link>
-						<Link className={styles.nav} href={'/admin'}>
-							Admin
-						</Link>
-					</header>
+					<Header></Header>
 
 					<div className={styles.main}>
 						<Sidebar />
@@ -49,11 +45,7 @@ export default function RootLayout({
 						</div>
 					</div>
 						
-					<footer className={styles.footer}>
-						<text>
-							저작권자: 이승준
-						</text>
-					</footer>
+					<Footer></Footer>
 				</body>
 			</StyledComponentsRegistry>
     </html>
