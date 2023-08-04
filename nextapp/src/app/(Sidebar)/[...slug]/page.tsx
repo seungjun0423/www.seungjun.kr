@@ -1,3 +1,5 @@
+import React from "react";
+
 type Category = {
 	params: {
 		slug: string;
