@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { SidebarDummy } from "dummy";
 
 const Sidebars = styled.aside`
 	display: flex;
@@ -34,14 +35,14 @@ export default function Sidebar() {
 		{
 			title: '',
 			priority: 0 ,
-			subCategory: [''],
+			post: [''],
 			spread: false,
 		},
 	]);
 	
 	useEffect(() => {
 		// Todo: 서버 작업 후 데이터 교체 필요 
-		let data = dummy.map(el=> {
+		let data = SidebarDummy.map(el=> {
 			Object.defineProperty(el, `spread`, {
 				value: false,
 				writable: true,
@@ -58,7 +59,7 @@ export default function Sidebar() {
 		// Todo: 에러 해결 필요
 		find.spread = !find.spread;
 		
-		let others = dummy.filter( ak => ak.title !== el);
+		let others = SidebarDummy.filter( ak => ak.title !== el);
 		others = others.map(el => {el.spread = false; return el});
 		others.push(find);
 
@@ -71,14 +72,14 @@ export default function Sidebar() {
 					Edit
 				</Link>
 			{
-				dummy.map( (el,index) => (
+				SidebarDummy.map( (el,index) => (
 						<Wrapper key={index}>
 							<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
 								<Category onClick={ () => spreadHandler(el.title)}>
 									{ el.title }
 								</Category>
 									{ el.spread ? 
-										el.subCategory.map( (val,index) => (
+										el.post.map( (val,index) => (
 											<SubCategory key={index}>
 												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black' }}>
 													{val}
@@ -95,23 +96,23 @@ export default function Sidebar() {
   );
 };
 
-const dummy = [
-	{
-		title: 'study',
-		priority: 0 ,
-		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm'],
-		spread: false,
-	},
-	{
-		title: 'profile',
-		priority: 1,
-		subCategory: [ 'age', 'career', 'tech'],
-		spread: false,
-	},
-	{
-		title: 'etc',
-		priority: 2,
-		subCategory: ['schedule', 'reading', 'hobby'],
-		spread: false,
-	} 
-];
+// const dummy = [
+// 	{
+// 		title: 'study',
+// 		priority: 0 ,
+// 		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm'],
+// 		spread: false,
+// 	},
+// 	{
+// 		title: 'profile',
+// 		priority: 1,
+// 		subCategory: [ 'age', 'career', 'tech'],
+// 		spread: false,
+// 	},
+// 	{
+// 		title: 'etc',
+// 		priority: 2,
+// 		subCategory: ['schedule', 'reading', 'hobby'],
+// 		spread: false,
+// 	} 
+// ];
