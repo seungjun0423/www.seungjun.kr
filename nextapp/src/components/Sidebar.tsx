@@ -18,11 +18,13 @@ const Sidebars = styled.aside`
 	height: 100%;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-around;
 	border-right: 1px solid;
+	overflow-y: scroll;
 `;
 
 const Wrapper = styled.span`
-	margin-top: 5rem;
+	display: flex;
 `;
 
 const Category = styled.div`

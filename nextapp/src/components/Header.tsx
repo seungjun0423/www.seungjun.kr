@@ -16,14 +16,20 @@ const Headers = styled.header`
 	border-bottom: 1px solid;
 `;
 
-export default function Header() {
+export default function Header({}) {
 	return (
 		<Headers>
 			<Link href={'/'} style={{fontSize: '3rem', textDecoration: 'none', color: 'black'}} >
 				Blog
 			</Link>
+			<Link href={'/'} style={{paddingLeft: '5rem', fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+				home
+			</Link>
+			<Link href={'/introducing'} style={{paddingLeft: '5rem', fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+				about me
+			</Link>
 			<Link href={'/admin'} style={{paddingLeft: '5rem', fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-				Admin
+				admin
 			</Link>
 		</Headers>
 	);

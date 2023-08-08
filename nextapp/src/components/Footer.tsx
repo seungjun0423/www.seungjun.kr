@@ -16,7 +16,7 @@ export default function Footer() {
 	return (
 		<Footers>
 			<p style={{margin: '1.5rem'}}>
-				Copyright 2023. LEE SEUNGJUN All Rights Reserved 
+				Copyright 2023. LEE SEUNGJUN. All Rights Reserved 
 			</p>
 		</Footers>
 	);
