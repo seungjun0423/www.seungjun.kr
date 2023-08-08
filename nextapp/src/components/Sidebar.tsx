@@ -30,7 +30,7 @@ const Wrapper = styled.span`
 const Category = styled.div`
 	display: flex;
 	flex-direction: column;
-	font-size: 2.5rem;
+	font-size: 2rem;
 	color: black;
 `;
 

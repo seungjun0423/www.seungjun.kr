@@ -18,13 +18,13 @@ const Headers = styled.header`
 `;
 
 const Title = styled.span`
-	margin-left: 20%;
+	padding-left: 20%;
 `;
 
 const NavBox = styled.span`
-	margin-right: 5%;
+	padding-right: 3%;
 	display: flex;
-	gap: 20px;
+	gap: 2rem;
 `;
 
 export default function Header({}) {
