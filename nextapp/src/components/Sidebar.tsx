@@ -21,6 +21,10 @@ const Sidebars = styled.aside`
 	justify-content: space-around;
 	border-right: 1px solid;
 	overflow-y: scroll;
+	// &은 자기 자신을 참조하는 styled compnents의 문법이다.
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
 
 const Wrapper = styled.span`
