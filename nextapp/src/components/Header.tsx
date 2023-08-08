@@ -25,6 +25,9 @@ const NavBox = styled.span`
 	padding-right: 3%;
 	display: flex;
 	gap: 2rem;
+	@media(max-width: 425px){
+		display: none;
+}
 `;
 
 export default function Header({}) {
