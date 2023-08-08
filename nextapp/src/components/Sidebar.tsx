@@ -1,10 +1,16 @@
 'use client'
 
+// 더미 데이터
+import { SidebarDummy } from "data/dummy";
+
+// 라이브러리 
 import React from "react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { SidebarDummy } from "dummy";
+
+// 컴포넌트와 기타 등등
+import { Category } from "model/interface";
 
 const Sidebars = styled.aside`
 	display: flex;
@@ -31,14 +37,17 @@ const SubCategory = styled.div`
 `;
 
 export default function Sidebar() {
-	const [ categories, setCategories ] = useState([
-		{
-			title: '',
-			priority: 0 ,
-			post: [''],
-			spread: false,
-		},
-	]);
+	const [ categories, setCategories ] = useState<Category[]>(
+		[
+			{
+				id: 0,
+				title: '',
+				priority: 0 ,
+				post: [],
+				spread: false,
+			},
+		]
+	);
 	
 	useEffect(() => {
 		// Todo: 서버 작업 후 데이터 교체 필요 
@@ -54,12 +63,12 @@ export default function Sidebar() {
 		setCategories(data);
 	}, []);
 
-	const spreadHandler = (el: any) => {
-		let find = categories.filter( ak => ak.title === el )[0];
-		// Todo: 에러 해결 필요
+	/** Input: title | Return: active setCategories hook for change spread property | How: false -> true or true -> false   */
+	const spreadHandler = ( el: string ) : void => {
+		let find = categories.filter( value => value.title === el )[0];
 		find.spread = !find.spread;
 		
-		let others = SidebarDummy.filter( ak => ak.title !== el);
+		let others = SidebarDummy.filter( value => value.title !== el);
 		others = others.map(el => {el.spread = false; return el});
 		others.push(find);
 
@@ -95,24 +104,3 @@ export default function Sidebar() {
     </Sidebars>
   );
 };
-
-// const dummy = [
-// 	{
-// 		title: 'study',
-// 		priority: 0 ,
-// 		subCategory: [ 'javaScript', 'react', 'next.js', 'nest.js', 'algorithm'],
-// 		spread: false,
-// 	},
-// 	{
-// 		title: 'profile',
-// 		priority: 1,
-// 		subCategory: [ 'age', 'career', 'tech'],
-// 		spread: false,
-// 	},
-// 	{
-// 		title: 'etc',
-// 		priority: 2,
-// 		subCategory: ['schedule', 'reading', 'hobby'],
-// 		spread: false,
-// 	} 
-// ];
