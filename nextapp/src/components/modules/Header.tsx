@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
 import { InnerWidthStore } from "model/store";
@@ -60,15 +60,16 @@ export default function Header(): React.ReactElement {
 	const innerWidthListener = () : void => {
     setInnerWidth(window.innerWidth);
   };
-
-	useEffect(() => {
-    // 크기에 따라 화면 넓이 자동 조절   
-    window.addEventListener("resize", innerWidthListener);
-    
+	
+	// 렌더링 이전에 작동하는 훅
+	useLayoutEffect(() => {
+		// 크기에 따라 화면 넓이 자동 조절   
+		window.addEventListener("resize", innerWidthListener);
+    setInnerWidth(window.innerWidth);
     return () => {
       window.removeEventListener("resize", innerWidthListener);
     }
-  }, []);
+	}, [])
 
 	/** innerWidth 가 520 이상일 경우 */
 	const navContainer = (): React.ReactElement => {
@@ -114,13 +115,12 @@ export default function Header(): React.ReactElement {
 	
 	return (
 		<Headers>
-			
 			<Title>
 				<Link href={'/'} style={{fontSize: '3rem', textDecoration: 'none', color: 'black'}} >
 					Blog
 				</Link>
 			</Title>
-			{innerWidth > 520 ? navContainer() : navBox()}
+			{innerWidth === -1 ? <></> : innerWidth >= 520 ? navContainer(): navBox()}
 		</Headers>
 	);
 };

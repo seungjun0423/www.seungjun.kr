@@ -94,7 +94,7 @@ export default function Sidebar(): React.ReactElement {
 								<Category onClick={ () => spreadHandler(el.title)}>
 									{ el.title }
 								</Category>
-									{/* { el.spread ? 
+									{ el.spread ? 
 										el.post.map( (val,index) => (
 											<SubCategory key={index}>
 												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black' }}>
@@ -102,7 +102,7 @@ export default function Sidebar(): React.ReactElement {
 												</Link>
 											</SubCategory>
 										)) : <></>
-									} */}
+									}
 							</Link>
 						</Wrapper>
 					)

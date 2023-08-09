@@ -93,7 +93,7 @@ export default function Underbar(): React.ReactElement {
 								<Category onClick={ () => spreadHandler(el.title)}>
 									{ el.title }
 								</Category>
-								{/* <PostContainer>
+								<PostContainer>
 									{ el.spread ? 
 										el.post.map( (val,index) => (
 											<Post key={index}>
@@ -103,7 +103,7 @@ export default function Underbar(): React.ReactElement {
 											</Post>
 										)) : <></>
 									}
-								</PostContainer> */}
+								</PostContainer>
 							</Link>
 						</CategoryBox>
 					)

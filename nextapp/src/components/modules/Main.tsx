@@ -19,7 +19,7 @@ const Contents = styled.div`
 	font-size: 1.5rem;
 `;
 
-export default function Main({ Children, Height }: any): React.ReactElement {
+export default function Main({ Children }: any): React.ReactElement {
 	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
 	
 	return (
@@ -30,9 +30,9 @@ export default function Main({ Children, Height }: any): React.ReactElement {
 				: <Underbar />
 			}
 
-			<Contents>
+			{/* <Contents>
 				{Children}
-			</Contents>
+			</Contents> */}
 
 		</Mains>
 	);
