@@ -2,7 +2,8 @@
 
 import React from "react";
 import styled from "styled-components";
-import Sidebar from "./Sidebar";
+import Sidebar from "../views/Sidebar";
+import Underbar from "components/views/Underbar";
 
 const Mains = styled.div`
 	display: flex;
@@ -19,7 +20,8 @@ const Contents = styled.div`
 export default function Main({ Children }: any): React.ReactElement {
 	return (
 		<Mains>
-			<Sidebar />
+			{/* <Sidebar /> */}
+			<Underbar></Underbar>
 			<Contents>
 				{Children}
 			</Contents>

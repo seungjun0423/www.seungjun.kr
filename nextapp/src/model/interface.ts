@@ -6,4 +6,9 @@ export interface Category {
 	priority: number;
 	post: string[];
 	spread: boolean;
-}
+};
+
+export interface Width {
+	innerWidth: number;
+	setInnerWidth: (input:number) => void;
+};
