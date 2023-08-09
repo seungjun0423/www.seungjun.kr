@@ -14,14 +14,16 @@ import { Category } from "model/interface";
 
 const Underbars = styled.aside`
 	display: flex;
+	position: sticky;
+	bottom: 0;
 	overflow-y: auto;
 	gap: 20px;
 	z-index: 999;
 	border-top: 1px solid;
-	/* height: 5rem; */
+	padding-bottom: 2rem;
 `;
 
-const Wrapper = styled.span`
+const CategoryBox = styled.span`
 	display:flex;
 `;
 
@@ -30,7 +32,13 @@ const Category = styled.div`
 	color: black;
 `;
 
-const SubCategory = styled.div`
+const PostContainer = styled.div`
+	background-color: blueviolet;
+	opacity: 0.5;
+	z-index: 999;
+`;
+
+const Post = styled.div`
 	font-size: 1.5rem;
 `;
 
@@ -80,22 +88,24 @@ export default function Underbar(): React.ReactElement {
 				</Link>
 			{
 				SidebarDummy.map( (el,index) => (
-						<Wrapper key={index}>
+						<CategoryBox key={index}>
 							<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
 								<Category onClick={ () => spreadHandler(el.title)}>
 									{ el.title }
 								</Category>
+								{/* <PostContainer>
 									{ el.spread ? 
 										el.post.map( (val,index) => (
-											<SubCategory key={index}>
+											<Post key={index}>
 												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black' }}>
 													{val}
 												</Link>
-											</SubCategory>
+											</Post>
 										)) : <></>
 									}
+								</PostContainer> */}
 							</Link>
-						</Wrapper>
+						</CategoryBox>
 					)
 				)
 			}

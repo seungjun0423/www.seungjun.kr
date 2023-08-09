@@ -10,14 +10,22 @@ const Footers = styled.footer`
 	font-size: 1rem;
 	bottom: 0px;
 	border-top: 1px solid;
+	flex-direction: row-reverse;
+	@media(max-width: 520px){
+		display: none;
+	}
+`;
+
+const CopyRight = styled.p`
+	margin: 1.5rem;
 `;
 
 export default function Footer(): React.ReactElement {
 	return (
 		<Footers>
-			<p style={{margin: '1.5rem'}}>
+			<CopyRight>
 				Copyright 2023. LEE SEUNGJUN. All Rights Reserved 
-			</p>
+			</CopyRight>
 		</Footers>
 	);
 };

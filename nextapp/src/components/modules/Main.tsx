@@ -10,7 +10,6 @@ import { InnerWidthStore } from "model/store";
 const Mains = styled.div`
 	display: flex;
 	width: 100%;
-	height: 100%;
 	flex-wrap: wrap-reverse;
 	align-content: space-between;
 `;
@@ -20,11 +19,11 @@ const Contents = styled.div`
 	font-size: 1.5rem;
 `;
 
-export default function Main({ Children }: any): React.ReactElement {
+export default function Main({ Children, Height }: any): React.ReactElement {
 	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
 	
 	return (
-		<Mains>
+		<Mains style={{height: innerWidth >= 520 ? '82vh':'92vh'}}>
 
 			{ innerWidth >= 520 ? 
 				<Sidebar />

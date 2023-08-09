@@ -7,7 +7,7 @@ import { InnerWidthStore } from "model/store";
 
 const Headers = styled.header`
 	width: 100%;
-	height: 8%;
+	height: 8vh;
 	top: 0;
 	display: flex;
 	justify-content: space-between;
@@ -54,7 +54,7 @@ const Borad = styled.span`
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
 	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
-	const [navState, setNavState] = useState<boolean>(false);
+	const [ navState, setNavState ] = useState<boolean>(false);
 
 	/** 변화하는 innerWidth에 맞춰 상태에 적용하는 함수*/
 	const innerWidthListener = () : void => {
