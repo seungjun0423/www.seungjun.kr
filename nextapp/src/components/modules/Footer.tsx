@@ -6,11 +6,11 @@ import styled from 'styled-components';
 const Footers = styled.footer`
 	display: flex;
 	width: 100%;
-	height: 100px;
 	font-size: 1rem;
 	bottom: 0px;
 	border-top: 1px solid;
 	flex-direction: row-reverse;
+	align-content: center;
 	@media(max-width: 520px){
 		display: none;
 	}

@@ -23,7 +23,7 @@ export default function Main({ Children, Height }: any): React.ReactElement {
 	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
 	
 	return (
-		<Mains style={{height: innerWidth >= 520 ? '82vh':'92vh'}}>
+		<Mains style={{height: innerWidth >= 520 ? '84vh':'92vh'}}>
 
 			{ innerWidth >= 520 ? 
 				<Sidebar />
