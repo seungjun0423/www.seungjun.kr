@@ -43,9 +43,9 @@ export default function Main({ Children }: any): React.ReactElement {
 				: <Underbar />
 			}
 
-			{/* <Contents>
+			<Contents>
 				{Children}
-			</Contents> */}
+			</Contents>
 
 		</Mains>
 	);
