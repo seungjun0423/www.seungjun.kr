@@ -5,8 +5,6 @@ import styled from "styled-components";
 import Sidebar from "../views/Sidebar";
 import Underbar from "components/views/Underbar";
 
-import { InnerWidthStore } from "model/store";
-
 const Mains = styled.div`
 	display: flex;
 	width: 100%;
@@ -20,7 +18,6 @@ const Contents = styled.div`
 `;
 
 export default function Main({ Children }: any): React.ReactElement {
-	// const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
 	const [ innerWidth, setInnerWidth ] =  useState<number>(window.innerWidth);
 
 	/** 변화하는 innerWidth에 맞춰 상태에 적용하는 함수*/

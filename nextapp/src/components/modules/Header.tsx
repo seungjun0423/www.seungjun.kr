@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
-// import { InnerWidthStore } from "model/store";
 
 const Headers = styled.header`
 	width: 100%;
@@ -53,7 +52,6 @@ const Borad = styled.span`
 
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
-	// const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
 	const [ innerWidth, setInnerWidth ] =  useState<number>(window.innerWidth);
 	const [ navState, setNavState ] = useState<boolean>(false);
 
