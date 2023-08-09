@@ -5,17 +5,14 @@ import styles from '../styles/layout.module.css';
 
 import StyledComponentsRegistry from '../styles/registry';
 
-import { Open_Sans, Nanum_Gothic } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
 import Footer from 'components/Footer';
 
+/** font */
 const sans = Open_Sans({ subsets: ['latin']});
-// const gothic = Nanum_Gothic({
-// 	weight:"700",
-// 	subsets: ['latin'],
-// });
 
 export const metadata: Metadata = {
   title: '이승준의 블로그',
@@ -31,7 +28,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}): React.ReactNode {
   return (
     <html lang="ko">
 			<head />

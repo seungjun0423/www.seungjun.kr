@@ -30,15 +30,17 @@ const Wrapper = styled.span`
 const Category = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	font-size: 2rem;
 	color: black;
 `;
 
 const SubCategory = styled.div`
 	font-size: 1.5rem;
+	align-items: center;
 `;
 
-export default function Sidebar() {
+export default function Sidebar(): React.ReactElement {
 	const [ categories, setCategories ] = useState<Category[]>(
 		[
 			{

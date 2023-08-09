@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link"
 import styled from "styled-components";
 
@@ -21,16 +21,37 @@ const Title = styled.span`
 	padding-left: 20%;
 `;
 
-const NavBox = styled.span`
+const NavContainer = styled.span`
 	padding-right: 3%;
 	display: flex;
 	gap: 2rem;
-	@media(max-width: 425px){
-		display: none;
-}
 `;
 
-export default function Header({}) {
+const NavBox = styled.span`
+	margin-right: 3%;
+	width: 70px;
+	height: 60px;
+	background-color: red;
+`;
+
+/** Header 컴포넌트 */
+export default function Header(): React.ReactElement {
+	const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
+
+	/** 변화하는 innerWidth에 맞춰 상태에 적용하는 함수*/
+	const innerWidthListener = () : void => {
+    setInnerWidth(window.innerWidth);
+  };
+
+	useEffect(() => {
+    // 크기에 따라 화면 넓이 자동 조절   
+    window.addEventListener("resize", innerWidthListener);
+    
+    return () => {
+      window.removeEventListener("resize", innerWidthListener);
+    }
+  }, []);
+
 	return (
 		<Headers>
 			
@@ -39,19 +60,33 @@ export default function Header({}) {
 					Blog
 				</Link>
 			</Title>
-
-			<NavBox>
-				<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-					home
-				</Link>
-				<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-					about me
-				</Link>
-				<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-					admin
-				</Link>
-			</NavBox>
-
+			{innerWidth > 520 ? navContainer() : navBox()}
 		</Headers>
 	);
 };
+
+/** innerWidth 가 520 이상일 경우 */
+export const navContainer = (): React.ReactElement => {
+	return (
+	<NavContainer>
+		<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+			home
+		</Link>
+		<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+			about me
+		</Link>
+		<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+			admin
+		</Link>
+	</NavContainer>
+	);
+};
+
+/** innerWidth 가 520 이하일 경우 */
+export const navBox = (): React.ReactElement => {
+	return (
+		<NavBox>
+		</NavBox>
+	);
+};
+	

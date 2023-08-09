@@ -6,7 +6,7 @@ type Category = {
 	};
 };
 
-export default function Category( { params: { slug } }: Category ) {
+export default function Category( { params: { slug } }: Category ): React.ReactElement {
   return (
     <div>
 			{slug} 

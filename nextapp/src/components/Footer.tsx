@@ -12,7 +12,7 @@ const Footers = styled.footer`
 	border-top: 1px solid;
 `;
 
-export default function Footer() {
+export default function Footer(): React.ReactElement {
 	return (
 		<Footers>
 			<p style={{margin: '1.5rem'}}>

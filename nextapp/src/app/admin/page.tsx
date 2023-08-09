@@ -1,5 +1,5 @@
 
-export default function Admin() {
+export default function Admin(): React.ReactElement {
   return (
     <div>
 			admin

@@ -9,7 +9,7 @@ const Contents = styled.main`
 	font-size: 1.5rem;
 `;
 
-export default function Content() {
+export default function Content(): React.ReactElement {
 	return (
 		<Contents>
 
