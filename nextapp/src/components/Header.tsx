@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const Headers = styled.header`
 	width: 100%;
-	height: 5rem;
+	height: 8%;
 	top: 0;
 	display: flex;
 	justify-content: space-between;
@@ -105,12 +105,12 @@ export default function Header(): React.ReactElement {
 							admin
 						</Link>
 					</Borad>
-					:<></>
+					: <></>
 				}
 			</NavBox>
 		);
 	};
-	console.log(navState);
+	
 	return (
 		<Headers>
 			

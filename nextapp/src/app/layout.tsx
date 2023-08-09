@@ -10,6 +10,7 @@ import { Open_Sans } from 'next/font/google';
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
 import Footer from 'components/Footer';
+import Main  from 'components/Main';
 
 /** font */
 const sans = Open_Sans({ subsets: ['latin']});
@@ -37,13 +38,13 @@ export default function RootLayout({
 
 					<Header />
 
-					<div className={styles.main}>
+					{/* <div className={styles.main}>
 						<Sidebar />
 						<div className={styles.contents}>
 							{children}
 						</div>
-					</div>
-						
+					</div> */}
+					<Main Children={children}></Main>
 					<Footer />
 
 				</body>

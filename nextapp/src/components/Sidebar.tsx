@@ -14,7 +14,7 @@ import { Category } from "model/interface";
 
 const Sidebars = styled.aside`
 	display: flex;
-	width: 300px;
+	width: 15rem;
 	height: 100%;
 	flex-direction: column;
 	align-items: center;
@@ -25,6 +25,9 @@ const Sidebars = styled.aside`
 
 const Wrapper = styled.span`
 	display: flex;
+	&:last-child{
+		margin-bottom: 3rem;
+	}
 `;
 
 const Category = styled.div`
@@ -78,7 +81,7 @@ export default function Sidebar(): React.ReactElement {
 
 		setCategories(others);
 	}
-
+	
   return (
     <Sidebars>
 				<Link href={'/Edit'} style={{ textDecoration: 'none', color: 'black' }}>
