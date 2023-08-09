@@ -10,5 +10,5 @@ export interface Category {
 
 export interface Width {
 	innerWidth: number;
-	setInnerWidth: (input:number) => void;
+	setInnerWidth: (input: number) => void;
 };

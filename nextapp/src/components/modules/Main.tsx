@@ -5,26 +5,36 @@ import styled from "styled-components";
 import Sidebar from "../views/Sidebar";
 import Underbar from "components/views/Underbar";
 
+import { InnerWidthStore } from "model/store";
+
 const Mains = styled.div`
 	display: flex;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
+	flex-wrap: wrap-reverse;
+	align-content: space-between;
 `;
 
 const Contents = styled.div`
-	width: 100%;
 	padding: 2rem;
 	font-size: 1.5rem;
 `;
 
 export default function Main({ Children }: any): React.ReactElement {
+	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
+	
 	return (
 		<Mains>
-			{/* <Sidebar /> */}
-			<Underbar></Underbar>
+
+			{ innerWidth >= 520 ? 
+				<Sidebar />
+				: <Underbar />
+			}
+
 			<Contents>
 				{Children}
 			</Contents>
+
 		</Mains>
 	);
 };

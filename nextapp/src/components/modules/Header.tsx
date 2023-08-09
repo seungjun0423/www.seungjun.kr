@@ -19,18 +19,18 @@ const Headers = styled.header`
 `;
 
 const Title = styled.span`
-	padding-left: 20%;
+	padding-left: 15%;
 `;
 
 const NavContainer = styled.span`
 	padding-right: 3%;
 	display: flex;
-	gap: 2rem;
+	gap: 2.5rem;
 `;
 
 const NavBox = styled.div`
 	margin-right: 3%;
-	width: 5rem;
+	width: 6rem;
 	height: 4rem;
 `;
 
@@ -44,17 +44,16 @@ const Borad = styled.span`
 	width: 100%;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 13px;
+	margin-top: 10px;
 	padding: 10px 0 5px 0;
 	background-color: beige;
 	border: 1px solid;
-	gap: 10px;
+	gap: 2rem;
 `;
 
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
 	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
-	// const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
 	const [navState, setNavState] = useState<boolean>(false);
 
 	/** 변화하는 innerWidth에 맞춰 상태에 적용하는 함수*/

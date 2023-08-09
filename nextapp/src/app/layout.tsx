@@ -1,16 +1,15 @@
 import React from "react";
 import { Metadata } from 'next';
 import '../styles/globals.css';
-import styles from '../styles/layout.module.css';
 
+/** styled-components 적용을 위함 */
 import StyledComponentsRegistry from '../styles/registry';
 
 import { Open_Sans } from 'next/font/google';
 
 import Header from 'components/modules/Header';
-import Sidebar from 'components/views/Sidebar';
-import Footer from 'components/modules/Footer';
 import Main  from 'components/modules/Main';
+import Footer from 'components/modules/Footer';
 
 /** font */
 const sans = Open_Sans({ subsets: ['latin']});

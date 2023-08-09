@@ -13,26 +13,25 @@ import styled from "styled-components";
 import { Category } from "model/interface";
 
 const Underbars = styled.aside`
+	display: flex;
+	overflow-y: auto;
+	gap: 20px;
+	z-index: 999;
+	border-top: 1px solid;
+	/* height: 5rem; */
 `;
 
 const Wrapper = styled.span`
-	display: flex;
-	&:last-child{
-		margin-bottom: 3rem;
-	}
+	display:flex;
 `;
 
 const Category = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	font-size: 2rem;
 	color: black;
 `;
 
 const SubCategory = styled.div`
 	font-size: 1.5rem;
-	align-items: center;
 `;
 
 export default function Underbar(): React.ReactElement {
