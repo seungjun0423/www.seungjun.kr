@@ -1,9 +1,8 @@
 'use client'
 
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
-import { InnerWidthStore } from "model/store";
 
 const Headers = styled.header`
 	width: 100%;
@@ -53,7 +52,7 @@ const Borad = styled.span`
 
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
-	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
+	const [ innerWidth, setInnerWidth ] =  useState<number>(window.innerWidth);
 	const [ navState, setNavState ] = useState<boolean>(false);
 
 	/** 변화하는 innerWidth에 맞춰 상태에 적용하는 함수*/
@@ -62,7 +61,7 @@ export default function Header(): React.ReactElement {
   };
 	
 	// 렌더링 이전에 작동하는 훅
-	useLayoutEffect(() => {
+	useEffect(() => {
 		// 크기에 따라 화면 넓이 자동 조절   
 		window.addEventListener("resize", innerWidthListener);
     setInnerWidth(window.innerWidth);
