@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
 import { InnerWidthStore } from "model/store";
@@ -62,7 +62,7 @@ export default function Header(): React.ReactElement {
   };
 	
 	// 렌더링 이전에 작동하는 훅
-	useLayoutEffect(() => {
+	useEffect(() => {
 		// 크기에 따라 화면 넓이 자동 조절   
 		window.addEventListener("resize", innerWidthListener);
     setInnerWidth(window.innerWidth);
