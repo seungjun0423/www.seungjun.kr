@@ -5,15 +5,16 @@ import Link from "next/link"
 import styled from "styled-components";
 
 const Headers = styled.header`
-	box-sizing: border-box;
 	display: flex;
 	justify-content: space-between;
-	position: sticky;
+	position: relative;
+	top: 0;
+	left: 0;
 	width: 100%;
 	padding: 5px 0 5px 0;
-	z-index: 99;
 	background-color: #ffffff;
 	border-bottom: 1px solid;
+	z-index: 99;
 `;
 
 const Title = styled.span`
@@ -44,6 +45,7 @@ const NavBox = styled.div`
 const NavBtn = styled.button`
 	width: 100%;
 	height: 100%;
+	font-size: 2rem;
 `;
 
 const Borad = styled.span`
@@ -66,13 +68,13 @@ export default function Header(): React.ReactElement {
 	const navContainer = (): React.ReactElement => {
 		return (
 			<NavContainer>
-				<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+				<Link href={'/'} style={{ fontSize: '1.5rem' }}>
 					home
 				</Link>
-				<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+				<Link href={'/introducing'} style={{ fontSize: '1.5rem' }}>
 					about me
 				</Link>
-				<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+				<Link href={'/admin'} style={{ fontSize: '1.5rem' }}>
 					admin
 				</Link>
 			</NavContainer>
@@ -84,17 +86,18 @@ export default function Header(): React.ReactElement {
 		return (
 			<NavBox>
 				<NavBtn onClick={()=>{setNavState(!navState)}}>
-					Click!
+					{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
+					&#9776;
 				</NavBtn>
 				{ navState ? 
 					<Borad>
-						<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+						<Link href={'/'} style={{ fontSize: '1.5rem'}}>
 							home
 						</Link>
-						<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+						<Link href={'/introducing'} style={{ fontSize: '1.5rem'}}>
 							about
 						</Link>
-						<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+						<Link href={'/admin'} style={{ fontSize: '1.5rem'}}>
 							admin
 						</Link>
 					</Borad>
@@ -107,7 +110,7 @@ export default function Header(): React.ReactElement {
 	return (
 		<Headers>
 			<Title>
-				<Link href={'/'} style={{fontSize: '3rem', textDecoration: 'none', color: 'black'}} >
+				<Link href={'/'} style={{fontSize: '3rem'}} >
 					Blog
 				</Link>
 			</Title>

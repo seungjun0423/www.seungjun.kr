@@ -1,5 +1,15 @@
+/* border-box 기능은 패딩이나 마진 값이 들어가도 width 값이 변화하지 않도로 해준다. */
+* {
+	box-sizing: border-box;
+	outline: none;
+}
+
 html {
   font-size: 18px;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 body {
@@ -7,9 +17,13 @@ body {
 	height: 100%;
   padding: 0;
   margin: 0;
-	overflow-y: hidden;
-	overflow-x: hidden;
 }
+
+a {
+  text-decoration: none;
+	color: black;
+}
+
 
 @media(max-width: 1024px){
 	html {

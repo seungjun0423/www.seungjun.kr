@@ -9,12 +9,14 @@ import { Category } from "model/interface";
 
 const Lists = styled.span`
 	display: flex;
+	margin-top: 2.5rem;
+	@media (max-width: 520px) {
+		margin-top: 0;
+	}
 `;
 
 const Categories = styled.div`
 	display: flex;
-	flex-direction: column;
-	align-items: center;
 	font-size: 2rem;
 	color: black;
 `;
@@ -24,7 +26,7 @@ const Posts = styled.div`
 	align-items: center;
 `;
 
-/** 기능을 담당하는 컴포넌트. 카테고리와 포스트 리스트를 받아와 열거해준다 */
+/** 서버에서 카테고리와 작성글 목록을 받아와 열거해주는 컴포넌트 */
 export default function List(): React.ReactElement{
 	const [ categories, setCategories ] = useState<Category[]>(
 		[
@@ -70,14 +72,14 @@ export default function List(): React.ReactElement{
 		{
 			SidebarDummy.map( (el,index) => (
 					<Lists key={index}>
-						<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
+						<Link href={`/${el.title}`}>
 							<Categories onClick={ () => spreadHandler(el.title)}>
 								{ el.title }
 							</Categories>
 								{ el.spread ? 
 									el.post.map( (val,index) => (
 										<Posts key={index}>
-											<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black' }}>
+											<Link href={`/${el.title}/${val}`}>
 												{val}
 											</Link>
 										</Posts>

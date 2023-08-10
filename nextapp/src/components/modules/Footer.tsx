@@ -4,9 +4,9 @@ import React from "react";
 import styled from 'styled-components';
 
 const Footers = styled.footer`
-	box-sizing: border-box;
+	bottom: 0;
 	display: flex;
-	width: 100vw;
+	width: 100%;
 	font-size: 1rem;
 	border-top: 1px solid;
 	flex-direction: row-reverse;

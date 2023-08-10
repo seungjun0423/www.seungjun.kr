@@ -9,42 +9,33 @@ import styled from "styled-components";
 import List from "components/services/List";
 
 const Sidebars = styled.aside`
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	border-right: 1px solid;
 	overflow-y: auto;
-	height: inherit;
-	padding: 3rem 0 3rem 0;
-	gap: 3rem;
-	
-	@media (min-width: 1440px) {
-		width: 15vw;
-	}
-
-	@media (min-width: 1024px) and (max-width: 1439px) {
-		width: 20vw;
-	}
-	
-	@media (min-width: 769px) and (max-width: 1023px) {
-		width: 25vw;
-	}
-	
-	@media (max-width: 768px) {
-		width: 30vw;
-	}
-
+	padding: 2rem;
+	width: 40%;
+	max-width: 220px;
 	@media (max-width: 520px) {
+		border-right: 0;
+		width: 0;
+		padding: 0;
+	}
+`;
+
+const Wrapper = styled.div`
+	width: 100%;
+	
+	@media (max-width: 520px) {
+		position: fixed; 
+		bottom: 0;
 		display: flex;
 		flex-direction: row;
-		align-content: center;
-		box-sizing: border-box;
 		border-top: 1px solid;
-		padding: 0 2rem 0 2rem;
 		width: 100%;
-		height: 8vh;
 		border-right: 0;
+		gap: 3rem;
+		padding: 1rem;
+		align-items: center;
+		overflow-x: auto;
 	}
 `;
 
@@ -52,10 +43,12 @@ const Sidebars = styled.aside`
 export default function Sidebar(): React.ReactElement {
   return (
     <Sidebars>
-				<Link href={'/Edit'} style={{ textDecoration: 'none', color: 'black' }}>
+			<Wrapper>
+				<Link href={'/Edit'}>
 					Edit
 				</Link>
-			<List />
+				<List />
+			</Wrapper>
     </Sidebars>
   );
 };
