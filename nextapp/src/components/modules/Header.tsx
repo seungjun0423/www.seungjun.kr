@@ -6,29 +6,24 @@ import styled from "styled-components";
 
 const Headers = styled.header`
 	box-sizing: border-box;
-	width: 100%;
-	height: 8vh;
-	top: 0;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	position: sticky;
+	width: 100%;
+	padding: 5px 0 5px 0;
 	z-index: 99;
 	background-color: #ffffff;
 	border-bottom: 1px solid;
-
-	@media (max-width: 780px) {
-		height: 7vh;
-	}
 `;
 
 const Title = styled.span`
-	padding-left: 15%;
+	margin-left: 10vw;
 `;
 
 const NavContainer = styled.span`
-	padding-right: 3%;
+	margin-right: 5vw;
 	display: flex;
+	align-items: center;
 	gap: 2.5rem;
 
 	@media (max-width: 520px) {
@@ -37,7 +32,7 @@ const NavContainer = styled.span`
 `;
 
 const NavBox = styled.div`
-	margin-right: 3%;
+	margin-right: 3vw;
 	width: 6rem;
 	height: 4rem;
 
@@ -70,17 +65,17 @@ export default function Header(): React.ReactElement {
 	/** innerWidth 가 520 이상일 경우 */
 	const navContainer = (): React.ReactElement => {
 		return (
-		<NavContainer>
-			<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-				home
-			</Link>
-			<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-				about me
-			</Link>
-			<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-				admin
-			</Link>
-		</NavContainer>
+			<NavContainer>
+				<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+					home
+				</Link>
+				<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+					about me
+				</Link>
+				<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+					admin
+				</Link>
+			</NavContainer>
 		);
 	};	
 
