@@ -13,7 +13,9 @@ const Headers = styled.header`
 	width: 100%;
 	padding: 5px 0 5px 0;
 	background-color: #ffffff;
-	border-bottom: 1px solid;
+	/* border-bottom: 1px solid; */
+	border: none;
+	box-shadow: 0 0 5px #000;
 	z-index: 99;
 `;
 
