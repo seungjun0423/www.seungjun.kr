@@ -25,12 +25,18 @@ const NavContainer = styled.span`
 	padding-right: 3%;
 	display: flex;
 	gap: 2.5rem;
+	@media(max-width: 520px){
+		display: none;
+	}
 `;
 
 const NavBox = styled.div`
 	margin-right: 3%;
 	width: 6rem;
 	height: 4rem;
+	@media(min-width: 519px){
+		display: none;
+	}
 `;
 
 const NavBtn = styled.button`
@@ -52,23 +58,7 @@ const Borad = styled.span`
 
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
-	const [ innerWidth, setInnerWidth ] =  useState<number>(window.innerWidth);
 	const [ navState, setNavState ] = useState<boolean>(false);
-
-	/** 변화하는 innerWidth에 맞춰 상태에 적용하는 함수*/
-	const innerWidthListener = () : void => {
-    setInnerWidth(window.innerWidth);
-  };
-	
-	// 렌더링 이전에 작동하는 훅
-	useEffect(() => {
-		// 크기에 따라 화면 넓이 자동 조절   
-		window.addEventListener("resize", innerWidthListener);
-    setInnerWidth(window.innerWidth);
-    return () => {
-      window.removeEventListener("resize", innerWidthListener);
-    }
-	}, [])
 
 	/** innerWidth 가 520 이상일 경우 */
 	const navContainer = (): React.ReactElement => {
@@ -119,7 +109,8 @@ export default function Header(): React.ReactElement {
 					Blog
 				</Link>
 			</Title>
-			{innerWidth === -1 ? <></> : innerWidth >= 520 ? navContainer(): navBox()}
+			{navContainer()}
+			{navBox()}
 		</Headers>
 	);
 };

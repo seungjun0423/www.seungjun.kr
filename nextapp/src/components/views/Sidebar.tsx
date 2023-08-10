@@ -21,6 +21,9 @@ const Sidebars = styled.aside`
 	justify-content: space-around;
 	border-right: 1px solid;
 	overflow-y: auto;
+	@media(max-width: 520px){
+		display: none;
+	}
 `;
 
 const Wrapper = styled.span`

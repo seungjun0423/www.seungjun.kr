@@ -21,6 +21,9 @@ const Underbars = styled.aside`
 	z-index: 999;
 	border-top: 1px solid;
 	padding-bottom: 2rem;
+	@media(min-width: 519px){
+		display: none;
+	}
 `;
 
 const CategoryBox = styled.span`
