@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Sidebar from "../views/Sidebar";
-import Underbar from "components/views/Underbar";
 
 const Mains = styled.div`
 	box-sizing: border-box;
@@ -44,7 +43,6 @@ export default function Main({ Children }: any): React.ReactElement {
 	return (
 		<Mains>
 			<Sidebar />
-			{/* <Underbar /> */}
 			<Contents>
 				{Children}
 			</Contents>
