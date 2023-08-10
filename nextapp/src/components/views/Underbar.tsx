@@ -45,6 +45,7 @@ const Post = styled.div`
 	font-size: 1.5rem;
 `;
 
+/** width 값이 520px 미만인 디바이스에서 사용하는 메뉴바 */
 export default function Underbar(): React.ReactElement {
 	const [ categories, setCategories ] = useState<Category[]>(
 		[

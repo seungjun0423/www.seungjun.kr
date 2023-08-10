@@ -5,6 +5,7 @@ import Link from "next/link"
 import styled from "styled-components";
 
 const Headers = styled.header`
+	box-sizing: border-box;
 	width: 100%;
 	height: 8vh;
 	top: 0;
@@ -34,7 +35,7 @@ const NavBox = styled.div`
 	margin-right: 3%;
 	width: 6rem;
 	height: 4rem;
-	@media(min-width: 519px){
+	@media(min-width: 521px){
 		display: none;
 	}
 `;

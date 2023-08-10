@@ -10,107 +10,56 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
-import { Category } from "model/interface";
+import List from "components/services/List";
 
 const Sidebars = styled.aside`
+	box-sizing: border-box;
 	display: flex;
-	width: 15rem;
-	height: 100%;
+	height: 83vh;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 	border-right: 1px solid;
 	overflow-y: auto;
-	@media(max-width: 520px){
-		display: none;
+	padding-bottom: 3rem;
+	
+	@media (min-width: 1440px) {
+		width: 15vw;
+	}
+
+	@media (min-width: 1024px) and (max-width: 1439px) {
+		width: 20vw;
+	}
+	
+	@media (min-width: 769px) and (max-width: 1023px) {
+		width: 25vw;
+	}
+	
+	@media (max-width: 768px) {
+		width: 30vw;
+	}
+
+	@media (max-width: 520px) {
+		box-sizing: border-box;
+		border-top: 1px solid;
+		display: flex;
+		flex-direction: row;
+		align-items: end;
+		width: 100vw;
+		height: 3rem;
+		gap: 20px;
+		padding-top: 2rem;
 	}
 `;
 
-const Wrapper = styled.span`
-	display: flex;
-	&:last-child{
-		margin-bottom: 3rem;
-	}
-`;
-
-const Category = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-size: 2rem;
-	color: black;
-`;
-
-const SubCategory = styled.div`
-	font-size: 1.5rem;
-	align-items: center;
-`;
-
+/** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar(): React.ReactElement {
-	const [ categories, setCategories ] = useState<Category[]>(
-		[
-			{
-				id: 0,
-				title: '',
-				priority: 0 ,
-				post: [],
-				spread: false,
-			},
-		]
-	);
-	
-	useEffect(() => {
-		// Todo: 서버 작업 후 데이터 교체 필요 
-		let data = SidebarDummy.map(el=> {
-			Object.defineProperty(el, `spread`, {
-				value: false,
-				writable: true,
-				enumerable: true,
-				configurable: true,
-			});
-			return el;
-		});
-		setCategories(data);
-	}, []);
-
-	/** Input: title | Return: active setCategories hook for change spread property | How: false -> true or true -> false   */
-	const spreadHandler = ( el: string ) : void => {
-		let find = categories.filter( value => value.title === el )[0];
-		find.spread = !find.spread;
-		
-		let others = SidebarDummy.filter( value => value.title !== el);
-		others = others.map(el => {el.spread = false; return el});
-		others.push(find);
-
-		setCategories(others);
-	}
-	
   return (
     <Sidebars>
 				<Link href={'/Edit'} style={{ textDecoration: 'none', color: 'black' }}>
 					Edit
 				</Link>
-			{
-				SidebarDummy.map( (el,index) => (
-						<Wrapper key={index}>
-							<Link href={`/${el.title}`} style={{ textDecoration: 'none' }}>
-								<Category onClick={ () => spreadHandler(el.title)}>
-									{ el.title }
-								</Category>
-									{ el.spread ? 
-										el.post.map( (val,index) => (
-											<SubCategory key={index}>
-												<Link href={`/${el.title}/${val}`} style={{ textDecoration: 'none', color: 'black' }}>
-													{val}
-												</Link>
-											</SubCategory>
-										)) : <></>
-									}
-							</Link>
-						</Wrapper>
-					)
-				)
-			}
+			<List />
     </Sidebars>
   );
 };

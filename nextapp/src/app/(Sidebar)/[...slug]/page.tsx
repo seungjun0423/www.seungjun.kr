@@ -13,8 +13,3 @@ export default function Category( { params: { slug } }: Category ): React.ReactE
     </div>
   );
 };
-
-// export function generateStaticParams() {
-// 	const category = [ 'Edit', 'study', 'profile', 'etc'];
-// 	return category.map( (el) => ({ slug: el,}));
-// }
