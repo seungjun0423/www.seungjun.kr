@@ -8,15 +8,22 @@ const Mains = styled.div`
 	box-sizing: border-box;
 	display: flex;
 	width: 100%;
+	height: 85vh;
 	flex-wrap: wrap-reverse;
 	align-content: space-between;
+
+	@media (max-width: 780px) {
+		height: 87vh;
+	}
+
 	@media(max-width: 520px){
-		height: 92vh;
+		height: 93vh;
 	}
 `;
 
 const Contents = styled.div`
 	box-sizing: border-box;
+	height: inherit;
 	padding: 2rem;
 	font-size: 1.5rem;
 	overflow-x: auto;
@@ -33,8 +40,13 @@ const Contents = styled.div`
 		width: 75vw;
 	}
 	
-	@media (max-width: 768px) {
+	@media (min-width: 521px) and (max-width: 768px) {
 		width: 70vw;
+	}
+
+	@media (max-width: 520px){
+		width: 100vw;
+		height: 85vh;
 	}
 	`;
 

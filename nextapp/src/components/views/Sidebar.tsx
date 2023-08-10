@@ -1,12 +1,8 @@
 'use client'
 
-// 더미 데이터
-import { SidebarDummy } from "data/dummy";
-
 // 라이브러리 
 import React from "react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
@@ -15,13 +11,13 @@ import List from "components/services/List";
 const Sidebars = styled.aside`
 	box-sizing: border-box;
 	display: flex;
-	height: 83vh;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
 	border-right: 1px solid;
 	overflow-y: auto;
-	padding-bottom: 3rem;
+	height: inherit;
+	padding: 3rem 0 3rem 0;
+	gap: 3rem;
 	
 	@media (min-width: 1440px) {
 		width: 15vw;
@@ -40,15 +36,15 @@ const Sidebars = styled.aside`
 	}
 
 	@media (max-width: 520px) {
-		box-sizing: border-box;
-		border-top: 1px solid;
 		display: flex;
 		flex-direction: row;
-		align-items: end;
-		width: 100vw;
-		height: 3rem;
-		gap: 20px;
-		padding-top: 2rem;
+		align-content: center;
+		box-sizing: border-box;
+		border-top: 1px solid;
+		padding: 0 2rem 0 2rem;
+		width: 100%;
+		height: 8vh;
+		border-right: 0;
 	}
 `;
 

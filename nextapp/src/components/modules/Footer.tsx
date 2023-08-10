@@ -7,10 +7,16 @@ const Footers = styled.footer`
 	box-sizing: border-box;
 	display: flex;
 	width: 100vw;
+	height: 7vh;
 	font-size: 1rem;
 	border-top: 1px solid;
 	flex-direction: row-reverse;
 	align-content: center;
+
+	@media (max-width: 780px) {
+		height: 6vh;
+	}
+
 	@media(max-width: 520px){
 		display: none;
 	}

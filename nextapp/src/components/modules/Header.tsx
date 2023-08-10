@@ -16,6 +16,10 @@ const Headers = styled.header`
 	z-index: 99;
 	background-color: #ffffff;
 	border-bottom: 1px solid;
+
+	@media (max-width: 780px) {
+		height: 7vh;
+	}
 `;
 
 const Title = styled.span`
@@ -26,7 +30,8 @@ const NavContainer = styled.span`
 	padding-right: 3%;
 	display: flex;
 	gap: 2.5rem;
-	@media(max-width: 520px){
+
+	@media (max-width: 520px) {
 		display: none;
 	}
 `;
@@ -35,7 +40,8 @@ const NavBox = styled.div`
 	margin-right: 3%;
 	width: 6rem;
 	height: 4rem;
-	@media(min-width: 521px){
+
+	@media (min-width: 521px) {
 		display: none;
 	}
 `;
