@@ -1815,6 +1815,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/engines@npm:5.1.1":
+  version: 5.1.1
+  resolution: "@prisma/engines@npm:5.1.1"
+  checksum: 561c85def110279eb7c764e7c1ea1f8f54d9a2948ed5e5db9b11321c2bef362d178b756e39e7e022ee27cb2be5ac8d9b835967ce341ad8f6a1e8502f988140ee
+  languageName: node
+  linkType: hard
+
 "@rushstack/eslint-patch@npm:^1.1.3":
   version: 1.3.0
   resolution: "@rushstack/eslint-patch@npm:1.3.0"
@@ -5149,6 +5156,7 @@ __metadata:
     eslint-config-next: latest
     next: latest
     next-auth: ^4.22.3
+    prisma: ^5.1.1
     react: latest
     react-dom: latest
     react-icons: ^4.10.1
@@ -5582,6 +5590,17 @@ __metadata:
   version: 3.8.0
   resolution: "pretty-format@npm:3.8.0"
   checksum: 21a114d43ef06978f8f7f6212be4649b0b094f05d9b30e14e37550bf35c8ca24d8adbca9e5adc4cc15d9eaf7a1e7a30478a4dc37b30982bfdf0292a5b385484c
+  languageName: node
+  linkType: hard
+
+"prisma@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "prisma@npm:5.1.1"
+  dependencies:
+    "@prisma/engines": 5.1.1
+  bin:
+    prisma: build/index.js
+  checksum: ab0879fdff3a5e3f50956e18308bd996708519824802b2528c80d1639bbb4d8dd499ef17670db27986695811a9e28b2c9d5ab0753031441ee12878b30bace8b7
   languageName: node
   linkType: hard
 
