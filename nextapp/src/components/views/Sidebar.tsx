@@ -39,15 +39,38 @@ const Wrapper = styled.div`
 	}
 `;
 
+const Btn = styled.button`
+	width: 50px;
+	height: 40px;
+	border: none;
+	font-size: 2rem;
+	background-color: transparent;
+	cursor: pointer;
+	
+	@media (min-width: 520px) {
+		display: none;
+	}
+`;
+
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar(): React.ReactElement {
   return (
     <Sidebars>
 			<Wrapper>
+
+				<Btn>
+					{'<='}
+				</Btn>
+
 				<Link href={'/Edit'}>
 					Edit
 				</Link>
 				<List />
+
+				<Btn>
+					{'=>'}
+				</Btn>
+
 			</Wrapper>
     </Sidebars>
   );
