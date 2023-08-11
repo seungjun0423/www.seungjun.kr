@@ -12,7 +12,7 @@ import Main  from 'components/modules/Main';
 import Footer from 'components/modules/Footer';
 
 /** font */
-const sans = Open_Sans({ subsets: ['latin']});
+const openSans = Open_Sans({ subsets: ['latin']});
 
 export const metadata: Metadata = {
   title: '이승준의 블로그',
@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }): React.ReactNode {
   return (
-    <html lang="ko">
+    <html lang="ko" className={openSans.className}>
 			<head />
 			<StyledComponentsRegistry>
 				<body >
