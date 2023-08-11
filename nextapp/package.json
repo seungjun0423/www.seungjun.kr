@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-		"generate": "pnpify prisma generate",
+    "generate": "pnpify prisma generate",
     "migrate": "prisma migrate dev",
     "dev": "next dev",
-		"build": "prisma generate && next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -37,6 +37,7 @@
   "packageManager": "yarn@3.5.1",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "prisma": "5.1.1"
+    "prisma": "5.1.1",
+    "ts-node": "^10.9.1"
   }
 }
