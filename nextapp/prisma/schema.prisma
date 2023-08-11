@@ -1,11 +1,46 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
+	output = "./"
 }
 
+//데이터 베이스 연동
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Admin {
+	id    Int     @default(autoincrement()) @id
+	password String
+}
+
+model Category {
+	id Int @default(autoincrement()) @id
+	title String
+	subcategoryies SubCategory[]
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
+}
+
+model SubCategory {
+	id Int @default(autoincrement()) @id
+	title String
+	post Post[]
+	categoryId Int
+	category Category @relation(fields: [categoryId], references: [id])
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
+}
+
+model Post {
+	id    Int     @default(autoincrement()) @id
+	title String
+	contents String @db.LongText
+	img String
+	categoryId Int
+	subcategoryId Int
+	subcategory SubCategory @relation(fields: [subcategoryId], references: [id])
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
 }
