@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@prisma/client", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:5.1.1"],\
             ["@types/node", "npm:20.2.3"],\
             ["@types/react", "npm:18.2.6"],\
             ["@types/react-dom", "npm:18.2.4"],\
@@ -3070,11 +3071,43 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@prisma/client", [\
+        ["npm:5.1.1", {\
+          "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-f6118809ae/node_modules/@prisma/client/",\
+          "packageDependencies": [\
+            ["@prisma/client", "npm:5.1.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:5.1.1", {\
+          "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-f6118809ae/node_modules/@prisma/client/",\
+          "packageDependencies": [\
+            ["@prisma/client", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:5.1.1"],\
+            ["@prisma/engines-version", "npm:5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e"],\
+            ["@types/prisma", null],\
+            ["prisma", "npm:5.1.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/prisma",\
+            "prisma"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@prisma/engines", [\
         ["npm:5.1.1", {\
           "packageLocation": "./.yarn/unplugged/@prisma-engines-npm-5.1.1-fc7aed99ab/node_modules/@prisma/engines/",\
           "packageDependencies": [\
             ["@prisma/engines", "npm:5.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@prisma/engines-version", [\
+        ["npm:5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e", {\
+          "packageLocation": "./.yarn/cache/@prisma-engines-version-npm-5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e-c6eeb14996-cfea78fe98.zip/node_modules/@prisma/engines-version/",\
+          "packageDependencies": [\
+            ["@prisma/engines-version", "npm:5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7020,6 +7053,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["nextapp", "workspace:."],\
+            ["@prisma/client", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:5.1.1"],\
             ["@types/node", "npm:20.2.3"],\
             ["@types/react", "npm:18.2.6"],\
             ["@types/react-dom", "npm:18.2.4"],\
