@@ -21,6 +21,7 @@ const Headers = styled.header`
 
 const Title = styled.span`
 	margin-left: 10vw;
+	font-weight: bold;
 `;
 
 const NavContainer = styled.nav`
