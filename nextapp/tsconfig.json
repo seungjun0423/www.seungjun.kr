@@ -25,9 +25,8 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"],
+			"@prisma": ["./prisma/index"],
     }
   },
   "include": [
