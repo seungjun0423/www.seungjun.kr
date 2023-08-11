@@ -23,7 +23,7 @@ const Title = styled.span`
 	margin-left: 10vw;
 `;
 
-const NavContainer = styled.span`
+const NavContainer = styled.nav`
 	margin-right: 5vw;
 	display: flex;
 	align-items: center;
@@ -50,7 +50,7 @@ const NavBtn = styled.button`
 	font-size: 2rem;
 `;
 
-const Borad = styled.span`
+const Borad = styled.nav`
 	display:	flex;
 	width: 100%;
 	flex-direction: column;

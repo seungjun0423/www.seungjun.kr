@@ -10,11 +10,15 @@ const Footers = styled.footer`
 	font-size: 1rem;
 	border-top: 1px solid;
 	flex-direction: row-reverse;
-	align-content: center;
+	align-items: center;
 
 	@media(max-width: 520px){
 		display: none;
 	}
+`;
+
+const Contact = styled.div`
+	display: flex;
 `;
 
 const CopyRight = styled.p`
@@ -28,6 +32,11 @@ export default function Footer(): React.ReactElement {
 			<CopyRight>
 				Copyright 2023. LEE SEUNGJUN. All Rights Reserved 
 			</CopyRight>
+
+			<Contact>
+				Contact: 000-0000-00000
+				{/** Todo: 이메일 아이콘 이미지로 보내기 만들기 */}
+			</Contact>
 		</Footers>
 	);
 };
