@@ -37,7 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.41.0"],\
             ["eslint-config-next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.12"],\
             ["next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.12"],\
-            ["next-auth", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.3"],\
+            ["next-auth", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.5"],\
             ["prisma", "npm:5.1.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"],\
@@ -7006,17 +7006,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["next-auth", [\
-        ["npm:4.22.3", {\
-          "packageLocation": "./.yarn/cache/next-auth-npm-4.22.3-6b1dc2e950-2ab79f91c4.zip/node_modules/next-auth/",\
+        ["npm:4.22.5", {\
+          "packageLocation": "./.yarn/cache/next-auth-npm-4.22.5-5e15d08234-94e8cb4d72.zip/node_modules/next-auth/",\
           "packageDependencies": [\
-            ["next-auth", "npm:4.22.3"]\
+            ["next-auth", "npm:4.22.5"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.3", {\
-          "packageLocation": "./.yarn/__virtual__/next-auth-virtual-f45d682e4d/0/cache/next-auth-npm-4.22.3-6b1dc2e950-2ab79f91c4.zip/node_modules/next-auth/",\
+        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.5", {\
+          "packageLocation": "./.yarn/__virtual__/next-auth-virtual-f9f8b199ba/0/cache/next-auth-npm-4.22.5-5e15d08234-94e8cb4d72.zip/node_modules/next-auth/",\
           "packageDependencies": [\
-            ["next-auth", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.3"],\
+            ["next-auth", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.5"],\
             ["@babel/runtime", "npm:7.22.6"],\
             ["@panva/hkdf", "npm:1.1.1"],\
             ["@types/next", null],\
@@ -7030,7 +7030,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["oauth", "npm:0.9.15"],\
             ["openid-client", "npm:5.4.3"],\
             ["preact", "npm:10.16.0"],\
-            ["preact-render-to-string", "virtual:f45d682e4d42ba78df0a3bf1e6acee9874698870a685126fc774d41f1be7bdd3d1c3683b935ca7d6630eb64a711ed0d608baa81886b5099180c6742582c1a7c1#npm:5.2.6"],\
+            ["preact-render-to-string", "virtual:f9f8b199ba618c7b10854c19e7c071158b9782d78ffe7662ec5091a0f1238fd4e6392f7ba1c2105bc38adc85858fa2b1c8f57bf24a2b5975f18a1fd2081e5a7d#npm:5.2.6"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"],\
             ["uuid", "npm:8.3.2"]\
@@ -7062,7 +7062,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.41.0"],\
             ["eslint-config-next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.12"],\
             ["next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.12"],\
-            ["next-auth", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.3"],\
+            ["next-auth", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.22.5"],\
             ["prisma", "npm:5.1.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"],\
@@ -7536,10 +7536,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:f45d682e4d42ba78df0a3bf1e6acee9874698870a685126fc774d41f1be7bdd3d1c3683b935ca7d6630eb64a711ed0d608baa81886b5099180c6742582c1a7c1#npm:5.2.6", {\
-          "packageLocation": "./.yarn/__virtual__/preact-render-to-string-virtual-ef712d2e53/0/cache/preact-render-to-string-npm-5.2.6-5999db0763-be8d5d8fb5.zip/node_modules/preact-render-to-string/",\
+        ["virtual:f9f8b199ba618c7b10854c19e7c071158b9782d78ffe7662ec5091a0f1238fd4e6392f7ba1c2105bc38adc85858fa2b1c8f57bf24a2b5975f18a1fd2081e5a7d#npm:5.2.6", {\
+          "packageLocation": "./.yarn/__virtual__/preact-render-to-string-virtual-de4c3bb849/0/cache/preact-render-to-string-npm-5.2.6-5999db0763-be8d5d8fb5.zip/node_modules/preact-render-to-string/",\
           "packageDependencies": [\
-            ["preact-render-to-string", "virtual:f45d682e4d42ba78df0a3bf1e6acee9874698870a685126fc774d41f1be7bdd3d1c3683b935ca7d6630eb64a711ed0d608baa81886b5099180c6742582c1a7c1#npm:5.2.6"],\
+            ["preact-render-to-string", "virtual:f9f8b199ba618c7b10854c19e7c071158b9782d78ffe7662ec5091a0f1238fd4e6392f7ba1c2105bc38adc85858fa2b1c8f57bf24a2b5975f18a1fd2081e5a7d#npm:5.2.6"],\
             ["@types/preact", null],\
             ["preact", "npm:10.16.0"],\
             ["pretty-format", "npm:3.8.0"]\
