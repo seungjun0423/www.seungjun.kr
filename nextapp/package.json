@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "5.1.1",
     "@types/node": "20.2.3",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
@@ -29,7 +30,6 @@
   },
   "packageManager": "yarn@3.5.1",
   "devDependencies": {
-    "@prisma/client": "5.1.1",
     "prisma": "5.1.1"
   }
 }
