@@ -7,7 +7,7 @@ import styled from "styled-components";
 const Headers = styled.header`
 	display: flex;
 	justify-content: space-between;
-	position: relative;
+	position: sticky;
 	top: 0;
 	left: 0;
 	width: 100%;
