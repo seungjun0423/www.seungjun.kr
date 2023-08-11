@@ -5,7 +5,7 @@
   "scripts": {
     "generate": "pnpify prisma generate",
     "migrate": "prisma migrate dev",
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "pnpify prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
