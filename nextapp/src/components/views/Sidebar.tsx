@@ -14,10 +14,22 @@ const Sidebars = styled.aside`
 	padding: 2rem;
 	width: 40%;
 	max-width: 220px;
+
 	@media (max-width: 520px) {
 		border-right: 0;
 		width: 0;
 		padding: 0;
+		/* 크롬, 사파리, 오페라 스크롤바 숨기기*/
+		& ::-webkit-scrollbar {
+			display: none;
+		}
+
+		& {
+			/* 익스플로러, 앳지 스크롤바 숨기기*/
+			-ms-overflow-style: none; 
+			/* 파이어폭스 스크롤바 숨기기*/
+			scrollbar-width: none; 
+		}
 	}
 `;
 
@@ -36,6 +48,18 @@ const Wrapper = styled.div`
 		padding: 1rem;
 		align-items: center;
 		overflow-x: auto;
+
+		/* 크롬, 사파리, 오페라 스크롤바 숨기기*/
+		& ::-webkit-scrollbar {
+			display: none;
+		}
+
+		& {
+			/* 익스플로러, 앳지 스크롤바 숨기기*/
+			-ms-overflow-style: none; 
+			/* 파이어폭스 스크롤바 숨기기*/
+			scrollbar-width: none; 
+		}
 	}
 `;
 

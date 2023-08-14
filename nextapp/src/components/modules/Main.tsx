@@ -16,7 +16,6 @@ const Contents = styled.div`
 	font-size: 1rem;
 	overflow-x: auto;
 	overflow-y: auto;
-	padding: 2rem;
 `;
 
 export default function Main({ Children }: any): React.ReactElement {

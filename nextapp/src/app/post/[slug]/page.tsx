@@ -11,6 +11,16 @@ type Post = {
 };
 
 export default function Post( { params: { slug } }: Post ): React.ReactElement {
+	if (slug === 'create') {
+		return <CreatePost></CreatePost>;
+	} else if ( slug === 'read'){
+		return <ReadPost></ReadPost>;
+	} else if ( slug === 'update') {
+		return <UpdatePost></UpdatePost>;
+	} else if ( slug === 'delete') {
+		return <DeletePost></DeletePost>;
+	}
+
   return (
     <div>
 				Post page {slug}
