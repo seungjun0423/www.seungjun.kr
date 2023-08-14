@@ -6,7 +6,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
-import List from "components/services/List";
+import List from "components/services/CategoryList";
 
 const Sidebars = styled.aside`
 	border-right: 1px solid;
