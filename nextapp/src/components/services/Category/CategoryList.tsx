@@ -66,7 +66,6 @@ export default function List(): React.ReactElement{
 		setCategories(others);
 	}
 	
-		
 	return (
 		<>
 		{

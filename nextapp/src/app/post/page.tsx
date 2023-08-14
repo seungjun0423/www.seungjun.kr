@@ -1,7 +1,15 @@
-export default function Post( ) {
+import React from "react";
+
+type Post = {
+	params: {
+		slug: string;
+	};
+};
+
+export default function Post( { params: { slug } }: Post ): React.ReactElement {
   return (
     <div>
-				writing
+			before slug
     </div>
   )
 }
