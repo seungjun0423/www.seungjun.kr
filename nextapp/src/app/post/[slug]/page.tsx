@@ -3,6 +3,7 @@ import CreatePost from "components/services/Post/CreatePost";
 import ReadPost from "components/services/Post/ReadPost";
 import UpdatePost from "components/services/Post/UpdatePost";
 import DeletePost from "components/services/Post/DeletePost";
+import Markdown from "components/views/Markdown";
 
 type Post = {
 	params: {
@@ -12,7 +13,7 @@ type Post = {
 
 export default function Post( { params: { slug } }: Post ): React.ReactElement {
 	if (slug === 'create') {
-		return <CreatePost></CreatePost>;
+		return <CreatePost contents={slug}></CreatePost>;
 	} else if ( slug === 'read'){
 		return <ReadPost></ReadPost>;
 	} else if ( slug === 'update') {
@@ -23,7 +24,7 @@ export default function Post( { params: { slug } }: Post ): React.ReactElement {
 
   return (
     <div>
-				Post page {slug}
+			Post page {slug}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-type Post = {
+interface Post  {
 	params: {
 		slug: string;
 	};
@@ -8,8 +8,8 @@ type Post = {
 
 export default function Post( { params: { slug } }: Post ): React.ReactElement {
   return (
-    <div>
-			before slug
-    </div>
+		<section>
+			base post
+		</section>
   )
 }

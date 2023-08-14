@@ -1,9 +1,16 @@
 'use client';
 
-import React, { ChangeEvent, DragEvent, useState } from "react";
+import React, { ChangeEvent, DragEvent, ReactNode, useState } from "react";
 import styled from "styled-components";
 import { FaPhotoVideo } from 'react-icons/fa';
+import dynamic from 'next/dynamic';
 
+
+const DynamicComponent = dynamic(() =>
+  import('../../views/Markdown'), {
+		ssr: false,
+	}
+);
 
 const CreatePosts = styled.section`
 	width: 100%;
@@ -82,9 +89,11 @@ const Submit = styled.button`
 	font-weight: bold;
 `;
 
+interface Params {
+	contents: string;
+}
 
-
-export default function CreatePost(){
+export default function CreatePost({ contents }: Params){
 	const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState<File>();
 
@@ -119,23 +128,39 @@ export default function CreatePost(){
     }
   };
 	
+	// return(
+	// 	<CreatePosts>
+	// 		<P>
+	// 			글 작성하기
+	// 		</P>
+	// 		<FormBox>
+	// 			<Forms>
+	// 				<Inputs  id='input-upload' type='file' accept='image/*' onChange={handleChange}/>
+	// 				<Labels htmlFor='input-upload' onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDragOver} onDrop={handleDrop}>
+	// 					<FaPhotoVideo style={{ width: '30px' ,height: '30px', color: 'gray'}}></FaPhotoVideo>
+	// 					<p style={{fontWeight: 'bold'}}>이미지 첨부</p>
+	// 				</Labels>
+	// 				<Textareas  name='text'  id='input-text'  required  rows={10}  placeholder={'내용 작성...'}	/>
+	// 				<Submit>
+	// 					제출
+	// 				</Submit>
+	// 			</Forms>
+	// 		</FormBox>
+	// 		<DynamicComponent contents={contents}>
+	// 		</DynamicComponent>
+	// 	</CreatePosts>
+	// )
 	return(
 		<CreatePosts>
 			<P>
 				글 작성하기
 			</P>
 			<FormBox>
-				<Forms>
-					<Inputs  id='input-upload' type='file' accept='image/*' onChange={handleChange}/>
-					<Labels htmlFor='input-upload' onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDragOver} onDrop={handleDrop}>
-						<FaPhotoVideo style={{ width: '30px' ,height: '30px', color: 'gray'}}></FaPhotoVideo>
-						<p style={{fontWeight: 'bold'}}>이미지 첨부</p>
-					</Labels>
-					<Textareas  name='text'  id='input-text'  required  rows={10}  placeholder={'내용 작성...'}	/>
-					<Submit>
-						제출
-					</Submit>
-				</Forms>
+				<DynamicComponent contents={contents}>
+				</DynamicComponent>
+				<Submit>
+					제출
+				</Submit>
 			</FormBox>
 		</CreatePosts>
 	)
