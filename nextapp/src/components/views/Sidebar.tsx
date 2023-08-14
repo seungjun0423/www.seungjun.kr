@@ -58,18 +58,18 @@ export default function Sidebar(): React.ReactElement {
     <Sidebars>
 			<Wrapper>
 
-				<Btn>
+				{/* <Btn>
 					{'<='}
-				</Btn>
+				</Btn> */}
 
 				<Link href={'/Edit'}>
 					Edit
 				</Link>
 				<List />
 
-				<Btn>
+				{/* <Btn>
 					{'=>'}
-				</Btn>
+				</Btn> */}
 
 			</Wrapper>
     </Sidebars>
