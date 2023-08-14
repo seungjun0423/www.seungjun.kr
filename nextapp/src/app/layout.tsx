@@ -22,6 +22,12 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 1,
   },
+	verification: {
+		google:"1W_oTVzw1T7HBJ1qU74euJ4kUOqKIOaSGMqYCN3jF",
+		other: {
+			"naver-site-verification":"ed9b5c6474ce11bd2641d3627ae889ce9a58c002"
+		}
+	}
 	// Todo: 디자인 작업하면서 파비콘 추가하기
 	// icons: {
 	// 	icon: favicon,
