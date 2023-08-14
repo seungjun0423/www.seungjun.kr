@@ -34,8 +34,5 @@
     "zod": "^3.21.4",
     "zustand": "^4.4.1"
   },
-  "packageManager": "yarn@3.5.1",
-  "devDependencies": {
-    "prisma": "5.1.1"
-  }
+  "packageManager": "yarn@3.5.1"
 }
