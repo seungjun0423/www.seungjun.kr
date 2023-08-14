@@ -12,12 +12,24 @@ import Main  from 'components/modules/Main';
 import Footer from 'components/modules/Footer';
 
 /** font */
-const sans = Open_Sans({ subsets: ['latin']});
+const openSans = Open_Sans({ subsets: ['latin']});
+
+//<meta name="naver-site-verification" content="ed9b5c6474ce11bd2641d3627ae889ce9a58c002" />
 
 export const metadata: Metadata = {
   title: '이승준의 블로그',
   description: '웹 개발자, 리액트 개발자, 노드 개발자, 프론트엔드 개발자, 풀스택 개발자, 블록체인 개발자, 비전공자 개발자, web developer, react developer, node developer, fronted developer, fullstack developer, blockchain developer',
-	
+	viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+	verification: {
+		// google: "1234567890", yandex: "1234567890", "me": "1234567890" , 
+		other: {
+		"naver-site-verification":"ed9b5c6474ce11bd2641d3627ae889ce9a58c002"
+		}
+	} 
 	// Todo: 디자인 작업하면서 파비콘 추가하기
 	// icons: {
 	// 	icon: favicon,
@@ -30,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }): React.ReactNode {
   return (
-    <html lang="ko">
+    <html lang="ko" className={openSans.className}>
 			<head />
 			<StyledComponentsRegistry>
 				<body >

@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+	experimental: {
+    typedRoutes: true,
+  },
 	// images: {
 	// 	remotePatterns: [
 	// 		{
@@ -17,21 +20,10 @@ const nextConfig = {
 	// 		}
 	// 	]
 	// }
-	// compiler: {
-  //   styledComponents: true,
-  // },
-	// env: {
-  //   production: {
-  //     plugins: [
-  //       ['styled-components', { ssr: true, displayName: false}],
-  //     ],
-  //   },
-  // },
-  // plugins: [
-  //   ['styled-components', { ssr: true }],
-  // ],
-	// "presets": ["next/babel"],
-  // "plugins": ["babel-plugin-styled-components"]
+	swcMinify: true,
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 module.exports = nextConfig

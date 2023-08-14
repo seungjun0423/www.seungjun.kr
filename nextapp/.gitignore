@@ -42,3 +42,7 @@ next-env.d.ts
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# prisma build files 
+prisma/*
+!prisma/schema.prisma
