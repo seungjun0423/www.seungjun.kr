@@ -30,8 +30,7 @@
     "react-markdown": "^8.0.7",
     "react-query": "^3.39.3",
     "styled-components": "^6.0.5",
-    "typescript": "5.0.4",
-    "zustand": "^4.4.1"
+    "typescript": "5.0.4"
   },
   "packageManager": "yarn@3.5.1"
 }
