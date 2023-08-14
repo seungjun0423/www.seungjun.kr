@@ -1,45 +1,57 @@
 'use client'
 
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
-import { InnerWidthStore } from "model/store";
 
 const Headers = styled.header`
-	width: 100%;
-	height: 8vh;
-	top: 0;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	position: sticky;
-	z-index: 99;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 5px 0 5px 0;
 	background-color: #ffffff;
-	border-bottom: 1px solid;
+	/* border-bottom: 1px solid; */
+	border: none;
+	box-shadow: 0 0 5px #000;
+	z-index: 99;
 `;
 
 const Title = styled.span`
-	padding-left: 15%;
+	margin-left: 10vw;
+	font-weight: bold;
 `;
 
-const NavContainer = styled.span`
-	padding-right: 3%;
+const NavContainer = styled.nav`
+	margin-right: 5vw;
 	display: flex;
+	align-items: center;
 	gap: 2.5rem;
+
+	@media (max-width: 520px) {
+		display: none;
+	}
 `;
 
 const NavBox = styled.div`
-	margin-right: 3%;
+	margin-right: 3vw;
 	width: 6rem;
 	height: 4rem;
+
+	@media (min-width: 521px) {
+		display: none;
+	}
 `;
 
 const NavBtn = styled.button`
 	width: 100%;
 	height: 100%;
+	font-size: 2rem;
 `;
 
-const Borad = styled.span`
+const Borad = styled.nav`
 	display:	flex;
 	width: 100%;
 	flex-direction: column;
@@ -53,38 +65,22 @@ const Borad = styled.span`
 
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
-	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
 	const [ navState, setNavState ] = useState<boolean>(false);
-
-	/** 변화하는 innerWidth에 맞춰 상태에 적용하는 함수*/
-	const innerWidthListener = () : void => {
-    setInnerWidth(window.innerWidth);
-  };
-	
-	// 렌더링 이전에 작동하는 훅
-	useLayoutEffect(() => {
-		// 크기에 따라 화면 넓이 자동 조절   
-		window.addEventListener("resize", innerWidthListener);
-    setInnerWidth(window.innerWidth);
-    return () => {
-      window.removeEventListener("resize", innerWidthListener);
-    }
-	}, [])
 
 	/** innerWidth 가 520 이상일 경우 */
 	const navContainer = (): React.ReactElement => {
 		return (
-		<NavContainer>
-			<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-				home
-			</Link>
-			<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-				about me
-			</Link>
-			<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
-				admin
-			</Link>
-		</NavContainer>
+			<NavContainer>
+				<Link href={'/'} style={{ fontSize: '1.5rem' }}>
+					home
+				</Link>
+				<Link href={'/introducing'} style={{ fontSize: '1.5rem' }}>
+					about me
+				</Link>
+				<Link href={'/admin'} style={{ fontSize: '1.5rem' }}>
+					admin
+				</Link>
+			</NavContainer>
 		);
 	};	
 
@@ -93,17 +89,18 @@ export default function Header(): React.ReactElement {
 		return (
 			<NavBox>
 				<NavBtn onClick={()=>{setNavState(!navState)}}>
-					Click!
+					{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
+					&#9776;
 				</NavBtn>
 				{ navState ? 
 					<Borad>
-						<Link href={'/'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+						<Link href={'/'} style={{ fontSize: '1.5rem'}}>
 							home
 						</Link>
-						<Link href={'/introducing'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+						<Link href={'/introducing'} style={{ fontSize: '1.5rem'}}>
 							about
 						</Link>
-						<Link href={'/admin'} style={{ fontSize: '1.5rem', textDecoration: 'none', color: 'black'}}>
+						<Link href={'/admin'} style={{ fontSize: '1.5rem'}}>
 							admin
 						</Link>
 					</Borad>
@@ -116,11 +113,12 @@ export default function Header(): React.ReactElement {
 	return (
 		<Headers>
 			<Title>
-				<Link href={'/'} style={{fontSize: '3rem', textDecoration: 'none', color: 'black'}} >
+				<Link href={'/'} style={{fontSize: '3rem'}} >
 					Blog
 				</Link>
 			</Title>
-			{innerWidth === -1 ? <></> : innerWidth >= 520 ? navContainer(): navBox()}
+			{navContainer()}
+			{navBox()}
 		</Headers>
 	);
 };
