@@ -4,24 +4,23 @@
 	outline: none;
 }
 
+/* 크롬, 사파리, 오페라 스크롤바 숨기기 */
+*::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	/* 익스플로러, 앳지 스크롤바 숨기기*/
+	-ms-overflow-style: none; 
+	/* 파이어폭스 스크롤바 숨기기*/
+	scrollbar-width: none; 
+}
 html {
   font-size: 18px;
 	width: 100%;
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
-}
-
-/* 크롬, 사파리, 오페라 스크롤바 숨기기*/
-html::-webkit-scrollbar {
-	display: none;
-}
-
-html {
-	/* 익스플로러, 앳지 스크롤바 숨기기*/
-	-ms-overflow-style: none; 
-	/* 파이어폭스 스크롤바 숨기기*/
-	scrollbar-width: none; 
 }
 
 body {

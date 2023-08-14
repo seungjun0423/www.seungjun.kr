@@ -53,7 +53,7 @@ const Labels = styled.label`
 
 	@media (max-width: 520px) {
 		margin-bottom: 3%;
-	}
+	};
 `;
 
 const Textareas = styled.textarea`
@@ -62,9 +62,17 @@ const Textareas = styled.textarea`
 	font-size: 1rem;
 	padding: 1rem;
 	border-radius: 5px;
+
+	@media (max-width: 768px) {
+		height: 55%;
+	};
+
+	@media (max-width: 768px) {
+		height: 50%;
+	};
 `;
 
-const Publish = styled.button`
+const Submit = styled.button`
 	width: 100%;
 	height: 4%;
 	border-radius: 30px;
@@ -121,12 +129,12 @@ export default function CreatePost(){
 					<Inputs  id='input-upload' type='file' accept='image/*' onChange={handleChange}/>
 					<Labels htmlFor='input-upload' onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDragOver} onDrop={handleDrop}>
 						<FaPhotoVideo style={{ width: '30px' ,height: '30px', color: 'gray'}}></FaPhotoVideo>
-						<p>Drag and Drop your image here or click</p>
+						<p style={{fontWeight: 'bold'}}>이미지 첨부</p>
 					</Labels>
-					<Textareas  name='text'  id='input-text'  required  rows={10}  placeholder={'Write a caption...'}	/>
-					<Publish>
-						pulish
-					</Publish>
+					<Textareas  name='text'  id='input-text'  required  rows={10}  placeholder={'내용 작성...'}	/>
+					<Submit>
+						제출
+					</Submit>
 				</Forms>
 			</FormBox>
 		</CreatePosts>
