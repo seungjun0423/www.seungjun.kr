@@ -1891,13 +1891,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bcryptjs@npm:^2.4.2":
-  version: 2.4.2
-  resolution: "@types/bcryptjs@npm:2.4.2"
-  checksum: 220dade7b0312b41e23ccfb15f2ddde7804eb3c7ef41db41a6c49054be1e19a15eb3dd8c8ef196494f0866307cce22ad6f3f272941387124707d81dc66155bbc
-  languageName: node
-  linkType: hard
-
 "@types/cacheable-request@npm:^6.0.1":
   version: 6.0.3
   resolution: "@types/cacheable-request@npm:6.0.3"
@@ -5631,7 +5624,6 @@ __metadata:
   resolution: "nextapp@workspace:."
   dependencies:
     "@prisma/client": 5.1.1
-    "@types/bcryptjs": ^2.4.2
     "@types/node": 20.2.3
     "@types/react": 18.2.6
     "@types/react-dom": 18.2.4
