@@ -18,7 +18,6 @@
     "@types/styled-components": "^5.1.26",
     "@yarnpkg/pnpify": "^4.0.0-rc.48",
     "axios": "^1.4.0",
-    "bcryptjs": "^2.4.3",
     "eslint": "8.41.0",
     "eslint-config-next": "latest",
     "next": "latest",
