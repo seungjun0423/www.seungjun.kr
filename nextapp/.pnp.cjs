@@ -30,6 +30,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@toast-ui/editor", "npm:3.2.2"],\
             ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["@toast-ui/editor-plugin-color-syntax", "npm:3.1.0"],\
             ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3"],\
             ["@types/node", "npm:20.2.3"],\
             ["@types/react", "npm:18.2.6"],\
@@ -44,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-icons", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.10.1"],\
             ["react-query", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.39.3"],\
             ["styled-components", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:6.0.7"],\
+            ["tui-color-picker", "npm:2.2.8"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"]\
           ],\
           "linkType": "SOFT"\
@@ -3044,6 +3046,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
             ["prismjs", "npm:1.29.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@toast-ui/editor-plugin-color-syntax", [\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@toast-ui-editor-plugin-color-syntax-npm-3.1.0-1688766a0c-e4f47afbdc.zip/node_modules/@toast-ui/editor-plugin-color-syntax/",\
+          "packageDependencies": [\
+            ["@toast-ui/editor-plugin-color-syntax", "npm:3.1.0"],\
+            ["tui-color-picker", "npm:2.2.8"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6184,6 +6196,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nextapp", "workspace:."],\
             ["@toast-ui/editor", "npm:3.2.2"],\
             ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["@toast-ui/editor-plugin-color-syntax", "npm:3.1.0"],\
             ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3"],\
             ["@types/node", "npm:20.2.3"],\
             ["@types/react", "npm:18.2.6"],\
@@ -6198,6 +6211,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-icons", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.10.1"],\
             ["react-query", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.39.3"],\
             ["styled-components", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:6.0.7"],\
+            ["tui-color-picker", "npm:2.2.8"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"]\
           ],\
           "linkType": "SOFT"\
@@ -7558,6 +7572,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/tslib-npm-2.6.1-de28eba753-b0d176d176.zip/node_modules/tslib/",\
           "packageDependencies": [\
             ["tslib", "npm:2.6.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["tui-color-picker", [\
+        ["npm:2.2.8", {\
+          "packageLocation": "./.yarn/cache/tui-color-picker-npm-2.2.8-cd63eccaa5-d0a7dadf1d.zip/node_modules/tui-color-picker/",\
+          "packageDependencies": [\
+            ["tui-color-picker", "npm:2.2.8"]\
           ],\
           "linkType": "HARD"\
         }]\

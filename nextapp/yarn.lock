@@ -1795,6 +1795,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toast-ui/editor-plugin-color-syntax@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@toast-ui/editor-plugin-color-syntax@npm:3.1.0"
+  dependencies:
+    tui-color-picker: ^2.2.6
+  checksum: e4f47afbdc291c2f60103779c6423b081de8605f53ec7bebac83d5c7842fe0e679b3a94ac2970b2aeff3fff6394f803ca3344861a0f5d269f25c45b5e3dd868e
+  languageName: node
+  linkType: hard
+
 "@toast-ui/editor@npm:^3.2.2":
   version: 3.2.2
   resolution: "@toast-ui/editor@npm:3.2.2"
@@ -4426,6 +4435,7 @@ next@latest:
   dependencies:
     "@toast-ui/editor": ^3.2.2
     "@toast-ui/editor-plugin-code-syntax-highlight": ^3.1.0
+    "@toast-ui/editor-plugin-color-syntax": ^3.1.0
     "@toast-ui/react-editor": ^3.2.3
     "@types/node": 20.2.3
     "@types/react": 18.2.6
@@ -4440,6 +4450,7 @@ next@latest:
     react-icons: ^4.10.1
     react-query: ^3.39.3
     styled-components: ^6.0.5
+    tui-color-picker: ^2.2.8
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -5612,6 +5623,13 @@ react@latest:
   version: 2.6.1
   resolution: "tslib@npm:2.6.1"
   checksum: b0d176d176487905b66ae4d5856647df50e37beea7571c53b8d10ba9222c074b81f1410fb91da13debaf2cbc970663609068bdebafa844ea9d69b146527c38fe
+  languageName: node
+  linkType: hard
+
+"tui-color-picker@npm:^2.2.6, tui-color-picker@npm:^2.2.8":
+  version: 2.2.8
+  resolution: "tui-color-picker@npm:2.2.8"
+  checksum: d0a7dadf1d704bb66f662e852fd0ad57a6670e7e01fe1b8e5aabff4d1ff9960321f1961f253c95b18216e5b5bf96b714cdcd9047be4da4f9af452451b3e89544
   languageName: node
   linkType: hard
 

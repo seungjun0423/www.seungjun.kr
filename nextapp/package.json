@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@toast-ui/editor": "^3.2.2",
+    "@toast-ui/editor-plugin-code-syntax-highlight": "^3.1.0",
+    "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
+    "@toast-ui/react-editor": "^3.2.3",
     "@types/node": "20.2.3",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
@@ -22,12 +26,8 @@
     "react-icons": "^4.10.1",
     "react-query": "^3.39.3",
     "styled-components": "^6.0.5",
+    "tui-color-picker": "^2.2.8",
     "typescript": "5.0.4"
   },
-  "packageManager": "yarn@3.5.1",
-  "devDependencies": {
-    "@toast-ui/editor": "^3.2.2",
-    "@toast-ui/editor-plugin-code-syntax-highlight": "^3.1.0",
-    "@toast-ui/react-editor": "^3.2.3"
-  }
+  "packageManager": "yarn@3.5.1"
 }

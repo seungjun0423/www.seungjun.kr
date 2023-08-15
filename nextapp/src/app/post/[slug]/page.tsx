@@ -3,7 +3,7 @@ import CreatePost from "components/services/Post/CreatePost";
 import ReadPost from "components/services/Post/ReadPost";
 import UpdatePost from "components/services/Post/UpdatePost";
 import DeletePost from "components/services/Post/DeletePost";
-import Markdown from "components/views/Markdown";
+import Markdown from "components/lib/PostEditor";
 
 type Post = {
 	params: {

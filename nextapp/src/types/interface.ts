@@ -8,7 +8,7 @@ export interface Category {
 	spread: boolean;
 };
 
-// export interface Width {
-// 	innerWidth: number;
-// 	setInnerWidth: (input: number) => void;
-// };
+export interface EditortParams {
+	children: React.ReactNode;
+	contents: string;
+};
