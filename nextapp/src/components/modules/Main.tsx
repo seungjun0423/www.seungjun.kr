@@ -10,11 +10,11 @@ const Mains = styled.div`
 	display: flex;
 `;
 
-export default function Main( { children }: {children: ReactNode}): React.ReactElement {
+export default function Main( { Children }: { Children: ReactNode }): React.ReactElement {
 	return (
 		<Mains>
 			<Sidebar />
-			<Content children={children}/>
+			<Content Children={Children}/>
 		</Mains>
 	);
 };

@@ -36,18 +36,14 @@ export const metadata: Metadata = {
 	// },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}): React.ReactNode {
+export default function RootLayout( { children }: { children: React.ReactNode }): React.ReactElement {
   return (
     <html lang="ko">
 			<head />
 			<StyledComponentsRegistry>
 				<body >
 					<Header />
-					<Main children={children} />
+					<Main Children={children} />
 					<Footer />
 				</body>
 			</StyledComponentsRegistry>
