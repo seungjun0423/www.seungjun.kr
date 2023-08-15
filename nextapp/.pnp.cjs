@@ -29,7 +29,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@toast-ui/editor", "npm:3.2.2"],\
-            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
             ["@toast-ui/editor-plugin-color-syntax", "npm:3.1.0"],\
             ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3"],\
             ["@types/node", "npm:20.5.0"],\
@@ -3036,16 +3035,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prosemirror-state", "npm:1.4.3"],\
             ["prosemirror-transform", "npm:1.7.4"],\
             ["prosemirror-view", "npm:1.31.7"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@toast-ui/editor-plugin-code-syntax-highlight", [\
-        ["npm:3.1.0", {\
-          "packageLocation": "./.yarn/cache/@toast-ui-editor-plugin-code-syntax-highlight-npm-3.1.0-c1ad588de9-cdef0f5da7.zip/node_modules/@toast-ui/editor-plugin-code-syntax-highlight/",\
-          "packageDependencies": [\
-            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
-            ["prismjs", "npm:1.29.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6195,7 +6184,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["nextapp", "workspace:."],\
             ["@toast-ui/editor", "npm:3.2.2"],\
-            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
             ["@toast-ui/editor-plugin-color-syntax", "npm:3.1.0"],\
             ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3"],\
             ["@types/node", "npm:20.5.0"],\
@@ -6580,15 +6568,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/prelude-ls-npm-1.2.1-3e4d272a55-cd192ec0d0.zip/node_modules/prelude-ls/",\
           "packageDependencies": [\
             ["prelude-ls", "npm:1.2.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["prismjs", [\
-        ["npm:1.29.0", {\
-          "packageLocation": "./.yarn/cache/prismjs-npm-1.29.0-6faa5b04b8-007a8869d4.zip/node_modules/prismjs/",\
-          "packageDependencies": [\
-            ["prismjs", "npm:1.29.0"]\
           ],\
           "linkType": "HARD"\
         }]\

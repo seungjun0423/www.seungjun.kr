@@ -4,11 +4,8 @@ import React from "react";
 import styled from "styled-components";
 import dynamic from 'next/dynamic';
 
-
-const DynamicComponent = dynamic(() =>
-  import('../../lib/PostEditor'), {
-		ssr: false,
-	}
+/** 마크다운 에디터 사용을 위해 ssr 끄기. */
+const DynamicComponent = dynamic(() => import('../../lib/PostEditor'), { ssr: false }
 );
 
 const CreatePosts = styled.section`
@@ -18,22 +15,23 @@ const CreatePosts = styled.section`
 	overflow-x: auto;
 `;
 
-const P = styled.p`
+const H1 = styled.h1`
 	display: flex;
 	justify-content: center;
-	font-size: 2rem;
-	font-weight: bold;
 `;
 
 export default function CreatePost({ contents }: { contents: string }): React.ReactElement {
 
 	return(
 		<CreatePosts>
-			<P>
+			<H1>
 				글 작성하기
-			</P>
+			</H1>
+			<div style={{paddingLeft:'5%',paddingRight:'5%'}}>
+
 			<DynamicComponent contents={contents}>
 			</DynamicComponent>
+			</div>
 		</CreatePosts>
 	)
 }

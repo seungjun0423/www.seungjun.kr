@@ -12,13 +12,16 @@ const Sidebars = styled.aside`
 	border-right: 1px solid;
 	overflow-y: auto;
 	padding: 2rem;
-	width: 40%;
+	width: 30%;
 	max-width: 220px;
+	min-width: 160px;
 
 	@media (max-width: 520px) {
 		border-right: 0;
 		width: 0;
 		padding: 0;
+		min-width: 0;
+
 	}
 `;
 

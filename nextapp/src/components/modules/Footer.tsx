@@ -11,6 +11,7 @@ const Footers = styled.footer`
 	border-top: 1px solid;
 	flex-direction: row-reverse;
 	align-items: center;
+	z-index:99;
 
 	@media(max-width: 520px){
 		display: none;

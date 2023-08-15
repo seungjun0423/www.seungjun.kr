@@ -12,7 +12,6 @@ type Post = {
 };
 
 export default function Post( { params: { slug } }: Post ): React.ReactElement {
-	return <Postviewer></Postviewer>
 	if (slug === 'create') {
 		return <CreatePost contents={slug}></CreatePost>;
 	} else if ( slug === 'read'){
