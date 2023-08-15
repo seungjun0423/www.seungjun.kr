@@ -1,16 +1,18 @@
 'use client';
 
-import React, { ReactComponentElement, ReactNode, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
-import { Editor } from '@toast-ui/react-editor';
+import { Editor, EditorProps} from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 
 import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
-import { EditortParams } from '../../types/interface';
+export interface EditortParams extends EditorProps{
+	contents: string;
+};
 
 const EditorBox = styled.div`
 	width: 100%;
@@ -35,12 +37,12 @@ const Submit = styled.button`
 
 export default function PostEditor ({ contents }: EditortParams ): React.ReactElement {
 	const text = useRef(null);
+
 	return (
-		<EditorBox id='ed-box'>
+		<EditorBox id='editor'>
 			<Editor 
 				ref={text}
 				placeholder="내용을 입력해주세요." 
-				// height="60%" 
 				initialEditType='markdown' 
 				previewStyle="tab"
 				hideModeSwitch={true}

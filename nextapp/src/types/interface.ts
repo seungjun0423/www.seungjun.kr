@@ -7,8 +7,3 @@ export interface Category {
 	post: string[];
 	spread: boolean;
 };
-
-export interface EditortParams {
-	children: React.ReactNode;
-	contents: string;
-};
