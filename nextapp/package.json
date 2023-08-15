@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "client-only": "^0.0.1",
     "eslint": "8.41.0",
     "eslint-config-next": "latest",
     "next": "latest",
@@ -26,6 +27,7 @@
     "@toast-ui/editor": "^3.2.2",
     "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
     "@toast-ui/react-editor": "^3.2.3",
+    "@types/gtag.js": "^0.0.13",
     "@types/node": "^20.5.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",

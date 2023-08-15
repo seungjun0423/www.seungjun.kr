@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 import styled from "styled-components";
 
 import { Editor, EditorProps} from '@toast-ui/react-editor';
@@ -12,6 +12,8 @@ import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 export interface EditortParams extends EditorProps{
+	children?: ReactNode;
+	ref?: any;
 	contents: string;
 };
 
