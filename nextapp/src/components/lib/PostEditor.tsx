@@ -37,7 +37,7 @@ const BtnBox = styled.div`
 	}
 `;
 
-const Submit = styled.button`
+const Submit = styled.input`
 	width: 10rem;
 	border-radius: 30px;
 	border: none;
@@ -68,9 +68,7 @@ export default function PostEditor (): React.ReactElement {
 				// theme="dark"	
 			/>
 			<BtnBox>
-				<Submit type="submit">
-					제출
-				</Submit>
+				<Submit type="submit" value={'확인'}/>
 			</BtnBox>
 		</EditorBox>
 		);

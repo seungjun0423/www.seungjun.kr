@@ -18,10 +18,9 @@ interface Category {
 	spread: boolean;
 };
 
-const Lists = styled.span`
+const Lists = styled.div`
 	width: 100%;
-	display: flex;
-	justify-content: center;
+	text-align: center;
 	align-items: center;
 	padding: 1rem 0 1rem 0;
 	/* border: 1px solid #eaecef; */
@@ -36,19 +35,14 @@ const Lists = styled.span`
 	}
 `;
 
-const Categories = styled.div`
-	display: flex;
-	justify-content: center;
+const Categories = styled.input`
 	font-size: 1.5rem;
 	font-weight: bold;
+	text-align: center;
 	color: black;
-`;
-
-const Posts = styled.div`
-	display: flex;
-	justify-content: center;
-	font-size: 1.2rem;
-	align-items: center;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
 `;
 
 /** 서버에서 카테고리와 작성글 목록을 받아와 열거해주는 컴포넌트 */
@@ -93,13 +87,11 @@ export default function CategoryTitle({ title, posts }: {title: string, posts: s
 
 		setCategories(others);
 	}
-	// console.log(categories.filter(el=> el.spread)[0].title)
+
 	return (
 		<Lists>
 			<Link href={`/${title}`}>
-				<Categories onClick={ () => spreadHandler(title)}>
-					{ title }
-				</Categories>
+				<Categories type="button" onClick={ () => spreadHandler(title)} value={title} />
 				{	
 					categories.filter(el=> el.spread)[0]?.title === title ?
 						posts.map((el)=>{ return <PostList categoryTitle={title} postTitle={el} /> })

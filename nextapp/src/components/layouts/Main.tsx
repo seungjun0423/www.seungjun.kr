@@ -13,7 +13,7 @@ import Footer from './Footer';
 // Create a client
 const queryClient = new QueryClient();
 
-const Mains = styled.div`
+const Mains = styled.main`
 	width: 100%;
 	height: 100%;
 	display: flex;

@@ -5,11 +5,12 @@ import React from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
-import { authState } from "data/store";
+import { authState, editState } from "data/store";
 import CategoryTitle from "components/services/Category/CategoryTitle";
 import EditCategory from "components/modules/EditCategory";
 
 import { SidebarDummy } from "data/dummy";
+import UpdatCategory from "components/services/Category/UpdateCategory";
 
 const Sidebars = styled.aside`
 	border-right: 1px solid #eaecef;
@@ -64,16 +65,21 @@ const ListBox = styled.div`
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar(): React.ReactElement {
 	const { isAdmin, setIsAdmin } = authState();
+	const { isEdit, setIsEdit } = editState();
 
   return (
     <Sidebars>
 			<Wrapper>
 				{ isAdmin?  <EditCategory/>: <></> }
 				<ListBox>
-					{ 
+					{ isEdit ?
 						SidebarDummy.map((el)=>{
+							return <UpdatCategory title={el.title} posts={el.post}/>
+						})
+						: SidebarDummy.map((el)=>{
 							return <CategoryTitle title={el.title} posts={el.post}/>
 						})
+						
 					}
 				</ListBox>
 

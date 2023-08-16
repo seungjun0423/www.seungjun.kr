@@ -42,7 +42,7 @@ export default function EditCategory () {
 					console.log(isEdit,"카테고리 수정 버튼 작동중")
 				}}
 			>
-				Edit
+				{isEdit ? "Now Editable": "Edit"}
 			</EditBtn>
 		</EditCategries>
 	)

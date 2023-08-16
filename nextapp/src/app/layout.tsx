@@ -7,7 +7,7 @@ import StyledComponentsRegistry from '../styles/registry';
 
 import { Open_Sans } from 'next/font/google';
 
-// import GoogleAnalytics from "../components/utils/GoogleAnalytics";
+import GoogleAnalytics from "../components/utils/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
 import Script from "next/script";
 
@@ -39,33 +39,7 @@ export const metadata: Metadata = {
 export default function RootLayout( { children }: { children: React.ReactNode }): React.ReactElement {
   return (
     <html lang="ko">
-			<head>
-				{/* <GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} /> */}
-				<Script 
-							strategy="afterInteractive" 
-							src={`https://www.googletagmanager.com/gtag/js?id=G-FHDZNV24LY`}
-						/>
-            <Script 
-							id='google-analytics' 
-							strategy="afterInteractive"
-							dangerouslySetInnerHTML={{
-                __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('consent', 'default', {
-                    'analytics_storage': 'denied'
-                });
-                
-                gtag('config', 'G-FHDZNV24LY', {
-                    page_path: window.location.pathname,
-                });
-                `,
-							}}
-            />
-				
-			</head>
+			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
 			<StyledComponentsRegistry>
 				<body >
 					<Main Children={children} />
