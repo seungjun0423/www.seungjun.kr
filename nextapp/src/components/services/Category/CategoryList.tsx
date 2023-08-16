@@ -10,7 +10,7 @@ import { Category } from "types/interface";
 const Lists = styled.span`
 	display: flex;
 	margin-top: 2.5rem;
-	@media (max-width: 520px) {
+	@media (max-width: 576px) {
 		margin-top: 0;
 	}
 `;

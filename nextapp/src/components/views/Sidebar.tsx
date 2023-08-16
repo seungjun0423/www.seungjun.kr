@@ -16,7 +16,7 @@ const Sidebars = styled.aside`
 	max-width: 220px;
 	min-width: 160px;
 
-	@media (max-width: 520px) {
+	@media (max-width: 576px) {
 		border-right: 0;
 		width: 0;
 		padding: 0;
@@ -28,7 +28,7 @@ const Sidebars = styled.aside`
 const Wrapper = styled.div`
 	width: 100%;
 	
-	@media (max-width: 520px) {
+	@media (max-width: 576px) {
 		position: fixed; 
 		bottom: 0;
 		display: flex;
@@ -52,7 +52,7 @@ const Btn = styled.button`
 	background-color: transparent;
 	cursor: pointer;
 	
-	@media (min-width: 520px) {
+	@media (min-width: 576px) {
 		display: none;
 	}
 `;

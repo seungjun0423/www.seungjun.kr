@@ -30,7 +30,7 @@ const NavContainer = styled.nav`
 	align-items: center;
 	gap: 2.5rem;
 
-	@media (max-width: 520px) {
+	@media (max-width: 576px) {
 		display: none;
 	}
 `;
@@ -40,7 +40,7 @@ const NavBox = styled.div`
 	width: 6rem;
 	height: 4rem;
 
-	@media (min-width: 521px) {
+	@media (min-width: 576px) {
 		display: none;
 	}
 `;
@@ -67,7 +67,7 @@ const Borad = styled.nav`
 export default function Header(): React.ReactElement {
 	const [ navState, setNavState ] = useState<boolean>(false);
 
-	/** innerWidth 가 520 이상일 경우 */
+	/** innerWidth 가 576 이상일 경우 */
 	const navContainer = (): React.ReactElement => {
 		return (
 			<NavContainer>
@@ -84,7 +84,7 @@ export default function Header(): React.ReactElement {
 		);
 	};	
 
-/** innerWidth 가 520 이하일 경우 */
+/** innerWidth 가 576 이하일 경우 */
 	const navBox = (): React.ReactElement => {
 		return (
 			<NavBox>

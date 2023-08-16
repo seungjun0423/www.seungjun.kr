@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Contents = styled.main`
@@ -10,7 +10,7 @@ const Contents = styled.main`
 	overflow-y: auto;
 `;
 
-export default function Content( { Children }: { Children: ReactNode }): React.ReactElement {
+export default function Content({ Children }: { Children: React.ReactNode } ): React.ReactElement {
 
 	return (
 		<Contents>

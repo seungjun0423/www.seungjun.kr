@@ -1,11 +1,13 @@
 'use client';
 
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import dynamic from 'next/dynamic';
 
 /** 마크다운 에디터 사용을 위해 ssr 끄기. */
-const DynamicComponent = dynamic(() => import('../../lib/PostEditor'), { ssr: false }
+const DynamicComponent: React.ComponentType<{
+	children: React.ReactNode;
+}> = dynamic(() => import('../../lib/PostEditor'), { ssr: false }
 );
 
 const CreatePosts = styled.section`
@@ -20,7 +22,7 @@ const H1 = styled.h1`
 	justify-content: center;
 `;
 
-export default function CreatePost({ contents }: { contents: string }): React.ReactElement {
+export default function CreatePost(): React.ReactElement {
 
 	return(
 		<CreatePosts>
@@ -29,7 +31,7 @@ export default function CreatePost({ contents }: { contents: string }): React.Re
 			</H1>
 			<div style={{paddingLeft:'5%',paddingRight:'5%'}}>
 
-			<DynamicComponent contents={contents}>
+			<DynamicComponent>
 			</DynamicComponent>
 			</div>
 		</CreatePosts>

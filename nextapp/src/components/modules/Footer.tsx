@@ -13,7 +13,7 @@ const Footers = styled.footer`
 	align-items: center;
 	z-index:99;
 
-	@media(max-width: 520px){
+	@media(max-width: 576px){
 		display: none;
 	}
 `;
@@ -26,7 +26,7 @@ const CopyRight = styled.p`
 	margin: 1.5rem;
 `;
 
-/** width 값이 520px 미만인 디바이스에선 가려진다 */
+/** width 값이 576px 미만인 디바이스에선 가려진다 */
 export default function Footer(): React.ReactElement {
 	return (
 		<Footers>
