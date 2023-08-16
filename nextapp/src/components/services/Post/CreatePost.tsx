@@ -20,6 +20,11 @@ const CreatePosts = styled.section`
 const H1 = styled.h1`
 	display: flex;
 	justify-content: center;
+	margin-top: 30px;
+
+	@media (min-width: 1200px) {
+		margin: 30px 0 20px 0;
+	}
 `;
 
 export default function CreatePost(): React.ReactElement {
@@ -29,11 +34,8 @@ export default function CreatePost(): React.ReactElement {
 			<H1>
 				글 작성하기
 			</H1>
-			<div style={{paddingLeft:'5%',paddingRight:'5%'}}>
-
 			<DynamicComponent>
 			</DynamicComponent>
-			</div>
 		</CreatePosts>
 	)
 }

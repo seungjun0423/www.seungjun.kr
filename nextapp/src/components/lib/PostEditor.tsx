@@ -13,9 +13,9 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 const EditorBox = styled.div`
 	width: 100%;
-	height: 100%;
-	margin-bottom: 100px;
-	
+	margin-bottom: 500px;
+	padding-left: 5%;
+	padding-right: 5%;
 	@media (min-width: 1200px) {
 		padding: 0 10% 0 10%;
 	}
@@ -51,7 +51,7 @@ export default function PostEditor (): React.ReactElement {
 		<EditorBox>
 			<Editor
 				ref={text}
-				height="70vh"
+				height="65vh"
 				placeholder="내용을 입력해주세요." 
 				initialEditType='markdown' 
 				previewStyle="tab"

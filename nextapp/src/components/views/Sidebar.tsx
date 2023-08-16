@@ -21,7 +21,6 @@ const Sidebars = styled.aside`
 		width: 0;
 		padding: 0;
 		min-width: 0;
-
 	}
 `;
 
@@ -41,6 +40,7 @@ const Wrapper = styled.div`
 		align-items: center;
 		overflow-x: auto;
 		z-index: 99;
+		background-color:#ffffff;
 	}
 `;
 
