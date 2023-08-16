@@ -7,7 +7,7 @@ import styled from "styled-components";
 // 컴포넌트와 기타 등등
 import { authState } from "data/store";
 import List from "components/services/Category/CategoryList";
-import EditCategory from "components/services/Category/EditCategory";
+import EditCategory from "components/modules/EditCategory";
 
 const Sidebars = styled.aside`
 	border-right: 1px solid #eaecef;

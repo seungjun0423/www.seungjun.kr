@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { authState } from "data/store";
 
+
 const EditCategries = styled.div`
 	height: 3rem;
 	display: flex;
@@ -36,7 +37,7 @@ export default function EditCategory () {
 			<EditBtn 
 				onClick={()=>{ 
 					edit.current = !edit.current; 
-					console.log(edit.current,"버튼 작동중")
+					console.log(edit.current,"카테고리 수정 버튼 작동중")
 				}}
 			>
 				Edit
