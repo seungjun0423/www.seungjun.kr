@@ -8,10 +8,7 @@ import StyledComponentsRegistry from '../styles/registry';
 import { Open_Sans } from 'next/font/google';
 
 // import GoogleAnalytics from "../components/utils/GoogleAnalytics";
-
-import Header from 'components/modules/Header';
 import Main  from 'components/modules/Main';
-import Footer from 'components/modules/Footer';
 import Script from "next/script";
 
 /** font */
@@ -71,9 +68,7 @@ export default function RootLayout( { children }: { children: React.ReactNode })
 			</head>
 			<StyledComponentsRegistry>
 				<body >
-					<Header />
 					<Main Children={children} />
-					<Footer />
 				</body>
 			</StyledComponentsRegistry>
     </html>
