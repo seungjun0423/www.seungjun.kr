@@ -13,11 +13,16 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 const EditorBox = styled.div`
 	width: 100%;
-	margin-bottom: 500px;
+	height: 65%;
 	padding-left: 5%;
 	padding-right: 5%;
+
 	@media (min-width: 1200px) {
 		padding: 0 10% 0 10%;
+	}
+
+	@media (max-width: 576px){
+		height: 55%;
 	}
 `;
 
@@ -33,7 +38,7 @@ const BtnBox = styled.div`
 `;
 
 const Submit = styled.button`
-	width: 20%;
+	width: 10rem;
 	border-radius: 30px;
 	border: none;
 	margin-top: 10px;
@@ -41,7 +46,7 @@ const Submit = styled.button`
 	font-weight: bold;
 
 	@media (max-width: 576px) {
-		width: 30%;
+		width: 8rem;
 	}
 `;
 
@@ -51,7 +56,7 @@ export default function PostEditor (): React.ReactElement {
 		<EditorBox>
 			<Editor
 				ref={text}
-				height="65vh"
+				height="100%"
 				placeholder="내용을 입력해주세요." 
 				initialEditType='markdown' 
 				previewStyle="tab"
