@@ -70,6 +70,7 @@ const Borad = styled.nav`
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
 	const [ navState, setNavState ] = useState<boolean>(false);
+	const [ adminState, setAdminState ] = useState<boolean>(true);
 
 	/** innerWidth 가 576 이상일 경우 */
 	const navContainer = (): React.ReactElement => {
@@ -81,9 +82,14 @@ export default function Header(): React.ReactElement {
 				<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 					about me
 				</Link>
-				<Link href={'/admin'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+				{ !adminState ?
+					<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 					admin
-				</Link>
+					</Link>:
+					<Link href={'/post/create'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
+						posting
+					</Link>
+				}
 			</NavContainer>
 		);
 	};	
@@ -104,9 +110,14 @@ export default function Header(): React.ReactElement {
 						<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.5rem'}}>
 							about
 						</Link>
-						<Link href={'/admin'} style={{ color:'gray', fontSize: '1.5rem'}}>
-							admin
-						</Link>
+						{ !adminState ?
+							<Link href={'/auth'} style={{ color:'gray', fontSize: '1.5rem' }}>
+								admin
+							</Link>:
+							<Link href={'/post/create'} style={{ color:'gray', fontSize: '1.5rem'}}>
+								posting
+							</Link>
+						}
 					</Borad>
 					: <></>
 				}

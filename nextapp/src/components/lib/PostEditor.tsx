@@ -44,7 +44,8 @@ const Submit = styled.button`
 	margin-top: 10px;
 	font-size: 1rem;
 	font-weight: bold;
-
+	cursor: pointer;
+	
 	@media (max-width: 576px) {
 		width: 8rem;
 	}
@@ -67,7 +68,7 @@ export default function PostEditor (): React.ReactElement {
 				// theme="dark"	
 			/>
 			<BtnBox>
-				<Submit>
+				<Submit type="submit">
 					제출
 				</Submit>
 			</BtnBox>

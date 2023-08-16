@@ -2,7 +2,6 @@
 
 // 라이브러리 
 import React from "react";
-import Link from "next/link";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
@@ -84,7 +83,7 @@ export default function Sidebar(): React.ReactElement {
   return (
     <Sidebars>
 			<Wrapper>
-
+				
 				<EditBtnBox>
 					<EditBtn onClick={()=>console.log("버튼 작동중")}>
 						Edit

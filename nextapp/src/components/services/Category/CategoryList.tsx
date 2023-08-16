@@ -1,11 +1,18 @@
-'use client'
+'use client';
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
 import { SidebarDummy } from "../../../../data/dummy";
-import { Category } from "types/interface";
+
+interface Category {
+	id: number;
+	title: string;
+	priority: number;
+	post: string[];
+	spread: boolean;
+};
 
 const Lists = styled.span`
 	display: flex;
@@ -22,12 +29,15 @@ const Lists = styled.span`
 
 const Categories = styled.div`
 	display: flex;
+	justify-content: center;
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: black;
 `;
 
 const Posts = styled.div`
+	display: flex;
+	justify-content: center;
 	font-size: 1.2rem;
 	align-items: center;
 `;
