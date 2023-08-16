@@ -8,7 +8,7 @@ import StyledComponentsRegistry from '../styles/registry';
 import { Open_Sans } from 'next/font/google';
 
 // import GoogleAnalytics from "../components/utils/GoogleAnalytics";
-import Main  from 'components/views/Main';
+import Main  from 'components/layouts/Main';
 import Script from "next/script";
 
 /** font */

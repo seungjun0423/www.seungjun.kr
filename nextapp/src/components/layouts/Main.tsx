@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Header from './Header';
 import Sidebar from "./Sidebar";
-import Content from "components/views/Content";
+import Content from "components/layouts/Content";
 import Footer from './Footer';
 
 
