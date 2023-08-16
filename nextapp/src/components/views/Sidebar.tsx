@@ -9,9 +9,8 @@ import styled from "styled-components";
 import List from "components/services/Category/CategoryList";
 
 const Sidebars = styled.aside`
-	border-right: 1px solid;
+	border-right: 1px solid #eaecef;
 	overflow-y: auto;
-	padding: 2rem;
 	width: 30%;
 	max-width: 220px;
 	min-width: 160px;
@@ -26,13 +25,13 @@ const Sidebars = styled.aside`
 
 const Wrapper = styled.div`
 	width: 100%;
-	
+
 	@media (max-width: 576px) {
 		position: fixed; 
 		bottom: 0;
 		display: flex;
 		flex-direction: row;
-		border-top: 1px solid;
+		border-top: 1px solid #eaecef;
 		width: 100%;
 		border-right: 0;
 		gap: 3rem;
@@ -44,16 +43,39 @@ const Wrapper = styled.div`
 	}
 `;
 
-const Btn = styled.button`
-	width: 50px;
-	height: 40px;
-	border: none;
-	font-size: 2rem;
+const EditBtnBox = styled.div`
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px solid #eaecef;
+	margin-bottom: 2rem;
+
+	@media (max-width: 576px) {
+		border: none;
+		background-color: transparent;
+		margin-bottom: 0;
+	}
+`;
+
+const EditBtn = styled.button`
+	border-radius: 5px;
 	background-color: transparent;
+	border: none;
+	font-weight: bold;
+	font-size: 1.2rem;
 	cursor: pointer;
-	
-	@media (min-width: 576px) {
-		display: none;
+`;
+
+const ListBox = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@media (max-width: 576px) {
+		display: flex;
+		flex-direction: row;
+		padding: 0;
 	}
 `;
 
@@ -63,18 +85,15 @@ export default function Sidebar(): React.ReactElement {
     <Sidebars>
 			<Wrapper>
 
-				{/* <Btn>
-					{'<='}
-				</Btn> */}
-
-				<Link href={'/Edit'}>
-					Edit
-				</Link>
-				<List />
-
-				{/* <Btn>
-					{'=>'}
-				</Btn> */}
+				<EditBtnBox>
+					<EditBtn onClick={()=>console.log("버튼 작동중")}>
+						Edit
+					</EditBtn>
+				</EditBtnBox>
+				
+				<ListBox>
+					<List />
+				</ListBox>
 
 			</Wrapper>
     </Sidebars>

@@ -9,20 +9,26 @@ import { Category } from "types/interface";
 
 const Lists = styled.span`
 	display: flex;
-	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+
 	@media (max-width: 576px) {
-		margin-top: 0;
+		margin-bottom: 0;
+
+		& :last-child {
+			margin-right: 1rem;
+		}
 	}
 `;
 
 const Categories = styled.div`
 	display: flex;
-	font-size: 2rem;
+	font-size: 1.5rem;
+	font-weight: bold;
 	color: black;
 `;
 
 const Posts = styled.div`
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	align-items: center;
 `;
 

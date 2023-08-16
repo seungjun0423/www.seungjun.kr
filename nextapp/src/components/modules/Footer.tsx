@@ -7,8 +7,7 @@ const Footers = styled.footer`
 	bottom: 0;
 	display: flex;
 	width: 100%;
-	font-size: 1rem;
-	border-top: 1px solid;
+	border-top: 1px solid #eaecef;
 	flex-direction: row-reverse;
 	align-items: center;
 
@@ -19,10 +18,14 @@ const Footers = styled.footer`
 
 const Contact = styled.div`
 	display: flex;
+	font-weight: bold;
+	color: gray;
 `;
 
 const CopyRight = styled.p`
 	margin: 1.5rem;
+	font-weight: bold;
+	color: gray;
 `;
 
 /** width 값이 576px 미만인 디바이스에선 가려진다 */

@@ -13,9 +13,8 @@ const Headers = styled.header`
 	width: 100%;
 	padding: 5px 0 5px 0;
 	background-color: #ffffff;
-	/* border-bottom: 1px solid; */
 	border: none;
-	box-shadow: 0 0 5px #000;
+	box-shadow: 0 0 5px darkgray;
 	z-index: 99;
 `;
 
@@ -49,6 +48,9 @@ const NavBtn = styled.button`
 	width: 100%;
 	height: 100%;
 	font-size: 2rem;
+	border: 1px solid #eaecef;
+	border-radius: 5px;
+	color: gray;
 `;
 
 const Borad = styled.nav`
@@ -59,8 +61,10 @@ const Borad = styled.nav`
 	margin-top: 10px;
 	padding: 10px 0 5px 0;
 	background-color: beige;
-	border: 1px solid;
+	border: 1px solid #eaecef;
+	border-radius: 5px;
 	gap: 2rem;
+	font-weight: bold;
 `;
 
 /** Header 컴포넌트 */
@@ -71,13 +75,13 @@ export default function Header(): React.ReactElement {
 	const navContainer = (): React.ReactElement => {
 		return (
 			<NavContainer>
-				<Link href={'/'} style={{ fontSize: '1.5rem' }}>
+				<Link href={'/'} style={{ fontWeight: 'bold',fontSize: '1.5rem' }}>
 					home
 				</Link>
-				<Link href={'/introducing'} style={{ fontSize: '1.5rem' }}>
+				<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 					about me
 				</Link>
-				<Link href={'/admin'} style={{ fontSize: '1.5rem' }}>
+				<Link href={'/admin'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 					admin
 				</Link>
 			</NavContainer>
@@ -94,13 +98,13 @@ export default function Header(): React.ReactElement {
 				</NavBtn>
 				{ navState ? 
 					<Borad>
-						<Link href={'/'} style={{ fontSize: '1.5rem'}}>
+						<Link href={'/'} style={{ color:'gray', fontSize: '1.5rem'}}>
 							home
 						</Link>
-						<Link href={'/introducing'} style={{ fontSize: '1.5rem'}}>
+						<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.5rem'}}>
 							about
 						</Link>
-						<Link href={'/admin'} style={{ fontSize: '1.5rem'}}>
+						<Link href={'/admin'} style={{ color:'gray', fontSize: '1.5rem'}}>
 							admin
 						</Link>
 					</Borad>
