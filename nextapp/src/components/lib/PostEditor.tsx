@@ -14,6 +14,8 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 const EditorBox = styled.div`
 	width: 100%;
 	height: 100%;
+	margin-bottom: 100px;
+	
 	@media (min-width: 1200px) {
 		padding: 0 10% 0 10%;
 	}
