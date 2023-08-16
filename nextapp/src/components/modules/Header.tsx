@@ -72,7 +72,7 @@ export default function Header(): React.ReactElement {
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const [ adminState, setAdminState ] = useState<boolean>(true);
 
-	/** innerWidth 가 576 이상일 경우 */
+	/** innerWidth 가 576 초과인 경우 */
 	const navContainer = (): React.ReactElement => {
 		return (
 			<NavContainer>
@@ -94,7 +94,7 @@ export default function Header(): React.ReactElement {
 		);
 	};	
 
-/** innerWidth 가 576 이하일 경우 */
+/** innerWidth 가 576 이하인 경우 */
 	const navBox = (): React.ReactElement => {
 		return (
 			<NavBox>

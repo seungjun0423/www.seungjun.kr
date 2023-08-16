@@ -1,7 +1,7 @@
 'use client'
 
 // 라이브러리 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
@@ -47,7 +47,6 @@ const EditBtnBox = styled.div`
 	display: flex;
 	justify-content: center;
 	border-bottom: 1px solid #eaecef;
-	margin-bottom: 2rem;
 
 	@media (max-width: 576px) {
 		border: none;
@@ -70,8 +69,10 @@ const ListBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 1rem;
 
 	@media (max-width: 576px) {
+		margin-top: 0;
 		display: flex;
 		flex-direction: row;
 		padding: 0;
@@ -80,12 +81,15 @@ const ListBox = styled.div`
 
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar(): React.ReactElement {
+	const edit = useRef(false);
+	console.log(edit.current);
+
   return (
     <Sidebars>
 			<Wrapper>
 				
 				<EditBtnBox>
-					<EditBtn onClick={()=>console.log("버튼 작동중")}>
+					<EditBtn onClick={()=>{ edit.current = !edit.current; console.log(edit.current,"버튼 작동중")}}>
 						Edit
 					</EditBtn>
 				</EditBtnBox>

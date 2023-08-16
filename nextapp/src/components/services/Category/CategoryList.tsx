@@ -15,12 +15,17 @@ interface Category {
 };
 
 const Lists = styled.span`
+	width: 100%;
 	display: flex;
-	margin-bottom: 2.5rem;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem 0 1rem 0;
+	/* border: 1px solid #eaecef; */
 
 	@media (max-width: 576px) {
 		margin-bottom: 0;
-
+		border: none;
+		
 		& :last-child {
 			margin-right: 1rem;
 		}
