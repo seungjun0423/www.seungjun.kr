@@ -1,4 +1,5 @@
 import React from "react";
+import { SidebarDummy } from "data/dummy";
 
 type Category = {
 	params: {
@@ -14,7 +15,12 @@ export default function Category( { params: { slug } }: Category ): React.ReactE
   );
 };
 
-// export function generateStaticParams() {
-// 	const category = [ 'Edit', 'study', 'profile', 'etc'];
-// 	return category.map( (el) => ({ slug: el,}));
-// }
+// export async function generateStaticParams() {
+//   const categories = SidebarDummy;
+
+//   return categories.map((category) => ({ 
+// 		params: { 
+// 			slug: category.title 
+// 		} 
+// 	}))
+// };
