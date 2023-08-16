@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
 
+import { authState } from "data/store";
+
 const Headers = styled.header`
 	display: flex;
 	justify-content: space-between;
@@ -70,7 +72,9 @@ const Borad = styled.nav`
 /** Header 컴포넌트 */
 export default function Header(): React.ReactElement {
 	const [ navState, setNavState ] = useState<boolean>(false);
-	const [ adminState, setAdminState ] = useState<boolean>(true);
+	// const [ adminState, setAdminState ] = useState<boolean>(true);
+	const { isAdmin, setIsAdmin } = authState()
+
 
 	/** innerWidth 가 576 초과인 경우 */
 	const navContainer = (): React.ReactElement => {
@@ -82,9 +86,9 @@ export default function Header(): React.ReactElement {
 				<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 					about me
 				</Link>
-				{ !adminState ?
+				{ !isAdmin ?
 					<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-					admin
+						admin
 					</Link>:
 					<Link href={'/post/create'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
 						posting
@@ -110,7 +114,7 @@ export default function Header(): React.ReactElement {
 						<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.5rem'}}>
 							about
 						</Link>
-						{ !adminState ?
+						{ !isAdmin ?
 							<Link href={'/auth'} style={{ color:'gray', fontSize: '1.5rem' }}>
 								admin
 							</Link>:

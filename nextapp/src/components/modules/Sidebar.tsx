@@ -1,11 +1,12 @@
 'use client'
 
 // 라이브러리 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
 import List from "components/services/Category/CategoryList";
+import EditCategory from "components/services/Category/EditCategory";
 
 const Sidebars = styled.aside`
 	border-right: 1px solid #eaecef;
@@ -42,28 +43,6 @@ const Wrapper = styled.div`
 	}
 `;
 
-const EditBtnBox = styled.div`
-	height: 3rem;
-	display: flex;
-	justify-content: center;
-	border-bottom: 1px solid #eaecef;
-
-	@media (max-width: 576px) {
-		border: none;
-		background-color: transparent;
-		margin-bottom: 0;
-	}
-`;
-
-const EditBtn = styled.button`
-	border-radius: 5px;
-	background-color: transparent;
-	border: none;
-	font-weight: bold;
-	font-size: 1.2rem;
-	cursor: pointer;
-`;
-
 const ListBox = styled.div`
 	width: 100%;
 	display: flex;
@@ -81,18 +60,13 @@ const ListBox = styled.div`
 
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar(): React.ReactElement {
-	const edit = useRef(false);
 
   return (
     <Sidebars>
 			<Wrapper>
 				
-				<EditBtnBox>
-					<EditBtn onClick={()=>{ edit.current = !edit.current; console.log(edit.current,"버튼 작동중")}}>
-						Edit
-					</EditBtn>
-				</EditBtnBox>
-				
+				<EditCategory/>
+
 				<ListBox>
 					<List />
 				</ListBox>

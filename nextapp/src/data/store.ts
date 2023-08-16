@@ -1,11 +1,11 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
 
-interface State1 {
-	state: number;
-	setState: (newState: number) => void;
-}
+interface IAuth {
+	isAdmin: boolean;
+	setIsAdmin: (value: boolean) => void;
+};
 
-export const projectName = create<State1>((set) => ({
-	state: 0,
-	setState: (newState) => set({state: newState})
-}))
+export const authState = create<IAuth>((set) => ({
+	isAdmin: false,
+	setIsAdmin: (value) => set({ isAdmin: value })
+}));

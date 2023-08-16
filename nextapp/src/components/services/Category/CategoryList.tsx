@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
+import { authState } from "data/store";
+
 import { SidebarDummy } from "../../../data/dummy";
 
 interface Category {
