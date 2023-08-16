@@ -82,7 +82,6 @@ const ListBox = styled.div`
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar(): React.ReactElement {
 	const edit = useRef(false);
-	console.log(edit.current);
 
   return (
     <Sidebars>

@@ -22,7 +22,8 @@
     "react-icons": "^4.10.1",
     "styled-components": "^6.0.5",
     "tui-color-picker": "^2.2.8",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "zustand": "^4.4.1"
   },
   "packageManager": "yarn@3.5.1",
   "devDependencies": {
