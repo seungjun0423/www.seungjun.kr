@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { SidebarDummy } from "../../../../data/dummy";
+import { SidebarDummy } from "../../../data/dummy";
 
 interface Category {
 	id: number;
