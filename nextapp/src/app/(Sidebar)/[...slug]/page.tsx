@@ -15,12 +15,12 @@ export default function Category( { params: { slug } }: Category ): React.ReactE
   );
 };
 
-export async function generateStaticParams() {
-  const categories = SidebarDummy;
+// export async function generateStaticParams() {
+//   const categories = SidebarDummy;
 
-  return categories.map((category) => ({ 
-		params: { 
-			slug: category.title 
-		} 
-	}))
-};
+//   return categories.map((category) => ({ 
+// 		params: { 
+// 			slug: category.title 
+// 		} 
+// 	}))
+// };

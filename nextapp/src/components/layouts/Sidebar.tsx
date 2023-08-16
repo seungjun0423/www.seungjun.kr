@@ -6,8 +6,10 @@ import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
 import { authState } from "data/store";
-import List from "components/services/Category/CategoryList";
+import CategoryTitle from "components/services/Category/CategoryTitle";
 import EditCategory from "components/modules/EditCategory";
+
+import { SidebarDummy } from "data/dummy";
 
 const Sidebars = styled.aside`
 	border-right: 1px solid #eaecef;
@@ -68,7 +70,11 @@ export default function Sidebar(): React.ReactElement {
 			<Wrapper>
 				{ isAdmin?  <EditCategory/>: <></> }
 				<ListBox>
-					<List />
+					{ 
+						SidebarDummy.map((el)=>{
+							return <CategoryTitle title={el.title} posts={el.post}/>
+						})
+					}
 				</ListBox>
 
 			</Wrapper>

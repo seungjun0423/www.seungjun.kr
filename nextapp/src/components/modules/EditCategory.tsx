@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { authState } from "data/store";
+import { authState, editState } from "data/store";
 
 
 const EditCategries = styled.div`
@@ -30,6 +30,7 @@ const EditBtn = styled.button`
 
 export default function EditCategory () {
 	const { isAdmin, setIsAdmin } = authState();
+	const { isEdit, setIsEdit } = editState();
 	const edit = useRef(false);
 
 	return (
@@ -37,7 +38,8 @@ export default function EditCategory () {
 			<EditBtn 
 				onClick={()=>{ 
 					edit.current = !edit.current; 
-					console.log(edit.current,"카테고리 수정 버튼 작동중")
+					setIsEdit(edit.current);
+					console.log(isEdit,"카테고리 수정 버튼 작동중")
 				}}
 			>
 				Edit

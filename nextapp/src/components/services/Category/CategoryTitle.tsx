@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { authState } from "data/store";
+import { authState, editState } from "data/store";
+
+import PostList from "../Post/PostList";
 
 import { SidebarDummy } from "../../../data/dummy";
 
@@ -50,7 +52,10 @@ const Posts = styled.div`
 `;
 
 /** 서버에서 카테고리와 작성글 목록을 받아와 열거해주는 컴포넌트 */
-export default function List(): React.ReactElement{
+export default function CategoryTitle({ title, posts }: {title: string, posts: string[]}): React.ReactElement{
+	const { isAdmin, setIsAdmin } = authState();
+	const { isEdit, setIsEdit } = editState();
+
 	const [ categories, setCategories ] = useState<Category[]>(
 		[
 			{
@@ -88,30 +93,19 @@ export default function List(): React.ReactElement{
 
 		setCategories(others);
 	}
-	
+	// console.log(categories.filter(el=> el.spread)[0].title)
 	return (
-		<>
-		{
-			SidebarDummy.map( (el,index) => (
-					<Lists key={index}>
-						<Link href={`/${el.title}`}>
-							<Categories onClick={ () => spreadHandler(el.title)}>
-								{ el.title }
-							</Categories>
-								{ el.spread ? 
-									el.post.map( (val,index) => (
-										<Posts key={index}>
-											<Link href={`/${el.title}/${val}`}>
-												{val}
-											</Link>
-										</Posts>
-									)) : <></>
-								}
-						</Link>
-					</Lists>
-				)
-			)
-		}
-		</>
+		<Lists>
+			<Link href={`/${title}`}>
+				<Categories onClick={ () => spreadHandler(title)}>
+					{ title }
+				</Categories>
+				{	
+					categories.filter(el=> el.spread)[0]?.title === title ?
+						posts.map((el)=>{ return <PostList categoryTitle={title} postTitle={el} /> })
+						: <></>
+				}
+			</Link>
+		</Lists>
 	)
 }
