@@ -73,11 +73,11 @@ export default function Sidebar(): React.ReactElement {
 				{ isAdmin?  <EditCategory/>: <></> }
 				<ListBox>
 					{ isEdit ?
-						SidebarDummy.map((el)=>{
-							return <UpdatCategory title={el.title} posts={el.post}/>
+						SidebarDummy.map((el, index)=>{
+							return <UpdatCategory key={index} title={el.title} posts={el.post}/>
 						})
-						: SidebarDummy.map((el)=>{
-							return <CategoryTitle title={el.title} posts={el.post}/>
+						: SidebarDummy.map((el, index)=>{
+							return <CategoryTitle key={index} title={el.title} posts={el.post}/>
 						})
 						
 					}

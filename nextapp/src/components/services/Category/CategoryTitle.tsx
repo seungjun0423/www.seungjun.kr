@@ -94,7 +94,7 @@ export default function CategoryTitle({ title, posts }: {title: string, posts: s
 				<Categories type="button" onClick={ () => spreadHandler(title)} value={title} />
 				{	
 					categories.filter(el=> el.spread)[0]?.title === title ?
-						posts.map((el)=>{ return <PostList categoryTitle={title} postTitle={el} /> })
+						posts.map((el, index)=>{ return <PostList key={index} categoryTitle={title} postTitle={el} /> })
 						: <></>
 				}
 			</Link>

@@ -49,8 +49,8 @@ export default function UpdatCategory ({ title, posts }: {title: string, posts: 
 		<UpdateCategories>
 			<Categories type="text" defaultValue={title} required/>
 			{ 
-				posts.map((el)=>{
-					return <PostList  type="text" defaultValue={el} required/> 
+				posts.map((el, index)=>{
+					return <PostList key={index} type="text" defaultValue={el} required/> 
 				})
 			}
 		</UpdateCategories>
