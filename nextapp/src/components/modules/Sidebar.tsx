@@ -5,6 +5,7 @@ import React from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
+import { authState } from "data/store";
 import List from "components/services/Category/CategoryList";
 import EditCategory from "components/services/Category/EditCategory";
 
@@ -60,13 +61,12 @@ const ListBox = styled.div`
 
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar(): React.ReactElement {
+	const { isAdmin, setIsAdmin } = authState();
 
   return (
     <Sidebars>
 			<Wrapper>
-				
-				<EditCategory/>
-
+				{ isAdmin?  <EditCategory/>: <></> }
 				<ListBox>
 					<List />
 				</ListBox>
