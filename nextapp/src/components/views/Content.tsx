@@ -5,14 +5,16 @@ import styled from "styled-components";
 
 const Contents = styled.main`
 	width: 100%;
-	padding: 2rem;
-	font-size: 1.5rem;
+	height: 100%;
+	overflow-x: auto;
+	overflow-y: auto;
 `;
 
-export default function Content(): React.ReactElement {
+export default function Content({ Children }: { Children: React.ReactNode } ): React.ReactElement {
+
 	return (
 		<Contents>
-
+			{Children}
 		</Contents>
 	);
 };

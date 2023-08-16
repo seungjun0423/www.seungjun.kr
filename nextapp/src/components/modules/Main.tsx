@@ -3,37 +3,19 @@
 import React from "react";
 import styled from "styled-components";
 import Sidebar from "../views/Sidebar";
-import Underbar from "components/views/Underbar";
-
-import { InnerWidthStore } from "model/store";
+import Content from "components/views/Content";
 
 const Mains = styled.div`
-	display: flex;
 	width: 100%;
-	flex-wrap: wrap-reverse;
-	align-content: space-between;
+	height: 100%;
+	display: flex;
 `;
 
-const Contents = styled.div`
-	padding: 2rem;
-	font-size: 1.5rem;
-`;
-
-export default function Main({ Children }: any): React.ReactElement {
-	const { innerWidth, setInnerWidth } =  InnerWidthStore( state => state);
-	
+export default function Main( { Children }: { Children: React.ReactNode }): React.ReactElement {
 	return (
-		<Mains style={{height: innerWidth >= 520 ? '84vh':'92vh'}}>
-
-			{ innerWidth >= 520 ? 
-				<Sidebar />
-				: <Underbar />
-			}
-
-			{/* <Contents>
-				{Children}
-			</Contents> */}
-
+		<Mains>
+			<Sidebar />
+			<Content Children={Children}/>
 		</Mains>
 	);
 };

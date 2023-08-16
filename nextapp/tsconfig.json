@@ -3,7 +3,7 @@
     "baseUrl": "src",
     "target": "ES6",
     "lib": [ "dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -16,6 +16,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+		"strictNullChecks": true,
+		"noImplicitAny": true,
     "incremental": true,
     "plugins": [
       {

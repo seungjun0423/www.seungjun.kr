@@ -3,7 +3,7 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "eslint.nodePath": "nextapp/.yarn/sdks",
+  "eslint.nodePath": "nextapp/.eslintrc.json",
   "typescript.tsdk": "nextapp/.yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
 }
