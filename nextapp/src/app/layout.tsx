@@ -42,7 +42,6 @@ export const metadata: Metadata = {
 export default function RootLayout ({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
 			<StyledComponentsRegistry>
 				<body >
 					<Main Children={children} />

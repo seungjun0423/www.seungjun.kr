@@ -39,7 +39,6 @@ export default function EditCategory () {
 				onClick={()=>{ 
 					edit.current = !edit.current; 
 					setIsEdit(edit.current);
-					console.log(isEdit,"카테고리 수정 버튼 작동중")
 				}}
 			>
 				{isEdit ? "Now Editable": "Edit"}
