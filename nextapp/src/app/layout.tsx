@@ -9,13 +9,16 @@ import { Open_Sans } from 'next/font/google';
 
 import GoogleAnalytics from "../components/utils/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
-import Script from "next/script";
+import Head from "next/head";
 
 /** font */
 const sans = Open_Sans({ subsets: ['latin']});
 
 export const metadata: Metadata = {
-  title: '이승준의 블로그',
+  title: {
+		default: '이승준의 블로그',
+		template: '개발 블로그 | %s'
+	},
   description: '웹 개발자, 리액트 개발자, 노드 개발자, 프론트엔드 개발자, 풀스택 개발자, 블록체인 개발자, 비전공자 개발자, web developer, react developer, node developer, fronted developer, fullstack developer, blockchain developer',
 
 	viewport: {
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
 	// },
 }
 
-export default function RootLayout( { children }: { children: React.ReactNode }): React.ReactElement {
+export default function RootLayout ({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
 			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
