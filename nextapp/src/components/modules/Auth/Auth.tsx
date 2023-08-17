@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { authState } from "model/store";
 import { MetaMaskSDK } from '@metamask/sdk';
+import { type } from "os";
 
 const MMSDK = new MetaMaskSDK();
 const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum
@@ -47,7 +48,12 @@ export default function Auth () {
 
 	console.log("이더리움 연결 체크",ethereum.isConnected());
 	const maskHandler = async () => {
-		const test = await ethereum.request({ method: 'eth_requestAccounts', params: [] });
+		const test = await ethereum.request({  "method": "personal_sign",
+		"params": [
+			null,
+			null
+		]});
+		console.log(test);
 		return test
 		try{
 
