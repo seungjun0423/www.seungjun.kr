@@ -4,7 +4,8 @@ import React from "react";
 import styled from "styled-components";
 import { authState } from "model/store";
 import { MetaMaskSDK } from '@metamask/sdk';
-import { type } from "os";
+import hexerTs from "util/browser-string-hexer";
+
 
 const MMSDK = new MetaMaskSDK();
 const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum

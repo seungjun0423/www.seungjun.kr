@@ -14,7 +14,6 @@
     "@toast-ui/editor": "^3.2.2",
     "@toast-ui/react-editor": "^3.2.3",
     "axios": "^1.4.0",
-    "browser-string-hexer": "^1.0.0",
     "client-only": "^0.0.1",
     "eslint": "8.41.0",
     "eslint-config-next": "latest",
