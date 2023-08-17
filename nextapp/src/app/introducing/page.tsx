@@ -1,4 +1,4 @@
-export default function Introducing( ): React.ReactElement {
+export default function Introducing ( ) {
 	return(
 		<div>
 			let me introduce myself!

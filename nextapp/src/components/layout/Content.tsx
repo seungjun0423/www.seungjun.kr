@@ -10,11 +10,11 @@ const Contents = styled.section`
 	overflow-y: auto;
 `;
 
-export default function Content({ Children }: { Children: React.ReactNode } ): React.ReactElement {
+export default function Content({ children }: { children: React.ReactNode } ): React.ReactElement {
 
 	return (
 		<Contents>
-			{Children}
+			{children}
 		</Contents>
 	);
 };

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
 
-import { authState } from "data/store";
+import { authState } from "model/store";
 
 const Headers = styled.header`
 	display: flex;
@@ -70,7 +70,7 @@ const Borad = styled.nav`
 `;
 
 /** Header 컴포넌트 */
-export default function Header(): React.ReactElement {
+export default function Header () {
 	const [ navState, setNavState ] = useState<boolean>(false);
 	// const [ adminState, setAdminState ] = useState<boolean>(true);
 	const { isAdmin, setIsAdmin } = authState()

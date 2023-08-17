@@ -1,6 +1,6 @@
-import Auth from "components/services/Auth/Auth";
+import Auth from "components/modules/Auth/Auth";
 
-export default function Admin(): React.ReactElement {
+export default function Admin () {
   return (
     <>
 			<Auth />

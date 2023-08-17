@@ -11,14 +11,13 @@ const PostLists = styled.button`
 	align-items: center;
 	border: none;
 	background-color: transparent;
+	cursor: pointer;
 `;
 
-export default function PostList ({ categoryTitle, postTitle }: { categoryTitle: string, postTitle: string}) {
+export default function PostList ({ postTitle }: { postTitle: string}) {
 	return (
 		<PostLists>
-			<Link href={`/${categoryTitle}/${postTitle}`}>
 			{postTitle}
-			</Link>
 		</PostLists>
 	)
 }

@@ -27,7 +27,7 @@ const H1 = styled.h1`
 	}
 `;
 
-export default function CreatePost(): React.ReactElement {
+export default function CreatePost () {
 
 	return(
 		<CreatePosts>

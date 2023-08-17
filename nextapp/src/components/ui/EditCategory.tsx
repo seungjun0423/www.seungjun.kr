@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { authState, editState } from "data/store";
+import { authState, editState } from "model/store";
 
 
 const EditCategries = styled.div`

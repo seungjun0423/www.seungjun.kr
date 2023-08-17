@@ -1,5 +1,5 @@
 
-export default function Home(): React.ReactElement {
+export default function Home() {
   return (
     <section>
 			home

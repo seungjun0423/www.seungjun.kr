@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { authState, editState } from "data/store";
+import { authState, editState } from "model/store";
 
 import PostList from "../Post/PostList";
 
@@ -90,14 +90,12 @@ export default function CategoryTitle({ title, posts }: {title: string, posts: s
 
 	return (
 		<Lists>
-			<Link href={`/${title}`}>
-				<Categories type="button" onClick={ () => spreadHandler(title)} value={title} />
-				{	
-					categories.filter(el=> el.spread)[0]?.title === title ?
-						posts.map((el, index)=>{ return <PostList key={index} categoryTitle={title} postTitle={el} /> })
-						: <></>
-				}
-			</Link>
+			<Categories type="button" onClick={ () => spreadHandler(title)} value={title} />
+			{	
+				categories.filter(el=> el.spread)[0]?.title === title ?
+					posts.map((el, index)=>{ return <PostList key={index} postTitle={el} /> })
+					: <></>
+			}
 		</Lists>
 	)
 }

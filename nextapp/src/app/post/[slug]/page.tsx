@@ -1,9 +1,8 @@
-import React, {ReactNode} from "react";
-import CreatePost from "components/services/Post/CreatePost";
-import ReadPost from "components/services/Post/ReadPost";
-import UpdatePost from "components/services/Post/UpdatePost";
-import DeletePost from "components/services/Post/DeletePost";
-import Postviewer from "components/lib/PostViewer";
+import React from "react";
+import CreatePost from "components/modules/Post/CreatePost";
+import ReadPost from "components/modules/Post/ReadPost";
+import UpdatePost from "components/modules/Post/UpdatePost";
+import DeletePost from "components/modules/Post/DeletePost";
 
 type Post = {
 	params: {
@@ -11,7 +10,7 @@ type Post = {
 	};
 };
 
-export default function Post( { params: { slug } }: Post ): React.ReactElement {
+export default function Post ({ params: { slug } }: Post ) {
 	if (slug === 'create') {
 		return <CreatePost></CreatePost>;
 	} else if ( slug === 'read'){

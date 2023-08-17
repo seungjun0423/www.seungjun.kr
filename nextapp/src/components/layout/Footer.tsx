@@ -29,7 +29,7 @@ const CopyRight = styled.p`
 `;
 
 /** width 값이 576px 미만인 디바이스에선 가려진다 */
-export default function Footer(): React.ReactElement {
+export default function Footer () {
 	return (
 		<Footers>
 			<CopyRight>

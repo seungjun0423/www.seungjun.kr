@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import { authState } from "data/store";
+import { authState } from "model/store";
 
 const Auths = styled.div`
 	display: flex;
