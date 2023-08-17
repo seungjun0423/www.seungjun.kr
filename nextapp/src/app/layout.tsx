@@ -10,8 +10,6 @@ import { Open_Sans } from 'next/font/google';
 import GoogleAnalytics from "../util/GoogleAnalytics";
 import Main  from 'components/layout/Main';
 
-import Providers from "./_providers/Provider";
-
 /** font */
 const sans = Open_Sans({ subsets: ['latin']});
 
@@ -46,7 +44,6 @@ export default function RootLayout ({ children }: { children: React.ReactNode })
 			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
 			<StyledComponentsRegistry>
 				<body >
-					{/* <Main Children={children} /> */}
 					<Main>
 						{children}
 					</Main>
