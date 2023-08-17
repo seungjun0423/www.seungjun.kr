@@ -2,6 +2,8 @@ import React from "react";
 import { Metadata } from 'next';
 import '../styles/globals.css';
 
+
+
 /** styled-components 적용을 위함 */
 import StyledComponentsRegistry from '../styles/registry';
 
