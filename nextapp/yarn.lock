@@ -3047,6 +3047,50 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@web3modal/core@npm:2.7.1":
+  version: 2.7.1
+  resolution: "@web3modal/core@npm:2.7.1"
+  dependencies:
+    valtio: 1.11.0
+  checksum: 5f41bf44047e48a717b04167b482dc12d48ac5c4af5acc183c1dbfb400d945eb6139e894ecfd9875541c587d3323e219026328d260d01d50c3116f9ff373ec85
+  languageName: node
+  linkType: hard
+
+"@web3modal/ethereum@npm:^2.7.1":
+  version: 2.7.1
+  resolution: "@web3modal/ethereum@npm:2.7.1"
+  peerDependencies:
+    "@wagmi/core": ">=1"
+    viem: ">=1"
+  checksum: 272aca6b3d4647183b3bcd2ab126101b7b42bc70d13ebb744d8386ddb00105bdc6f31ca0feb2e339179fc66b95865836d24f31c3d3f5c0e0c0a636c66329f6d8
+  languageName: node
+  linkType: hard
+
+"@web3modal/react@npm:^2.7.1":
+  version: 2.7.1
+  resolution: "@web3modal/react@npm:2.7.1"
+  dependencies:
+    "@web3modal/core": 2.7.1
+    "@web3modal/ui": 2.7.1
+  peerDependencies:
+    react: ">=17"
+    react-dom: ">=17"
+  checksum: 14793cf61ccea770b0b07a999d4f667f712fd24748eed0a664c5a43df493b87b6fc7f3001daa580cecd1c00ef85102257548209bffdf270ffba1fc8c21ce064f
+  languageName: node
+  linkType: hard
+
+"@web3modal/ui@npm:2.7.1":
+  version: 2.7.1
+  resolution: "@web3modal/ui@npm:2.7.1"
+  dependencies:
+    "@web3modal/core": 2.7.1
+    lit: 2.7.6
+    motion: 10.16.2
+    qrcode: 1.5.3
+  checksum: 1bb8fa415f7b22a4e9da75d55bab80e7a36429ed2f686f4c4ee55379cd41205a17913dc30a82e374d74238111cd37ed5e737d00b6b62f6aff5fffefc2336a9fc
+  languageName: node
+  linkType: hard
+
 "JSONStream@npm:^1.3.5":
   version: 1.3.5
   resolution: "JSONStream@npm:1.3.5"
@@ -6071,6 +6115,8 @@ next@latest:
     "@types/react": ^18.2.20
     "@types/react-dom": ^18.2.7
     "@types/styled-components": ^5.1.26
+    "@web3modal/ethereum": ^2.7.1
+    "@web3modal/react": ^2.7.1
     axios: ^1.4.0
     client-only: ^0.0.1
     eslint: 8.41.0

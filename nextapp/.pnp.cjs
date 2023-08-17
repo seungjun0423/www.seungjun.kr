@@ -37,6 +37,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.2.20"],\
             ["@types/react-dom", "npm:18.2.7"],\
             ["@types/styled-components", "npm:5.1.26"],\
+            ["@web3modal/ethereum", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1"],\
+            ["@web3modal/react", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1"],\
             ["axios", "npm:1.4.0"],\
             ["client-only", "npm:0.0.1"],\
             ["eslint", "npm:8.41.0"],\
@@ -4394,7 +4396,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@walletconnect-modal-core-npm-2.6.1-cfe206b226-3c1dcb865c.zip/node_modules/@walletconnect/modal-core/",\
           "packageDependencies": [\
             ["@walletconnect/modal-core", "npm:2.6.1"],\
-            ["valtio", "virtual:cfe206b2266f6b2aca1423b037e8e6ace5cf5964029c65ae80a3e953e877340c5b8ad02eac9578c1345fdd58deddf66cafcdc21c9631453da4040bb1fe0abfa7#npm:1.11.0"]\
+            ["valtio", "virtual:3ca2a6cb87a46f440d9e2987a2b4fbe0dbac4bb53b5f108658f264fd052fee5dc3dcc78060e0d037d6eac022e8e483d601a2ea90b8f9cd623a5255d3ebb6e227#npm:1.11.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4562,6 +4564,83 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@walletconnect/window-metadata", "npm:1.0.1"],\
             ["@walletconnect/window-getters", "npm:1.0.1"],\
             ["tslib", "npm:1.14.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@web3modal/core", [\
+        ["npm:2.7.1", {\
+          "packageLocation": "./.yarn/cache/@web3modal-core-npm-2.7.1-3ca2a6cb87-5f41bf4404.zip/node_modules/@web3modal/core/",\
+          "packageDependencies": [\
+            ["@web3modal/core", "npm:2.7.1"],\
+            ["valtio", "virtual:3ca2a6cb87a46f440d9e2987a2b4fbe0dbac4bb53b5f108658f264fd052fee5dc3dcc78060e0d037d6eac022e8e483d601a2ea90b8f9cd623a5255d3ebb6e227#npm:1.11.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@web3modal/ethereum", [\
+        ["npm:2.7.1", {\
+          "packageLocation": "./.yarn/cache/@web3modal-ethereum-npm-2.7.1-2e7e4e710e-272aca6b3d.zip/node_modules/@web3modal/ethereum/",\
+          "packageDependencies": [\
+            ["@web3modal/ethereum", "npm:2.7.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1", {\
+          "packageLocation": "./.yarn/__virtual__/@web3modal-ethereum-virtual-9ea049220a/0/cache/@web3modal-ethereum-npm-2.7.1-2e7e4e710e-272aca6b3d.zip/node_modules/@web3modal/ethereum/",\
+          "packageDependencies": [\
+            ["@web3modal/ethereum", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1"],\
+            ["@types/viem", null],\
+            ["@types/wagmi__core", null],\
+            ["@wagmi/core", null],\
+            ["viem", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:1.6.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/viem",\
+            "@types/wagmi__core",\
+            "@wagmi/core",\
+            "viem"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@web3modal/react", [\
+        ["npm:2.7.1", {\
+          "packageLocation": "./.yarn/cache/@web3modal-react-npm-2.7.1-6ac232b09b-14793cf61c.zip/node_modules/@web3modal/react/",\
+          "packageDependencies": [\
+            ["@web3modal/react", "npm:2.7.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1", {\
+          "packageLocation": "./.yarn/__virtual__/@web3modal-react-virtual-5a35522232/0/cache/@web3modal-react-npm-2.7.1-6ac232b09b-14793cf61c.zip/node_modules/@web3modal/react/",\
+          "packageDependencies": [\
+            ["@web3modal/react", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1"],\
+            ["@types/react", "npm:18.2.20"],\
+            ["@types/react-dom", "npm:18.2.7"],\
+            ["@web3modal/core", "npm:2.7.1"],\
+            ["@web3modal/ui", "npm:2.7.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@web3modal/ui", [\
+        ["npm:2.7.1", {\
+          "packageLocation": "./.yarn/cache/@web3modal-ui-npm-2.7.1-47f7c55ec9-1bb8fa415f.zip/node_modules/@web3modal/ui/",\
+          "packageDependencies": [\
+            ["@web3modal/ui", "npm:2.7.1"],\
+            ["@web3modal/core", "npm:2.7.1"],\
+            ["lit", "npm:2.7.6"],\
+            ["motion", "npm:10.16.2"],\
+            ["qrcode", "npm:1.5.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8195,6 +8274,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.2.20"],\
             ["@types/react-dom", "npm:18.2.7"],\
             ["@types/styled-components", "npm:5.1.26"],\
+            ["@web3modal/ethereum", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1"],\
+            ["@web3modal/react", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.7.1"],\
             ["axios", "npm:1.4.0"],\
             ["client-only", "npm:0.0.1"],\
             ["eslint", "npm:8.41.0"],\
@@ -10172,12 +10253,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:58e25312dd9414106c7972e5ab54e4c4efd698b73e4769871d22b86f5dfe96ef47ccc71c8810965c10d7d0f85ad7853413eba5087a14d872d0c5ffe7427f5958#npm:1.2.0", {\
-          "packageLocation": "./.yarn/__virtual__/use-sync-external-store-virtual-a694fa9535/0/cache/use-sync-external-store-npm-1.2.0-44f75d2564-5c639e0f8d.zip/node_modules/use-sync-external-store/",\
+        ["virtual:155f708c0100b51af2e6d1350d01b2ef54fe9c244fbb74172157f05e256fa95447a1406e4bc504eac08370a30558a8915dbf017f11f49397505d8efff0d0669c#npm:1.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/use-sync-external-store-virtual-d583e7cfa8/0/cache/use-sync-external-store-npm-1.2.0-44f75d2564-5c639e0f8d.zip/node_modules/use-sync-external-store/",\
           "packageDependencies": [\
-            ["use-sync-external-store", "virtual:58e25312dd9414106c7972e5ab54e4c4efd698b73e4769871d22b86f5dfe96ef47ccc71c8810965c10d7d0f85ad7853413eba5087a14d872d0c5ffe7427f5958#npm:1.2.0"],\
-            ["@types/react", "npm:18.2.20"],\
-            ["react", "npm:18.2.0"]\
+            ["use-sync-external-store", "virtual:155f708c0100b51af2e6d1350d01b2ef54fe9c244fbb74172157f05e256fa95447a1406e4bc504eac08370a30558a8915dbf017f11f49397505d8efff0d0669c#npm:1.2.0"],\
+            ["@types/react", null],\
+            ["react", null]\
           ],\
           "packagePeers": [\
             "@types/react",\
@@ -10185,12 +10266,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:a1368b841fe957d09fe13c5248366cdbc0bf2c0a4f31eae89e041b2d9bfc1420f586a7eec0b0f23cb3cb9d9beb5ceffd46a61b6d54ff905a43580004c003a4f8#npm:1.2.0", {\
-          "packageLocation": "./.yarn/__virtual__/use-sync-external-store-virtual-a09b9de162/0/cache/use-sync-external-store-npm-1.2.0-44f75d2564-5c639e0f8d.zip/node_modules/use-sync-external-store/",\
+        ["virtual:58e25312dd9414106c7972e5ab54e4c4efd698b73e4769871d22b86f5dfe96ef47ccc71c8810965c10d7d0f85ad7853413eba5087a14d872d0c5ffe7427f5958#npm:1.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/use-sync-external-store-virtual-a694fa9535/0/cache/use-sync-external-store-npm-1.2.0-44f75d2564-5c639e0f8d.zip/node_modules/use-sync-external-store/",\
           "packageDependencies": [\
-            ["use-sync-external-store", "virtual:a1368b841fe957d09fe13c5248366cdbc0bf2c0a4f31eae89e041b2d9bfc1420f586a7eec0b0f23cb3cb9d9beb5ceffd46a61b6d54ff905a43580004c003a4f8#npm:1.2.0"],\
-            ["@types/react", null],\
-            ["react", null]\
+            ["use-sync-external-store", "virtual:58e25312dd9414106c7972e5ab54e4c4efd698b73e4769871d22b86f5dfe96ef47ccc71c8810965c10d7d0f85ad7853413eba5087a14d872d0c5ffe7427f5958#npm:1.2.0"],\
+            ["@types/react", "npm:18.2.20"],\
+            ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
             "@types/react",\
@@ -10250,14 +10331,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:cfe206b2266f6b2aca1423b037e8e6ace5cf5964029c65ae80a3e953e877340c5b8ad02eac9578c1345fdd58deddf66cafcdc21c9631453da4040bb1fe0abfa7#npm:1.11.0", {\
-          "packageLocation": "./.yarn/__virtual__/valtio-virtual-a1368b841f/0/cache/valtio-npm-1.11.0-145903dd1e-77e42f5841.zip/node_modules/valtio/",\
+        ["virtual:3ca2a6cb87a46f440d9e2987a2b4fbe0dbac4bb53b5f108658f264fd052fee5dc3dcc78060e0d037d6eac022e8e483d601a2ea90b8f9cd623a5255d3ebb6e227#npm:1.11.0", {\
+          "packageLocation": "./.yarn/__virtual__/valtio-virtual-155f708c01/0/cache/valtio-npm-1.11.0-145903dd1e-77e42f5841.zip/node_modules/valtio/",\
           "packageDependencies": [\
-            ["valtio", "virtual:cfe206b2266f6b2aca1423b037e8e6ace5cf5964029c65ae80a3e953e877340c5b8ad02eac9578c1345fdd58deddf66cafcdc21c9631453da4040bb1fe0abfa7#npm:1.11.0"],\
+            ["valtio", "virtual:3ca2a6cb87a46f440d9e2987a2b4fbe0dbac4bb53b5f108658f264fd052fee5dc3dcc78060e0d037d6eac022e8e483d601a2ea90b8f9cd623a5255d3ebb6e227#npm:1.11.0"],\
             ["@types/react", null],\
             ["proxy-compare", "npm:2.5.1"],\
             ["react", null],\
-            ["use-sync-external-store", "virtual:a1368b841fe957d09fe13c5248366cdbc0bf2c0a4f31eae89e041b2d9bfc1420f586a7eec0b0f23cb3cb9d9beb5ceffd46a61b6d54ff905a43580004c003a4f8#npm:1.2.0"]\
+            ["use-sync-external-store", "virtual:155f708c0100b51af2e6d1350d01b2ef54fe9c244fbb74172157f05e256fa95447a1406e4bc504eac08370a30558a8915dbf017f11f49397505d8efff0d0669c#npm:1.2.0"]\
           ],\
           "packagePeers": [\
             "@types/react",\
@@ -10686,7 +10767,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", null],\
             ["immer", null],\
             ["react", null],\
-            ["use-sync-external-store", "virtual:a1368b841fe957d09fe13c5248366cdbc0bf2c0a4f31eae89e041b2d9bfc1420f586a7eec0b0f23cb3cb9d9beb5ceffd46a61b6d54ff905a43580004c003a4f8#npm:1.2.0"]\
+            ["use-sync-external-store", "virtual:155f708c0100b51af2e6d1350d01b2ef54fe9c244fbb74172157f05e256fa95447a1406e4bc504eac08370a30558a8915dbf017f11f49397505d8efff0d0669c#npm:1.2.0"]\
           ],\
           "packagePeers": [\
             "@types/immer",\
