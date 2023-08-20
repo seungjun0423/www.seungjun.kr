@@ -11,7 +11,7 @@ type Post = {
 };
 
 export default function Post ({ params: { slug } }: Post ) {
-	if (slug === 'create') {
+	if (slug === 'createPost') {
 		return <CreatePost></CreatePost>;
 	} else if ( slug === 'read'){
 		return <ReadPost></ReadPost>;

@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+// import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Header from './Header';
 import Sidebar from "./Sidebar";
@@ -11,7 +11,7 @@ import Footer from './Footer';
 
 
 // Create a client
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 const Mains = styled.main`
 	width: 100%;
@@ -22,17 +22,14 @@ const Mains = styled.main`
 export default function Main ({ children }: { children: React.ReactNode }): React.ReactElement {
 	return (
 		<>
-		<QueryClientProvider client={queryClient}>
 			<Header/>
 			<Mains>
 				<Sidebar />
-				{/* <Content Children={Children}/> */}
 				<Content>
 					{children}
 				</Content>
 			</Mains>
 			<Footer/>
-    </QueryClientProvider>
 		</>
 	);
 };

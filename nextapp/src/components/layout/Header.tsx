@@ -90,7 +90,7 @@ export default function Header () {
 					<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 						admin
 					</Link>:
-					<Link href={'/post/create'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
+					<Link href={'/createPost'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
 						posting
 					</Link>
 				}

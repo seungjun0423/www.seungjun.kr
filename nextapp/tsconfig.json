@@ -35,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/model/Providers.tsx"  ],
   "exclude": [
     "node_modules"
   ],

@@ -2,9 +2,6 @@ import React from "react";
 import { Metadata } from 'next';
 import '../styles/globals.css';
 
-
-
-/** styled-components 적용을 위함 */
 import StyledComponentsRegistry from '../styles/registry';
 
 import { Open_Sans } from 'next/font/google';
@@ -14,6 +11,10 @@ import Main  from 'components/layout/Main';
 
 /** font */
 const sans = Open_Sans({ subsets: ['latin']});
+
+export type Props = {
+	children: string;
+}
 
 export const metadata: Metadata = {
   title: {
@@ -40,9 +41,10 @@ export const metadata: Metadata = {
 	// },
 }
 
-export default function RootLayout ({ children }: { children: React.ReactNode }) {
+export default function RootLayout ({ children }: Props) {
+
   return (
-    <html lang="ko">
+		<html lang="ko">
 			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
 			<StyledComponentsRegistry>
 				<body >

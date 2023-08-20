@@ -4,6 +4,8 @@ import React from "react";
 import styled from "styled-components";
 import { authState } from "model/store";
 import { MetaMaskSDK } from '@metamask/sdk';
+
+/** 메세지를 16진수 암호화 하는 라이브러리 */
 import hexerTs from "util/browser-string-hexer";
 
 
@@ -18,42 +20,21 @@ const Auths = styled.div`
 export default function Auth () {
 	const { isAdmin, setIsAdmin } = authState();
 
-	/**
-	const onClickLogIn = async () => {
-    try {
-      const accounts = await ethereum?.request({
-        method: "eth_requestAccounts",
-      });
+	// console.log("되나?",hexerTs(`메시지`));
 
-      setAccount(accounts[0]);
-
-      // 네트워크 스위칭 제안 기능
-      if (parseInt(ethereum?.networkVersion) !== MUMBAI_CHAIN_ID) {
-        await ethereum?.request({
-          method: "wallet_addEthereumChain",
-          params: [
-            {
-              chainName: "Mumbai",
-              chainId: web3.utils.numberToHex(MUMBAI_CHAIN_ID),
-              nativeCurrency: { name: "MATIC", decimals: 18, symbol: "MATIC" },
-              rpcUrls: ["https://rpc-mumbai.maticvigil.com"],
-            },
-          ],
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-	 */
-
-	console.log("이더리움 연결 체크",ethereum.isConnected());
 	const maskHandler = async () => {
-		const test = await ethereum.request({  "method": "personal_sign",
-		"params": [
-			null,
-			null
-		]});
+		/** 메타마스크 사인 */
+		// const test = await ethereum.request({  method: "personal_sign",
+		// 	params: [
+		// 	'0xeba994ec8b9ceca780',
+		// 	'0xb135b3e1433d77aac92977f30a4e6db43dc89c66'
+		// ]});
+
+		/** 지갑 연결 확인 */
+		// const test = await ethereum.isConnected();
+		/** 지갑 주소 가져오기 */
+		const test = await ethereum.request({  method: "eth_requestAccounts",});
+		// const test = await ethereum.request({ method: 'wallet_getSnaps' });
 		console.log(test);
 		return test
 		try{
@@ -62,6 +43,9 @@ export default function Auth () {
 
 		}
 	}
+	/**
+	private-key: 13d745c6ff62d0b5ca142e3065310d63c26e68a2d2dd55bde1e1be57997768ea
+	 */
 
 	return(
 		<Auths>
