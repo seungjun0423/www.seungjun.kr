@@ -7,15 +7,15 @@ import StyledComponentsRegistry from '../styles/registry';
 import { Open_Sans } from 'next/font/google';
 
 import GoogleAnalytics from "../util/GoogleAnalytics";
-import Main  from 'components/layout/Main';
-import Header from "components/layout/Header";
-import Footer from "components/layout/Footer";
+import Main  from 'components/layouts/Main';
+import Header from "components/layouts/Header";
+import Footer from "components/layouts/Footer";
 
 /** font */
 const sans = Open_Sans({ subsets: ['latin']});
 
 export type Props = {
-	children: string;
+	children: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -44,7 +44,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout ({ children }: Props) {
-
   return (
 		<html lang="ko">
 			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />

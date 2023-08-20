@@ -20,10 +20,4 @@ export default function Post ({ params: { slug } }: Post ) {
 	} else if ( slug === 'delete') {
 		return <DeletePost></DeletePost>;
 	}
-
-  return (
-    <div>
-			Post page {slug}
-    </div>
-  )
 }

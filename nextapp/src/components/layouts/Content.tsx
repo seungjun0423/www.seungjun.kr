@@ -2,6 +2,8 @@
 
 import React from "react";
 import styled from "styled-components";
+import { Props } from "app/layout";
+
 
 const Contents = styled.section`
 	width: 100%;
@@ -10,7 +12,7 @@ const Contents = styled.section`
 	overflow-y: auto;
 `;
 
-export default function Content({ children }: { children: React.ReactNode } ): React.ReactElement {
+export default function Content ({ children }: Props) {
 
 	return (
 		<Contents>

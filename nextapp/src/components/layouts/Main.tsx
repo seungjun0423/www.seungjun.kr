@@ -3,7 +3,8 @@
 import React from "react";
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
-import Content from "components/layout/Content";
+import Content from "components/layouts/Content";
+import { Props } from "app/layout";
 
 const Mains = styled.main`
 	width: 100%;
@@ -11,7 +12,7 @@ const Mains = styled.main`
 	display: flex;
 `;
 
-export default function Main ({ children }: { children: React.ReactNode }): React.ReactElement {
+export default function Main ({ children }: Props) {
 	return (
 		<Mains>
 			<Sidebar />

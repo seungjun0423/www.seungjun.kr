@@ -5,10 +5,7 @@ import styled from "styled-components";
 import dynamic from 'next/dynamic';
 
 /** 마크다운 에디터 사용을 위해 ssr 끄기. */
-const DynamicComponent: React.ComponentType<{
-	children: React.ReactNode;
-}> = dynamic(() => import('../../lib/PostEditor'), { ssr: false }
-);
+const DynamicComponent: React.ComponentType<{children: React.ReactNode;}> = dynamic(() => import('../../lib/PostEditor'), { ssr: false });
 
 const CreatePosts = styled.section`
 	width: 100%;
