@@ -10,7 +10,22 @@ export class PostController {
   ) {}
 
   @Post('/createPost')
-  async createPost(@Body() data: any): Promise<any> {
+  async createPost(
+    @Body()
+    data: {
+      title: string;
+      contents: string;
+      categoryId: number;
+    },
+  ): Promise<{
+    id: number;
+    title: string;
+    contents: string;
+    img: string;
+    categoryId: number;
+    createdAt: Date;
+    updatedAt: Date;
+  }> {
     return await this.postService.createPost(data);
   }
 }
