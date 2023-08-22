@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { PostService } from './post.service';
+import { Controller, Post, Body } from '@nestjs/common';
 
 @Controller('post')
-export class PostController {}
+export class PostController {
+  constructor(private postService: PostService) {}
+
+  @Post('/createPost')
+  async createPost(@Body() data: any): Promise<any> {
+    return await this.postService.createPost(data);
+  }
+}

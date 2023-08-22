@@ -12,25 +12,25 @@ import $Extensions = runtime.Types.Extensions
 export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
-export type AdminPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  name: "Admin"
+export type AuthPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  name: "Auth"
   objects: {}
   scalars: $Extensions.GetResult<{
     id: number
     password: string
-  }, ExtArgs["result"]["admin"]>
+  }, ExtArgs["result"]["auth"]>
   composites: {}
 }
 
 /**
- * Model Admin
+ * Model Auth
  * 
  */
-export type Admin = runtime.Types.DefaultSelection<AdminPayload>
+export type Auth = runtime.Types.DefaultSelection<AuthPayload>
 export type CategoryPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   name: "Category"
   objects: {
-    subcategoryies: SubCategoryPayload<ExtArgs>[]
+    posts: PostPayload<ExtArgs>[]
   }
   scalars: $Extensions.GetResult<{
     id: number
@@ -46,39 +46,17 @@ export type CategoryPayload<ExtArgs extends $Extensions.Args = $Extensions.Defau
  * 
  */
 export type Category = runtime.Types.DefaultSelection<CategoryPayload>
-export type SubCategoryPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  name: "SubCategory"
+export type PostPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  name: "Post"
   objects: {
-    post: PostPayload<ExtArgs>[]
     category: CategoryPayload<ExtArgs>
   }
   scalars: $Extensions.GetResult<{
     id: number
     title: string
-    categoryId: number
-    createdAt: Date
-    updatedAt: Date
-  }, ExtArgs["result"]["subCategory"]>
-  composites: {}
-}
-
-/**
- * Model SubCategory
- * 
- */
-export type SubCategory = runtime.Types.DefaultSelection<SubCategoryPayload>
-export type PostPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-  name: "Post"
-  objects: {
-    subcategory: SubCategoryPayload<ExtArgs>
-  }
-  scalars: $Extensions.GetResult<{
-    id: number
-    title: string
     contents: string
-    img: string
+    img: string | null
     categoryId: number
-    subcategoryId: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["post"]>
@@ -98,8 +76,8 @@ export type Post = runtime.Types.DefaultSelection<PostPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Admins
- * const admins = await prisma.admin.findMany()
+ * // Fetch zero or more Auths
+ * const auths = await prisma.auth.findMany()
  * ```
  *
  * 
@@ -119,8 +97,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Admins
-   * const admins = await prisma.admin.findMany()
+   * // Fetch zero or more Auths
+   * const auths = await prisma.auth.findMany()
    * ```
    *
    * 
@@ -214,14 +192,14 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
-   * `prisma.admin`: Exposes CRUD operations for the **Admin** model.
+   * `prisma.auth`: Exposes CRUD operations for the **Auth** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Admins
-    * const admins = await prisma.admin.findMany()
+    * // Fetch zero or more Auths
+    * const auths = await prisma.auth.findMany()
     * ```
     */
-  get admin(): Prisma.AdminDelegate<ExtArgs>;
+  get auth(): Prisma.AuthDelegate<ExtArgs>;
 
   /**
    * `prisma.category`: Exposes CRUD operations for the **Category** model.
@@ -232,16 +210,6 @@ export class PrismaClient<
     * ```
     */
   get category(): Prisma.CategoryDelegate<ExtArgs>;
-
-  /**
-   * `prisma.subCategory`: Exposes CRUD operations for the **SubCategory** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more SubCategories
-    * const subCategories = await prisma.subCategory.findMany()
-    * ```
-    */
-  get subCategory(): Prisma.SubCategoryDelegate<ExtArgs>;
 
   /**
    * `prisma.post`: Exposes CRUD operations for the **Post** model.
@@ -735,9 +703,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Admin: 'Admin',
+    Auth: 'Auth',
     Category: 'Category',
-    SubCategory: 'SubCategory',
     Post: 'Post'
   };
 
@@ -755,73 +722,73 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'admin' | 'category' | 'subCategory' | 'post'
+      modelProps: 'auth' | 'category' | 'post'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
-      Admin: {
-        payload: AdminPayload<ExtArgs>
-        fields: Prisma.AdminFieldRefs
+      Auth: {
+        payload: AuthPayload<ExtArgs>
+        fields: Prisma.AuthFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AdminFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload> | null
+            args: Prisma.AuthFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AdminFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload>
+            args: Prisma.AuthFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload>
           }
           findFirst: {
-            args: Prisma.AdminFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload> | null
+            args: Prisma.AuthFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AdminFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload>
+            args: Prisma.AuthFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload>
           }
           findMany: {
-            args: Prisma.AdminFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload>[]
+            args: Prisma.AuthFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload>[]
           }
           create: {
-            args: Prisma.AdminCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload>
+            args: Prisma.AuthCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload>
           }
           createMany: {
-            args: Prisma.AdminCreateManyArgs<ExtArgs>,
+            args: Prisma.AuthCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.AdminDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload>
+            args: Prisma.AuthDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload>
           }
           update: {
-            args: Prisma.AdminUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload>
+            args: Prisma.AuthUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload>
           }
           deleteMany: {
-            args: Prisma.AdminDeleteManyArgs<ExtArgs>,
+            args: Prisma.AuthDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.AdminUpdateManyArgs<ExtArgs>,
+            args: Prisma.AuthUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.AdminUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<AdminPayload>
+            args: Prisma.AuthUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<AuthPayload>
           }
           aggregate: {
-            args: Prisma.AdminAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateAdmin>
+            args: Prisma.AuthAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAuth>
           }
           groupBy: {
-            args: Prisma.AdminGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<AdminGroupByOutputType>[]
+            args: Prisma.AuthGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<AuthGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AdminCountArgs<ExtArgs>,
-            result: $Utils.Optional<AdminCountAggregateOutputType> | number
+            args: Prisma.AuthCountArgs<ExtArgs>,
+            result: $Utils.Optional<AuthCountAggregateOutputType> | number
           }
         }
       }
@@ -888,72 +855,6 @@ export namespace Prisma {
           count: {
             args: Prisma.CategoryCountArgs<ExtArgs>,
             result: $Utils.Optional<CategoryCountAggregateOutputType> | number
-          }
-        }
-      }
-      SubCategory: {
-        payload: SubCategoryPayload<ExtArgs>
-        fields: Prisma.SubCategoryFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.SubCategoryFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.SubCategoryFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload>
-          }
-          findFirst: {
-            args: Prisma.SubCategoryFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.SubCategoryFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload>
-          }
-          findMany: {
-            args: Prisma.SubCategoryFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload>[]
-          }
-          create: {
-            args: Prisma.SubCategoryCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload>
-          }
-          createMany: {
-            args: Prisma.SubCategoryCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.SubCategoryDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload>
-          }
-          update: {
-            args: Prisma.SubCategoryUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload>
-          }
-          deleteMany: {
-            args: Prisma.SubCategoryDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.SubCategoryUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.SubCategoryUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<SubCategoryPayload>
-          }
-          aggregate: {
-            args: Prisma.SubCategoryAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateSubCategory>
-          }
-          groupBy: {
-            args: Prisma.SubCategoryGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<SubCategoryGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.SubCategoryCountArgs<ExtArgs>,
-            result: $Utils.Optional<SubCategoryCountAggregateOutputType> | number
           }
         }
       }
@@ -1169,11 +1070,11 @@ export namespace Prisma {
 
 
   export type CategoryCountOutputType = {
-    subcategoryies: number
+    posts: number
   }
 
   export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    subcategoryies?: boolean | CategoryCountOutputTypeCountSubcategoryiesArgs
+    posts?: boolean | CategoryCountOutputTypeCountPostsArgs
   }
 
   // Custom InputTypes
@@ -1192,42 +1093,7 @@ export namespace Prisma {
   /**
    * CategoryCountOutputType without action
    */
-  export type CategoryCountOutputTypeCountSubcategoryiesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: SubCategoryWhereInput
-  }
-
-
-
-  /**
-   * Count Type SubCategoryCountOutputType
-   */
-
-
-  export type SubCategoryCountOutputType = {
-    post: number
-  }
-
-  export type SubCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    post?: boolean | SubCategoryCountOutputTypeCountPostArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * SubCategoryCountOutputType without action
-   */
-  export type SubCategoryCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategoryCountOutputType
-     */
-    select?: SubCategoryCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * SubCategoryCountOutputType without action
-   */
-  export type SubCategoryCountOutputTypeCountPostArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CategoryCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: PostWhereInput
   }
 
@@ -1238,338 +1104,338 @@ export namespace Prisma {
    */
 
   /**
-   * Model Admin
+   * Model Auth
    */
 
 
-  export type AggregateAdmin = {
-    _count: AdminCountAggregateOutputType | null
-    _avg: AdminAvgAggregateOutputType | null
-    _sum: AdminSumAggregateOutputType | null
-    _min: AdminMinAggregateOutputType | null
-    _max: AdminMaxAggregateOutputType | null
+  export type AggregateAuth = {
+    _count: AuthCountAggregateOutputType | null
+    _avg: AuthAvgAggregateOutputType | null
+    _sum: AuthSumAggregateOutputType | null
+    _min: AuthMinAggregateOutputType | null
+    _max: AuthMaxAggregateOutputType | null
   }
 
-  export type AdminAvgAggregateOutputType = {
+  export type AuthAvgAggregateOutputType = {
     id: number | null
   }
 
-  export type AdminSumAggregateOutputType = {
+  export type AuthSumAggregateOutputType = {
     id: number | null
   }
 
-  export type AdminMinAggregateOutputType = {
-    id: number | null
-    password: string | null
-  }
-
-  export type AdminMaxAggregateOutputType = {
+  export type AuthMinAggregateOutputType = {
     id: number | null
     password: string | null
   }
 
-  export type AdminCountAggregateOutputType = {
+  export type AuthMaxAggregateOutputType = {
+    id: number | null
+    password: string | null
+  }
+
+  export type AuthCountAggregateOutputType = {
     id: number
     password: number
     _all: number
   }
 
 
-  export type AdminAvgAggregateInputType = {
+  export type AuthAvgAggregateInputType = {
     id?: true
   }
 
-  export type AdminSumAggregateInputType = {
+  export type AuthSumAggregateInputType = {
     id?: true
   }
 
-  export type AdminMinAggregateInputType = {
-    id?: true
-    password?: true
-  }
-
-  export type AdminMaxAggregateInputType = {
+  export type AuthMinAggregateInputType = {
     id?: true
     password?: true
   }
 
-  export type AdminCountAggregateInputType = {
+  export type AuthMaxAggregateInputType = {
+    id?: true
+    password?: true
+  }
+
+  export type AuthCountAggregateInputType = {
     id?: true
     password?: true
     _all?: true
   }
 
-  export type AdminAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Admin to aggregate.
+     * Filter which Auth to aggregate.
      */
-    where?: AdminWhereInput
+    where?: AuthWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Admins to fetch.
+     * Determine the order of Auths to fetch.
      */
-    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    orderBy?: AuthOrderByWithRelationInput | AuthOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AdminWhereUniqueInput
+    cursor?: AuthWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Admins from the position of the cursor.
+     * Take `±n` Auths from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Admins.
+     * Skip the first `n` Auths.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Admins
+     * Count returned Auths
     **/
-    _count?: true | AdminCountAggregateInputType
+    _count?: true | AuthCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: AdminAvgAggregateInputType
+    _avg?: AuthAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: AdminSumAggregateInputType
+    _sum?: AuthSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AdminMinAggregateInputType
+    _min?: AuthMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AdminMaxAggregateInputType
+    _max?: AuthMaxAggregateInputType
   }
 
-  export type GetAdminAggregateType<T extends AdminAggregateArgs> = {
-        [P in keyof T & keyof AggregateAdmin]: P extends '_count' | 'count'
+  export type GetAuthAggregateType<T extends AuthAggregateArgs> = {
+        [P in keyof T & keyof AggregateAuth]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAdmin[P]>
-      : GetScalarType<T[P], AggregateAdmin[P]>
+        : GetScalarType<T[P], AggregateAuth[P]>
+      : GetScalarType<T[P], AggregateAuth[P]>
   }
 
 
 
 
-  export type AdminGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: AdminWhereInput
-    orderBy?: AdminOrderByWithAggregationInput | AdminOrderByWithAggregationInput[]
-    by: AdminScalarFieldEnum[] | AdminScalarFieldEnum
-    having?: AdminScalarWhereWithAggregatesInput
+  export type AuthGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: AuthWhereInput
+    orderBy?: AuthOrderByWithAggregationInput | AuthOrderByWithAggregationInput[]
+    by: AuthScalarFieldEnum[] | AuthScalarFieldEnum
+    having?: AuthScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AdminCountAggregateInputType | true
-    _avg?: AdminAvgAggregateInputType
-    _sum?: AdminSumAggregateInputType
-    _min?: AdminMinAggregateInputType
-    _max?: AdminMaxAggregateInputType
+    _count?: AuthCountAggregateInputType | true
+    _avg?: AuthAvgAggregateInputType
+    _sum?: AuthSumAggregateInputType
+    _min?: AuthMinAggregateInputType
+    _max?: AuthMaxAggregateInputType
   }
 
 
-  export type AdminGroupByOutputType = {
+  export type AuthGroupByOutputType = {
     id: number
     password: string
-    _count: AdminCountAggregateOutputType | null
-    _avg: AdminAvgAggregateOutputType | null
-    _sum: AdminSumAggregateOutputType | null
-    _min: AdminMinAggregateOutputType | null
-    _max: AdminMaxAggregateOutputType | null
+    _count: AuthCountAggregateOutputType | null
+    _avg: AuthAvgAggregateOutputType | null
+    _sum: AuthSumAggregateOutputType | null
+    _min: AuthMinAggregateOutputType | null
+    _max: AuthMaxAggregateOutputType | null
   }
 
-  type GetAdminGroupByPayload<T extends AdminGroupByArgs> = Prisma.PrismaPromise<
+  type GetAuthGroupByPayload<T extends AuthGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AdminGroupByOutputType, T['by']> &
+      PickEnumerable<AuthGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AdminGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AuthGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AdminGroupByOutputType[P]>
-            : GetScalarType<T[P], AdminGroupByOutputType[P]>
+              : GetScalarType<T[P], AuthGroupByOutputType[P]>
+            : GetScalarType<T[P], AuthGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AdminSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AuthSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     password?: boolean
-  }, ExtArgs["result"]["admin"]>
+  }, ExtArgs["result"]["auth"]>
 
-  export type AdminSelectScalar = {
+  export type AuthSelectScalar = {
     id?: boolean
     password?: boolean
   }
 
 
-  type AdminGetPayload<S extends boolean | null | undefined | AdminArgs> = $Types.GetResult<AdminPayload, S>
+  type AuthGetPayload<S extends boolean | null | undefined | AuthArgs> = $Types.GetResult<AuthPayload, S>
 
-  type AdminCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<AdminFindManyArgs, 'select' | 'include'> & {
-      select?: AdminCountAggregateInputType | true
+  type AuthCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<AuthFindManyArgs, 'select' | 'include'> & {
+      select?: AuthCountAggregateInputType | true
     }
 
-  export interface AdminDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Admin'], meta: { name: 'Admin' } }
+  export interface AuthDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Auth'], meta: { name: 'Auth' } }
     /**
-     * Find zero or one Admin that matches the filter.
-     * @param {AdminFindUniqueArgs} args - Arguments to find a Admin
+     * Find zero or one Auth that matches the filter.
+     * @param {AuthFindUniqueArgs} args - Arguments to find a Auth
      * @example
-     * // Get one Admin
-     * const admin = await prisma.admin.findUnique({
+     * // Get one Auth
+     * const auth = await prisma.auth.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends AdminFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, AdminFindUniqueArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends AuthFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, AuthFindUniqueArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Admin that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Auth that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {AdminFindUniqueOrThrowArgs} args - Arguments to find a Admin
+     * @param {AuthFindUniqueOrThrowArgs} args - Arguments to find a Auth
      * @example
-     * // Get one Admin
-     * const admin = await prisma.admin.findUniqueOrThrow({
+     * // Get one Auth
+     * const auth = await prisma.auth.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends AdminFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AdminFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends AuthFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuthFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Admin that matches the filter.
+     * Find the first Auth that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminFindFirstArgs} args - Arguments to find a Admin
+     * @param {AuthFindFirstArgs} args - Arguments to find a Auth
      * @example
-     * // Get one Admin
-     * const admin = await prisma.admin.findFirst({
+     * // Get one Auth
+     * const auth = await prisma.auth.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends AdminFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, AdminFindFirstArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends AuthFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuthFindFirstArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Admin that matches the filter or
+     * Find the first Auth that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminFindFirstOrThrowArgs} args - Arguments to find a Admin
+     * @param {AuthFindFirstOrThrowArgs} args - Arguments to find a Auth
      * @example
-     * // Get one Admin
-     * const admin = await prisma.admin.findFirstOrThrow({
+     * // Get one Auth
+     * const auth = await prisma.auth.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends AdminFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, AdminFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends AuthFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuthFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Admins that matches the filter.
+     * Find zero or more Auths that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {AuthFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Admins
-     * const admins = await prisma.admin.findMany()
+     * // Get all Auths
+     * const auths = await prisma.auth.findMany()
      * 
-     * // Get first 10 Admins
-     * const admins = await prisma.admin.findMany({ take: 10 })
+     * // Get first 10 Auths
+     * const auths = await prisma.auth.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const adminWithIdOnly = await prisma.admin.findMany({ select: { id: true } })
+     * const authWithIdOnly = await prisma.auth.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends AdminFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AdminFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<AdminPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends AuthFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuthFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<AuthPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Admin.
-     * @param {AdminCreateArgs} args - Arguments to create a Admin.
+     * Create a Auth.
+     * @param {AuthCreateArgs} args - Arguments to create a Auth.
      * @example
-     * // Create one Admin
-     * const Admin = await prisma.admin.create({
+     * // Create one Auth
+     * const Auth = await prisma.auth.create({
      *   data: {
-     *     // ... data to create a Admin
+     *     // ... data to create a Auth
      *   }
      * })
      * 
     **/
-    create<T extends AdminCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, AdminCreateArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends AuthCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, AuthCreateArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Admins.
-     *     @param {AdminCreateManyArgs} args - Arguments to create many Admins.
+     * Create many Auths.
+     *     @param {AuthCreateManyArgs} args - Arguments to create many Auths.
      *     @example
-     *     // Create many Admins
-     *     const admin = await prisma.admin.createMany({
+     *     // Create many Auths
+     *     const auth = await prisma.auth.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends AdminCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AdminCreateManyArgs<ExtArgs>>
+    createMany<T extends AuthCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuthCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Admin.
-     * @param {AdminDeleteArgs} args - Arguments to delete one Admin.
+     * Delete a Auth.
+     * @param {AuthDeleteArgs} args - Arguments to delete one Auth.
      * @example
-     * // Delete one Admin
-     * const Admin = await prisma.admin.delete({
+     * // Delete one Auth
+     * const Auth = await prisma.auth.delete({
      *   where: {
-     *     // ... filter to delete one Admin
+     *     // ... filter to delete one Auth
      *   }
      * })
      * 
     **/
-    delete<T extends AdminDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, AdminDeleteArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends AuthDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, AuthDeleteArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Admin.
-     * @param {AdminUpdateArgs} args - Arguments to update one Admin.
+     * Update one Auth.
+     * @param {AuthUpdateArgs} args - Arguments to update one Auth.
      * @example
-     * // Update one Admin
-     * const admin = await prisma.admin.update({
+     * // Update one Auth
+     * const auth = await prisma.auth.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1579,34 +1445,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends AdminUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, AdminUpdateArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends AuthUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, AuthUpdateArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Admins.
-     * @param {AdminDeleteManyArgs} args - Arguments to filter Admins to delete.
+     * Delete zero or more Auths.
+     * @param {AuthDeleteManyArgs} args - Arguments to filter Auths to delete.
      * @example
-     * // Delete a few Admins
-     * const { count } = await prisma.admin.deleteMany({
+     * // Delete a few Auths
+     * const { count } = await prisma.auth.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends AdminDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, AdminDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends AuthDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, AuthDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Admins.
+     * Update zero or more Auths.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AuthUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Admins
-     * const admin = await prisma.admin.updateMany({
+     * // Update many Auths
+     * const auth = await prisma.auth.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1616,59 +1482,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends AdminUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, AdminUpdateManyArgs<ExtArgs>>
+    updateMany<T extends AuthUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, AuthUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Admin.
-     * @param {AdminUpsertArgs} args - Arguments to update or create a Admin.
+     * Create or update one Auth.
+     * @param {AuthUpsertArgs} args - Arguments to update or create a Auth.
      * @example
-     * // Update or create a Admin
-     * const admin = await prisma.admin.upsert({
+     * // Update or create a Auth
+     * const auth = await prisma.auth.upsert({
      *   create: {
-     *     // ... data to create a Admin
+     *     // ... data to create a Auth
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Admin we want to update
+     *     // ... the filter for the Auth we want to update
      *   }
      * })
     **/
-    upsert<T extends AdminUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, AdminUpsertArgs<ExtArgs>>
-    ): Prisma__AdminClient<$Types.GetResult<AdminPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends AuthUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, AuthUpsertArgs<ExtArgs>>
+    ): Prisma__AuthClient<$Types.GetResult<AuthPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Admins.
+     * Count the number of Auths.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminCountArgs} args - Arguments to filter Admins to count.
+     * @param {AuthCountArgs} args - Arguments to filter Auths to count.
      * @example
-     * // Count the number of Admins
-     * const count = await prisma.admin.count({
+     * // Count the number of Auths
+     * const count = await prisma.auth.count({
      *   where: {
-     *     // ... the filter for the Admins we want to count
+     *     // ... the filter for the Auths we want to count
      *   }
      * })
     **/
-    count<T extends AdminCountArgs>(
-      args?: Subset<T, AdminCountArgs>,
+    count<T extends AuthCountArgs>(
+      args?: Subset<T, AuthCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AdminCountAggregateOutputType>
+          : GetScalarType<T['select'], AuthCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Admin.
+     * Allows you to perform aggregations operations on a Auth.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AuthAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1688,13 +1554,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AdminAggregateArgs>(args: Subset<T, AdminAggregateArgs>): Prisma.PrismaPromise<GetAdminAggregateType<T>>
+    aggregate<T extends AuthAggregateArgs>(args: Subset<T, AuthAggregateArgs>): Prisma.PrismaPromise<GetAuthAggregateType<T>>
 
     /**
-     * Group by Admin.
+     * Group by Auth.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminGroupByArgs} args - Group by arguments.
+     * @param {AuthGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1709,14 +1575,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AdminGroupByArgs,
+      T extends AuthGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AdminGroupByArgs['orderBy'] }
-        : { orderBy?: AdminGroupByArgs['orderBy'] },
+        ? { orderBy: AuthGroupByArgs['orderBy'] }
+        : { orderBy?: AuthGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1765,20 +1631,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AdminGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdminGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AuthGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuthGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Admin model
+   * Fields of the Auth model
    */
-  readonly fields: AdminFieldRefs;
+  readonly fields: AuthFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Admin.
+   * The delegate class that acts as a "Promise-like" for Auth.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__AdminClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+  export class Prisma__AuthClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -1820,294 +1686,294 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Admin model
+   * Fields of the Auth model
    */ 
-  interface AdminFieldRefs {
-    readonly id: FieldRef<"Admin", 'Int'>
-    readonly password: FieldRef<"Admin", 'String'>
+  interface AuthFieldRefs {
+    readonly id: FieldRef<"Auth", 'Int'>
+    readonly password: FieldRef<"Auth", 'String'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * Admin findUnique
+   * Auth findUnique
    */
-  export type AdminFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * Filter, which Admin to fetch.
+     * Filter, which Auth to fetch.
      */
-    where: AdminWhereUniqueInput
+    where: AuthWhereUniqueInput
   }
 
 
   /**
-   * Admin findUniqueOrThrow
+   * Auth findUniqueOrThrow
    */
-  export type AdminFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * Filter, which Admin to fetch.
+     * Filter, which Auth to fetch.
      */
-    where: AdminWhereUniqueInput
+    where: AuthWhereUniqueInput
   }
 
 
   /**
-   * Admin findFirst
+   * Auth findFirst
    */
-  export type AdminFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * Filter, which Admin to fetch.
+     * Filter, which Auth to fetch.
      */
-    where?: AdminWhereInput
+    where?: AuthWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Admins to fetch.
+     * Determine the order of Auths to fetch.
      */
-    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    orderBy?: AuthOrderByWithRelationInput | AuthOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Admins.
+     * Sets the position for searching for Auths.
      */
-    cursor?: AdminWhereUniqueInput
+    cursor?: AuthWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Admins from the position of the cursor.
+     * Take `±n` Auths from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Admins.
+     * Skip the first `n` Auths.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Admins.
+     * Filter by unique combinations of Auths.
      */
-    distinct?: AdminScalarFieldEnum | AdminScalarFieldEnum[]
+    distinct?: AuthScalarFieldEnum | AuthScalarFieldEnum[]
   }
 
 
   /**
-   * Admin findFirstOrThrow
+   * Auth findFirstOrThrow
    */
-  export type AdminFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * Filter, which Admin to fetch.
+     * Filter, which Auth to fetch.
      */
-    where?: AdminWhereInput
+    where?: AuthWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Admins to fetch.
+     * Determine the order of Auths to fetch.
      */
-    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    orderBy?: AuthOrderByWithRelationInput | AuthOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Admins.
+     * Sets the position for searching for Auths.
      */
-    cursor?: AdminWhereUniqueInput
+    cursor?: AuthWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Admins from the position of the cursor.
+     * Take `±n` Auths from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Admins.
+     * Skip the first `n` Auths.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Admins.
+     * Filter by unique combinations of Auths.
      */
-    distinct?: AdminScalarFieldEnum | AdminScalarFieldEnum[]
+    distinct?: AuthScalarFieldEnum | AuthScalarFieldEnum[]
   }
 
 
   /**
-   * Admin findMany
+   * Auth findMany
    */
-  export type AdminFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * Filter, which Admins to fetch.
+     * Filter, which Auths to fetch.
      */
-    where?: AdminWhereInput
+    where?: AuthWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Admins to fetch.
+     * Determine the order of Auths to fetch.
      */
-    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    orderBy?: AuthOrderByWithRelationInput | AuthOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Admins.
+     * Sets the position for listing Auths.
      */
-    cursor?: AdminWhereUniqueInput
+    cursor?: AuthWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Admins from the position of the cursor.
+     * Take `±n` Auths from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Admins.
+     * Skip the first `n` Auths.
      */
     skip?: number
-    distinct?: AdminScalarFieldEnum | AdminScalarFieldEnum[]
+    distinct?: AuthScalarFieldEnum | AuthScalarFieldEnum[]
   }
 
 
   /**
-   * Admin create
+   * Auth create
    */
-  export type AdminCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * The data needed to create a Admin.
+     * The data needed to create a Auth.
      */
-    data: XOR<AdminCreateInput, AdminUncheckedCreateInput>
+    data: XOR<AuthCreateInput, AuthUncheckedCreateInput>
   }
 
 
   /**
-   * Admin createMany
+   * Auth createMany
    */
-  export type AdminCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Admins.
+     * The data used to create many Auths.
      */
-    data: AdminCreateManyInput | AdminCreateManyInput[]
+    data: AuthCreateManyInput | AuthCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * Admin update
+   * Auth update
    */
-  export type AdminUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * The data needed to update a Admin.
+     * The data needed to update a Auth.
      */
-    data: XOR<AdminUpdateInput, AdminUncheckedUpdateInput>
+    data: XOR<AuthUpdateInput, AuthUncheckedUpdateInput>
     /**
-     * Choose, which Admin to update.
+     * Choose, which Auth to update.
      */
-    where: AdminWhereUniqueInput
+    where: AuthWhereUniqueInput
   }
 
 
   /**
-   * Admin updateMany
+   * Auth updateMany
    */
-  export type AdminUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Admins.
+     * The data used to update Auths.
      */
-    data: XOR<AdminUpdateManyMutationInput, AdminUncheckedUpdateManyInput>
+    data: XOR<AuthUpdateManyMutationInput, AuthUncheckedUpdateManyInput>
     /**
-     * Filter which Admins to update
+     * Filter which Auths to update
      */
-    where?: AdminWhereInput
+    where?: AuthWhereInput
   }
 
 
   /**
-   * Admin upsert
+   * Auth upsert
    */
-  export type AdminUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * The filter to search for the Admin to update in case it exists.
+     * The filter to search for the Auth to update in case it exists.
      */
-    where: AdminWhereUniqueInput
+    where: AuthWhereUniqueInput
     /**
-     * In case the Admin found by the `where` argument doesn't exist, create a new Admin with this data.
+     * In case the Auth found by the `where` argument doesn't exist, create a new Auth with this data.
      */
-    create: XOR<AdminCreateInput, AdminUncheckedCreateInput>
+    create: XOR<AuthCreateInput, AuthUncheckedCreateInput>
     /**
-     * In case the Admin was found with the provided `where` argument, update it with this data.
+     * In case the Auth was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AdminUpdateInput, AdminUncheckedUpdateInput>
+    update: XOR<AuthUpdateInput, AuthUncheckedUpdateInput>
   }
 
 
   /**
-   * Admin delete
+   * Auth delete
    */
-  export type AdminDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
     /**
-     * Filter which Admin to delete.
+     * Filter which Auth to delete.
      */
-    where: AdminWhereUniqueInput
+    where: AuthWhereUniqueInput
   }
 
 
   /**
-   * Admin deleteMany
+   * Auth deleteMany
    */
-  export type AdminDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Admins to delete
+     * Filter which Auths to delete
      */
-    where?: AdminWhereInput
+    where?: AuthWhereInput
   }
 
 
   /**
-   * Admin without action
+   * Auth without action
    */
-  export type AdminArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type AuthArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Admin
+     * Select specific fields to fetch from the Auth
      */
-    select?: AdminSelect<ExtArgs> | null
+    select?: AuthSelect<ExtArgs> | null
   }
 
 
@@ -2304,7 +2170,7 @@ export namespace Prisma {
     title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subcategoryies?: boolean | Category$subcategoryiesArgs<ExtArgs>
+    posts?: boolean | Category$postsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
@@ -2316,7 +2182,7 @@ export namespace Prisma {
   }
 
   export type CategoryInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    subcategoryies?: boolean | Category$subcategoryiesArgs<ExtArgs>
+    posts?: boolean | Category$postsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeArgs<ExtArgs>
   }
 
@@ -2693,7 +2559,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
 
-    subcategoryies<T extends Category$subcategoryiesArgs<ExtArgs> = {}>(args?: Subset<T, Category$subcategoryiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'findMany'>| Null>;
+    posts<T extends Category$postsArgs<ExtArgs> = {}>(args?: Subset<T, Category$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<PostPayload<ExtArgs>, T, 'findMany'>| Null>;
 
     private get _document();
     /**
@@ -3040,23 +2906,23 @@ export namespace Prisma {
 
 
   /**
-   * Category.subcategoryies
+   * Category.posts
    */
-  export type Category$subcategoryiesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type Category$postsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SubCategory
+     * Select specific fields to fetch from the Post
      */
-    select?: SubCategorySelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: SubCategoryInclude<ExtArgs> | null
-    where?: SubCategoryWhereInput
-    orderBy?: SubCategoryOrderByWithRelationInput | SubCategoryOrderByWithRelationInput[]
-    cursor?: SubCategoryWhereUniqueInput
+    include?: PostInclude<ExtArgs> | null
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    cursor?: PostWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: SubCategoryScalarFieldEnum | SubCategoryScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
   }
 
 
@@ -3077,988 +2943,6 @@ export namespace Prisma {
 
 
   /**
-   * Model SubCategory
-   */
-
-
-  export type AggregateSubCategory = {
-    _count: SubCategoryCountAggregateOutputType | null
-    _avg: SubCategoryAvgAggregateOutputType | null
-    _sum: SubCategorySumAggregateOutputType | null
-    _min: SubCategoryMinAggregateOutputType | null
-    _max: SubCategoryMaxAggregateOutputType | null
-  }
-
-  export type SubCategoryAvgAggregateOutputType = {
-    id: number | null
-    categoryId: number | null
-  }
-
-  export type SubCategorySumAggregateOutputType = {
-    id: number | null
-    categoryId: number | null
-  }
-
-  export type SubCategoryMinAggregateOutputType = {
-    id: number | null
-    title: string | null
-    categoryId: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type SubCategoryMaxAggregateOutputType = {
-    id: number | null
-    title: string | null
-    categoryId: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type SubCategoryCountAggregateOutputType = {
-    id: number
-    title: number
-    categoryId: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type SubCategoryAvgAggregateInputType = {
-    id?: true
-    categoryId?: true
-  }
-
-  export type SubCategorySumAggregateInputType = {
-    id?: true
-    categoryId?: true
-  }
-
-  export type SubCategoryMinAggregateInputType = {
-    id?: true
-    title?: true
-    categoryId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type SubCategoryMaxAggregateInputType = {
-    id?: true
-    title?: true
-    categoryId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type SubCategoryCountAggregateInputType = {
-    id?: true
-    title?: true
-    categoryId?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type SubCategoryAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SubCategory to aggregate.
-     */
-    where?: SubCategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SubCategories to fetch.
-     */
-    orderBy?: SubCategoryOrderByWithRelationInput | SubCategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: SubCategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SubCategories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SubCategories.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned SubCategories
-    **/
-    _count?: true | SubCategoryCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: SubCategoryAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: SubCategorySumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: SubCategoryMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: SubCategoryMaxAggregateInputType
-  }
-
-  export type GetSubCategoryAggregateType<T extends SubCategoryAggregateArgs> = {
-        [P in keyof T & keyof AggregateSubCategory]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSubCategory[P]>
-      : GetScalarType<T[P], AggregateSubCategory[P]>
-  }
-
-
-
-
-  export type SubCategoryGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: SubCategoryWhereInput
-    orderBy?: SubCategoryOrderByWithAggregationInput | SubCategoryOrderByWithAggregationInput[]
-    by: SubCategoryScalarFieldEnum[] | SubCategoryScalarFieldEnum
-    having?: SubCategoryScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: SubCategoryCountAggregateInputType | true
-    _avg?: SubCategoryAvgAggregateInputType
-    _sum?: SubCategorySumAggregateInputType
-    _min?: SubCategoryMinAggregateInputType
-    _max?: SubCategoryMaxAggregateInputType
-  }
-
-
-  export type SubCategoryGroupByOutputType = {
-    id: number
-    title: string
-    categoryId: number
-    createdAt: Date
-    updatedAt: Date
-    _count: SubCategoryCountAggregateOutputType | null
-    _avg: SubCategoryAvgAggregateOutputType | null
-    _sum: SubCategorySumAggregateOutputType | null
-    _min: SubCategoryMinAggregateOutputType | null
-    _max: SubCategoryMaxAggregateOutputType | null
-  }
-
-  type GetSubCategoryGroupByPayload<T extends SubCategoryGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<SubCategoryGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof SubCategoryGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], SubCategoryGroupByOutputType[P]>
-            : GetScalarType<T[P], SubCategoryGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type SubCategorySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    categoryId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    post?: boolean | SubCategory$postArgs<ExtArgs>
-    category?: boolean | CategoryArgs<ExtArgs>
-    _count?: boolean | SubCategoryCountOutputTypeArgs<ExtArgs>
-  }, ExtArgs["result"]["subCategory"]>
-
-  export type SubCategorySelectScalar = {
-    id?: boolean
-    title?: boolean
-    categoryId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type SubCategoryInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    post?: boolean | SubCategory$postArgs<ExtArgs>
-    category?: boolean | CategoryArgs<ExtArgs>
-    _count?: boolean | SubCategoryCountOutputTypeArgs<ExtArgs>
-  }
-
-
-  type SubCategoryGetPayload<S extends boolean | null | undefined | SubCategoryArgs> = $Types.GetResult<SubCategoryPayload, S>
-
-  type SubCategoryCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<SubCategoryFindManyArgs, 'select' | 'include'> & {
-      select?: SubCategoryCountAggregateInputType | true
-    }
-
-  export interface SubCategoryDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SubCategory'], meta: { name: 'SubCategory' } }
-    /**
-     * Find zero or one SubCategory that matches the filter.
-     * @param {SubCategoryFindUniqueArgs} args - Arguments to find a SubCategory
-     * @example
-     * // Get one SubCategory
-     * const subCategory = await prisma.subCategory.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends SubCategoryFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, SubCategoryFindUniqueArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one SubCategory that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {SubCategoryFindUniqueOrThrowArgs} args - Arguments to find a SubCategory
-     * @example
-     * // Get one SubCategory
-     * const subCategory = await prisma.subCategory.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends SubCategoryFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, SubCategoryFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first SubCategory that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SubCategoryFindFirstArgs} args - Arguments to find a SubCategory
-     * @example
-     * // Get one SubCategory
-     * const subCategory = await prisma.subCategory.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends SubCategoryFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, SubCategoryFindFirstArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first SubCategory that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SubCategoryFindFirstOrThrowArgs} args - Arguments to find a SubCategory
-     * @example
-     * // Get one SubCategory
-     * const subCategory = await prisma.subCategory.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends SubCategoryFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, SubCategoryFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more SubCategories that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SubCategoryFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all SubCategories
-     * const subCategories = await prisma.subCategory.findMany()
-     * 
-     * // Get first 10 SubCategories
-     * const subCategories = await prisma.subCategory.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const subCategoryWithIdOnly = await prisma.subCategory.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends SubCategoryFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SubCategoryFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a SubCategory.
-     * @param {SubCategoryCreateArgs} args - Arguments to create a SubCategory.
-     * @example
-     * // Create one SubCategory
-     * const SubCategory = await prisma.subCategory.create({
-     *   data: {
-     *     // ... data to create a SubCategory
-     *   }
-     * })
-     * 
-    **/
-    create<T extends SubCategoryCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, SubCategoryCreateArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many SubCategories.
-     *     @param {SubCategoryCreateManyArgs} args - Arguments to create many SubCategories.
-     *     @example
-     *     // Create many SubCategories
-     *     const subCategory = await prisma.subCategory.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends SubCategoryCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SubCategoryCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a SubCategory.
-     * @param {SubCategoryDeleteArgs} args - Arguments to delete one SubCategory.
-     * @example
-     * // Delete one SubCategory
-     * const SubCategory = await prisma.subCategory.delete({
-     *   where: {
-     *     // ... filter to delete one SubCategory
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends SubCategoryDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, SubCategoryDeleteArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one SubCategory.
-     * @param {SubCategoryUpdateArgs} args - Arguments to update one SubCategory.
-     * @example
-     * // Update one SubCategory
-     * const subCategory = await prisma.subCategory.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends SubCategoryUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, SubCategoryUpdateArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more SubCategories.
-     * @param {SubCategoryDeleteManyArgs} args - Arguments to filter SubCategories to delete.
-     * @example
-     * // Delete a few SubCategories
-     * const { count } = await prisma.subCategory.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends SubCategoryDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, SubCategoryDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more SubCategories.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SubCategoryUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many SubCategories
-     * const subCategory = await prisma.subCategory.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends SubCategoryUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, SubCategoryUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one SubCategory.
-     * @param {SubCategoryUpsertArgs} args - Arguments to update or create a SubCategory.
-     * @example
-     * // Update or create a SubCategory
-     * const subCategory = await prisma.subCategory.upsert({
-     *   create: {
-     *     // ... data to create a SubCategory
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the SubCategory we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends SubCategoryUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, SubCategoryUpsertArgs<ExtArgs>>
-    ): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of SubCategories.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SubCategoryCountArgs} args - Arguments to filter SubCategories to count.
-     * @example
-     * // Count the number of SubCategories
-     * const count = await prisma.subCategory.count({
-     *   where: {
-     *     // ... the filter for the SubCategories we want to count
-     *   }
-     * })
-    **/
-    count<T extends SubCategoryCountArgs>(
-      args?: Subset<T, SubCategoryCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SubCategoryCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a SubCategory.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SubCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends SubCategoryAggregateArgs>(args: Subset<T, SubCategoryAggregateArgs>): Prisma.PrismaPromise<GetSubCategoryAggregateType<T>>
-
-    /**
-     * Group by SubCategory.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SubCategoryGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends SubCategoryGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SubCategoryGroupByArgs['orderBy'] }
-        : { orderBy?: SubCategoryGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, SubCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the SubCategory model
-   */
-  readonly fields: SubCategoryFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for SubCategory.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__SubCategoryClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
-    private readonly _dmmf;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-
-    post<T extends SubCategory$postArgs<ExtArgs> = {}>(args?: Subset<T, SubCategory$postArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<PostPayload<ExtArgs>, T, 'findMany'>| Null>;
-
-    category<T extends CategoryArgs<ExtArgs> = {}>(args?: Subset<T, CategoryArgs<ExtArgs>>): Prisma__CategoryClient<$Types.GetResult<CategoryPayload<ExtArgs>, T, 'findUnique'> | Null, never, ExtArgs>;
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-
-
-  /**
-   * Fields of the SubCategory model
-   */ 
-  interface SubCategoryFieldRefs {
-    readonly id: FieldRef<"SubCategory", 'Int'>
-    readonly title: FieldRef<"SubCategory", 'String'>
-    readonly categoryId: FieldRef<"SubCategory", 'Int'>
-    readonly createdAt: FieldRef<"SubCategory", 'DateTime'>
-    readonly updatedAt: FieldRef<"SubCategory", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * SubCategory findUnique
-   */
-  export type SubCategoryFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which SubCategory to fetch.
-     */
-    where: SubCategoryWhereUniqueInput
-  }
-
-
-  /**
-   * SubCategory findUniqueOrThrow
-   */
-  export type SubCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which SubCategory to fetch.
-     */
-    where: SubCategoryWhereUniqueInput
-  }
-
-
-  /**
-   * SubCategory findFirst
-   */
-  export type SubCategoryFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which SubCategory to fetch.
-     */
-    where?: SubCategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SubCategories to fetch.
-     */
-    orderBy?: SubCategoryOrderByWithRelationInput | SubCategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SubCategories.
-     */
-    cursor?: SubCategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SubCategories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SubCategories.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SubCategories.
-     */
-    distinct?: SubCategoryScalarFieldEnum | SubCategoryScalarFieldEnum[]
-  }
-
-
-  /**
-   * SubCategory findFirstOrThrow
-   */
-  export type SubCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which SubCategory to fetch.
-     */
-    where?: SubCategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SubCategories to fetch.
-     */
-    orderBy?: SubCategoryOrderByWithRelationInput | SubCategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SubCategories.
-     */
-    cursor?: SubCategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SubCategories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SubCategories.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SubCategories.
-     */
-    distinct?: SubCategoryScalarFieldEnum | SubCategoryScalarFieldEnum[]
-  }
-
-
-  /**
-   * SubCategory findMany
-   */
-  export type SubCategoryFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which SubCategories to fetch.
-     */
-    where?: SubCategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SubCategories to fetch.
-     */
-    orderBy?: SubCategoryOrderByWithRelationInput | SubCategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing SubCategories.
-     */
-    cursor?: SubCategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SubCategories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SubCategories.
-     */
-    skip?: number
-    distinct?: SubCategoryScalarFieldEnum | SubCategoryScalarFieldEnum[]
-  }
-
-
-  /**
-   * SubCategory create
-   */
-  export type SubCategoryCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * The data needed to create a SubCategory.
-     */
-    data: XOR<SubCategoryCreateInput, SubCategoryUncheckedCreateInput>
-  }
-
-
-  /**
-   * SubCategory createMany
-   */
-  export type SubCategoryCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many SubCategories.
-     */
-    data: SubCategoryCreateManyInput | SubCategoryCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * SubCategory update
-   */
-  export type SubCategoryUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * The data needed to update a SubCategory.
-     */
-    data: XOR<SubCategoryUpdateInput, SubCategoryUncheckedUpdateInput>
-    /**
-     * Choose, which SubCategory to update.
-     */
-    where: SubCategoryWhereUniqueInput
-  }
-
-
-  /**
-   * SubCategory updateMany
-   */
-  export type SubCategoryUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update SubCategories.
-     */
-    data: XOR<SubCategoryUpdateManyMutationInput, SubCategoryUncheckedUpdateManyInput>
-    /**
-     * Filter which SubCategories to update
-     */
-    where?: SubCategoryWhereInput
-  }
-
-
-  /**
-   * SubCategory upsert
-   */
-  export type SubCategoryUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * The filter to search for the SubCategory to update in case it exists.
-     */
-    where: SubCategoryWhereUniqueInput
-    /**
-     * In case the SubCategory found by the `where` argument doesn't exist, create a new SubCategory with this data.
-     */
-    create: XOR<SubCategoryCreateInput, SubCategoryUncheckedCreateInput>
-    /**
-     * In case the SubCategory was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SubCategoryUpdateInput, SubCategoryUncheckedUpdateInput>
-  }
-
-
-  /**
-   * SubCategory delete
-   */
-  export type SubCategoryDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    /**
-     * Filter which SubCategory to delete.
-     */
-    where: SubCategoryWhereUniqueInput
-  }
-
-
-  /**
-   * SubCategory deleteMany
-   */
-  export type SubCategoryDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SubCategories to delete
-     */
-    where?: SubCategoryWhereInput
-  }
-
-
-  /**
-   * SubCategory.post
-   */
-  export type SubCategory$postArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: PostInclude<ExtArgs> | null
-    where?: PostWhereInput
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    cursor?: PostWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-
-  /**
-   * SubCategory without action
-   */
-  export type SubCategoryArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-  }
-
-
-
-  /**
    * Model Post
    */
 
@@ -4074,13 +2958,11 @@ export namespace Prisma {
   export type PostAvgAggregateOutputType = {
     id: number | null
     categoryId: number | null
-    subcategoryId: number | null
   }
 
   export type PostSumAggregateOutputType = {
     id: number | null
     categoryId: number | null
-    subcategoryId: number | null
   }
 
   export type PostMinAggregateOutputType = {
@@ -4089,7 +2971,6 @@ export namespace Prisma {
     contents: string | null
     img: string | null
     categoryId: number | null
-    subcategoryId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4100,7 +2981,6 @@ export namespace Prisma {
     contents: string | null
     img: string | null
     categoryId: number | null
-    subcategoryId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4111,7 +2991,6 @@ export namespace Prisma {
     contents: number
     img: number
     categoryId: number
-    subcategoryId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4121,13 +3000,11 @@ export namespace Prisma {
   export type PostAvgAggregateInputType = {
     id?: true
     categoryId?: true
-    subcategoryId?: true
   }
 
   export type PostSumAggregateInputType = {
     id?: true
     categoryId?: true
-    subcategoryId?: true
   }
 
   export type PostMinAggregateInputType = {
@@ -4136,7 +3013,6 @@ export namespace Prisma {
     contents?: true
     img?: true
     categoryId?: true
-    subcategoryId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4147,7 +3023,6 @@ export namespace Prisma {
     contents?: true
     img?: true
     categoryId?: true
-    subcategoryId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4158,7 +3033,6 @@ export namespace Prisma {
     contents?: true
     img?: true
     categoryId?: true
-    subcategoryId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4255,9 +3129,8 @@ export namespace Prisma {
     id: number
     title: string
     contents: string
-    img: string
+    img: string | null
     categoryId: number
-    subcategoryId: number
     createdAt: Date
     updatedAt: Date
     _count: PostCountAggregateOutputType | null
@@ -4287,10 +3160,9 @@ export namespace Prisma {
     contents?: boolean
     img?: boolean
     categoryId?: boolean
-    subcategoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subcategory?: boolean | SubCategoryArgs<ExtArgs>
+    category?: boolean | CategoryArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
 
   export type PostSelectScalar = {
@@ -4299,13 +3171,12 @@ export namespace Prisma {
     contents?: boolean
     img?: boolean
     categoryId?: boolean
-    subcategoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
   export type PostInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    subcategory?: boolean | SubCategoryArgs<ExtArgs>
+    category?: boolean | CategoryArgs<ExtArgs>
   }
 
 
@@ -4681,7 +3552,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
 
-    subcategory<T extends SubCategoryArgs<ExtArgs> = {}>(args?: Subset<T, SubCategoryArgs<ExtArgs>>): Prisma__SubCategoryClient<$Types.GetResult<SubCategoryPayload<ExtArgs>, T, 'findUnique'> | Null, never, ExtArgs>;
+    category<T extends CategoryArgs<ExtArgs> = {}>(args?: Subset<T, CategoryArgs<ExtArgs>>): Prisma__CategoryClient<$Types.GetResult<CategoryPayload<ExtArgs>, T, 'findUnique'> | Null, never, ExtArgs>;
 
     private get _document();
     /**
@@ -4717,7 +3588,6 @@ export namespace Prisma {
     readonly contents: FieldRef<"Post", 'String'>
     readonly img: FieldRef<"Post", 'String'>
     readonly categoryId: FieldRef<"Post", 'Int'>
-    readonly subcategoryId: FieldRef<"Post", 'Int'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
     readonly updatedAt: FieldRef<"Post", 'DateTime'>
   }
@@ -5061,12 +3931,12 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const AdminScalarFieldEnum: {
+  export const AuthScalarFieldEnum: {
     id: 'id',
     password: 'password'
   };
 
-  export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
+  export type AuthScalarFieldEnum = (typeof AuthScalarFieldEnum)[keyof typeof AuthScalarFieldEnum]
 
 
   export const CategoryScalarFieldEnum: {
@@ -5079,24 +3949,12 @@ export namespace Prisma {
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
-  export const SubCategoryScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    categoryId: 'categoryId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type SubCategoryScalarFieldEnum = (typeof SubCategoryScalarFieldEnum)[keyof typeof SubCategoryScalarFieldEnum]
-
-
   export const PostScalarFieldEnum: {
     id: 'id',
     title: 'title',
     contents: 'contents',
     img: 'img',
     categoryId: 'categoryId',
-    subcategoryId: 'subcategoryId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5110,6 +3968,14 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -5148,43 +4014,43 @@ export namespace Prisma {
    */
 
 
-  export type AdminWhereInput = {
-    AND?: AdminWhereInput | AdminWhereInput[]
-    OR?: AdminWhereInput[]
-    NOT?: AdminWhereInput | AdminWhereInput[]
-    id?: IntFilter<"Admin"> | number
-    password?: StringFilter<"Admin"> | string
+  export type AuthWhereInput = {
+    AND?: AuthWhereInput | AuthWhereInput[]
+    OR?: AuthWhereInput[]
+    NOT?: AuthWhereInput | AuthWhereInput[]
+    id?: IntFilter<"Auth"> | number
+    password?: StringFilter<"Auth"> | string
   }
 
-  export type AdminOrderByWithRelationInput = {
+  export type AuthOrderByWithRelationInput = {
     id?: SortOrder
     password?: SortOrder
   }
 
-  export type AdminWhereUniqueInput = Prisma.AtLeast<{
+  export type AuthWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: AdminWhereInput | AdminWhereInput[]
-    OR?: AdminWhereInput[]
-    NOT?: AdminWhereInput | AdminWhereInput[]
-    password?: StringFilter<"Admin"> | string
+    AND?: AuthWhereInput | AuthWhereInput[]
+    OR?: AuthWhereInput[]
+    NOT?: AuthWhereInput | AuthWhereInput[]
+    password?: StringFilter<"Auth"> | string
   }, "id">
 
-  export type AdminOrderByWithAggregationInput = {
+  export type AuthOrderByWithAggregationInput = {
     id?: SortOrder
     password?: SortOrder
-    _count?: AdminCountOrderByAggregateInput
-    _avg?: AdminAvgOrderByAggregateInput
-    _max?: AdminMaxOrderByAggregateInput
-    _min?: AdminMinOrderByAggregateInput
-    _sum?: AdminSumOrderByAggregateInput
+    _count?: AuthCountOrderByAggregateInput
+    _avg?: AuthAvgOrderByAggregateInput
+    _max?: AuthMaxOrderByAggregateInput
+    _min?: AuthMinOrderByAggregateInput
+    _sum?: AuthSumOrderByAggregateInput
   }
 
-  export type AdminScalarWhereWithAggregatesInput = {
-    AND?: AdminScalarWhereWithAggregatesInput | AdminScalarWhereWithAggregatesInput[]
-    OR?: AdminScalarWhereWithAggregatesInput[]
-    NOT?: AdminScalarWhereWithAggregatesInput | AdminScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Admin"> | number
-    password?: StringWithAggregatesFilter<"Admin"> | string
+  export type AuthScalarWhereWithAggregatesInput = {
+    AND?: AuthScalarWhereWithAggregatesInput | AuthScalarWhereWithAggregatesInput[]
+    OR?: AuthScalarWhereWithAggregatesInput[]
+    NOT?: AuthScalarWhereWithAggregatesInput | AuthScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Auth"> | number
+    password?: StringWithAggregatesFilter<"Auth"> | string
   }
 
   export type CategoryWhereInput = {
@@ -5195,7 +4061,7 @@ export namespace Prisma {
     title?: StringFilter<"Category"> | string
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
-    subcategoryies?: SubCategoryListRelationFilter
+    posts?: PostListRelationFilter
   }
 
   export type CategoryOrderByWithRelationInput = {
@@ -5203,7 +4069,7 @@ export namespace Prisma {
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    subcategoryies?: SubCategoryOrderByRelationAggregateInput
+    posts?: PostOrderByRelationAggregateInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -5214,7 +4080,7 @@ export namespace Prisma {
     title?: StringFilter<"Category"> | string
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
-    subcategoryies?: SubCategoryListRelationFilter
+    posts?: PostListRelationFilter
   }, "id">
 
   export type CategoryOrderByWithAggregationInput = {
@@ -5239,66 +4105,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
 
-  export type SubCategoryWhereInput = {
-    AND?: SubCategoryWhereInput | SubCategoryWhereInput[]
-    OR?: SubCategoryWhereInput[]
-    NOT?: SubCategoryWhereInput | SubCategoryWhereInput[]
-    id?: IntFilter<"SubCategory"> | number
-    title?: StringFilter<"SubCategory"> | string
-    categoryId?: IntFilter<"SubCategory"> | number
-    createdAt?: DateTimeFilter<"SubCategory"> | Date | string
-    updatedAt?: DateTimeFilter<"SubCategory"> | Date | string
-    post?: PostListRelationFilter
-    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
-  }
-
-  export type SubCategoryOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    categoryId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    post?: PostOrderByRelationAggregateInput
-    category?: CategoryOrderByWithRelationInput
-  }
-
-  export type SubCategoryWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: SubCategoryWhereInput | SubCategoryWhereInput[]
-    OR?: SubCategoryWhereInput[]
-    NOT?: SubCategoryWhereInput | SubCategoryWhereInput[]
-    title?: StringFilter<"SubCategory"> | string
-    categoryId?: IntFilter<"SubCategory"> | number
-    createdAt?: DateTimeFilter<"SubCategory"> | Date | string
-    updatedAt?: DateTimeFilter<"SubCategory"> | Date | string
-    post?: PostListRelationFilter
-    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
-  }, "id">
-
-  export type SubCategoryOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    categoryId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: SubCategoryCountOrderByAggregateInput
-    _avg?: SubCategoryAvgOrderByAggregateInput
-    _max?: SubCategoryMaxOrderByAggregateInput
-    _min?: SubCategoryMinOrderByAggregateInput
-    _sum?: SubCategorySumOrderByAggregateInput
-  }
-
-  export type SubCategoryScalarWhereWithAggregatesInput = {
-    AND?: SubCategoryScalarWhereWithAggregatesInput | SubCategoryScalarWhereWithAggregatesInput[]
-    OR?: SubCategoryScalarWhereWithAggregatesInput[]
-    NOT?: SubCategoryScalarWhereWithAggregatesInput | SubCategoryScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"SubCategory"> | number
-    title?: StringWithAggregatesFilter<"SubCategory"> | string
-    categoryId?: IntWithAggregatesFilter<"SubCategory"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"SubCategory"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"SubCategory"> | Date | string
-  }
-
   export type PostWhereInput = {
     AND?: PostWhereInput | PostWhereInput[]
     OR?: PostWhereInput[]
@@ -5306,24 +4112,22 @@ export namespace Prisma {
     id?: IntFilter<"Post"> | number
     title?: StringFilter<"Post"> | string
     contents?: StringFilter<"Post"> | string
-    img?: StringFilter<"Post"> | string
+    img?: StringNullableFilter<"Post"> | string | null
     categoryId?: IntFilter<"Post"> | number
-    subcategoryId?: IntFilter<"Post"> | number
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
-    subcategory?: XOR<SubCategoryRelationFilter, SubCategoryWhereInput>
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
   }
 
   export type PostOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     contents?: SortOrder
-    img?: SortOrder
+    img?: SortOrderInput | SortOrder
     categoryId?: SortOrder
-    subcategoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    subcategory?: SubCategoryOrderByWithRelationInput
+    category?: CategoryOrderByWithRelationInput
   }
 
   export type PostWhereUniqueInput = Prisma.AtLeast<{
@@ -5333,21 +4137,19 @@ export namespace Prisma {
     NOT?: PostWhereInput | PostWhereInput[]
     title?: StringFilter<"Post"> | string
     contents?: StringFilter<"Post"> | string
-    img?: StringFilter<"Post"> | string
+    img?: StringNullableFilter<"Post"> | string | null
     categoryId?: IntFilter<"Post"> | number
-    subcategoryId?: IntFilter<"Post"> | number
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
-    subcategory?: XOR<SubCategoryRelationFilter, SubCategoryWhereInput>
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
   }, "id">
 
   export type PostOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     contents?: SortOrder
-    img?: SortOrder
+    img?: SortOrderInput | SortOrder
     categoryId?: SortOrder
-    subcategoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PostCountOrderByAggregateInput
@@ -5364,41 +4166,40 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Post"> | number
     title?: StringWithAggregatesFilter<"Post"> | string
     contents?: StringWithAggregatesFilter<"Post"> | string
-    img?: StringWithAggregatesFilter<"Post"> | string
+    img?: StringNullableWithAggregatesFilter<"Post"> | string | null
     categoryId?: IntWithAggregatesFilter<"Post"> | number
-    subcategoryId?: IntWithAggregatesFilter<"Post"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
   }
 
-  export type AdminCreateInput = {
+  export type AuthCreateInput = {
     password: string
   }
 
-  export type AdminUncheckedCreateInput = {
+  export type AuthUncheckedCreateInput = {
     id?: number
     password: string
   }
 
-  export type AdminUpdateInput = {
+  export type AuthUpdateInput = {
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AdminUncheckedUpdateInput = {
+  export type AuthUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AdminCreateManyInput = {
+  export type AuthCreateManyInput = {
     id?: number
     password: string
   }
 
-  export type AdminUpdateManyMutationInput = {
+  export type AuthUpdateManyMutationInput = {
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AdminUncheckedUpdateManyInput = {
+  export type AuthUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
   }
@@ -5407,7 +4208,7 @@ export namespace Prisma {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    subcategoryies?: SubCategoryCreateNestedManyWithoutCategoryInput
+    posts?: PostCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
@@ -5415,14 +4216,14 @@ export namespace Prisma {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    subcategoryies?: SubCategoryUncheckedCreateNestedManyWithoutCategoryInput
+    posts?: PostUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategoryies?: SubCategoryUpdateManyWithoutCategoryNestedInput
+    posts?: PostUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
@@ -5430,7 +4231,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategoryies?: SubCategoryUncheckedUpdateManyWithoutCategoryNestedInput
+    posts?: PostUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
@@ -5453,79 +4254,21 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SubCategoryCreateInput = {
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    post?: PostCreateNestedManyWithoutSubcategoryInput
-    category: CategoryCreateNestedOneWithoutSubcategoryiesInput
-  }
-
-  export type SubCategoryUncheckedCreateInput = {
-    id?: number
-    title: string
-    categoryId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    post?: PostUncheckedCreateNestedManyWithoutSubcategoryInput
-  }
-
-  export type SubCategoryUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateManyWithoutSubcategoryNestedInput
-    category?: CategoryUpdateOneRequiredWithoutSubcategoryiesNestedInput
-  }
-
-  export type SubCategoryUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUncheckedUpdateManyWithoutSubcategoryNestedInput
-  }
-
-  export type SubCategoryCreateManyInput = {
-    id?: number
-    title: string
-    categoryId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SubCategoryUpdateManyMutationInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SubCategoryUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type PostCreateInput = {
     title: string
     contents: string
-    img: string
-    categoryId: number
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    subcategory: SubCategoryCreateNestedOneWithoutPostInput
+    category: CategoryCreateNestedOneWithoutPostsInput
   }
 
   export type PostUncheckedCreateInput = {
     id?: number
     title: string
     contents: string
-    img: string
+    img?: string | null
     categoryId: number
-    subcategoryId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5533,20 +4276,18 @@ export namespace Prisma {
   export type PostUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     contents?: StringFieldUpdateOperationsInput | string
-    img?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategory?: SubCategoryUpdateOneRequiredWithoutPostNestedInput
+    category?: CategoryUpdateOneRequiredWithoutPostsNestedInput
   }
 
   export type PostUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     contents?: StringFieldUpdateOperationsInput | string
-    img?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
-    subcategoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5555,9 +4296,8 @@ export namespace Prisma {
     id?: number
     title: string
     contents: string
-    img: string
+    img?: string | null
     categoryId: number
-    subcategoryId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5565,8 +4305,7 @@ export namespace Prisma {
   export type PostUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     contents?: StringFieldUpdateOperationsInput | string
-    img?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5575,9 +4314,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     contents?: StringFieldUpdateOperationsInput | string
-    img?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
-    subcategoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5607,26 +4345,26 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type AdminCountOrderByAggregateInput = {
+  export type AuthCountOrderByAggregateInput = {
     id?: SortOrder
     password?: SortOrder
   }
 
-  export type AdminAvgOrderByAggregateInput = {
+  export type AuthAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type AdminMaxOrderByAggregateInput = {
-    id?: SortOrder
-    password?: SortOrder
-  }
-
-  export type AdminMinOrderByAggregateInput = {
+  export type AuthMaxOrderByAggregateInput = {
     id?: SortOrder
     password?: SortOrder
   }
 
-  export type AdminSumOrderByAggregateInput = {
+  export type AuthMinOrderByAggregateInput = {
+    id?: SortOrder
+    password?: SortOrder
+  }
+
+  export type AuthSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -5674,13 +4412,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type SubCategoryListRelationFilter = {
-    every?: SubCategoryWhereInput
-    some?: SubCategoryWhereInput
-    none?: SubCategoryWhereInput
+  export type PostListRelationFilter = {
+    every?: PostWhereInput
+    some?: PostWhereInput
+    none?: PostWhereInput
   }
 
-  export type SubCategoryOrderByRelationAggregateInput = {
+  export type PostOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5727,10 +4465,18 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type PostListRelationFilter = {
-    every?: PostWhereInput
-    some?: PostWhereInput
-    none?: PostWhereInput
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type CategoryRelationFilter = {
@@ -5738,47 +4484,9 @@ export namespace Prisma {
     isNot?: CategoryWhereInput
   }
 
-  export type PostOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SubCategoryCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    categoryId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SubCategoryAvgOrderByAggregateInput = {
-    id?: SortOrder
-    categoryId?: SortOrder
-  }
-
-  export type SubCategoryMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    categoryId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SubCategoryMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    categoryId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SubCategorySumOrderByAggregateInput = {
-    id?: SortOrder
-    categoryId?: SortOrder
-  }
-
-  export type SubCategoryRelationFilter = {
-    is?: SubCategoryWhereInput
-    isNot?: SubCategoryWhereInput
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type PostCountOrderByAggregateInput = {
@@ -5787,7 +4495,6 @@ export namespace Prisma {
     contents?: SortOrder
     img?: SortOrder
     categoryId?: SortOrder
-    subcategoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5795,7 +4502,6 @@ export namespace Prisma {
   export type PostAvgOrderByAggregateInput = {
     id?: SortOrder
     categoryId?: SortOrder
-    subcategoryId?: SortOrder
   }
 
   export type PostMaxOrderByAggregateInput = {
@@ -5804,7 +4510,6 @@ export namespace Prisma {
     contents?: SortOrder
     img?: SortOrder
     categoryId?: SortOrder
-    subcategoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5815,7 +4520,6 @@ export namespace Prisma {
     contents?: SortOrder
     img?: SortOrder
     categoryId?: SortOrder
-    subcategoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5823,7 +4527,23 @@ export namespace Prisma {
   export type PostSumOrderByAggregateInput = {
     id?: SortOrder
     categoryId?: SortOrder
-    subcategoryId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5838,120 +4558,68 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type SubCategoryCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
-    createMany?: SubCategoryCreateManyCategoryInputEnvelope
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+  export type PostCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<PostCreateWithoutCategoryInput, PostUncheckedCreateWithoutCategoryInput> | PostCreateWithoutCategoryInput[] | PostUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCategoryInput | PostCreateOrConnectWithoutCategoryInput[]
+    createMany?: PostCreateManyCategoryInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
   }
 
-  export type SubCategoryUncheckedCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
-    createMany?: SubCategoryCreateManyCategoryInputEnvelope
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+  export type PostUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<PostCreateWithoutCategoryInput, PostUncheckedCreateWithoutCategoryInput> | PostCreateWithoutCategoryInput[] | PostUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCategoryInput | PostCreateOrConnectWithoutCategoryInput[]
+    createMany?: PostCreateManyCategoryInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type SubCategoryUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
-    upsert?: SubCategoryUpsertWithWhereUniqueWithoutCategoryInput | SubCategoryUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: SubCategoryCreateManyCategoryInputEnvelope
-    set?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    disconnect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    delete?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    update?: SubCategoryUpdateWithWhereUniqueWithoutCategoryInput | SubCategoryUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: SubCategoryUpdateManyWithWhereWithoutCategoryInput | SubCategoryUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
-  }
-
-  export type SubCategoryUncheckedUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
-    upsert?: SubCategoryUpsertWithWhereUniqueWithoutCategoryInput | SubCategoryUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: SubCategoryCreateManyCategoryInputEnvelope
-    set?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    disconnect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    delete?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    update?: SubCategoryUpdateWithWhereUniqueWithoutCategoryInput | SubCategoryUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: SubCategoryUpdateManyWithWhereWithoutCategoryInput | SubCategoryUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
-  }
-
-  export type PostCreateNestedManyWithoutSubcategoryInput = {
-    create?: XOR<PostCreateWithoutSubcategoryInput, PostUncheckedCreateWithoutSubcategoryInput> | PostCreateWithoutSubcategoryInput[] | PostUncheckedCreateWithoutSubcategoryInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutSubcategoryInput | PostCreateOrConnectWithoutSubcategoryInput[]
-    createMany?: PostCreateManySubcategoryInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-  }
-
-  export type CategoryCreateNestedOneWithoutSubcategoryiesInput = {
-    create?: XOR<CategoryCreateWithoutSubcategoryiesInput, CategoryUncheckedCreateWithoutSubcategoryiesInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutSubcategoryiesInput
-    connect?: CategoryWhereUniqueInput
-  }
-
-  export type PostUncheckedCreateNestedManyWithoutSubcategoryInput = {
-    create?: XOR<PostCreateWithoutSubcategoryInput, PostUncheckedCreateWithoutSubcategoryInput> | PostCreateWithoutSubcategoryInput[] | PostUncheckedCreateWithoutSubcategoryInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutSubcategoryInput | PostCreateOrConnectWithoutSubcategoryInput[]
-    createMany?: PostCreateManySubcategoryInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-  }
-
-  export type PostUpdateManyWithoutSubcategoryNestedInput = {
-    create?: XOR<PostCreateWithoutSubcategoryInput, PostUncheckedCreateWithoutSubcategoryInput> | PostCreateWithoutSubcategoryInput[] | PostUncheckedCreateWithoutSubcategoryInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutSubcategoryInput | PostCreateOrConnectWithoutSubcategoryInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutSubcategoryInput | PostUpsertWithWhereUniqueWithoutSubcategoryInput[]
-    createMany?: PostCreateManySubcategoryInputEnvelope
+  export type PostUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<PostCreateWithoutCategoryInput, PostUncheckedCreateWithoutCategoryInput> | PostCreateWithoutCategoryInput[] | PostUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCategoryInput | PostCreateOrConnectWithoutCategoryInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutCategoryInput | PostUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: PostCreateManyCategoryInputEnvelope
     set?: PostWhereUniqueInput | PostWhereUniqueInput[]
     disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
     delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
     connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutSubcategoryInput | PostUpdateWithWhereUniqueWithoutSubcategoryInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutSubcategoryInput | PostUpdateManyWithWhereWithoutSubcategoryInput[]
+    update?: PostUpdateWithWhereUniqueWithoutCategoryInput | PostUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutCategoryInput | PostUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
-  export type CategoryUpdateOneRequiredWithoutSubcategoryiesNestedInput = {
-    create?: XOR<CategoryCreateWithoutSubcategoryiesInput, CategoryUncheckedCreateWithoutSubcategoryiesInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutSubcategoryiesInput
-    upsert?: CategoryUpsertWithoutSubcategoryiesInput
-    connect?: CategoryWhereUniqueInput
-    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutSubcategoryiesInput, CategoryUpdateWithoutSubcategoryiesInput>, CategoryUncheckedUpdateWithoutSubcategoryiesInput>
-  }
-
-  export type PostUncheckedUpdateManyWithoutSubcategoryNestedInput = {
-    create?: XOR<PostCreateWithoutSubcategoryInput, PostUncheckedCreateWithoutSubcategoryInput> | PostCreateWithoutSubcategoryInput[] | PostUncheckedCreateWithoutSubcategoryInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutSubcategoryInput | PostCreateOrConnectWithoutSubcategoryInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutSubcategoryInput | PostUpsertWithWhereUniqueWithoutSubcategoryInput[]
-    createMany?: PostCreateManySubcategoryInputEnvelope
+  export type PostUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<PostCreateWithoutCategoryInput, PostUncheckedCreateWithoutCategoryInput> | PostCreateWithoutCategoryInput[] | PostUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCategoryInput | PostCreateOrConnectWithoutCategoryInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutCategoryInput | PostUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: PostCreateManyCategoryInputEnvelope
     set?: PostWhereUniqueInput | PostWhereUniqueInput[]
     disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
     delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
     connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutSubcategoryInput | PostUpdateWithWhereUniqueWithoutSubcategoryInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutSubcategoryInput | PostUpdateManyWithWhereWithoutSubcategoryInput[]
+    update?: PostUpdateWithWhereUniqueWithoutCategoryInput | PostUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutCategoryInput | PostUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
-  export type SubCategoryCreateNestedOneWithoutPostInput = {
-    create?: XOR<SubCategoryCreateWithoutPostInput, SubCategoryUncheckedCreateWithoutPostInput>
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutPostInput
-    connect?: SubCategoryWhereUniqueInput
+  export type CategoryCreateNestedOneWithoutPostsInput = {
+    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
+    connect?: CategoryWhereUniqueInput
   }
 
-  export type SubCategoryUpdateOneRequiredWithoutPostNestedInput = {
-    create?: XOR<SubCategoryCreateWithoutPostInput, SubCategoryUncheckedCreateWithoutPostInput>
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutPostInput
-    upsert?: SubCategoryUpsertWithoutPostInput
-    connect?: SubCategoryWhereUniqueInput
-    update?: XOR<XOR<SubCategoryUpdateToOneWithWhereWithoutPostInput, SubCategoryUpdateWithoutPostInput>, SubCategoryUncheckedUpdateWithoutPostInput>
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type CategoryUpdateOneRequiredWithoutPostsNestedInput = {
+    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
+    upsert?: CategoryUpsertWithoutPostsInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutPostsInput, CategoryUpdateWithoutPostsInput>, CategoryUncheckedUpdateWithoutPostsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -6048,119 +4716,89 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type SubCategoryCreateWithoutCategoryInput = {
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    post?: PostCreateNestedManyWithoutSubcategoryInput
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type SubCategoryUncheckedCreateWithoutCategoryInput = {
-    id?: number
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    post?: PostUncheckedCreateNestedManyWithoutSubcategoryInput
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type SubCategoryCreateOrConnectWithoutCategoryInput = {
-    where: SubCategoryWhereUniqueInput
-    create: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput>
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type SubCategoryCreateManyCategoryInputEnvelope = {
-    data: SubCategoryCreateManyCategoryInput | SubCategoryCreateManyCategoryInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type SubCategoryUpsertWithWhereUniqueWithoutCategoryInput = {
-    where: SubCategoryWhereUniqueInput
-    update: XOR<SubCategoryUpdateWithoutCategoryInput, SubCategoryUncheckedUpdateWithoutCategoryInput>
-    create: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput>
-  }
-
-  export type SubCategoryUpdateWithWhereUniqueWithoutCategoryInput = {
-    where: SubCategoryWhereUniqueInput
-    data: XOR<SubCategoryUpdateWithoutCategoryInput, SubCategoryUncheckedUpdateWithoutCategoryInput>
-  }
-
-  export type SubCategoryUpdateManyWithWhereWithoutCategoryInput = {
-    where: SubCategoryScalarWhereInput
-    data: XOR<SubCategoryUpdateManyMutationInput, SubCategoryUncheckedUpdateManyWithoutCategoryInput>
-  }
-
-  export type SubCategoryScalarWhereInput = {
-    AND?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
-    OR?: SubCategoryScalarWhereInput[]
-    NOT?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
-    id?: IntFilter<"SubCategory"> | number
-    title?: StringFilter<"SubCategory"> | string
-    categoryId?: IntFilter<"SubCategory"> | number
-    createdAt?: DateTimeFilter<"SubCategory"> | Date | string
-    updatedAt?: DateTimeFilter<"SubCategory"> | Date | string
-  }
-
-  export type PostCreateWithoutSubcategoryInput = {
+  export type PostCreateWithoutCategoryInput = {
     title: string
     contents: string
-    img: string
-    categoryId: number
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PostUncheckedCreateWithoutSubcategoryInput = {
+  export type PostUncheckedCreateWithoutCategoryInput = {
     id?: number
     title: string
     contents: string
-    img: string
-    categoryId: number
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PostCreateOrConnectWithoutSubcategoryInput = {
+  export type PostCreateOrConnectWithoutCategoryInput = {
     where: PostWhereUniqueInput
-    create: XOR<PostCreateWithoutSubcategoryInput, PostUncheckedCreateWithoutSubcategoryInput>
+    create: XOR<PostCreateWithoutCategoryInput, PostUncheckedCreateWithoutCategoryInput>
   }
 
-  export type PostCreateManySubcategoryInputEnvelope = {
-    data: PostCreateManySubcategoryInput | PostCreateManySubcategoryInput[]
+  export type PostCreateManyCategoryInputEnvelope = {
+    data: PostCreateManyCategoryInput | PostCreateManyCategoryInput[]
     skipDuplicates?: boolean
   }
 
-  export type CategoryCreateWithoutSubcategoryiesInput = {
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CategoryUncheckedCreateWithoutSubcategoryiesInput = {
-    id?: number
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CategoryCreateOrConnectWithoutSubcategoryiesInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutSubcategoryiesInput, CategoryUncheckedCreateWithoutSubcategoryiesInput>
-  }
-
-  export type PostUpsertWithWhereUniqueWithoutSubcategoryInput = {
+  export type PostUpsertWithWhereUniqueWithoutCategoryInput = {
     where: PostWhereUniqueInput
-    update: XOR<PostUpdateWithoutSubcategoryInput, PostUncheckedUpdateWithoutSubcategoryInput>
-    create: XOR<PostCreateWithoutSubcategoryInput, PostUncheckedCreateWithoutSubcategoryInput>
+    update: XOR<PostUpdateWithoutCategoryInput, PostUncheckedUpdateWithoutCategoryInput>
+    create: XOR<PostCreateWithoutCategoryInput, PostUncheckedCreateWithoutCategoryInput>
   }
 
-  export type PostUpdateWithWhereUniqueWithoutSubcategoryInput = {
+  export type PostUpdateWithWhereUniqueWithoutCategoryInput = {
     where: PostWhereUniqueInput
-    data: XOR<PostUpdateWithoutSubcategoryInput, PostUncheckedUpdateWithoutSubcategoryInput>
+    data: XOR<PostUpdateWithoutCategoryInput, PostUncheckedUpdateWithoutCategoryInput>
   }
 
-  export type PostUpdateManyWithWhereWithoutSubcategoryInput = {
+  export type PostUpdateManyWithWhereWithoutCategoryInput = {
     where: PostScalarWhereInput
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutSubcategoryInput>
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutCategoryInput>
   }
 
   export type PostScalarWhereInput = {
@@ -6170,147 +4808,85 @@ export namespace Prisma {
     id?: IntFilter<"Post"> | number
     title?: StringFilter<"Post"> | string
     contents?: StringFilter<"Post"> | string
-    img?: StringFilter<"Post"> | string
+    img?: StringNullableFilter<"Post"> | string | null
     categoryId?: IntFilter<"Post"> | number
-    subcategoryId?: IntFilter<"Post"> | number
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
   }
 
-  export type CategoryUpsertWithoutSubcategoryiesInput = {
-    update: XOR<CategoryUpdateWithoutSubcategoryiesInput, CategoryUncheckedUpdateWithoutSubcategoryiesInput>
-    create: XOR<CategoryCreateWithoutSubcategoryiesInput, CategoryUncheckedCreateWithoutSubcategoryiesInput>
-    where?: CategoryWhereInput
-  }
-
-  export type CategoryUpdateToOneWithWhereWithoutSubcategoryiesInput = {
-    where?: CategoryWhereInput
-    data: XOR<CategoryUpdateWithoutSubcategoryiesInput, CategoryUncheckedUpdateWithoutSubcategoryiesInput>
-  }
-
-  export type CategoryUpdateWithoutSubcategoryiesInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CategoryUncheckedUpdateWithoutSubcategoryiesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SubCategoryCreateWithoutPostInput = {
+  export type CategoryCreateWithoutPostsInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    category: CategoryCreateNestedOneWithoutSubcategoryiesInput
   }
 
-  export type SubCategoryUncheckedCreateWithoutPostInput = {
-    id?: number
-    title: string
-    categoryId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SubCategoryCreateOrConnectWithoutPostInput = {
-    where: SubCategoryWhereUniqueInput
-    create: XOR<SubCategoryCreateWithoutPostInput, SubCategoryUncheckedCreateWithoutPostInput>
-  }
-
-  export type SubCategoryUpsertWithoutPostInput = {
-    update: XOR<SubCategoryUpdateWithoutPostInput, SubCategoryUncheckedUpdateWithoutPostInput>
-    create: XOR<SubCategoryCreateWithoutPostInput, SubCategoryUncheckedCreateWithoutPostInput>
-    where?: SubCategoryWhereInput
-  }
-
-  export type SubCategoryUpdateToOneWithWhereWithoutPostInput = {
-    where?: SubCategoryWhereInput
-    data: XOR<SubCategoryUpdateWithoutPostInput, SubCategoryUncheckedUpdateWithoutPostInput>
-  }
-
-  export type SubCategoryUpdateWithoutPostInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneRequiredWithoutSubcategoryiesNestedInput
-  }
-
-  export type SubCategoryUncheckedUpdateWithoutPostInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SubCategoryCreateManyCategoryInput = {
+  export type CategoryUncheckedCreateWithoutPostsInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type SubCategoryUpdateWithoutCategoryInput = {
+  export type CategoryCreateOrConnectWithoutPostsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+  }
+
+  export type CategoryUpsertWithoutPostsInput = {
+    update: XOR<CategoryUpdateWithoutPostsInput, CategoryUncheckedUpdateWithoutPostsInput>
+    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutPostsInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutPostsInput, CategoryUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type CategoryUpdateWithoutPostsInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateManyWithoutSubcategoryNestedInput
   }
 
-  export type SubCategoryUncheckedUpdateWithoutCategoryInput = {
+  export type CategoryUncheckedUpdateWithoutPostsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUncheckedUpdateManyWithoutSubcategoryNestedInput
   }
 
-  export type SubCategoryUncheckedUpdateManyWithoutCategoryInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostCreateManySubcategoryInput = {
+  export type PostCreateManyCategoryInput = {
     id?: number
     title: string
     contents: string
-    img: string
-    categoryId: number
+    img?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PostUpdateWithoutSubcategoryInput = {
+  export type PostUpdateWithoutCategoryInput = {
     title?: StringFieldUpdateOperationsInput | string
     contents?: StringFieldUpdateOperationsInput | string
-    img?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostUncheckedUpdateWithoutSubcategoryInput = {
+  export type PostUncheckedUpdateWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     contents?: StringFieldUpdateOperationsInput | string
-    img?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostUncheckedUpdateManyWithoutSubcategoryInput = {
+  export type PostUncheckedUpdateManyWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     contents?: StringFieldUpdateOperationsInput | string
-    img?: StringFieldUpdateOperationsInput | string
-    categoryId?: IntFieldUpdateOperationsInput | number
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

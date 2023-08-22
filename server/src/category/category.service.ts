@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class CategoryService {
   constructor(private prismaService: PrismaService) {}
 
-  async createCategory(data: { title: string }): Promise<Category> {
+  async createCategory(data: Category): Promise<Category> {
     return await this.prismaService.category.create({
       data: { title: data.title },
     });

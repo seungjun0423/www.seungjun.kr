@@ -4,12 +4,10 @@ import { Category } from '@prisma';
 
 @Controller('category')
 export class CategoryController {
-  constructor(
-    private categoryService: CategoryService,
-  ) {}
+  constructor(private categoryService: CategoryService) {}
 
   @Post('/createCategory')
-  async createCategory(@Body() data: { title: string }): Promise<Category> {
+  async createCategory(@Body() data: Category): Promise<Category> {
     return await this.categoryService.createCategory(data);
   }
 
