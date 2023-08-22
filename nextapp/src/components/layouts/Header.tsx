@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link"
 import styled from "styled-components";
 
-import { authState } from "model/store";
+import { authState } from "data/store";
 
 const Headers = styled.header`
 	display: flex;

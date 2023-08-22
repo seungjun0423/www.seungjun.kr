@@ -5,7 +5,7 @@ import React from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
-import { authState, editState } from "model/store";
+import { authState, editState } from "data/store";
 import CategoryTitle from "components/modules/Category/CategoryTitle";
 import EditCategory from "components/ui/EditCategory";
 
