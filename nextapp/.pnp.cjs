@@ -6275,17 +6275,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["is-arguments", [\
-        ["npm:1.1.1", {\
-          "packageLocation": "./.yarn/cache/is-arguments-npm-1.1.1-eff4f6d4d7-7f02700ec2.zip/node_modules/is-arguments/",\
-          "packageDependencies": [\
-            ["is-arguments", "npm:1.1.1"],\
-            ["call-bind", "npm:1.0.2"],\
-            ["has-tostringtag", "npm:1.0.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["is-array-buffer", [\
         ["npm:3.0.2", {\
           "packageLocation": "./.yarn/cache/is-array-buffer-npm-3.0.2-0dec897785-dcac9dda66.zip/node_modules/is-array-buffer/",\
@@ -8973,9 +8962,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["uuid", [\
-        ["npm:8.3.2", {\
-          "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-5575a8a75c.zip/node_modules/uuid/",\
+      ["w3c-keyname", [\
+        ["npm:2.2.8", {\
+          "packageLocation": "./.yarn/cache/w3c-keyname-npm-2.2.8-66d7d5317a-95bafa4c04.zip/node_modules/w3c-keyname/",\
           "packageDependencies": [\
             ["uuid", "npm:8.3.2"]\
           ],\

@@ -5,12 +5,21 @@ import React from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
+<<<<<<< HEAD
 import { authState, editState } from "model/store";
 import CategoryTitle from "components/modules/Category/CategoryTitle";
 import EditCategory from "components/ui/EditCategory";
 
 import { SidebarDummy } from "data/dummy";
 import UpdatCategory from "components/modules/Category/UpdateCategory";
+=======
+import { authState, editState } from "data/store";
+import CategoryTitle from "components/services/Category/CategoryTitle";
+import EditCategory from "components/modules/EditCategory";
+
+import { SidebarDummy } from "data/dummy";
+import UpdatCategory from "components/services/Category/UpdateCategory";
+>>>>>>> main
 
 const Sidebars = styled.aside`
 	border-right: 1px solid #eaecef;

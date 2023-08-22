@@ -43,6 +43,7 @@ export const metadata: Metadata = {
 	// },
 }
 
+<<<<<<< HEAD
 export default function RootLayout ({ children }: Props) {
   return (
 		<html lang="ko">
@@ -54,6 +55,15 @@ export default function RootLayout ({ children }: Props) {
 						{children}
 					</Main>
 					<Footer/>
+=======
+export default function RootLayout( { children }: { children: React.ReactNode }): React.ReactElement {
+  return (
+    <html lang="ko">
+			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
+			<StyledComponentsRegistry>
+				<body >
+					<Main Children={children} />
+>>>>>>> main
 				</body>
 			</StyledComponentsRegistry>
     </html>
