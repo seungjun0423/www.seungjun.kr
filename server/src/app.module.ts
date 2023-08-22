@@ -6,6 +6,7 @@ import { PrismaService } from './prisma/prisma.service';
 import { PostModule } from './post/post.module';
 import { EditModule } from './edit/edit.module';
 import { AdminModule } from './admin/admin.module';
+import { CategoryModule } from './category/category.module';
 import config from './config/config';
 
 @Module({
@@ -18,6 +19,7 @@ import config from './config/config';
     PostModule,
     EditModule,
     AdminModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
