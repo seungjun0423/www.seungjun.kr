@@ -4,8 +4,6 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaService } from './prisma/prisma.service';
 import { PostModule } from './post/post.module';
-import { EditModule } from './edit/edit.module';
-import { AdminModule } from './admin/admin.module';
 import { CategoryModule } from './category/category.module';
 import { AuthModule } from './auth/auth.module';
 import config from './config/config';
@@ -18,8 +16,6 @@ import config from './config/config';
       isGlobal: true,
     }),
     PostModule,
-    EditModule,
-    AdminModule,
     CategoryModule,
     AuthModule,
   ],
