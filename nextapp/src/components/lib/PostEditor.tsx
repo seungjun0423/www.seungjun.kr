@@ -51,11 +51,7 @@ const Submit = styled.input`
 	}
 `;
 
-<<<<<<< HEAD
 export default function PostEditor (){
-=======
-export default function PostEditor (): React.ReactElement {
->>>>>>> main
 	const text = useRef(null);
 	return (
 		<EditorBox>

@@ -24,16 +24,16 @@ export default function Auth () {
 
 	const maskHandler = async () => {
 		/** 메타마스크 사인 */
-		// const test = await ethereum.request({  method: "personal_sign",
-		// 	params: [
-		// 	'0xeba994ec8b9ceca780',
-		// 	'0xb135b3e1433d77aac92977f30a4e6db43dc89c66'
-		// ]});
+		const test = await ethereum.request({  method: "personal_sign",
+			params: [
+			'0xeba994ec8b9ceca780',
+			'0xb135b3e1433d77aac92977f30a4e6db43dc89c66'
+		]});
 
 		/** 지갑 연결 확인 */
 		// const test = await ethereum.isConnected();
 		/** 지갑 주소 가져오기 */
-		const test = await ethereum.request({  method: "eth_requestAccounts",});
+		// const test = await ethereum.request({  method: "eth_requestAccounts",});
 		// const test = await ethereum.request({ method: 'wallet_getSnaps' });
 		console.log(test);
 		return test
