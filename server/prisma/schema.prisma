@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Admin {
+model Auth {
 	id    Int     @default(autoincrement()) @id
 	password String
 }
