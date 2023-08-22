@@ -10,7 +10,7 @@ export class CategoryController {
     private categoryService: CategoryService,
   ) {}
 
-  @Post('/creatCategory')
+  @Post('/createCategory')
   async createCategory(@Body() data: { title: string }): Promise<Category> {
     return await this.categoryService.createCategory(data);
   }
