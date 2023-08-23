@@ -9,7 +9,7 @@ import { PassportModule } from '@nestjs/passport';
 @Module({
   imports: [
     JwtModule.register({
-      secret: 'needmoremoney',
+      secret: process.env.SECRET_KEY,
       signOptions: { expiresIn: '300s' },
     }),
     PassportModule,

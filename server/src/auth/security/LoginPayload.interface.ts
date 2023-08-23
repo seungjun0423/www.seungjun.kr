@@ -1,4 +1,4 @@
 export interface LoginPayload {
-	id: number;
-	email: string; 
+  id: number;
+  email: string;
 }
