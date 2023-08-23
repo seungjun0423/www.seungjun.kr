@@ -6,11 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class PostService {
   constructor(private prismaService: PrismaService) {}
 
-  async createPost(data: {
-    title: string;
-    contents: string;
-    categoryId: number;
-  }): Promise<Post> {
+  async createPost(data: Post): Promise<Post> {
     return await this.prismaService.post.create({
       data: {
         title: data.title,
@@ -18,5 +14,9 @@ export class PostService {
         categoryId: data.categoryId,
       },
     });
+  }
+
+  async postList(): Promise<Post[]> {
+    return await this.prismaService.post.findMany();
   }
 }

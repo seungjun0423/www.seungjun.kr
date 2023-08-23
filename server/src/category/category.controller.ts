@@ -15,7 +15,7 @@ export class CategoryController {
     return await this.categoryService.createCategory(data);
   }
 
-  @Get()
+  @Get('/all')
   async categoryList(): Promise<Category[]> {
     return await this.categoryService.categoryList();
   }

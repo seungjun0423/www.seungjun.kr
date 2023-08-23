@@ -1,9 +1,19 @@
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PostService } from './post.service';
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
+
+export interface Posts {
+  id: number;
+  title: string;
+  contents: string;
+  img: string;
+  categoryId: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 @Controller('post')
-export class PostController {
+export default class PostController {
   constructor(
     private prismaService: PrismaService,
     private postService: PostService,
@@ -12,20 +22,13 @@ export class PostController {
   @Post('/createPost')
   async createPost(
     @Body()
-    data: {
-      title: string;
-      contents: string;
-      categoryId: number;
-    },
-  ): Promise<{
-    id: number;
-    title: string;
-    contents: string;
-    img: string;
-    categoryId: number;
-    createdAt: Date;
-    updatedAt: Date;
-  }> {
+    data: Posts,
+  ): Promise<Posts> {
     return await this.postService.createPost(data);
+  }
+
+  @Get('/all')
+  async postList(): Promise<Posts[]> {
+    return await this.postService.postList();
   }
 }
