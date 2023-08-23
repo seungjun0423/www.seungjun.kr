@@ -11,12 +11,12 @@ datasource db {
 }
 
 model Auth {
-	id    Int     @default(autoincrement()) @id
+	id    Int     @id @default(autoincrement())
 	password String
 }
 
 model Category {
-	id Int @default(autoincrement()) @id
+	id Int @id @default(autoincrement()) 
 	title String
 	posts Post[]
 	createdAt DateTime @default(now())
@@ -24,7 +24,7 @@ model Category {
 }
 
 model Post {
-	id    Int     @default(autoincrement()) @id
+	id    Int     @id @default(autoincrement())
 	title String
 	contents String @db.LongText
 	img String?

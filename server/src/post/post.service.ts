@@ -16,7 +16,9 @@ export class PostService {
     });
   }
 
-  async postList(): Promise<Post[]> {
-    return await this.prismaService.post.findMany();
+  async postList(data: { categoryId: number }): Promise<Post[]> {
+    return await this.prismaService.post.findMany({
+      where: { categoryId: data.categoryId },
+    });
   }
 }
