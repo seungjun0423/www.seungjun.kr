@@ -2227,7 +2227,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/debug@npm:^4.1.7":
+"@types/debug@npm:^4.0.0, @types/debug@npm:^4.1.7":
   version: 4.1.8
   resolution: "@types/debug@npm:4.1.8"
   dependencies:
@@ -2704,6 +2704,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios-debug-log@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "axios-debug-log@npm:1.0.0"
+  dependencies:
+    "@types/debug": ^4.0.0
+    debug: ^4.0.0
+  peerDependencies:
+    axios: ">=1.0.0"
+  checksum: db41f20439027a75ead8e32a14d8b3350635674c11fd72335dbcfcaf1a828246c7c28109cb6964b969c0991431218dfbda5d570ea275d1c57e979f89cd25fcfd
+  languageName: node
+  linkType: hard
+
 "axios@npm:^1.4.0":
   version: 1.4.0
   resolution: "axios@npm:1.4.0"
@@ -3146,7 +3158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4, debug@npm:~4.3.1, debug@npm:~4.3.2":
+"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4, debug@npm:~4.3.1, debug@npm:~4.3.2":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -5202,6 +5214,7 @@ next@latest:
     "@types/react-dom": ^18.2.7
     "@types/styled-components": ^5.1.26
     axios: ^1.4.0
+    axios-debug-log: ^1.0.0
     client-only: ^0.0.1
     eslint: 8.41.0
     eslint-config-next: latest

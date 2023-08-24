@@ -1,9 +1,8 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Props } from "app/layout";
-
 
 const Contents = styled.section`
 	width: 100%;
@@ -13,8 +12,7 @@ const Contents = styled.section`
 `;
 
 export default function Content ({ children }: Props) {
-
-	return (
+	return (	
 		<Contents>
 			{children}
 		</Contents>
