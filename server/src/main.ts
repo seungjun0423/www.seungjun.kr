@@ -4,12 +4,13 @@ import { ConfigService } from '@nestjs/config';
 import * as cookieParser from 'cookie-parser';
 
 async function main() {
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
   const port = configService.get<string>('server.port');
 
   app.enableCors({
     origin: `${process.env.CORS_DEV}`,
+    credentials: true,
     methods: ['POST', 'PUT', 'DELETE', 'GET'],
   });
   app.use(cookieParser());

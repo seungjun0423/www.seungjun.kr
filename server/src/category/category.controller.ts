@@ -1,6 +1,7 @@
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CategoryService } from './category.service';
-import { Body, Controller, Get, Post, Put, Delete } from '@nestjs/common';
+// eslint-disable-next-line prettier/prettier
+import { Body, Controller, Get, Post, Put, Patch, Delete } from '@nestjs/common';
 import { Category } from '@prisma';
 
 @Controller('category')
