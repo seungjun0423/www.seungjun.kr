@@ -13,6 +13,20 @@ export class CategoryService {
   }
 
   async categoryList(): Promise<Category[]> {
-    return this.prismaService.category.findMany();
+    return await this.prismaService.category.findMany();
+  }
+
+  async editCategory(data: Category): Promise<any> {
+    return await this.prismaService.category.update({
+      where: { id: data.id },
+      data: { title: data.title },
+    });
+  }
+
+  async deleteCategory(data: { id: number }): Promise<Category> {
+    const result = await this.prismaService.category.delete({
+      where: { id: data.id },
+    });
+    return result;
   }
 }

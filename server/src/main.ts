@@ -8,7 +8,10 @@ async function main() {
   const configService = app.get(ConfigService);
   const port = configService.get<string>('server.port');
 
-  app.enableCors();
+  app.enableCors({
+    origin: `${process.env.CORS_DEV}`,
+    methods: ['POST', 'PUT', 'DELETE', 'GET'],
+  });
   app.use(cookieParser());
   await app.listen(port);
 }
