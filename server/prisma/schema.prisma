@@ -10,12 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Admin {
-	id    Int     @id @default(autoincrement())
-	email String @unique
-	password String
-}
-
 model User {
   id    Int     @default(autoincrement()) @id
   email String  @unique
@@ -24,6 +18,13 @@ model User {
 	updatedAt DateTime @updatedAt
 	profile Profile[]
 	comment Comment[]
+	admin Admin[]
+}
+
+model Admin {
+	id    Int     @id @default(autoincrement())
+	userId Int
+	user   User  @relation(fields: [userId], references: [id])
 }
 
 model Profile {
