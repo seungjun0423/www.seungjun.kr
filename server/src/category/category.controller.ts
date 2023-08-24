@@ -21,7 +21,7 @@ export class CategoryController {
     return await this.categoryService.categoryList();
   }
 
-  @Put('/edit')
+  @Patch('/edit')
   async editCategory(@Body() data: Category): Promise<Category[]> {
     return await this.categoryService.editCategory(data);
   }
