@@ -9,7 +9,7 @@
     "generate": "pnpify prisma generate",
     "migrate": "prisma migrate deploy",
     "copy-files": "cpx \"src/config/*.yaml\" dist/config",
-    "build": "yarn generate && yarn migrate && yarn prisma db push && yarn copy-files && nest build",
+    "build": "yarn generate && yarn migrate && yarn copy-files && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "yarn copy-files && nest start",
     "start:dev": "yarn copy-files && nest start --watch",
