@@ -1,6 +1,7 @@
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CategoryService } from './category.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+// eslint-disable-next-line prettier/prettier
+import { Body, Controller, Get, Post, Put, Patch, Delete } from '@nestjs/common';
 import { Category } from '@prisma';
 
 @Controller('category')
@@ -10,13 +11,23 @@ export class CategoryController {
     private categoryService: CategoryService,
   ) {}
 
-  @Post('/creatCategory')
-  async createCategory(@Body() data: { title: string }): Promise<Category> {
+  @Post('/createCategory')
+  async createCategory(@Body() data: Category): Promise<Category> {
     return await this.categoryService.createCategory(data);
   }
 
-  @Get()
+  @Get('/all')
   async categoryList(): Promise<Category[]> {
     return await this.categoryService.categoryList();
+  }
+
+  @Put('/edit')
+  async editCategory(@Body() data: Category): Promise<Category[]> {
+    return await this.categoryService.editCategory(data);
+  }
+
+  @Delete('/delete')
+  async deleteCategory(@Body() data: { id: number }): Promise<Category> {
+    return await this.categoryService.deleteCategory(data);
   }
 }
