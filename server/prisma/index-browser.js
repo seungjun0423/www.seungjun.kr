@@ -107,20 +107,31 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.AdminScalarFieldEnum = {
   id: 'id',
+  email: 'email',
   password: 'password'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProfileScalarFieldEnum = {
+  id: 'id',
+  img: 'img',
+  description: 'description',
+  nickname: 'nickname',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.SubCategoryScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  categoryId: 'categoryId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -131,7 +142,15 @@ exports.Prisma.PostScalarFieldEnum = {
   contents: 'contents',
   img: 'img',
   categoryId: 'categoryId',
-  subcategoryId: 'subcategoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  postId: 'postId',
+  contents: 'contents',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -141,12 +160,19 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   Admin: 'Admin',
+  User: 'User',
+  Profile: 'Profile',
   Category: 'Category',
-  SubCategory: 'SubCategory',
-  Post: 'Post'
+  Post: 'Post',
+  Comment: 'Comment'
 };
 
 /**
