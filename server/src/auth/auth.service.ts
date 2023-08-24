@@ -35,7 +35,7 @@ export class AuthService {
 
   async login(data: {email: string; password: string;}): Promise<{ accessToken: string } | undefined> {
     // 등록된 유저 여부 확인
-    const userFind: Admin = await this.prismaService.user.findUnique({
+    const userFind: User = await this.prismaService.user.findUnique({
       where: { email: data.email },
     });
 
