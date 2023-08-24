@@ -7,7 +7,7 @@ import styled from "styled-components";
 // 컴포넌트와 기타 등등
 import { authState, editState } from "data/store";
 import CategoryTitle from "components/modules/Category/CategoryTitle";
-import EditCategory from "components/ui/EditCategory";
+import EditCategoryBtn from "components/ui/EditCategory";
 
 import { SidebarDummy } from "data/dummy";
 import UpdatCategory from "components/modules/Category/UpdateCategory";
@@ -70,7 +70,7 @@ export default function Sidebar () {
   return (
     <Sidebars>
 			<Wrapper>
-				{ isAdmin?  <EditCategory/>: <></> }
+				{ isAdmin?  <EditCategoryBtn/>: <></> }
 				<ListBox>
 					{ isEdit ?
 						SidebarDummy.map((el, index)=>{

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import styled from "styled-components";
 
 import { authState, editState } from "data/store";
@@ -46,7 +45,7 @@ const Categories = styled.input`
 `;
 
 /** 서버에서 카테고리와 작성글 목록을 받아와 열거해주는 컴포넌트 */
-export default function CategoryTitle({ title, posts }: {title: string, posts: string[]}): React.ReactElement{
+export default function CategoryTitle({ title, posts }: {title: string, posts: string[]}){
 	const { isAdmin, setIsAdmin } = authState();
 	const { isEdit, setIsEdit } = editState();
 

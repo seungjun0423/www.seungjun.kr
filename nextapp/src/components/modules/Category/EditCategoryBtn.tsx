@@ -28,7 +28,7 @@ const EditBtn = styled.button`
 `;
 
 
-export default function EditCategory () {
+export default function EditCategoryBtn () {
 	const { isAdmin, setIsAdmin } = authState();
 	const { isEdit, setIsEdit } = editState();
 	const edit = useRef(false);
