@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable prettier/prettier */
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { LoginPayload } from './security/LoginPayload.interface';
@@ -62,3 +63,9 @@ export class AuthService {
     });
   }
 }
+=======
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AuthService {}
+>>>>>>> origin/frontNext
