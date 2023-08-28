@@ -89,14 +89,12 @@ export default function Sidebar () {
 
 		const fetchData = async () => {
 			const categoryData = await _axios.get(`/category/all`);
-			// const categoryData = await _axios.
 			// const postData = await axios.get(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then((res)=>{return res.data})
 			setCateogoryData(categoryData);
 		}
 
 		fetchData();
 	}, []);
-	console.log(categoryData);
 
   return (
     <Sidebars>

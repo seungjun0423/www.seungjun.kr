@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { stateStore } from "data/store";
 
 import SubmitBtn from "components/ui/button/SubmitBtn";
-import axios from "axios";
+import { _axios } from "hooks/axios";
 import { Submit } from "types/interface";
 
 // import { MetaMaskSDK } from '@metamask/sdk';
@@ -112,12 +112,12 @@ export default function Auth () {
 				} else if(!password){
 					return alert('비밀번호를 입력해주세요');
 				} else if(email && password) {
-					const req = await axios.post(
-						`${process.env.NEXT_PUBLIC_CORS_URL}/auth/login`
+					const req: {message: string} = await _axios.post(
+						`/auth/login`
 						,{ email:email, password: password}
-						,{withCredentials: true});
+					);
 
-					if(req.data.message === 'login success'){
+					if(req.message === 'login success'){
 						stateStore.setState({isLogin: true},true);
 						window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
 					}
