@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Metadata } from 'next';
 import '../styles/globals.css';
 
@@ -10,7 +10,6 @@ import GoogleAnalytics from "../util/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
 import Header from "components/layouts/Header";
 import Footer from "components/layouts/Footer";
-
 /** font */
 const sans = Open_Sans({ subsets: ['latin']});
 

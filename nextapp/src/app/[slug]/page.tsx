@@ -19,5 +19,5 @@ export default function Post ({ params: { slug } }: Post ) {
 		return <UpdatePost></UpdatePost>;
 	} else if ( slug === 'delete') {
 		return <DeletePost></DeletePost>;
-	}
+	} else return <>{slug}</>
 }

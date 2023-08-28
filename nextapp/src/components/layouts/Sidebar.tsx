@@ -1,13 +1,13 @@
 'use client'
 
 // 라이브러리 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
-import { authState, editState } from "data/store";
+import { stateStore, editState } from "data/store";
 import CategoryTitle from "components/modules/Category/CategoryTitle";
-import EditCategoryBtn from "components/ui/EditCategory";
+import EditCategoryBtn from "components/ui/button/EditCategoryBtn";
 
 import { SidebarDummy } from "data/dummy";
 import UpdatCategory from "components/modules/Category/UpdateCategory";
@@ -64,13 +64,19 @@ const ListBox = styled.div`
 
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar () {
-	const { isAdmin, setIsAdmin } = authState();
 	const { isEdit, setIsEdit } = editState();
+	const [ editBtn, setEditBtn ] = useState<React.ReactElement>(<></>);
+
+	useEffect(() => {
+		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
+		
+		sessionState?.isLogin ? setEditBtn(<EditCategoryBtn/>):setEditBtn(<></>);
+	}, []);
 
   return (
     <Sidebars>
 			<Wrapper>
-				{ isAdmin?  <EditCategoryBtn/>: <></> }
+				{editBtn}
 				<ListBox>
 					{ isEdit ?
 						SidebarDummy.map((el, index)=>{

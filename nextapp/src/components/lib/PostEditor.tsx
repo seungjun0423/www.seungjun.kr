@@ -11,6 +11,8 @@ import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
+import SubmitBtn from "components/ui/button/SubmitBtn";
+
 const EditorBox = styled.div`
 	width: 100%;
 	height: 65%;
@@ -67,9 +69,7 @@ export default function PostEditor (){
 				usageStatistics={false}
 				// theme="dark"	
 			/>
-			<BtnBox>
-				<Submit type="submit" value={'확인'}/>
-			</BtnBox>
+			<SubmitBtn />
 		</EditorBox>
 		);
 };

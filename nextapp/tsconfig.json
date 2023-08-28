@@ -34,8 +34,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/model/Providers.tsx"  ],
+    ".next/types/**/*.ts", 
+		"src/model/Providers.tsx",
+		"env.d.ts",
+	],
   "exclude": [
     "node_modules"
   ],

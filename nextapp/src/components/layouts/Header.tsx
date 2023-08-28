@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link"
+import React, { useState, useEffect, useContext } from "react";
+import Link from "next/link";
+import dynamic from 'next/dynamic';
+
 import styled from "styled-components";
-
-import { authState } from "data/store";
 
 const Headers = styled.header`
 	display: flex;
@@ -25,7 +25,7 @@ const Title = styled.span`
 	font-weight: bold;
 `;
 
-const NavContainer = styled.nav`
+const NavContainers = styled.nav`
 	margin-right: 5vw;
 	display: flex;
 	align-items: center;
@@ -36,7 +36,7 @@ const NavContainer = styled.nav`
 	}
 `;
 
-const NavBox = styled.div`
+const NavBoxes = styled.div`
 	margin-right: 3vw;
 	width: 6rem;
 	height: 4rem;
@@ -53,6 +53,7 @@ const NavBtn = styled.button`
 	border: 1px solid #eaecef;
 	border-radius: 5px;
 	color: gray;
+	cursor: pointer;
 `;
 
 const Borad = styled.nav`
@@ -72,62 +73,58 @@ const Borad = styled.nav`
 /** Header 컴포넌트 */
 export default function Header () {
 	const [ navState, setNavState ] = useState<boolean>(false);
-	// const [ adminState, setAdminState ] = useState<boolean>(true);
-	const { isAdmin, setIsAdmin } = authState()
+	const [ navConatiner, setNavConatiner] = useState<React.ReactElement>(<></>);
+	useEffect(() => {
+		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
 
-
-	/** innerWidth 가 576 초과인 경우 */
-	const navContainer = (): React.ReactElement => {
-		return (
-			<NavContainer>
+		const NavContainer = (
+			<>
+			<NavContainers>
 				<Link href={'/'} style={{ fontWeight: 'bold',fontSize: '1.5rem' }}>
 					home
 				</Link>
 				<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 					about me
 				</Link>
-				{ !isAdmin ?
-					<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-						admin
-					</Link>:
+				{ sessionState?.isLogin ?
 					<Link href={'/createPost'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
 						posting
+					</Link> :
+					<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+						login
 					</Link>
 				}
-			</NavContainer>
-		);
-	};	
-
-/** innerWidth 가 576 이하인 경우 */
-	const navBox = (): React.ReactElement => {
-		return (
-			<NavBox>
-				<NavBtn onClick={()=>{setNavState(!navState)}}>
-					{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
-					&#9776;
-				</NavBtn>
-				{ navState ? 
-					<Borad>
-						<Link href={'/'} style={{ color:'gray', fontSize: '1.5rem'}}>
-							home
-						</Link>
-						<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.5rem'}}>
-							about
-						</Link>
-						{ !isAdmin ?
-							<Link href={'/auth'} style={{ color:'gray', fontSize: '1.5rem' }}>
-								admin
-							</Link>:
-							<Link href={'/post/create'} style={{ color:'gray', fontSize: '1.5rem'}}>
-								posting
+			</NavContainers>
+			<NavBoxes onClick={()=>{setNavState(!navState)}}>
+					<NavBtn>
+						{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
+						&#9776;
+					</NavBtn>
+					{ navState ? 
+						<Borad>
+							<Link href={'/'} style={{ color:'gray', fontSize: '1.5rem'}}>
+								home
 							</Link>
-						}
-					</Borad>
-					: <></>
-				}
-			</NavBox>
+							<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.5rem'}}>
+								about
+							</Link>
+							{ sessionState?.isLogin ?
+								<Link href={'/post/create'} style={{ color:'gray', fontSize: '1.5rem'}}>
+									posting
+								</Link>:
+								<Link href={'/auth'} style={{ color:'gray', fontSize: '1.5rem' }}>
+									login
+								</Link>
+							}
+						</Borad>
+						: <></>
+					}
+				</NavBoxes>
+			</>
 		);
-	};
+
+		setNavConatiner(NavContainer);
+	}, [navState])
 	
 	return (
 		<Headers>
@@ -136,8 +133,7 @@ export default function Header () {
 					Blog
 				</Link>
 			</Title>
-			{navContainer()}
-			{navBox()}
+			{navConatiner}
 		</Headers>
 	);
 };

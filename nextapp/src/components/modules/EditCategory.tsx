@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import { authState, editState } from "data/store";
+import { editState } from "data/store";
 
 
 const EditCategries = styled.div`
@@ -29,7 +29,6 @@ const EditBtn = styled.button`
 
 
 export default function EditCategory () {
-	const { isAdmin, setIsAdmin } = authState();
 	const { isEdit, setIsEdit } = editState();
 	const edit = useRef(false);
 

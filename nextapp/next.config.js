@@ -21,6 +21,27 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+	reactStrictMode:true,
+	// async redirects(){
+  //   return [
+  //     {
+  //       source: "/auth",
+  //       destination: "/",
+  //       permanent: false
+  //     }
+  //   ]
+  // }
 };
+
+// module.exports = {
+//   async rewrites() {
+//     return [
+//       {
+//         source: '/auth',
+//         destination: '/',
+//       },
+//     ]
+//   },
+// }
 
 module.exports = nextConfig
