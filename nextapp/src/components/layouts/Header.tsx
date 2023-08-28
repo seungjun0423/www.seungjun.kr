@@ -82,10 +82,7 @@ const sildIn = keyframes`
 const Div = styled.div`
 	display: flex;
 	align-items: center;
-	transition: all 2s;
-  /* opacity: 0; */
-	transform: translateX(-100%);
-  animation: ${sildIn} 0.3s ease-out forwards;
+  animation: ${sildIn} 0.5s ease-out forwards;
 `;
 /** Header 컴포넌트 */
 export default function Header () {

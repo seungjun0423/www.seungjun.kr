@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { editState } from "data/store";
 
 
+
+
 const EditCategries = styled.div`
 	height: 3rem;
 	display: flex;

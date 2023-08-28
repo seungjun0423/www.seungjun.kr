@@ -2,7 +2,7 @@
 
 // 라이브러리 
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 // 컴포넌트와 기타 등등
 import { stateStore, editState } from "data/store";
@@ -12,12 +12,22 @@ import EditCategoryBtn from "components/ui/button/EditCategoryBtn";
 import { SidebarDummy } from "data/dummy";
 import UpdatCategory from "components/modules/Category/UpdateCategory";
 
+const sildIn = keyframes`
+  from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+`;
+
 const Sidebars = styled.aside`
 	border-right: 1px solid #eaecef;
 	overflow-y: auto;
 	width: 30%;
 	max-width: 220px;
 	min-width: 160px;
+	animation: ${sildIn} 0.5s ease-out forwards;
 
 	@media (max-width: 576px) {
 		border-right: 0;
