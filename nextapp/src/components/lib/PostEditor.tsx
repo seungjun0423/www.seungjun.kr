@@ -54,6 +54,9 @@ const Submit = styled.input`
 `;
 
 export default function PostEditor (){
+	const submitHandler = () => {
+		return 
+	}
 	const text = useRef(null);
 	return (
 		<EditorBox>
@@ -69,7 +72,7 @@ export default function PostEditor (){
 				usageStatistics={false}
 				// theme="dark"	
 			/>
-			<SubmitBtn />
+			<SubmitBtn handler={submitHandler}/>
 		</EditorBox>
 		);
 };

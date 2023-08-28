@@ -102,8 +102,6 @@ export default function Auth () {
 	*/
 
 	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
-		// const testCall = await axios.get(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`)
-		// console.log(testCall);
 		
 		try{
 			if(type === 'login'){

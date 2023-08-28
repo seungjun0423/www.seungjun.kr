@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { authState, editState } from "data/store";
-
 import PostList from "../Post/PostList";
 
 import { SidebarDummy } from "../../../data/dummy";
