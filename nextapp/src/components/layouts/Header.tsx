@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import dynamic from 'next/dynamic';
 
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Headers = styled.header`
 	display: flex;
@@ -70,6 +70,23 @@ const Borad = styled.nav`
 	font-weight: bold;
 `;
 
+const sildIn = keyframes`
+  from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+`;
+
+const Div = styled.div`
+	display: flex;
+	align-items: center;
+	transition: all 2s;
+  /* opacity: 0; */
+	transform: translateX(-100%);
+  animation: ${sildIn} 0.3s ease-out forwards;
+`;
 /** Header 컴포넌트 */
 export default function Header () {
 	const [ navState, setNavState ] = useState<boolean>(false);
@@ -78,7 +95,7 @@ export default function Header () {
 		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
 
 		const NavContainer = (
-			<>
+			<Div>
 			<NavContainers>
 				<Link href={'/'} style={{ fontWeight: 'bold',fontSize: '1.5rem' }}>
 					home
@@ -109,7 +126,7 @@ export default function Header () {
 								about
 							</Link>
 							{ sessionState?.isLogin ?
-								<Link href={'/post/create'} style={{ color:'gray', fontSize: '1.5rem'}}>
+								<Link href={'/createPost'} style={{ color:'gray', fontSize: '1.5rem'}}>
 									posting
 								</Link>:
 								<Link href={'/auth'} style={{ color:'gray', fontSize: '1.5rem' }}>
@@ -120,7 +137,7 @@ export default function Header () {
 						: <></>
 					}
 				</NavBoxes>
-			</>
+			</Div>
 		);
 
 		setNavConatiner(NavContainer);
