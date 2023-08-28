@@ -3,9 +3,10 @@
 // 라이브러리 
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import { _axios } from "hooks/axios";
 
 // 컴포넌트와 기타 등등
-import { stateStore, editState } from "data/store";
+import { editState } from "data/store";
 import CategoryTitle from "components/modules/Category/CategoryTitle";
 import EditCategoryBtn from "components/ui/button/EditCategoryBtn";
 
@@ -27,7 +28,10 @@ const Sidebars = styled.aside`
 	width: 30%;
 	max-width: 220px;
 	min-width: 160px;
-	animation: ${sildIn} 0.5s ease-out forwards;
+	
+	@media (min-width:577px){
+		animation: ${sildIn} 0.9s ease-out forwards;
+	}
 
 	@media (max-width: 576px) {
 		border-right: 0;
@@ -76,12 +80,23 @@ const ListBox = styled.div`
 export default function Sidebar () {
 	const { isEdit, setIsEdit } = editState();
 	const [ editBtn, setEditBtn ] = useState<React.ReactElement>(<></>);
+	const [ categoryData, setCateogoryData] = useState<object[]>([]);
 
 	useEffect(() => {
 		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
 		
 		sessionState?.isLogin ? setEditBtn(<EditCategoryBtn/>):setEditBtn(<></>);
+
+		const fetchData = async () => {
+			const categoryData = await _axios.get(`/category/all`);
+			// const categoryData = await _axios.
+			// const postData = await axios.get(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then((res)=>{return res.data})
+			setCateogoryData(categoryData);
+		}
+
+		fetchData();
 	}, []);
+	console.log(categoryData);
 
   return (
     <Sidebars>
@@ -89,10 +104,10 @@ export default function Sidebar () {
 				{editBtn}
 				<ListBox>
 					{ isEdit ?
-						SidebarDummy.map((el, index)=>{
+						categoryData.map((el, index)=>{
 							return <UpdatCategory key={index} title={el.title} posts={el.post}/>
 						})
-						: SidebarDummy.map((el, index)=>{
+						: categoryData.map((el, index)=>{
 							return <CategoryTitle key={index} title={el.title} posts={el.post}/>
 						})
 						
