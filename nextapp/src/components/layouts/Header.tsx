@@ -5,6 +5,8 @@ import Link from "next/link";
 import dynamic from 'next/dynamic';
 
 import styled, { keyframes } from "styled-components";
+import { _axios } from "hooks/axios";
+import { stateStore } from "data/store";
 
 const Headers = styled.header`
 	display: flex;
@@ -88,22 +90,41 @@ const Div = styled.div`
 export default function Header () {
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const [ navConatiner, setNavConatiner] = useState<React.ReactElement>(<></>);
+
+	const logoutHandler = async () => {
+		try{
+			const req= await _axios.post('/auth/logout');
+			if(req.message === 'logout success'){
+
+				stateStore.setState({isLogin: false},true);
+				window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
+			} else if(req.message !== 'logout success'){
+				alert('log out failed!')
+			}
+		} catch(err){
+			throw err;
+		}
+	}
+
 	useEffect(() => {
 		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
 
 		const NavContainer = (
 			<Div>
 			<NavContainers>
-				<Link href={'/'} style={{ fontWeight: 'bold',fontSize: '1.5rem' }}>
-					home
-				</Link>
 				<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 					about me
 				</Link>
 				{ sessionState?.isLogin ?
-					<Link href={'/createPost'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
-						posting
-					</Link> :
+					<>
+						<Link href={'/createPost'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
+							posting
+						</Link> 
+						<div onClick={logoutHandler} style={{ fontWeight: 'bold',fontSize: '1.5rem', cursor:'pointer' }}>
+							logout
+						</div>
+					</>
+					:
 					<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 						login
 					</Link>
@@ -116,16 +137,19 @@ export default function Header () {
 					</NavBtn>
 					{ navState ? 
 						<Borad>
-							<Link href={'/'} style={{ color:'gray', fontSize: '1.5rem'}}>
-								home
-							</Link>
 							<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.5rem'}}>
 								about
 							</Link>
 							{ sessionState?.isLogin ?
-								<Link href={'/createPost'} style={{ color:'gray', fontSize: '1.5rem'}}>
-									posting
-								</Link>:
+								<>
+									<Link href={'/createPost'} style={{ color:'gray', fontSize: '1.5rem'}}>
+										posting
+									</Link>
+									<div onClick={logoutHandler} style={{ color:'gray',fontSize: '1.5rem', cursor:'pointer' }}>
+										logout
+									</div>
+								</>
+								:
 								<Link href={'/auth'} style={{ color:'gray', fontSize: '1.5rem' }}>
 									login
 								</Link>

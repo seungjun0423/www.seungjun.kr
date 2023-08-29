@@ -11,29 +11,26 @@ import { postStore } from "data/store";
 const PostViewers = styled.div`
 	width: 100%;
 	height: min-content;
-	padding: 4rem;
-	margin-bottom: 5vh;
-
-	@media (max-width: 576px) {
-		margin-bottom: 10vh;
-	}
 `;
 
 //Todo: 데이터 입력 테스트 필요
 export default function Postviewer({ children }: {children: number}) {
 	const [contents , setContents] = useState<string>();
 	const obj = window.sessionStorage.getItem('post-storage');
-	const data:PostType = JSON.parse(obj as string).state.nowPost
-	// useEffect(()=>{
-	// 		console.log(data);
-	// 		setContents(data.contents);
-	// },[])
+	const data:PostType = JSON.parse(obj as string).state.nowPost;
 
 	return (
 		<PostViewers id='viewer'>
 			<Viewer
 				initialValue={
-					`<div> ${children}번 포스트임 <span style="color:blue;">내용은 ${data?.contents}</span></div>`
+					`<div> 
+						<h1 style='border: none; font-size: 3rem; margin-bottom: 2rem;'>
+							${data?.title}
+						</h1> 
+						<span style="color: black; font-size: 1.2rem;">
+							${data?.contents}
+						</span>
+					</div>`
 				}
 			/>
 		</PostViewers>

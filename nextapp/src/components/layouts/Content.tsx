@@ -9,6 +9,13 @@ const Contents = styled.section`
 	height: 100vh;
 	overflow-x: auto;
 	overflow-y: auto;
+	
+	padding: 4rem;
+	margin-bottom: 5vh;
+
+	@media (max-width: 576px) {
+		margin-bottom: 10vh;
+	}
 `;
 
 export default function Content ({ children }: Props) {
