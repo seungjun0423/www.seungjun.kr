@@ -6,3 +6,10 @@ export interface Submit {
 	password: string;
 	path: string;
 }
+
+export interface PostType {
+	id: number;
+	title: string;
+	contents: string;
+	fold: boolean;
+};

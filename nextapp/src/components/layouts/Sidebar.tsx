@@ -7,7 +7,7 @@ import { _axios } from "hooks/axios";
 
 // 컴포넌트와 기타 등등
 import { editState } from "data/store";
-import CategoryTitle from "components/modules/Category/CategoryTitle";
+import PostList from "components/modules/Category/PostList";
 import EditCategoryBtn from "components/ui/button/EditCategoryBtn";
 
 import { SidebarDummy } from "data/dummy";
@@ -76,11 +76,18 @@ const ListBox = styled.div`
 	}
 `;
 
+type CategoryData = {
+	id: number; 
+	title: string; 
+	createdAt: string;
+	updatedAt: string;
+}
+
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar () {
 	const { isEdit, setIsEdit } = editState();
 	const [ editBtn, setEditBtn ] = useState<React.ReactElement>(<></>);
-	const [ categoryData, setCateogoryData] = useState<object[]>([]);
+	const [ categoryData, setCateogoryData] = useState<CategoryData[]>([]);
 
 	useEffect(() => {
 		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
@@ -89,7 +96,6 @@ export default function Sidebar () {
 
 		const fetchData = async () => {
 			const categoryData = await _axios.get(`/category/all`);
-			// const postData = await axios.get(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then((res)=>{return res.data})
 			setCateogoryData(categoryData);
 		}
 
@@ -103,12 +109,11 @@ export default function Sidebar () {
 				<ListBox>
 					{ isEdit ?
 						categoryData.map((el, index)=>{
-							return <UpdatCategory key={index} title={el.title} posts={el.post}/>
+							return <UpdatCategory key={index} title={el.title} categoryId={el.id} />
 						})
 						: categoryData.map((el, index)=>{
-							return <CategoryTitle key={index} title={el.title} posts={el.post}/>
+							return <PostList key={index} title={el.title} categoryId={el.id}/>
 						})
-						
 					}
 				</ListBox>
 

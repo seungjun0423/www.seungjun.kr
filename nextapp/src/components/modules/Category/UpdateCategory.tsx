@@ -1,16 +1,9 @@
 'use client';
-
-import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
-interface Category {
-	id: number;
-	title: string;
-	priority: number;
-	post: string[];
-	spread: boolean;
-};
+import { PostType } from '../../../types/interface'
+
 
 const UpdateCategories = styled.div`
 	width: 100%;
@@ -26,7 +19,7 @@ const UpdateCategories = styled.div`
 	}
 `;
 
-const Categories = styled.input`
+const Posts = styled.input`
 	width: 100%;
 	font-size: 1.5rem;
 	font-weight: bold;
@@ -44,15 +37,15 @@ const PostList = styled.input`
 	cursor: pointer;
 `;
 
-export default function UpdatCategory ({ title, posts }: {title: string, posts: string[]}) {
+export default function UpdatCategory ({ title, categoryId }: {title: string, categoryId: number}) {
 	return (
 		<UpdateCategories>
-			<Categories type="text" defaultValue={title} required/>
-			{ 
+			<Posts type="text" defaultValue={title} required/>
+			{/* { 
 				posts.map((el, index)=>{
 					return <PostList key={index} type="text" defaultValue={el} required/> 
 				})
-			}
+			} */}
 		</UpdateCategories>
 	)
 }

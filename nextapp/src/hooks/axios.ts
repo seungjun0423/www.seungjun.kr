@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 // const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
 type Input = {
-	[key: string]:(input:string, data?:object) => Promise<any>;
+	[key: string]:(path:string, data?:object) => Promise<any>;
 }
 
 type Axios = {
@@ -14,10 +14,11 @@ type Axios = {
 	put: Input['put'];
 }
 
+/** _axios( path: string, data?: object): path 입력시 '/' 를 꼭 붙여야 한다 */
 export const _axios:Axios = {
-	get: async (input) => {
-		try {
-			const req = await axios.get(`${process.env.NEXT_PUBLIC_CORS_URL}${input}`).then((res)=> {return res.data});
+	get: async (path) => {
+		try {	
+			const req = await axios.get(`${process.env.NEXT_PUBLIC_CORS_URL}${path}`).then((res)=> {return res.data});
 			if(req){
 				return req
 			}
@@ -25,9 +26,9 @@ export const _axios:Axios = {
 			throw err;
 		}
 	},
-	post: async ( input, data) => {
+	post: async (path, data) => {
 		try {
-			const req = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}${input}`,data).then((res)=> {return res.data});
+			const req = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}${path}`,data).then((res)=> {return res.data});
 			if(req){
 				return req
 			}
@@ -36,27 +37,27 @@ export const _axios:Axios = {
 		}
 		return
 	},
-	delete: async (input) => {
+	delete: async (path, data) => {
 		try {
-			const req = await axios.delete(`${process.env.NEXT_PUBLIC_CORS_URL}${input}`).then((res)=> {return res.data});
+			const req = await axios.delete(`${process.env.NEXT_PUBLIC_CORS_URL}${path}`).then((res)=> {return res.data});
 
 		} catch(err) {
 
 		}
 		return 
 	},
-	patch: async (input) => {
+	patch: async (path) => {
 		try {
-			const req = await axios.patch(`${process.env.NEXT_PUBLIC_CORS_URL}${input}`).then((res)=> {return res.data});
+			const req = await axios.patch(`${process.env.NEXT_PUBLIC_CORS_URL}${path}`).then((res)=> {return res.data});
 
 		} catch(err) {
 
 		}
 		return
 	},
-	put: async (input) => {
+	put: async (path, data) => {
 		try {
-			const req = await axios.put(`${process.env.NEXT_PUBLIC_CORS_URL}${input}`).then((res)=> {return res.data});
+			const req = await axios.put(`${process.env.NEXT_PUBLIC_CORS_URL}${path}`).then((res)=> {return res.data});
 
 		} catch(err) {
 
