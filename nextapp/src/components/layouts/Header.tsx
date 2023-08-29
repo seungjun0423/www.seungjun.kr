@@ -2,11 +2,15 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
-import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import metaMask from '../../../public/assets/MetaMask_Fox.svg.png';
+
 
 import styled, { keyframes } from "styled-components";
 import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
+
+import metaMaskHandler from "hooks/metaMaskHandler";
 
 const Headers = styled.header`
 	display: flex;
@@ -28,7 +32,7 @@ const Title = styled.span`
 `;
 
 const NavContainers = styled.nav`
-	margin-right: 5vw;
+	margin-right: 2vw;
 	display: flex;
 	align-items: center;
 	gap: 2.5rem;
@@ -86,6 +90,15 @@ const Div = styled.div`
 	align-items: center;
   animation: ${sildIn} 0.5s ease-out forwards;
 `;
+
+const MetaMaskBox = styled.div`
+	margin-right: auto;
+	margin-left: auto;
+	width: 5rem;
+	@media (max-width: 576px){
+		display: none;
+	}
+`;
 /** Header 컴포넌트 */
 export default function Header () {
 	const [ navState, setNavState ] = useState<boolean>(false);
@@ -111,26 +124,26 @@ export default function Header () {
 
 		const NavContainer = (
 			<Div>
-			<NavContainers>
-				<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-					about me
-				</Link>
-				{ sessionState?.isLogin ?
-					<>
-						<Link href={'/createPost'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
-							posting
-						</Link> 
-						<div onClick={logoutHandler} style={{ fontWeight: 'bold',fontSize: '1.5rem', cursor:'pointer' }}>
-							logout
-						</div>
-					</>
-					:
-					<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-						login
+				<NavContainers>
+					<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+						about
 					</Link>
-				}
-			</NavContainers>
-			<NavBoxes onClick={()=>{setNavState(!navState)}}>
+					{ sessionState?.isLogin ?
+						<>
+							<Link href={'/createPost'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
+								posting
+							</Link> 
+							<div onClick={logoutHandler} style={{ fontWeight: 'bold',fontSize: '1.5rem', cursor:'pointer' }}>
+								logout
+							</div>
+						</>
+						:
+						<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+							login
+						</Link>
+					}
+				</NavContainers>
+				<NavBoxes onClick={()=>{setNavState(!navState)}}>
 					<NavBtn>
 						{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
 						&#9776;
@@ -154,10 +167,28 @@ export default function Header () {
 									login
 								</Link>
 							}
+							<Link href={'/'} style={{ color:'gray', fontSize: '1.5rem' }}>
+								<Image
+									onClick={metaMaskHandler} 
+									src={metaMask}
+									alt="metaMask"
+									width={50}
+									height={50}
+								/>
+							</Link>
 						</Borad>
 						: <></>
 					}
 				</NavBoxes>
+				<MetaMaskBox>
+					<Image
+						onClick={metaMaskHandler}
+						src={metaMask}
+						alt="Picture of the author"
+						width={50}
+						height={50}
+					/>
+				</MetaMaskBox>
 			</Div>
 		);
 

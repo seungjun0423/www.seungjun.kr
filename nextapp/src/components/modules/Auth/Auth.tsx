@@ -1,21 +1,12 @@
 'use client';
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { stateStore } from "data/store";
 
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { _axios } from "hooks/axios";
 import { Submit } from "types/interface";
-
-// import { MetaMaskSDK } from '@metamask/sdk';
-
-/** 메세지를 16진수 암호화 하는 라이브러리 */
-// import hexerTs from "util/browser-string-hexer";
-
-
-// const MMSDK = new MetaMaskSDK();
-// const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum
 
 const Auths = styled.div`
 	width: 100%;
@@ -73,8 +64,10 @@ export default function Auth () {
 	const onChangePw = (val: string) => {
 		setPassword(val);
 	}
+	useEffect(() => {
 
 	// console.log("되나?",hexerTs(`메시지`));
+	// console.log(ethereum.isConnected());
 
 	// const maskHandler = async () => {
 		/** 메타마스크 사인 */
@@ -97,9 +90,8 @@ export default function Auth () {
 
 		// }
 	// }
-	/**
-	private-key: 13d745c6ff62d0b5ca142e3065310d63c26e68a2d2dd55bde1e1be57997768ea
-	*/
+	}, [])
+
 
 	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
 		

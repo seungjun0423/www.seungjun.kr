@@ -28,32 +28,7 @@ const EditorBox = styled.div`
 	}
 `;
 
-const BtnBox = styled.div`
-	width: 100%;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-
-	@media (max-width: 576px) {
-		height: 40px;
-	}
-`;
-
-const Submit = styled.input`
-	width: 10rem;
-	border-radius: 30px;
-	border: none;
-	margin-top: 10px;
-	font-size: 1rem;
-	font-weight: bold;
-	cursor: pointer;
-	
-	@media (max-width: 576px) {
-		width: 8rem;
-	}
-`;
-
-export default function PostEditor (){
+export default function PostEditor ({children}: {children: React.ReactNode}){
 	const submitHandler = () => {
 		return 
 	}
@@ -61,9 +36,7 @@ export default function PostEditor (){
 	return (
 		<EditorBox>
 			<Editor
-				ref={text}
 				height="100%"
-				placeholder="내용을 입력해주세요." 
 				initialEditType='markdown' 
 				previewStyle="tab"
 				hideModeSwitch={true}
@@ -71,7 +44,7 @@ export default function PostEditor (){
 				autofocus={true}
 				usageStatistics={false}
 				// theme="dark"	
-			/>
+			></Editor>
 			<SubmitBtn handler={submitHandler}/>
 		</EditorBox>
 		);

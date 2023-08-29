@@ -1,11 +1,8 @@
 'use client';
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import styled from "styled-components";
-import dynamic from 'next/dynamic';
-
-/** 마크다운 에디터 사용을 위해 ssr 끄기. */
-const DynamicComponent: React.ComponentType<{children: React.ReactNode;}> = dynamic(() => import('../../lib/PostEditor'), { ssr: false });
+import PostEditor from "components/lib/PostEditor";
 
 const CreatePosts = styled.section`
 	width: 100%;
@@ -24,15 +21,24 @@ const H1 = styled.h1`
 	}
 `;
 
-export default function CreatePost () {
+export default function CreatePost ({children}: {children: React.ReactNode}) {
+	const [ editor, setEditor] = useState<React.ReactElement>(<></>);
+	
+	useEffect(() => {
+		setEditor(
+			<PostEditor>
+				{children}
+			</PostEditor>
+		)
+	}, [])
+	
 
 	return(
 		<CreatePosts>
 			<H1>
 				글 작성하기
 			</H1>
-			<DynamicComponent>
-			</DynamicComponent>
+			{editor}
 		</CreatePosts>
 	)
 }

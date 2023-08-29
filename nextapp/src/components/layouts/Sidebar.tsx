@@ -103,7 +103,7 @@ export default function Sidebar () {
 	}, []);
 
   return (
-    <Sidebars>
+		<Sidebars>
 			<Wrapper>
 				{editBtn}
 				<ListBox>
@@ -118,6 +118,6 @@ export default function Sidebar () {
 				</ListBox>
 
 			</Wrapper>
-    </Sidebars>
+		</Sidebars>
   );
 };
