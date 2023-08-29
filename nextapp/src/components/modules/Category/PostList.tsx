@@ -65,7 +65,7 @@ export default function PostList({ title, categoryId }: {title: string, category
 		<Lists>
 			<PostLists type="button" onClick={ () => spreadHandler()} value={title} />
 			{	postList.map((el, index) => 
-				el.fold ? <Post key={index} title={el.title} contents={el.contents}/> : '')
+				el.fold ? <Post key={index} data={el}/>: '')
 			}
 		</Lists>
 	)

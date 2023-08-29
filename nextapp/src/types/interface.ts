@@ -10,6 +10,7 @@ export interface Submit {
 export interface PostType {
 	id: number;
 	title: string;
+	img: string;
 	contents: string;
 	fold: boolean;
 };

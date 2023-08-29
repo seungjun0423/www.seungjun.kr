@@ -8,10 +8,12 @@ const ReadPosts = styled.section`
 	width: 100%;
 `;
 
-export default function ReadPost(){
+export default function ReadPost({ children }: {children: number}){
 	return(
 		<ReadPosts>
-			<Postviewer></Postviewer>
+			<Postviewer>
+				{children}
+			</Postviewer>
 		</ReadPosts>
 	)
 }

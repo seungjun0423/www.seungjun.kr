@@ -1,13 +1,15 @@
 'use client';
 
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
+import { PostType } from "types/interface";
+import { postStore } from "data/store";
 
 const sildIn = keyframes`
   from {
 		transform: translateY(-90%);
-		opacity: 0;
+		opacity: 0.1;
 	}
 	to {
 		transform: translateY(0);
@@ -31,10 +33,16 @@ const Posts = styled.button`
 `;
 
 
-export default function Post ({ title, contents }: { title: string, contents: unknown}) {
+export default function Post ({ data }: { data: PostType}) {
+	// useEffect(() => {
+	// 	postStore.setState({nowPost: data},true);
+	// }, [])
+	
 	return (
-		<Posts onClick={()=>{console.log('Cliked!')}}>
-			{title}
+		<Posts onClick={()=>{postStore.setState({nowPost: data},true);}}>
+			<Link href={`/post/${data.id}`}>
+				{data.title}
+			</Link>
 		</Posts>
 	)
 }
