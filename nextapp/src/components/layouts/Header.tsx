@@ -43,8 +43,8 @@ const NavContainers = styled.nav`
 
 const NavBoxes = styled.div`
 	margin-right: 3vw;
-	width: 4rem;
-	height: 3rem;
+	width: 5rem;
+	height: 3.5rem;
 	border-radius: 7px;
 	box-shadow: 0px 1px 1px 0 gray;
 
@@ -63,19 +63,46 @@ const NavBtn = styled.button`
 	cursor: pointer;
 `;
 
+const draw = keyframes`
+  from {
+		transform: translateY(-10px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+`;
+
 const Borad = styled.nav`
 	display:	flex;
 	width: 100%;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 10px;
-	padding: 10px 0 5px 0;
+	margin-top: 5px;
+	padding: 10px 0 13px 0;
 	background-color: beige;
 	border: 1px solid #eaecef;
-	border-radius: 5px;
-	gap: 2rem;
+	border-radius: 10px;
+	gap: 1rem;
 	font-weight: bold;
+	animation: ${draw} 0.5s ease forwards;
 `;
+
+const About = styled.div``;
+const Login = styled.div``;
+const Logout = styled.div``;
+const Posting = styled.div``;
+
+const MetaMaskBox = styled.div`
+	margin-right: auto;
+	margin-left: auto;
+	width: 5rem;
+	@media (max-width: 576px){
+		display: none;
+	}
+`;
+
 
 const sildIn = keyframes`
   from {
@@ -93,14 +120,6 @@ const Div = styled.div`
   animation: ${sildIn} 0.5s ease-out forwards;
 `;
 
-const MetaMaskBox = styled.div`
-	margin-right: auto;
-	margin-left: auto;
-	width: 5rem;
-	@media (max-width: 576px){
-		display: none;
-	}
-`;
 /** Header 컴포넌트 */
 export default function Header () {
 	const [ navState, setNavState ] = useState<boolean>(false);

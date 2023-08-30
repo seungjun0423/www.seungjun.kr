@@ -30,7 +30,7 @@ export default function MetaMask () {
 			/** 지갑 연결 확인 */
 			const isConnected = await ethereum.isConnected();
 			if(isConnected){
-				const accountsAddress = await ethereum.request({ method: "eth_requestAccounts",});
+				const accountsAddress = await ethereum.request({ method: "eth_requestAccounts",}) as string[];
 				if(accountsAddress){
 					const address = accountsAddress[0];
 					const personalSign = await ethereum.request({ 

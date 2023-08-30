@@ -31,6 +31,10 @@ const nextConfig = {
   //     }
   //   ]
   // }
+	dAppMetadata: {
+    name: "Leeseungjun",
+    url: "https://seungjun.kr",
+  },
 };
 
 // module.exports = {
