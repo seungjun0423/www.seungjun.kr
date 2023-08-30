@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Get, Body, Res, Req, UseGuards } from '@nestjs/common';
+import { Controller, Post, Get, Body, Res, Req, UseGuards, NotFoundException } from '@nestjs/common';
+// import { AuthGuard } from './security/auth.guard'
+// import { AuthGuard } from '@nestjs/passport';
 import { AuthGuard } from './security/auth.guard';
 import { Response, Request } from 'express';
 import { AuthService } from './auth.service';
@@ -20,20 +22,9 @@ export class AuthController {
   async login(
     @Body() data: { email: string; password: string },
     @Res() res: Response,
-  ): Promise<any> {
-    const jwt = await this.authService.login(data);
-    // 헤더에 쿠키를 넣어준다.
-    res.setHeader('Authorization', 'Bearer: ' + jwt.accessToken);
+  ): Promise<Response | NotFoundException> {
+    return await this.authService.login(data,res);
 
-    // 브라우저에서 자바스크립트를 통한 토큰 탈취를 막기위한 옵션.
-    res.cookie('jwt', jwt.accessToken, {
-      httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000,
-    });
-    // return res.json(jwt);
-    return res.send({
-      message: 'login success',
-    });
   }
 
   @Post('/logout')
@@ -50,6 +41,6 @@ export class AuthController {
   @Get('/authentication')
   @UseGuards(AuthGuard)
   isAuthenticated(@Req() req: Request): any {
-    return;
+    return req.user;
   }
 }

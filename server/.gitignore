@@ -37,3 +37,4 @@ lerna-debug.log*
 !prisma/schema.prisma
 
 .env
+.env.development

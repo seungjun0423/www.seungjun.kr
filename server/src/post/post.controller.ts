@@ -28,7 +28,11 @@ export default class PostController {
   }
 
   @Get('/all')
-  async postList(@Body() data: { categoryId: number }): Promise<Posts[]> {
-    return await this.postService.postList(data);
+  async postList(): Promise<Posts[]> {
+    return await this.postService.postList();
+  }
+  @Post('/categoryPosts')
+  async categoryPost(@Body() data: { categoryId: number }): Promise<Posts[]> {
+    return await this.postService.categoryPost(data);
   }
 }

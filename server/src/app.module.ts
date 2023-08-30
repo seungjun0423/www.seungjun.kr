@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+// eslint-disable-next-line prettier/prettier
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
@@ -7,6 +8,7 @@ import { PostModule } from './post/post.module';
 import { CategoryModule } from './category/category.module';
 import { AuthModule } from './auth/auth.module';
 import config from './config/config';
+import { LoggerMiddleware } from './middleware/logger.middleware';
 
 @Module({
   imports: [
@@ -22,4 +24,16 @@ import config from './config/config';
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    // consumer
+    //   .apply(LoggerMiddleware)
+    //   .forRoutes({ path: '/auth/login', method: RequestMethod.ALL });
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: '/auth/login', method: RequestMethod.POST });
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: '/post/categoryPosts', method: RequestMethod.GET });
+  }
+}

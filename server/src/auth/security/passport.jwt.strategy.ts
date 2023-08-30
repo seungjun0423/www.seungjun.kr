@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy, VerifiedCallback } from 'passport-jwt';
 import { AuthService } from '../auth.service';
-import { LoginPayload } from './LoginPayload.interface';
+import { Login } from 'src/types/tpye';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -10,13 +10,15 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: true,
-      secretOrKey: 'needmoremoney',
+      secretOrKey: process.env.SECRET_KEY,
     });
   }
 
-  async validate(payload: LoginPayload, done: VerifiedCallback): Promise<any> {
+  async validate(
+    payload: Omit<Login, 'password'>,
+    done: VerifiedCallback,
+  ): Promise<any> {
     const user = await this.authService.tokenValidateUser(payload);
-
     if (!user) {
       return done(
         new UnauthorizedException({ message: 'user data cannot found' }),
