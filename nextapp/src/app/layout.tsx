@@ -4,14 +4,12 @@ import '../styles/globals.css';
 
 import StyledComponentsRegistry from '../styles/registry';
 
-import { Gaegu } from 'next/font/google';
-
 import GoogleAnalytics from "../util/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
 import Header from "components/layouts/Header";
 import Footer from "components/layouts/Footer";
 
-/** font */
+import { Gaegu } from 'next/font/google';
 const gaegu = Gaegu({ subsets: ['latin'], display: 'swap', weight: "400" });
 
 export type Props = {
@@ -36,11 +34,14 @@ export const metadata: Metadata = {
 		other: {
 			"naver-site-verification":"ed9b5c6474ce11bd2641d3627ae889ce9a58c002"
 		}
+	},
+	
+	// // Todo: 디자인 작업하면서 파비콘 추가하기
+	icons: {
+		icon: '/favicon.ico',
+		shortcut: '/favicon.ico',
+		apple: '/favicon.ico',
 	}
-	// Todo: 디자인 작업하면서 파비콘 추가하기
-	// icons: {
-	// 	icon: favicon,
-	// },
 }
 
 export default function RootLayout ({ children }: Props) {

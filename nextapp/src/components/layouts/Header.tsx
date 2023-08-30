@@ -9,7 +9,8 @@ import styled, { keyframes } from "styled-components";
 import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
 
-import metaMaskHandler from "components/lib/MetaMask";
+import Image from "next/image";
+import favicon from "../../../public/assets/favicon.svg";
 
 const Headers = styled.header`
 	display: flex;
@@ -26,8 +27,22 @@ const Headers = styled.header`
 `;
 
 const Title = styled.span`
-	margin-left: 10vw;
+	display: flex;
+	margin-left: 4vw;
 	font-weight: bold;
+	align-items: center;
+`;
+
+const LongText = styled.div`
+	@media (max-width: 980px){
+		display:none;
+	}
+`;
+
+const ShortText = styled.div`
+	@media (min-width: 980px) {
+		display:none;
+	}
 `;
 
 const NavContainers = styled.nav`
@@ -43,8 +58,8 @@ const NavContainers = styled.nav`
 
 const NavBoxes = styled.div`
 	margin-right: 3vw;
-	width: 5rem;
-	height: 3.5rem;
+	width: 3.8rem;
+	height: 3rem;
 	border-radius: 7px;
 	box-shadow: 0px 1px 1px 0 gray;
 
@@ -56,7 +71,7 @@ const NavBoxes = styled.div`
 const NavBtn = styled.button`
 	width: 100%;
 	height: 100%;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	border: 1px solid #eaecef;
 	border-radius: 5px;
 	color: gray;
@@ -167,36 +182,37 @@ export default function Header () {
 				<NavBoxes onClick={()=>{setNavState(!navState)}}>
 					<NavBtn>
 						{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
-						&#9776;
+						{/* &#9776; */}
+						menu
 					</NavBtn>
 					{ navState ? 
 						<Borad>
-							<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.5rem'}}>
+							<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.2rem'}}>
 								about
 							</Link>
 							{ sessionState?.isLogin ?
 								<>
-									<Link href={'/createPost'} style={{ color:'gray', fontSize: '1.5rem'}}>
+									<Link href={'/createPost'} style={{ color:'gray', fontSize: '1.2rem'}}>
 										posting
 									</Link>
-									<div onClick={logoutHandler} style={{ color:'gray',fontSize: '1.5rem', cursor:'pointer' }}>
+									<div onClick={logoutHandler} style={{ color:'gray',fontSize: '1.2rem', cursor:'pointer' }}>
 										logout
 									</div>
 								</>
 								:
-								<Link href={'/auth'} style={{ color:'gray', fontSize: '1.5rem' }}>
+								<Link href={'/auth'} style={{ color:'gray', fontSize: '1.2rem' }}>
 									login
 								</Link>
 							}
-							<Link href={'/'} style={{ color:'gray', fontSize: '1.5rem' }}>
-								<MetaMask />
+							<Link href={'/'} style={{ color:'gray', fontSize: '1.2rem' }}>
+								{/* <MetaMask /> */}
 							</Link>
 						</Borad>
 						: <></>
 					}
 				</NavBoxes>
 				<MetaMaskBox>
-					<MetaMask />
+					{/* <MetaMask /> */}
 				</MetaMaskBox>
 			</Div>
 		);
@@ -207,8 +223,14 @@ export default function Header () {
 	return (
 		<Headers>
 			<Title>
-				<Link href={'/'} style={{fontSize: '3rem'}} >
-					Blog
+				<Image alt='이미지 에러' src={favicon} style={{marginRight:'10px'}}/>
+				<Link href={'/'} style={{fontSize: '2.2rem'}} >
+					<LongText>
+						{`Seungjun's blog`}
+					</LongText>
+					<ShortText>
+						blog
+					</ShortText>
 				</Link>
 			</Title>
 			{navConatiner}

@@ -32,8 +32,9 @@ const nextConfig = {
   //   ]
   // }
 	dAppMetadata: {
-    name: "Leeseungjun",
-    url: "https://seungjun.kr",
+    name: "blog",
+    // url: "https://seungjun.kr",
+    url: "http://localhost:3000",
   },
 };
 
