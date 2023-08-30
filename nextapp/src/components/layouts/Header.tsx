@@ -205,14 +205,14 @@ export default function Header () {
 								</Link>
 							}
 							<Link href={'/'} style={{ color:'gray', fontSize: '1.2rem' }}>
-								{/* <MetaMask /> */}
+								<MetaMask />
 							</Link>
 						</Borad>
 						: <></>
 					}
 				</NavBoxes>
 				<MetaMaskBox>
-					{/* <MetaMask /> */}
+					<MetaMask />
 				</MetaMaskBox>
 			</Div>
 		);
