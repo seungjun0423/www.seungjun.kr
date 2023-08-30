@@ -4,14 +4,15 @@ import '../styles/globals.css';
 
 import StyledComponentsRegistry from '../styles/registry';
 
-import { Open_Sans } from 'next/font/google';
+import { Gaegu } from 'next/font/google';
 
 import GoogleAnalytics from "../util/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
 import Header from "components/layouts/Header";
 import Footer from "components/layouts/Footer";
+
 /** font */
-const sans = Open_Sans({ subsets: ['latin']});
+const gaegu = Gaegu({ subsets: ['latin'], display: 'swap', weight: "400" });
 
 export type Props = {
 	children: React.ReactNode;
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout ({ children }: Props) {
   return (
-		<html lang="ko">
+		<html lang="ko" className={gaegu.className}>
 			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
 			<StyledComponentsRegistry>
 				<body >

@@ -1,16 +1,15 @@
 'use client';
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from 'next/image';
-import metaMask from '../../../public/assets/MetaMask_Fox.svg.png';
+import MetaMask from "components/lib/MetaMask";
 
 
 import styled, { keyframes } from "styled-components";
 import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
 
-import metaMaskHandler from "hooks/metaMaskHandler";
+import metaMaskHandler from "components/lib/MetaMask";
 
 const Headers = styled.header`
 	display: flex;
@@ -44,8 +43,10 @@ const NavContainers = styled.nav`
 
 const NavBoxes = styled.div`
 	margin-right: 3vw;
-	width: 6rem;
-	height: 4rem;
+	width: 4rem;
+	height: 3rem;
+	border-radius: 7px;
+	box-shadow: 0px 1px 1px 0 gray;
 
 	@media (min-width: 576px) {
 		display: none;
@@ -86,6 +87,7 @@ const sildIn = keyframes`
 `;
 
 const Div = styled.div`
+	padding-left: 1rem;
 	display: flex;
 	align-items: center;
   animation: ${sildIn} 0.5s ease-out forwards;
@@ -168,26 +170,14 @@ export default function Header () {
 								</Link>
 							}
 							<Link href={'/'} style={{ color:'gray', fontSize: '1.5rem' }}>
-								<Image
-									onClick={metaMaskHandler} 
-									src={metaMask}
-									alt="metaMask"
-									width={50}
-									height={50}
-								/>
+								<MetaMask />
 							</Link>
 						</Borad>
 						: <></>
 					}
 				</NavBoxes>
 				<MetaMaskBox>
-					<Image
-						onClick={metaMaskHandler}
-						src={metaMask}
-						alt="Picture of the author"
-						width={50}
-						height={50}
-					/>
+					<MetaMask />
 				</MetaMaskBox>
 			</Div>
 		);
