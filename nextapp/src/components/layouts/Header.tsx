@@ -183,8 +183,8 @@ export default function Header () {
 				<NavBoxes onClick={()=>{setNavState(!navState)}}>
 					<NavBtn>
 						{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
-						{/* &#9776; */}
-						menu
+						&#9776;
+						{/* menu */}
 					</NavBtn>
 					{ navState ? 
 						<Borad>
