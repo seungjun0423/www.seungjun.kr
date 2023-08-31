@@ -1,5 +1,5 @@
-import ReadPost from "components/modules/Post/ReadPost";
 import React from "react";
+import dynamic from "next/dynamic";
 
 interface Post  {
 	params: {
@@ -7,12 +7,14 @@ interface Post  {
 	};
 };
 
-export default function Post( { params: { slug } }: Post ): React.ReactElement {
+export default function Post({ params: { slug } }: Post) {
+	const DynamicReadPost = dynamic(()=>import('components/modules/Post/ReadPost'));
+
   return (
 		<section>
-			<ReadPost>
+			<DynamicReadPost>
 				{slug}
-			</ReadPost>
+			</DynamicReadPost>
 		</section>
   )
 }

@@ -1,8 +1,7 @@
 import React from "react";
-import CreatePost from "components/modules/Post/CreatePost";
-import ReadPost from "components/modules/Post/ReadPost";
 import UpdatePost from "components/modules/Post/UpdatePost";
 import DeletePost from "components/modules/Post/DeletePost";
+import dynamic from "next/dynamic";
 
 type Post = {
 	params: {
@@ -11,10 +10,12 @@ type Post = {
 };
 
 export default function Post ({ params: { slug } }: Post ) {
+	const DynamicCreatePost = dynamic(()=>import('components/modules/Post/CreatePost'),{ssr: false});
+
 	if (slug === 'createPost') {
 		return (
-			<CreatePost>
-			</CreatePost>);
+			<DynamicCreatePost>
+			</DynamicCreatePost>);
 	} else if ( slug === 'update') {
 		return <UpdatePost></UpdatePost>;
 	} else if ( slug === 'delete') {
