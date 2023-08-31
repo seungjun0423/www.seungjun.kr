@@ -2,7 +2,7 @@ import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 /* eslint-disable prettier/prettier */
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import * as bcrypt from 'bcrypt';
+// import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import {  User } from '@prisma';
 import { Response } from 'express';
@@ -15,19 +15,19 @@ export class AuthService {
   ) {}
 
   // bcrypt: 비밀번호 암호화
-  async transformPassword(data: Login): Promise<void> {
-    data.password = await bcrypt.hash(
-      // 암호화하는 데이터
-      data.password,
-      // 해쉬 라운드 횟수
-      10,
-    );
+  // async transformPassword(data: Login): Promise<void> {
+  //   data.password = await bcrypt.hash(
+  //     // 암호화하는 데이터
+  //     data.password,
+  //     // 해쉬 라운드 횟수
+  //     10,
+  //   );
 
-    return Promise.resolve();
-  }
+  //   return Promise.resolve();
+  // }
 
   async signin(data: Login): Promise<User> {
-		await this.transformPassword(data)
+		// await this.transformPassword(data)
 
     return await this.prismaService.user.create({
       data: { email: data.email, password: data.password },
@@ -42,11 +42,11 @@ export class AuthService {
 			// 유저 정보 있음
 			if(userFind){
 				// 암호화해서 저장된 비밀번호 비교
-				const checkPassword: boolean = await bcrypt.compare(
-					data.password,
-					userFind.password,
-				);
-
+				// const checkPassword: boolean = await bcrypt.compare(
+				// 	data.password,
+				// 	userFind.password,
+				// );
+				const checkPassword = true;
 				// 비밀번호 일치
 				if(checkPassword) {
 					const payload: Omit<Login,'password'> = { id: userFind.id, email: userFind.email };
