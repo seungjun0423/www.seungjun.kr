@@ -40,7 +40,7 @@ export default function Post ({ data }: { data: PostType}) {
 	
 	return (
 		<Posts onClick={()=>{postStore.setState({nowPost: data},true);}}>
-			<Link href={`/post/${data.id}`}>
+			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${data.id}`}>
 				{data.title}
 			</Link>
 		</Posts>

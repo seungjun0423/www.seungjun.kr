@@ -8,6 +8,7 @@ import MetaMask from "components/lib/MetaMask";
 import styled, { keyframes } from "styled-components";
 import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
+import dynamic from "next/dynamic";
 
 import Image from "next/image";
 import favicon from "../../../public/assets/favicon.svg";
@@ -161,12 +162,12 @@ export default function Header () {
 		const NavContainer = (
 			<Div>
 				<NavContainers>
-					<Link href={'/introducing'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/introducing`} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 						about
 					</Link>
 					{ sessionState?.isLogin ?
 						<>
-							<Link href={'/createPost'} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
+							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost`} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
 								posting
 							</Link> 
 							<div onClick={logoutHandler} style={{ fontWeight: 'bold',fontSize: '1.5rem', cursor:'pointer' }}>
@@ -174,7 +175,7 @@ export default function Header () {
 							</div>
 						</>
 						:
-						<Link href={'/auth'} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth`} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 							login
 						</Link>
 					}
@@ -187,12 +188,12 @@ export default function Header () {
 					</NavBtn>
 					{ navState ? 
 						<Borad>
-							<Link href={'/introducing'} style={{ color:'gray', fontSize: '1.2rem'}}>
+							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/introducing`} style={{ color:'gray', fontSize: '1.2rem'}}>
 								about
 							</Link>
 							{ sessionState?.isLogin ?
 								<>
-									<Link href={'/createPost'} style={{ color:'gray', fontSize: '1.2rem'}}>
+									<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost`} style={{ color:'gray', fontSize: '1.2rem'}}>
 										posting
 									</Link>
 									<div onClick={logoutHandler} style={{ color:'gray',fontSize: '1.2rem', cursor:'pointer' }}>
@@ -200,11 +201,11 @@ export default function Header () {
 									</div>
 								</>
 								:
-								<Link href={'/auth'} style={{ color:'gray', fontSize: '1.2rem' }}>
+								<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth`} style={{ color:'gray', fontSize: '1.2rem' }}>
 									login
 								</Link>
 							}
-							<Link href={'/'} style={{ color:'gray', fontSize: '1.2rem' }}>
+							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{ color:'gray', fontSize: '1.2rem' }}>
 								<MetaMask />
 							</Link>
 						</Borad>
@@ -224,7 +225,7 @@ export default function Header () {
 		<Headers>
 			<Title>
 				<Image alt='이미지 에러' src={favicon} style={{marginRight:'10px'}}/>
-				<Link href={'/'} style={{fontSize: '2.2rem'}} >
+				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{fontSize: '2.2rem'}} >
 					<LongText>
 						{`Seungjun's blog`}
 					</LongText>

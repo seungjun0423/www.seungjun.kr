@@ -30,21 +30,22 @@ export default function MetaMask () {
 			if(typeof window === 'object'){
 
 			/** 지갑 연결 확인 */
-			const isConnected = window.ethereum?.isConnected();
-			if(isConnected){
-				const accountsAddress =  window.ethereum?.request({ method: "eth_requestAccounts", }) as unknown as string[];
-				if(accountsAddress){
-					const address = accountsAddress[0];
-					const personalSign =  window.ethereum?.request({ 
-						method: "personal_sign",
-						params: [
-							hexerTs(`메시지`), // 암호화된 메세지
-							address  // 서명 요청을 받을 사람 주소
-						]
-					});
+				const isConnected = window.ethereum?.isConnected();
+				if(isConnected){
+					const accountsAddress =  window.ethereum?.request({ method: "eth_requestAccounts", }) as unknown as string[];
+					if(accountsAddress){
+						const address = accountsAddress[0];
+						const personalSign =  window.ethereum?.request({ 
+							method: "personal_sign",
+							params: [
+								hexerTs(`메시지`), // 암호화된 메세지
+								address  // 서명 요청을 받을 사람 주소
+							]
+						});
+					}
 				}
+				console.log()
 			}
-		}
 		} catch (err) {
 			throw err;
 		}
