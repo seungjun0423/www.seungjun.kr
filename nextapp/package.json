@@ -13,7 +13,7 @@
     "@tanstack/react-query": "^4.32.6",
     "@toast-ui/editor": "^3.2.2",
     "@toast-ui/react-editor": "^3.2.3",
-    "axios": "^1.4.0",
+    "axios": "^1.5.0",
     "client-only": "^0.0.1",
     "eslint": "8.41.0",
     "eslint-config-next": "latest",
@@ -22,6 +22,7 @@
     "react-dom": "latest",
     "react-icons": "^4.10.1",
     "styled-components": "^6.0.5",
+    "supports-color": "^9.4.0",
     "tui-color-picker": "^2.2.8",
     "typescript": "5.0.4",
     "zustand": "^4.4.1"
@@ -29,11 +30,13 @@
   "packageManager": "yarn@3.5.1",
   "devDependencies": {
     "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
+    "@types/debug": "^4",
     "@types/gtag.js": "^0.0.13",
     "@types/node": "^20.5.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
-    "axios-debug-log": "^1.0.0"
+    "axios-debug-log": "^1.0.0",
+    "debug": "^4.3.4"
   }
 }

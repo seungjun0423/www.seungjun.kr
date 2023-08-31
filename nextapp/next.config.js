@@ -31,11 +31,11 @@ const nextConfig = {
   //     }
   //   ]
   // }
-	dAppMetadata: {
-    name: "blog",
-    // url: "https://seungjun.kr",
-    url: "http://localhost:3000",
-  },
+	// dAppMetadata: {
+  //   name: "blog",
+  //   // url: "https://seungjun.kr",
+  //   url: "http://localhost:3000",
+  // },
 };
 
 // module.exports = {

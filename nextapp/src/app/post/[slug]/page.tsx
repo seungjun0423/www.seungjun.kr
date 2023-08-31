@@ -8,7 +8,7 @@ interface Post  {
 };
 
 export default function Post({ params: { slug } }: Post) {
-	const DynamicReadPost = dynamic(()=>import('components/modules/Post/ReadPost'));
+	const DynamicReadPost = dynamic(()=>import('components/modules/Post/ReadPost'),{ssr: false});
 
   return (
 		<section>

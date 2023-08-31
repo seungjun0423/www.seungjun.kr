@@ -2227,7 +2227,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/debug@npm:^4.0.0, @types/debug@npm:^4.1.7":
+"@types/debug@npm:^4, @types/debug@npm:^4.0.0, @types/debug@npm:^4.1.7":
   version: 4.1.8
   resolution: "@types/debug@npm:4.1.8"
   dependencies:
@@ -2716,14 +2716,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "axios@npm:1.4.0"
+"axios@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "axios@npm:1.5.0"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: 7fb6a4313bae7f45e89d62c70a800913c303df653f19eafec88e56cea2e3821066b8409bc68be1930ecca80e861c52aa787659df0ffec6ad4d451c7816b9386b
+  checksum: e7405a5dbbea97760d0e6cd58fecba311b0401ddb4a8efbc4108f5537da9b3f278bde566deb777935a960beec4fa18e7b8353881f2f465e4f2c0e949fead35be
   languageName: node
   linkType: hard
 
@@ -5208,14 +5208,16 @@ next@latest:
     "@toast-ui/editor": ^3.2.2
     "@toast-ui/editor-plugin-color-syntax": ^3.1.0
     "@toast-ui/react-editor": ^3.2.3
+    "@types/debug": ^4
     "@types/gtag.js": ^0.0.13
     "@types/node": ^20.5.0
     "@types/react": ^18.2.20
     "@types/react-dom": ^18.2.7
     "@types/styled-components": ^5.1.26
-    axios: ^1.4.0
+    axios: ^1.5.0
     axios-debug-log: ^1.0.0
     client-only: ^0.0.1
+    debug: ^4.3.4
     eslint: 8.41.0
     eslint-config-next: latest
     next: latest
@@ -5223,6 +5225,7 @@ next@latest:
     react-dom: latest
     react-icons: ^4.10.1
     styled-components: ^6.0.5
+    supports-color: ^9.4.0
     tui-color-picker: ^2.2.8
     typescript: 5.0.4
     zustand: ^4.4.1
@@ -6508,6 +6511,13 @@ next@latest:
   dependencies:
     has-flag: ^4.0.0
   checksum: 3dda818de06ebbe5b9653e07842d9479f3555ebc77e9a0280caf5a14fb877ffee9ed57007c3b78f5a6324b8dbeec648d9e97a24e2ed9fdb81ddc69ea07100f4a
+  languageName: node
+  linkType: hard
+
+"supports-color@npm:^9.4.0":
+  version: 9.4.0
+  resolution: "supports-color@npm:9.4.0"
+  checksum: cb8ff8daeaf1db642156f69a9aa545b6c01dd9c4def4f90a49f46cbf24be0c245d392fcf37acd119cd1819b99dad2cc9b7e3260813f64bcfd7f5b18b5a1eefb8
   languageName: node
   linkType: hard
 

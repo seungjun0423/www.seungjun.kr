@@ -1,17 +1,15 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import MetaMask from "components/lib/MetaMask";
-
-
 import styled, { keyframes } from "styled-components";
+import Link from "next/link";
+import Image from "next/image";
+
 import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
-import dynamic from "next/dynamic";
 
-import Image from "next/image";
 import favicon from "../../../public/assets/favicon.svg";
+import MetaMask from "components/lib/MetaMask";
 
 const Headers = styled.header`
 	display: flex;
@@ -105,10 +103,10 @@ const Borad = styled.nav`
 	animation: ${draw} 0.5s ease forwards;
 `;
 
-const About = styled.div``;
-const Login = styled.div``;
-const Logout = styled.div``;
-const Posting = styled.div``;
+// const About = styled.div``;
+// const Login = styled.div``;
+// const Logout = styled.div``;
+// const Posting = styled.div``;
 
 const MetaMaskBox = styled.div`
 	margin-right: auto;
