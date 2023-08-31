@@ -2,6 +2,8 @@
 
 import React from "react";
 import styled from 'styled-components';
+import { FaGithubSquare, FaInstagram } from 'react-icons/fa';
+import { FiMail } from 'react-icons/fi';
 
 const Footers = styled.footer`
 	bottom: 0;
@@ -18,8 +20,10 @@ const Footers = styled.footer`
 
 const Contact = styled.div`
 	display: flex;
+	align-items:center;
 	font-weight: bold;
 	color: gray;
+	margin-right: 10px;
 `;
 
 const CopyRight = styled.p`
@@ -37,8 +41,12 @@ export default function Footer(): React.ReactElement {
 			</CopyRight>
 
 			<Contact>
-				Contact: 000-0000-00000
-				{/** Todo: 이메일 아이콘 이미지로 보내기 만들기 */}
+				<span style={{marginRight: '10px'}}>
+					Contact:
+				</span>
+				<FaGithubSquare style={{width: '35px',height:'35px', cursor:'pointer'}} onClick={()=>window.open('https://github.com/seungjun0423')}/>
+				<FaInstagram style={{width: '35px',height:'35px', cursor:'pointer'}} onClick={()=>window.open('https://www.instagram.com/azzacha00/')}/>
+				<FiMail style={{width: '35px',height:'35px', cursor:'pointer'}} onClick={()=>window.location.href='mailto: tmdwns0423@nate.com'}/>
 			</Contact>
 		</Footers>
 	);
