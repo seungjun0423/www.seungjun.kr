@@ -205,9 +205,7 @@ export default function Header () {
 									login
 								</Link>
 							}
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{ color:'gray', fontSize: '1.2rem' }}>
-								<MetaMask />
-							</Link>
+							<MetaMask />
 						</Borad>
 						: <></>
 					}
