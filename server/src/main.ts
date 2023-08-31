@@ -10,7 +10,7 @@ async function main() {
   const port = configService.get<string>('server.port');
 
   app.enableCors({
-    origin: process.env.CORS_URL,
+    origin: `${process.env.CORS_URL}`,
     credentials: true,
     methods: ['POST', 'PUT', 'DELETE', 'GET'],
   });
