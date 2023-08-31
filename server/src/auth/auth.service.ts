@@ -46,7 +46,7 @@ export class AuthService {
 				// 	data.password,
 				// 	userFind.password,
 				// );
-				const checkPassword = true;
+				const checkPassword = data.password=== userFind.password;
 				// 비밀번호 일치
 				if(checkPassword) {
 					const payload: Omit<Login,'password'> = { id: userFind.id, email: userFind.email };
