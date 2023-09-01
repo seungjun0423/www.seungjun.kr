@@ -84,6 +84,8 @@ export default function Auth () {
 					if(req.message === 'login success'){
 						stateStore.setState({isLogin: true},true);
 						window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
+					} else {
+						alert('비밀번호를 확인해주세요')
 					}
 				}
 			}

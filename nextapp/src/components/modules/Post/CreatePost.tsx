@@ -98,7 +98,9 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 	const submitHandler = async () => {
 		await _axios.post('/post/createPost',{title, categoryId, contents}).then((res)=>{
 			if(res.id){
-				router.replace(`${process.env.NEXT_PUBLIC_REDIRECT}/post/${res.id}`);
+				// router.replace(`${process.env.NEXT_PUBLIC_REDIRECT}/post/${res.id}`);
+				router.replace(`${process.env.NEXT_PUBLIC_REDIRECT}/`);
+				router.refresh();
 			}
 		});
 		return 
