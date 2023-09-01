@@ -68,7 +68,9 @@ const Label = styled.label`
 
 export default function CreatePost ({children}: {children: React.ReactNode}) {
 	// const [ category, setCategory] = useState<Category[]>();
-	const [ options, setOptions] = useState<React.ReactElement[]>();
+	const [ options, setOptions] = useState<React.ReactElement[]>([<option key='init'>
+		선택
+	</option>,]);
 	const text = useRef(null);
 
 
@@ -84,7 +86,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 					)
 			});
 			// setCategory(categoryData);
-			setOptions(optionEl);
+			setOptions([...options,...optionEl]);
 		}
 		fetchCategory();
 	}, [])
@@ -101,13 +103,13 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			<EditorBox>
 				<InfoBox>
 					<Label>카테고리 선택하기</Label>
-					<select style={{borderRadius: '5px', border:'1px solid gray'}}>
+					<select style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit'}}>
 						{options}
 					</select>
 				</InfoBox>
 				<InfoBox>
 					<Label>글 타이틀</Label>
-					<input style={{borderRadius: '5px', paddingLeft:'7px', border:'1px solid gray'}} type="text"></input>
+					<input style={{borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem'}} type="text" placeholder="제목을 입력해주세요"/>
 				</InfoBox>
 				<Editor
 					height="100%"
