@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   async signin(data: Login): Promise<User> {
-		// await this.transformPassword(data)
+		await this.transformPassword(data);
 
     return await this.prismaService.user.create({
       data: { email: data.email, password: data.password },
