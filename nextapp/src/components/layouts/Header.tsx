@@ -160,7 +160,7 @@ export default function Header () {
 		const NavContainer = (
 			<Div>
 				<NavContainers>
-					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/introducing`} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about`} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
 						about
 					</Link>
 					{ sessionState?.isLogin ?
@@ -186,7 +186,7 @@ export default function Header () {
 					</NavBtn>
 					{ navState ? 
 						<Borad>
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/introducing`} style={{ color:'gray', fontSize: '1.2rem'}}>
+							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about`} style={{ color:'gray', fontSize: '1.2rem'}}>
 								about
 							</Link>
 							{ sessionState?.isLogin ?
