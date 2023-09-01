@@ -2,7 +2,7 @@ import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 /* eslint-disable prettier/prettier */
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import bcrypt from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import {  User } from '@prisma';
 import { Response } from 'express';
@@ -16,14 +16,11 @@ export class AuthService {
 
   // bcrypt: 비밀번호 암호화
   async transformPassword(data: Login): Promise<void> {
-    data.password = await bcrypt.hash(
-      // 암호화하는 데이터
-      data.password,
-      // 해쉬 라운드 횟수
-      10,
-    );
+		console.log("a");
+		data.password = await hash(data.password,10);
+    // data.password = await bcrypt.hash(data.password,10);
 
-    return Promise.resolve();
+    // return Promise.resolve();
   }
 
   async signin(data: Login): Promise<User> {
@@ -42,7 +39,7 @@ export class AuthService {
 			// 유저 정보 있음
 			if(userFind){
 				// 암호화해서 저장된 비밀번호 비교
-				const checkPassword: boolean = await bcrypt.compare(
+				const checkPassword: boolean = await compare(
 					data.password,
 					userFind.password,
 				);
