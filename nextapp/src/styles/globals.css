@@ -41,7 +41,6 @@ button,input {
 	font-size: 1rem;
 }
 
-
 @media(max-width: 1200px){
 	html, body, button, input {
 		font-size: 18px;

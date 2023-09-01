@@ -20,6 +20,7 @@ const Submit = styled.input`
 	margin-top: 10px;
 	font-size: 1rem;
 	font-weight: bold;
+	background-color: lightgray;
 	cursor: pointer;
 	
 	@media (max-width: 576px) {

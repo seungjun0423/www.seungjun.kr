@@ -26,6 +26,7 @@ const EditBtn = styled.button`
 	border: none;
 	font-weight: bold;
 	font-size: 1.2rem;
+	color: black;
 	cursor: pointer;
 `;
 
