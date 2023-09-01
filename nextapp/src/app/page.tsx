@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <section>
-			home
+			이사중...
     </section>
   );
 }

@@ -25,7 +25,7 @@ export default function Postviewer({ children }: {children: number}) {
 						<h1 style='border: none; font-size: 2rem; margin-bottom: 2rem;'>
 							${data?.title}
 						</h1> 
-						<span style="color: black; font-size: 1rem;">
+						<span style="color: black; font-size: 16px;">
 							${data?.contents}
 						</span>
 					</div>`

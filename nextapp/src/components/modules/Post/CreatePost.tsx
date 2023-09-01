@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useRouter } from 'next/navigation'
 
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
@@ -67,34 +68,41 @@ const Label = styled.label`
 `;
 
 export default function CreatePost ({children}: {children: React.ReactNode}) {
-	// const [ category, setCategory] = useState<Category[]>();
-	const [ options, setOptions] = useState<React.ReactElement[]>([<option key='init'>
-		선택
-	</option>,]);
-	const text = useRef(null);
-
+	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
+		<option key='init' value='선택'>
+			선택
+		</option>
+	]);
+	const [ title, setTitle] = useState<string>('');
+	const [ categoryId, setCategoryId] = useState<string>('');
+	
+	const editorRef = useRef<any>(null);
+	const contents: HTMLElement = editorRef.current?.getInstance().getHTML();
+	const router = useRouter();
 
 	useEffect(() => {
 		const fetchCategory = async () => {
-			const categoryData = await _axios.get('/category/all');
-			const optionData: string[] = categoryData.map((el: Category)=> el.title);
-			const optionEl = optionData.map((el: string, index: number) => { 
+			const categoryData: Category[] = await _axios.get('/category/all');
+			const optionEl = categoryData.map((el: Category, index: number)=>{
 				return (
-					<option key={index}>
-						{el}
+					<option key={index} value={el.id}>
+						{el.title}
 					</option>
-					)
+				)
 			});
-			// setCategory(categoryData);
-			setOptions([...options,...optionEl]);
+			setOptionList([ ...optionList, ...optionEl]);
 		}
 		fetchCategory();
 	}, [])
 
-	const submitHandler = () => {
+	const submitHandler = async () => {
+		await _axios.post('/post/createPost',{title, categoryId, contents}).then((res)=>{
+			if(res.id){
+				router.replace(`${process.env.NEXT_PUBLIC_REDIRECT}/post/${res.id}`);
+			}
+		});
 		return 
 	};
-
 	return(
 		<CreatePosts>
 			<H1>
@@ -102,22 +110,32 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			</H1>
 			<EditorBox>
 				<InfoBox>
-					<Label>카테고리 선택하기</Label>
-					<select style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit'}}>
-						{options}
-					</select>
+					<Label>글 타이틀</Label>
+					<input 
+						style={{borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem'}} 
+						type="text" 
+						placeholder="제목을 입력해주세요"
+						onChange={(e)=>{setTitle(e.target.value)}}
+					/>
 				</InfoBox>
 				<InfoBox>
-					<Label>글 타이틀</Label>
-					<input style={{borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem'}} type="text" placeholder="제목을 입력해주세요"/>
+					<Label>카테고리 선택하기</Label>
+					<select 
+						style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit'}}
+						onChange={(e)=>{setCategoryId(e.target.value)}}
+					>
+						{optionList}
+					</select>
 				</InfoBox>
 				<Editor
+					ref={editorRef}
 					height="100%"
 					initialEditType='markdown' 
+					initialValue='type here!!!'	
 					previewStyle="tab"
 					hideModeSwitch={true}
 					plugins={[ colorSyntax ]}
-					autofocus={true}
+					autofocus={false}
 					usageStatistics={false}
 					// theme="dark"	
 				></Editor>
