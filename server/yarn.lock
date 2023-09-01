@@ -1273,6 +1273,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/bcryptjs@npm:^2.4.3":
+  version: 2.4.3
+  resolution: "@types/bcryptjs@npm:2.4.3"
+  checksum: bf1b0a468a186b43a142ea75f26e52e6ecf1c4240404d9ef7973de2ef0b8d0072ebc0f8d3c84f45fa4bf2570f0770e58f565a9184eb9af3be436dbd4ca4881aa
+  languageName: node
+  linkType: hard
+
 "@types/body-parser@npm:*":
   version: 1.19.2
   resolution: "@types/body-parser@npm:1.19.2"
@@ -2528,6 +2535,13 @@ __metadata:
     mixin-deep: ^1.2.0
     pascalcase: ^0.1.1
   checksum: a4a146b912e27eea8f66d09cb0c9eab666f32ce27859a7dfd50f38cd069a2557b39f16dba1bc2aecb3b44bf096738dd207b7970d99b0318423285ab1b1994edd
+  languageName: node
+  linkType: hard
+
+"bcryptjs@npm:^2.4.3":
+  version: 2.4.3
+  resolution: "bcryptjs@npm:2.4.3"
+  checksum: 0e80ed852a41f5dfb1853f53ee14a7390b0ef263ce05dba6e2ef3cd919dfad025a7c21ebcfe5bc7fa04b100990edf90c7a877ff7fe623d3e479753253131b629
   languageName: node
   linkType: hard
 
@@ -7741,6 +7755,7 @@ __metadata:
     "@nestjs/schematics": ^9.0.0
     "@nestjs/testing": ^9.0.0
     "@prisma/client": 5.0.0
+    "@types/bcryptjs": ^2.4.3
     "@types/cookie-parser": ^1.4.3
     "@types/express": ^4.17.13
     "@types/jest": 29.5.0
@@ -7752,6 +7767,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.0.0
     "@typescript-eslint/parser": ^5.0.0
     "@yarnpkg/pnpify": ^4.0.0-rc.48
+    bcryptjs: ^2.4.3
     cookie-parser: ^1.4.6
     cpx: ^1.5.0
     eslint: ^8.0.1
