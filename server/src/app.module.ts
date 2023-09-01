@@ -9,6 +9,7 @@ import { CategoryModule } from './category/category.module';
 import { AuthModule } from './auth/auth.module';
 import config from './config/config';
 import { LoggerMiddleware } from './middleware/logger.middleware';
+import { UploadsModule } from './uploads/uploads.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
     PostModule,
     CategoryModule,
     AuthModule,
+    UploadsModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
