@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { useRouter } from 'next/navigation'
 
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
@@ -73,12 +72,10 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			선택
 		</option>
 	]);
+	const editorRef = useRef<any>(null);
 	const [ title, setTitle] = useState<string>('');
 	const [ categoryId, setCategoryId] = useState<string>('');
-	
-	const editorRef = useRef<any>(null);
-	const contents: HTMLElement = editorRef.current?.getInstance().getHTML();
-	const router = useRouter();
+	const [ contents, setContents] = useState<HTMLElement>();
 
 	useEffect(() => {
 		const fetchCategory = async () => {
@@ -95,14 +92,15 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 		fetchCategory();
 	}, [])
 
+	const contentsOnChange = () => {
+		const contentHtml: HTMLElement = editorRef.current?.getInstance().getHTML();
+		setContents(contentHtml);
+	}
+	console.log(contents);
+
 	const submitHandler = async () => {
-		await _axios.post('/post/createPost',{title, categoryId, contents}).then((res)=>{
-			if(res.id){
-				// router.replace(`${process.env.NEXT_PUBLIC_REDIRECT}/post/${res.id}`);
-				router.replace(`${process.env.NEXT_PUBLIC_REDIRECT}/`);
-				router.refresh();
-			}
-		});
+		await _axios.post('/post/createPost',{title, categoryId, contents})
+		window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
 		return 
 	};
 	return(
@@ -139,6 +137,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 					plugins={[ colorSyntax ]}
 					autofocus={false}
 					usageStatistics={false}
+					onChange={contentsOnChange}
 					// theme="dark"	
 				></Editor>
 				<SubmitBtn handler={submitHandler}/>
