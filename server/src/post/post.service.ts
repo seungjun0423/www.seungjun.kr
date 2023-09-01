@@ -6,12 +6,12 @@ import { Posts } from './post.controller';
 export class PostService {
   constructor(private prismaService: PrismaService) {}
 
-  async createPost(data: Post): Promise<Post> {
+  async createPost(data: Posts): Promise<Posts> {
     return await this.prismaService.post.create({
       data: {
         title: data.title,
         contents: data.contents,
-        categoryId: data.categoryId,
+        categoryId: Number(data.categoryId),
       },
     });
   }

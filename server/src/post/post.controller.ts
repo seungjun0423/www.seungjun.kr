@@ -6,7 +6,7 @@ export interface Posts {
   id: number;
   title: string;
   contents: string;
-  img: string;
+  img?: string;
   categoryId: number;
   createdAt: Date;
   updatedAt: Date;
