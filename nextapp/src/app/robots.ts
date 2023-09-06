@@ -5,7 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/public/',
     },
     sitemap: 'https://seungjun.kr/sitemap.xml',
   }
