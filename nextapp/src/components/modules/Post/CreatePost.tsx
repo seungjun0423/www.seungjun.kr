@@ -13,6 +13,7 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 import { _axios } from "hooks/axios";
 import SubmitBtn from "components/ui/button/SubmitBtn";
+import axios from "axios";
 
 type Category = {
 	id: number;
@@ -76,6 +77,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 	const [ title, setTitle] = useState<string>('');
 	const [ categoryId, setCategoryId] = useState<string>('');
 	const [ contents, setContents] = useState<HTMLElement>();
+	const [ images, setImages ] = useState<any[]>(['']);
 
 	useEffect(() => {
 		const fetchCategory = async () => {
@@ -90,19 +92,20 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			setOptionList([ ...optionList, ...optionEl]);
 		}
 		fetchCategory();
-	}, [])
+	}, []);
 
 	const contentsOnChange = () => {
 		const contentHtml: HTMLElement = editorRef.current?.getInstance().getHTML();
 		setContents(contentHtml);
 	}
-	console.log(contents);
 
 	const submitHandler = async () => {
 		await _axios.post('/post/createPost',{title, categoryId, contents})
 		window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
 		return 
 	};
+
+
 	return(
 		<CreatePosts>
 			<H1>
@@ -138,6 +141,21 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 					autofocus={false}
 					usageStatistics={false}
 					onChange={contentsOnChange}
+					hooks={{
+						async addImageBlobHook(blob, callback){
+							try{
+								const formData = new FormData();
+								formData.append('image', blob);
+								const res = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}/uploads/upload`,
+								formData, {headers: { 'Content-Type': 'multipart/formed-data'}}
+								) 
+								console.log('이미지가 업로드 됐습니다.',res.data);
+								callback(res.data, 'image');	
+							} catch(err) {
+								alert('파일 업로드 실패');
+							}
+						}
+					}}
 					// theme="dark"	
 				></Editor>
 				<SubmitBtn handler={submitHandler}/>
