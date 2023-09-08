@@ -84,13 +84,11 @@ export default function Auth () {
 					if(req.message === 'login success'){
 						stateStore.setState({isLogin: true},true);
 						window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
-					} else {
-						alert('비밀번호를 확인해주세요')
 					}
 				}
 			}
 		} catch(err) {
-			throw err;
+			alert('비밀번호를 확인해주세요');
 		}
 	};
 
@@ -130,6 +128,7 @@ export default function Auth () {
 					<Input 
 						id='password' 
 						type="password"
+						placeholder="password" 
 						ref={focusPw} 
 						onChange={(e)=>onChangePw(e.target.value)} 
 						onKeyPress={(e)=>{enterHandler('password',e)}} 

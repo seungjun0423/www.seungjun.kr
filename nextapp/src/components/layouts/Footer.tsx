@@ -6,6 +6,7 @@ import { FaGithubSquare, FaInstagram } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
 const Footers = styled.footer`
+	position: relative;
 	bottom: 0;
 	display: flex;
 	width: 100%;

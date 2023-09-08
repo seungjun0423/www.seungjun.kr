@@ -74,6 +74,7 @@ const NavBtn = styled.button`
 	border: 1px solid #eaecef;
 	border-radius: 5px;
 	color: gray;
+	justify-content: center;
 	cursor: pointer;
 `;
 

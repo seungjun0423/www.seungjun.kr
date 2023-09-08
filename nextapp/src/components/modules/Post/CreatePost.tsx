@@ -4,12 +4,16 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { Editor } from '@toast-ui/react-editor';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import '@toast-ui/editor/dist/theme/toastui-editor-dark.css';
+import '@toast-ui/editor/dist/toastui-editor.css';;
 
 import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
+
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css';
+import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
+import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
 import { _axios } from "hooks/axios";
 import SubmitBtn from "components/ui/button/SubmitBtn";
@@ -137,7 +141,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 					initialValue='type here!!!'	
 					previewStyle="tab"
 					hideModeSwitch={true}
-					plugins={[ colorSyntax ]}
+					plugins={[[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax ]}
 					autofocus={false}
 					usageStatistics={false}
 					onChange={contentsOnChange}
@@ -149,8 +153,10 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 								const res = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}/uploads/upload`,
 								formData, {headers: { 'Content-Type': 'multipart/formed-data'}}
 								) 
-								console.log('이미지가 업로드 됐습니다.',res.data);
-								callback(res.data, 'image');	
+								if(res.status === 200){
+									alert('이미지가 업로드 됐습니다.');
+									callback(res.data, 'image');		
+								}
 							} catch(err) {
 								alert('파일 업로드 실패');
 							}

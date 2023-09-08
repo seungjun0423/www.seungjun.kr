@@ -31,21 +31,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@metamask/sdk", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:0.5.6"],\
             ["@tanstack/react-query", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.32.6"],\
             ["@toast-ui/editor", "npm:3.2.2"],\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
             ["@toast-ui/editor-plugin-color-syntax", "npm:3.1.0"],\
-            ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3"],\
+            ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.1.1"],\
             ["@types/debug", "npm:4.1.8"],\
             ["@types/gtag.js", "npm:0.0.13"],\
             ["@types/node", "npm:20.5.0"],\
+            ["@types/prismjs", "npm:1.26.0"],\
             ["@types/react", "npm:18.2.20"],\
             ["@types/react-dom", "npm:18.2.7"],\
             ["@types/styled-components", "npm:5.1.26"],\
             ["axios", "npm:1.5.0"],\
             ["axios-debug-log", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:1.0.0"],\
-            ["client-only", "npm:0.0.1"],\
             ["debug", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.3.4"],\
             ["eslint", "npm:8.41.0"],\
             ["eslint-config-next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.13"],\
             ["next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.13"],\
+            ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"],\
             ["react-icons", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.10.1"],\
@@ -3543,6 +3545,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@toast-ui/editor-plugin-code-syntax-highlight", [\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@toast-ui-editor-plugin-code-syntax-highlight-npm-3.1.0-c1ad588de9-cdef0f5da7.zip/node_modules/@toast-ui/editor-plugin-code-syntax-highlight/",\
+          "packageDependencies": [\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["prismjs", "npm:1.29.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@toast-ui/editor-plugin-color-syntax", [\
         ["npm:3.1.0", {\
           "packageLocation": "./.yarn/cache/@toast-ui-editor-plugin-color-syntax-npm-3.1.0-1688766a0c-e4f47afbdc.zip/node_modules/@toast-ui/editor-plugin-color-syntax/",\
@@ -3554,17 +3566,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@toast-ui/react-editor", [\
-        ["npm:3.2.3", {\
-          "packageLocation": "./.yarn/cache/@toast-ui-react-editor-npm-3.2.3-aed61aa676-5ffd6f9b27.zip/node_modules/@toast-ui/react-editor/",\
+        ["npm:3.1.1", {\
+          "packageLocation": "./.yarn/cache/@toast-ui-react-editor-npm-3.1.1-c464f6c134-6d009250c6.zip/node_modules/@toast-ui/react-editor/",\
           "packageDependencies": [\
-            ["@toast-ui/react-editor", "npm:3.2.3"]\
+            ["@toast-ui/react-editor", "npm:3.1.1"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3", {\
-          "packageLocation": "./.yarn/__virtual__/@toast-ui-react-editor-virtual-62e05a89fd/0/cache/@toast-ui-react-editor-npm-3.2.3-aed61aa676-5ffd6f9b27.zip/node_modules/@toast-ui/react-editor/",\
+        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.1.1", {\
+          "packageLocation": "./.yarn/__virtual__/@toast-ui-react-editor-virtual-2db55d1ee3/0/cache/@toast-ui-react-editor-npm-3.1.1-c464f6c134-6d009250c6.zip/node_modules/@toast-ui/react-editor/",\
           "packageDependencies": [\
-            ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3"],\
+            ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.1.1"],\
             ["@toast-ui/editor", "npm:3.2.2"],\
             ["@types/react", "npm:18.2.20"],\
             ["react", "npm:18.2.0"]\
@@ -3695,6 +3707,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-parse-json-npm-4.0.0-298522afa6-fd6bce2b67.zip/node_modules/@types/parse-json/",\
           "packageDependencies": [\
             ["@types/parse-json", "npm:4.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/prismjs", [\
+        ["npm:1.26.0", {\
+          "packageLocation": "./.yarn/cache/@types-prismjs-npm-1.26.0-e89ec94ae4-cd5e7a6214.zip/node_modules/@types/prismjs/",\
+          "packageDependencies": [\
+            ["@types/prismjs", "npm:1.26.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7168,21 +7189,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@metamask/sdk", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:0.5.6"],\
             ["@tanstack/react-query", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.32.6"],\
             ["@toast-ui/editor", "npm:3.2.2"],\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
             ["@toast-ui/editor-plugin-color-syntax", "npm:3.1.0"],\
-            ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.2.3"],\
+            ["@toast-ui/react-editor", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:3.1.1"],\
             ["@types/debug", "npm:4.1.8"],\
             ["@types/gtag.js", "npm:0.0.13"],\
             ["@types/node", "npm:20.5.0"],\
+            ["@types/prismjs", "npm:1.26.0"],\
             ["@types/react", "npm:18.2.20"],\
             ["@types/react-dom", "npm:18.2.7"],\
             ["@types/styled-components", "npm:5.1.26"],\
             ["axios", "npm:1.5.0"],\
             ["axios-debug-log", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:1.0.0"],\
-            ["client-only", "npm:0.0.1"],\
             ["debug", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.3.4"],\
             ["eslint", "npm:8.41.0"],\
             ["eslint-config-next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.13"],\
             ["next", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:13.4.13"],\
+            ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"],\
             ["react-icons", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.10.1"],\
@@ -7616,6 +7639,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/prelude-ls-npm-1.2.1-3e4d272a55-cd192ec0d0.zip/node_modules/prelude-ls/",\
           "packageDependencies": [\
             ["prelude-ls", "npm:1.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prismjs", [\
+        ["npm:1.29.0", {\
+          "packageLocation": "./.yarn/cache/prismjs-npm-1.29.0-6faa5b04b8-007a8869d4.zip/node_modules/prismjs/",\
+          "packageDependencies": [\
+            ["prismjs", "npm:1.29.0"]\
           ],\
           "linkType": "HARD"\
         }]\

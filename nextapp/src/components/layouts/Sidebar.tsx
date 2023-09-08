@@ -47,8 +47,6 @@ const Wrapper = styled.div`
 	@media (max-width: 576px) {
 		position: fixed; 
 		bottom: 0;
-		display: flex;
-		flex-direction: row;
 		border-top: 1px solid #eaecef;
 		width: 100%;
 		border-right: 0;

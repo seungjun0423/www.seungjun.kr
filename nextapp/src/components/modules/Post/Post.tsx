@@ -34,9 +34,6 @@ const Posts = styled.button`
 
 
 export default function Post ({ data }: { data: PostType}) {
-	// useEffect(() => {
-	// 	postStore.setState({nowPost: data},true);
-	// }, [])
 	
 	return (
 		<Posts onClick={()=>{postStore.setState({nowPost: data},true);}}>
