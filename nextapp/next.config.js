@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-	// images: {
-	// 	remotePatterns: [
-	// 		{
-	// 			protocol: 'https',
-	// Todo : 호스트 네임 추후 설정 필요 
-	// 			hostname: '추후 설정'
-	// 		}
-	// 	]
-	// },
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 's3.ap-northeast-2.amazonaws.com',
+			}
+		]
+	},
 	// async redirects(){
 	// 	return [
 	// 		{

@@ -80,8 +80,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 	const editorRef = useRef<any>(null);
 	const [ title, setTitle] = useState<string>('');
 	const [ categoryId, setCategoryId] = useState<string>('');
-	const [ contents, setContents] = useState<HTMLElement>();
-	const [ images, setImages ] = useState<any[]>(['']);
+	const [ contents, setContents] = useState<any>();
 
 	useEffect(() => {
 		const fetchCategory = async () => {
@@ -140,7 +139,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 					initialEditType='markdown' 
 					initialValue='type here!!!'	
 					previewStyle="tab"
-					hideModeSwitch={true}
+					// hideModeSwitch={true}
 					plugins={[[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax ]}
 					autofocus={false}
 					usageStatistics={false}

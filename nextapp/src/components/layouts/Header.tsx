@@ -183,7 +183,6 @@ export default function Header () {
 					<NavBtn>
 						{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
 						&#9776;
-						{/* menu */}
 					</NavBtn>
 					{ navState ? 
 						<Borad>
@@ -224,7 +223,7 @@ export default function Header () {
 				<Image alt='이미지 에러' src={favicon} style={{marginRight:'10px'}}/>
 				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{fontSize: '2.2rem'}} >
 					<LongText>
-						{`Seungjun's blog`}
+						Seungjun's blog
 					</LongText>
 					<ShortText>
 						blog
