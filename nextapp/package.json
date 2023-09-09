@@ -39,6 +39,7 @@
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
     "axios-debug-log": "^1.0.0",
-    "debug": "^4.3.4"
+    "debug": "^4.3.4",
+    "react-lottie-player": "^1.5.5"
   }
 }

@@ -51,6 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"],\
             ["react-icons", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.10.1"],\
+            ["react-lottie-player", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:1.5.5"],\
             ["styled-components", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:6.0.7"],\
             ["supports-color", "npm:9.4.0"],\
             ["tui-color-picker", "npm:2.2.8"],\
@@ -6820,6 +6821,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lottie-web", [\
+        ["npm:5.12.2", {\
+          "packageLocation": "./.yarn/cache/lottie-web-npm-5.12.2-942dc9e22a-af5bc3bc40.zip/node_modules/lottie-web/",\
+          "packageDependencies": [\
+            ["lottie-web", "npm:5.12.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["lru-cache", [\
         ["npm:10.0.1", {\
           "packageLocation": "./.yarn/cache/lru-cache-npm-10.0.1-0e1abf4c13-06f8d0e1ce.zip/node_modules/lru-cache/",\
@@ -7209,6 +7219,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:18.2.0"],\
             ["react-icons", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.10.1"],\
+            ["react-lottie-player", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:1.5.5"],\
             ["styled-components", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:6.0.7"],\
             ["supports-color", "npm:9.4.0"],\
             ["tui-color-picker", "npm:2.2.8"],\
@@ -7928,6 +7939,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-lottie-player", [\
+        ["npm:1.5.5", {\
+          "packageLocation": "./.yarn/cache/react-lottie-player-npm-1.5.5-bd3959cd68-6120e293a9.zip/node_modules/react-lottie-player/",\
+          "packageDependencies": [\
+            ["react-lottie-player", "npm:1.5.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:1.5.5", {\
+          "packageLocation": "./.yarn/__virtual__/react-lottie-player-virtual-fb13104a1b/0/cache/react-lottie-player-npm-1.5.5-bd3959cd68-6120e293a9.zip/node_modules/react-lottie-player/",\
+          "packageDependencies": [\
+            ["react-lottie-player", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:1.5.5"],\
+            ["@types/react", "npm:18.2.20"],\
+            ["fast-deep-equal", "npm:3.1.3"],\
+            ["lottie-web", "npm:5.12.2"],\
+            ["react", "npm:18.2.0"],\
+            ["rfdc", "npm:1.3.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-native-webview", [\
         ["npm:11.26.1", {\
           "packageLocation": "./.yarn/unplugged/react-native-webview-virtual-d1eb2c1ebb/node_modules/react-native-webview/",\
@@ -8135,6 +8171,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/reusify-npm-1.0.4-95ac4aec11-c3076ebcc2.zip/node_modules/reusify/",\
           "packageDependencies": [\
             ["reusify", "npm:1.0.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["rfdc", [\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/rfdc-npm-1.3.0-272f288ad8-fb2ba8512e.zip/node_modules/rfdc/",\
+          "packageDependencies": [\
+            ["rfdc", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\

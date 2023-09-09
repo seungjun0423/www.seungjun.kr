@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
+import Lottie from 'react-lottie-player'
+import lottie from '../../../public/lottiefiles/animation_lmbr8j96_transparent.gif';
+
 import Image from "next/image";
 
 import { _axios } from "hooks/axios";
@@ -21,7 +24,7 @@ const Headers = styled.header`
 	padding: 5px 0 5px 0;
 	border: none;
 	box-shadow: 0 0 5px darkgray;
-	background-color: #fafafa;
+	background-color: #ffffff;
 	z-index: 99;
 `;
 
@@ -220,7 +223,7 @@ export default function Header () {
 	return (
 		<Headers>
 			<Title>
-				<Image alt='이미지 에러' src={favicon} style={{marginRight:'10px'}}/>
+				<Image alt='이미지 에러' src={lottie} style={{marginRight:'10px'}} width={50} height={50}/>
 				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{fontSize: '2.2rem'}} >
 					<LongText>
 						Seungjun's blog
