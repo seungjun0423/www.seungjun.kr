@@ -12,7 +12,6 @@ const Contents = styled.section`
 	overflow-y: auto;
 	padding: 4vw;
 	margin-bottom: 5vh;
-	font-family: initial;
 
 	@media (min-width: 1200px){
 		margin-right: auto;

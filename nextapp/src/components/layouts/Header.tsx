@@ -30,7 +30,7 @@ const Headers = styled.header`
 
 const Title = styled.span`
 	display: flex;
-	margin-left: 4vw;
+	margin-left: 3vw;
 	font-weight: bold;
 	align-items: center;
 `;
@@ -172,7 +172,7 @@ export default function Header () {
 							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost`} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
 								posting
 							</Link> 
-							<div onClick={logoutHandler} style={{ fontWeight: 'bold',fontSize: '1.5rem', cursor:'pointer' }}>
+							<div onClick={logoutHandler} style={{color: '#5e5e5e', fontWeight: 'bold',fontSize: '1.5rem', cursor:'pointer' }}>
 								logout
 							</div>
 						</>
@@ -223,7 +223,7 @@ export default function Header () {
 	return (
 		<Headers>
 			<Title>
-				<Image alt='이미지 에러' src={lottie} style={{marginRight:'10px'}} width={50} height={50}/>
+				<Image alt='이미지 에러' src={lottie} style={{marginRight:'2vw'}} width={80} height={80}/>
 				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{fontSize: '2.2rem'}} >
 					<LongText>
 						Seungjun's blog
