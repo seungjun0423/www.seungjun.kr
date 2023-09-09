@@ -56,6 +56,6 @@ button,input {
 	}
 }
 
-.toastui-editor-contents {
+.toastui-editor-contents,.toastui-editor-defaultUI, .ProseMirror {
 	font-family: inherit !important;
 }

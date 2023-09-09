@@ -32,7 +32,7 @@ export default function Postviewer({ children }: {children: number}) {
 						<h1 style='border: none; font-size: 1.5rem; margin-bottom: 2rem;'>
 							${data?.title}
 						</h1> 
-						<span style="font-size: 18px;">
+						<span style="font-size: 16px;">
 							${data?.contents}
 						</span>
 					</div>`
