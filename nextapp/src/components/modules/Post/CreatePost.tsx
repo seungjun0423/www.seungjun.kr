@@ -127,7 +127,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 				<InfoBox>
 					<Label>카테고리 선택하기</Label>
 					<select 
-						style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit'}}
+						style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit',color: '#5e5e5e'}}
 						onChange={(e)=>{setCategoryId(e.target.value)}}
 					>
 						{optionList}

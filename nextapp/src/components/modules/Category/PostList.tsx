@@ -30,7 +30,7 @@ const PostLists = styled.div`
 const CategoryTitle = styled.input`
 	font-size: 1.5rem;
 	font-weight: bold;
-	color: black;
+	color: #5e5e5e;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;

@@ -25,7 +25,7 @@ const Posts = styled.input`
 	font-size: 1.5rem;
 	font-weight: bold;
 	font-style: normal;
-	color: black;
+	color: #5e5e5e;
 	border: none;
 	text-align: center;
 	cursor: pointer;

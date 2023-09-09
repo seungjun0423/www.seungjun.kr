@@ -9,8 +9,12 @@ import Main  from 'components/layouts/Main';
 import Header from "components/layouts/Header";
 import Footer from "components/layouts/Footer";
 
-import { Gaegu } from 'next/font/google';
-const gaegu = Gaegu({ subsets: ['latin'], display: 'swap', weight: "400" });
+import localFont from 'next/font/local';
+
+const font = localFont({
+  src: './JalnanOTF.otf',
+  display: 'swap',
+})
 
 export type Props = {
 	children: React.ReactNode;
@@ -35,8 +39,6 @@ export const metadata: Metadata = {
 			"naver-site-verification":"ed9b5c6474ce11bd2641d3627ae889ce9a58c002"
 		}
 	},
-	
-	// // Todo: 디자인 작업하면서 파비콘 추가하기
 	icons: {
 		icon: '/favicon.ico',
 		shortcut: '/favicon.ico',
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout ({ children }: Props) {
   return (
-		<html lang="ko" className={gaegu.className}>
+		<html lang="ko" className={font.className}>
 			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
 			<StyledComponentsRegistry>
 				<body >

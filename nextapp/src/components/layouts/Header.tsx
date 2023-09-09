@@ -19,9 +19,9 @@ const Headers = styled.header`
 	left: 0;
 	width: 100%;
 	padding: 5px 0 5px 0;
-	background-color: #ffffff;
 	border: none;
 	box-shadow: 0 0 5px darkgray;
+	background-color: #fafafa;
 	z-index: 99;
 `;
 

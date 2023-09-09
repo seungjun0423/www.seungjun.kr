@@ -15,6 +15,7 @@
 	/* 파이어폭스 스크롤바 숨기기*/
 	scrollbar-width: none; 
 }
+
 html {
   font-size: 22px;
 	width: 100%;
@@ -31,14 +32,15 @@ body {
   margin: 0;
 }
 
-a {
+a,input {
   text-decoration: none;
-	color: black;
+	color: #5e5e5e;
 }
 
 button,input {
 	font-family: inherit;
 	font-size: 1rem;
+	color: #5e5e5e;
 }
 
 @media(max-width: 1200px){
