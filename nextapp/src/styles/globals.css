@@ -52,6 +52,10 @@ button,input {
 
 @media(max-width: 768px){
 	html, body, button, input {
-		font-size: 18px;
+		font-size: 18px; 
 	}
+}
+
+.toastui-editor-contents {
+	font-family: inherit !important;
 }

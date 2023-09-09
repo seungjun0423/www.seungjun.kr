@@ -138,8 +138,8 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 					height="100%"
 					initialEditType='markdown' 
 					initialValue='type here!!!'	
-					previewStyle="tab"
-					// hideModeSwitch={true}
+					previewStyle="vertical"
+					hideModeSwitch={true}
 					plugins={[[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax ]}
 					autofocus={false}
 					usageStatistics={false}
@@ -161,7 +161,6 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 							}
 						}
 					}}
-					// theme="dark"	
 				></Editor>
 				<SubmitBtn handler={submitHandler}/>
 			</EditorBox>
