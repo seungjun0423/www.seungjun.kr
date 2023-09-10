@@ -16,6 +16,23 @@ import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 const PostViewers = styled.div`
 	width: 100%;
 	height: min-content;
+	margin-top: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+	
+	
+	@media (max-width: 768px){
+		margin-top: 40px;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+
+	@media (max-width: 577px){
+		margin-top: 30px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 `;
 
 export default function Postviewer({ children }: {children: number}) {

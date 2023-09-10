@@ -48,6 +48,7 @@ const Input = styled.input`
 	background-color: transparent;
 	padding-left: 1rem;
 	border-radius: 5px;
+	opacity:0.5;
 `;
 
 

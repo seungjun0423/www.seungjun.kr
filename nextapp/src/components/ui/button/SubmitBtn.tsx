@@ -4,20 +4,20 @@ import styled from "styled-components";
 
 const BtnBox = styled.div`
 	width: 100%;
-	height: 50px;
+	height: 100px;
 	display: flex;
 	justify-content: center;
-
 	@media (max-width: 576px) {
-		height: 40px;
+		height: 50px;
 	}
 `;
 
 const Submit = styled.input`
 	width: 10rem;
+	height: 40px;
 	border-radius: 30px;
 	border: none;
-	margin-top: 10px;
+	margin-top: 20px;
 	font-size: 1rem;
 	font-weight: bold;
 	background-color: lightgray;

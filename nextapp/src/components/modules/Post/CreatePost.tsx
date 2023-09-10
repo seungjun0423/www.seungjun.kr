@@ -27,32 +27,26 @@ type Category = {
 }
 
 const CreatePosts = styled.section`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	width: 100%;
 	height: 100%;
-	overflow-y: hidden;
+	overflow-y: auto;
 	overflow-x: auto;
+	margin-top: 30px;
 `;
 
 const H1 = styled.h1`
 	display: flex;
 	justify-content: center;
-	margin: 30px;
-
-	@media (min-width: 1200px) {
-		margin: 30px 0 20px 0;
-	}
 `;
 
 const EditorBox = styled.div`
 	width: 100%;
-	height: 65%;
-	padding-left: 5%;
-	padding-right: 5%;
-	margin-top: 50px;
-
-	@media (min-width: 1200px) {
-		padding: 0 10% 0 10%;
-	}
+	max-width:1000px;
+	height: 80%;
+	margin-top: 30px;
 
 	@media (max-width: 576px){
 		height: 55%;
@@ -116,9 +110,9 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			</H1>
 			<EditorBox>
 				<InfoBox>
-					<Label>글 타이틀</Label>
+					<Label>글 제목</Label>
 					<input 
-						style={{borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem'}} 
+						style={{borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem', opacity:'0.5'}} 
 						type="text" 
 						placeholder="제목을 입력해주세요"
 						onChange={(e)=>{setTitle(e.target.value)}}
@@ -127,7 +121,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 				<InfoBox>
 					<Label>카테고리 선택하기</Label>
 					<select 
-						style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit',color: '#5e5e5e'}}
+						style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit',color: '#5e5e5e',opacity:'0.5'}}
 						onChange={(e)=>{setCategoryId(e.target.value)}}
 					>
 						{optionList}

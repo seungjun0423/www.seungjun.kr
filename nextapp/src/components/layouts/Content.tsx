@@ -9,16 +9,12 @@ const Contents = styled.section`
 	max-width: 1200px;
 	overflow-x: auto;
 	overflow-y: auto;
-	padding: 4vw;
-	margin-bottom: 5vh;
-
-	@media (min-width: 1200px){
-		margin-right: auto;
-		margin-left: auto;
-	}
+	padding: 0 20px 0 20px;
+	margin-left: auto;
+	margin-right: auto;
 
 	@media (max-width: 576px) {
-		margin-bottom: 10vh;
+		padding: 0px 10px 0 10px;
 	}
 `;
 
