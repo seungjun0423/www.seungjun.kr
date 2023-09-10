@@ -8,6 +8,7 @@ import { Props } from "app/layout";
 
 const Mains = styled.main`
 	width: 100%;
+	height: calc(92vh - 90px);
 	display: flex;
 `;
 

@@ -10,6 +10,7 @@ const Footers = styled.footer`
 	bottom: 0;
 	display: flex;
 	width: 100%;
+	/* height: 8vh; */
 	border-top: 1px solid #eaecef;
 	flex-direction: row-reverse;
 	align-items: center;

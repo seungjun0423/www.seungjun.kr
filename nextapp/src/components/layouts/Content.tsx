@@ -7,7 +7,6 @@ import { Props } from "app/layout";
 const Contents = styled.section`
 	width: 100%;
 	max-width: 1200px;
-	height: 100vh;
 	overflow-x: auto;
 	overflow-y: auto;
 	padding: 4vw;
