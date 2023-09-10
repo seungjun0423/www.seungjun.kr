@@ -214,7 +214,7 @@ export default function Header () {
 	return (
 		<Headers>
 			<Title>
-				<Image alt='이미지 에러' src={lottie} style={{marginRight:'2vw',marginTop:'3px'}} width={50} height={50}/>
+				<Image alt='이미지 에러' src={lottie} style={{marginRight:'1.5vw',marginTop:'3px'}} width={50} height={50}/>
 				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{fontSize: '2rem'}} >
 					<LongText>
 						Seungjun's blog

@@ -14,6 +14,7 @@ const Footers = styled.footer`
 	flex-direction: row-reverse;
 	align-items: center;
 	font-size: 13px;
+	opacity: 0.7;
 	
 	@media(max-width: 576px){
 		display: none;
@@ -41,7 +42,7 @@ const Contact = styled.div`
 const CopyRight = styled.p`
 	font-weight: bold;
 	color: gray;
-	margin-right: 50px;
+	margin-right: 30px;
 
 	@media (max-width: 768px) {
 		margin-right: 10px;

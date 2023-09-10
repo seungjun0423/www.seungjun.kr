@@ -43,15 +43,15 @@ button,input {
 	color: #5e5e5e;
 }
 
-@media(max-width: 1200px){
+@media(min-width: 1200px){
 	html, body, button, input {
-		font-size: 18px;
+		font-size: 20px;
 	}
 }
 
-@media(max-width: 768px){
+@media(min-width: 768px){
 	html, body, button, input {
-		font-size: 16px; 
+		font-size: 18px; 
 	}
 }
 
