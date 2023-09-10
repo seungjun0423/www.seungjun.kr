@@ -1,5 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
+import ReadPost from "components/modules/Post/ReadPost";
 
 interface Post  {
 	params: {

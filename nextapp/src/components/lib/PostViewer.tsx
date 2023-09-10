@@ -18,7 +18,6 @@ const PostViewers = styled.div`
 	height: min-content;
 `;
 
-//Todo: 데이터 입력 테스트 필요
 export default function Postviewer({ children }: {children: number}) {
 	const obj = window.sessionStorage.getItem('post-storage');
 	const data: PostType = JSON.parse(obj as string).state.nowPost;
