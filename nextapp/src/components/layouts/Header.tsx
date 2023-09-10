@@ -100,14 +100,8 @@ const Borad = styled.nav`
 	border: 1px solid #eaecef;
 	border-radius: 10px;
 	gap: 1rem;
-	font-weight: bold;
 	animation: ${draw} 0.5s ease forwards;
 `;
-
-// const About = styled.div``;
-// const Login = styled.div``;
-// const Logout = styled.div``;
-// const Posting = styled.div``;
 
 const MetaMaskBox = styled.div`
 	margin-right: auto;
@@ -161,20 +155,20 @@ export default function Header () {
 		const NavContainer = (
 			<Div>
 				<NavContainers>
-					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about`} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about`} style={{fontSize:'1.5rem'}}>
 						about
 					</Link>
 					{ sessionState?.isLogin ?
 						<>
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost`} style={{ fontWeight: 'bold', fontSize: '1.5rem'}}>
+							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost`} style={{fontSize:'1.5rem'}}>
 								posting
 							</Link> 
-							<div onClick={logoutHandler} style={{color: '#5e5e5e', fontWeight: 'bold',fontSize: '1.5rem', cursor:'pointer' }}>
+							<div onClick={logoutHandler} style={{color: '#5e5e5e', cursor:'pointer', fontSize: '1.5rem' }} >
 								logout
 							</div>
 						</>
 						:
-						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth`} style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth`} style={{fontSize:'1.5rem'}}>
 							login
 						</Link>
 					}
@@ -186,20 +180,20 @@ export default function Header () {
 					</NavBtn>
 					{ navState ? 
 						<Borad>
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about`} style={{ color:'gray', fontSize: '1.2rem'}}>
+							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about`} style={{ color:'gray' }}>
 								about
 							</Link>
 							{ sessionState?.isLogin ?
 								<>
-									<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost`} style={{ color:'gray', fontSize: '1.2rem'}}>
+									<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost`} style={{ color:'gray'}}>
 										posting
 									</Link>
-									<div onClick={logoutHandler} style={{ color:'gray',fontSize: '1.2rem', cursor:'pointer' }}>
+									<div onClick={logoutHandler} style={{ color:'gray', cursor:'pointer' }}>
 										logout
 									</div>
 								</>
 								:
-								<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth`} style={{ color:'gray', fontSize: '1.2rem' }}>
+								<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth`} style={{ color:'gray' }}>
 									login
 								</Link>
 							}
@@ -220,8 +214,8 @@ export default function Header () {
 	return (
 		<Headers>
 			<Title>
-				<Image alt='이미지 에러' src={lottie} style={{marginRight:'2vw'}} width={80} height={80}/>
-				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{fontSize: '2.2rem'}} >
+				<Image alt='이미지 에러' src={lottie} style={{marginRight:'2vw',marginTop:'3px'}} width={50} height={50}/>
+				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}`} style={{fontSize: '2rem'}} >
 					<LongText>
 						Seungjun's blog
 					</LongText>
