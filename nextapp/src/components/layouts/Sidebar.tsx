@@ -30,7 +30,7 @@ const Sidebars = styled.aside`
 	min-width: 160px;
 	
 	@media (min-width:577px){
-		animation: ${sildIn} 0.9s ease-out forwards;
+		animation: ${sildIn} 1.5s ease-in-out forwards;
 	}
 
 	@media (max-width: 576px) {
@@ -85,6 +85,13 @@ export default function Sidebar () {
 	const { isEdit, setIsEdit } = editState();
 	const [ editBtn, setEditBtn ] = useState<React.ReactElement>(<></>);
 	const [ categoryData, setCateogoryData] = useState<CategoryData[]>([]);
+	// const fetchData = async () => {
+	// 	// const categoryData = await _axios.get(`/category/all`);
+	// 	const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then(res=> res.json()).then(res=>setCateogoryData(res));
+	// 	// setCateogoryData(categoryData);
+	// };
+
+	// fetchData();
 
 	useEffect(() => {
 		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
@@ -92,9 +99,10 @@ export default function Sidebar () {
 		sessionState?.isLogin ? setEditBtn(<EditCategoryBtn/>):setEditBtn(<></>);
 
 		const fetchData = async () => {
-			const categoryData = await _axios.get(`/category/all`);
-			setCateogoryData(categoryData);
-		}
+			// const categoryData = await _axios.get(`/category/all`);
+			const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then(res=> res.json()).then(res=>setCateogoryData(res));
+			// setCateogoryData(categoryData);
+		};
 
 		fetchData();
 	}, []);

@@ -1,19 +1,14 @@
-'use client';
-
 import React from "react";
-import styled from "styled-components";
-import Postviewer from "components/lib/PostViewer";
+import dynamic from "next/dynamic";
 
-const ReadPosts = styled.section`
-	width: 100%;
-`;
 
 export default function ReadPost({ children }: {children: number}){
+	const DynamicPostViewer = dynamic(()=>import('components/lib/PostViewer'),{ssr: false});
 	return(
-		<ReadPosts>
-			<Postviewer>
+		<div>
+			<DynamicPostViewer>
 				{children}
-			</Postviewer>
-		</ReadPosts>
+			</DynamicPostViewer>
+		</div>
 	)
 }

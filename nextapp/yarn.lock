@@ -2148,32 +2148,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:4.32.6":
-  version: 4.32.6
-  resolution: "@tanstack/query-core@npm:4.32.6"
-  checksum: c06f4b8d7edfc237d34da14c4ff2c71f4e6de662f123914419e9c2fbb9dccb7c1d3f46afd66ca5fea40687c5a99e514750a32a05e809d0db76343a90a45c76a8
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-query@npm:^4.32.6":
-  version: 4.32.6
-  resolution: "@tanstack/react-query@npm:4.32.6"
-  dependencies:
-    "@tanstack/query-core": 4.32.6
-    use-sync-external-store: ^1.2.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-native: "*"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 5ce7939515329d64aee35703de8f030bba383717e68eefb17a32492cca44d8421175b7045e0fd6314faff11cee8a570f42208685947a97bc50d0023d5ae1029e
-  languageName: node
-  linkType: hard
-
 "@toast-ui/editor-plugin-code-syntax-highlight@npm:^3.1.0":
   version: 3.1.0
   resolution: "@toast-ui/editor-plugin-code-syntax-highlight@npm:3.1.0"
@@ -5227,7 +5201,6 @@ next@latest:
   resolution: "nextapp@workspace:."
   dependencies:
     "@metamask/sdk": ^0.5.6
-    "@tanstack/react-query": ^4.32.6
     "@toast-ui/editor": ^3.2.2
     "@toast-ui/editor-plugin-code-syntax-highlight": ^3.1.0
     "@toast-ui/editor-plugin-color-syntax": ^3.1.0
@@ -6834,7 +6807,7 @@ next@latest:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.2.0":
+"use-sync-external-store@npm:1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:

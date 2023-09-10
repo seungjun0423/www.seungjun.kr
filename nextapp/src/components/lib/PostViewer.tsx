@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Viewer } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { _axios } from "hooks/axios";
 import { PostType } from "types/interface";
-
 
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
@@ -19,7 +18,8 @@ const PostViewers = styled.div`
 	margin-top: 50px;
 	padding-left: 100px;
 	padding-right: 100px;
-	
+	margin-bottom: 100px;
+	font-family: initial;
 	
 	@media (max-width: 768px){
 		margin-top: 40px;
@@ -28,9 +28,9 @@ const PostViewers = styled.div`
 	}
 
 	@media (max-width: 577px){
-		margin-top: 30px;
 		padding-left: 0;
 		padding-right: 0;
+		margin-bottom: 50px;
 	}
 
 `;
@@ -44,7 +44,8 @@ export default function Postviewer({ children }: {children: number}) {
 			<Viewer
 				plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
 				initialValue={
-					`<div> 
+					`<div>
+						<title>${data?.title}</title>
 						<h1 style='border: none; font-size: 1.5rem; margin-bottom: 2rem;'>
 							${data?.title}
 						</h1> 
