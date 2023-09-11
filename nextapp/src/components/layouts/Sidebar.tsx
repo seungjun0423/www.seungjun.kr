@@ -1,17 +1,14 @@
 'use client'
 
 // 라이브러리 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import { _axios } from "hooks/axios";
 
 // 컴포넌트와 기타 등등
-import { editState } from "data/store";
-import PostList from "components/modules/Category/PostList";
-import EditCategoryBtn from "components/ui/button/EditCategoryBtn";
+import PostList from "components/modules/Category/CategoryTitle";
 
-import { SidebarDummy } from "data/dummy";
-import UpdatCategory from "components/modules/Category/UpdateCategory";
+import { CategoryData } from 'types/types'
 
 const sildIn = keyframes`
   from {
@@ -73,50 +70,15 @@ const ListBox = styled.div`
 	}
 `;
 
-type CategoryData = {
-	id: number; 
-	title: string; 
-	createdAt: string;
-	updatedAt: string;
-}
-
 /** List 컴포넌트의 뷰를 담당*/
-export default function Sidebar () {
-	const { isEdit, setIsEdit } = editState();
-	const [ editBtn, setEditBtn ] = useState<React.ReactElement>(<></>);
-	const [ categoryData, setCateogoryData] = useState<CategoryData[]>([]);
-	// const fetchData = async () => {
-	// 	// const categoryData = await _axios.get(`/category/all`);
-	// 	const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then(res=> res.json()).then(res=>setCateogoryData(res));
-	// 	// setCateogoryData(categoryData);
-	// };
-
-	// fetchData();
-
-	useEffect(() => {
-		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
-		
-		sessionState?.isLogin ? setEditBtn(<EditCategoryBtn/>):setEditBtn(<></>);
-
-		const fetchData = async () => {
-			// const categoryData = await _axios.get(`/category/all`);
-			const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then(res=> res.json()).then(res=>setCateogoryData(res));
-			// setCateogoryData(categoryData);
-		};
-
-		fetchData();
-	}, []);
+export default function Sidebar ({ data }: { data: CategoryData[] }) {
 
   return (
 		<Sidebars>
 			<Wrapper>
-				{editBtn}
 				<ListBox>
-					{ isEdit ?
-						categoryData.map((el, index)=>{
-							return <UpdatCategory key={index} title={el.title} categoryId={el.id} />
-						})
-						: categoryData.map((el, index)=>{
+					{
+						data.map((el, index)=>{
 							return <PostList key={index} title={el.title} categoryId={el.id}/>
 						})
 					}

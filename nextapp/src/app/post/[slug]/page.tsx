@@ -1,5 +1,7 @@
+'use clinet'
 import React from "react";
-import ReadPost from "components/modules/Post/ReadPost";
+import dynamic from "next/dynamic";
+const DynamicPostViewer = dynamic(()=>import('components/lib/PostViewer'),{ssr: false});
 
 interface Post  {
 	params: {
@@ -7,13 +9,19 @@ interface Post  {
 	};
 };
 
-export default function Post({ params: { slug } }: Post) {
-
+export default async function Post({ params: { slug } }: Post) {
+	const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
+	{
+		method: 'GET',
+	})
+	.then(res=>res.json());
   return (
 		<section>
-			<ReadPost>
+			<title>{postData.title}</title>
+			<meta name="description" content=""></meta>
+			<DynamicPostViewer>
 				{slug}
-			</ReadPost>
+			</DynamicPostViewer>
 		</section>
   )
 }

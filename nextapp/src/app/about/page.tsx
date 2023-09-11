@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from 'styles/about.module.css';
 import { FcGraduationCap, FcSupport } from 'react-icons/fc'
-import { RiJavascriptFill } from 'react-icons/ri'
 
 export default function about ( ) {
 	return(

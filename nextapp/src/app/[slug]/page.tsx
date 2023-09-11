@@ -1,6 +1,4 @@
 import React from "react";
-import UpdatePost from "components/modules/Post/UpdatePost";
-import DeletePost from "components/modules/Post/DeletePost";
 import dynamic from "next/dynamic";
 
 type Post = {
@@ -16,9 +14,9 @@ export default function Post ({ params: { slug } }: Post ) {
 		return (
 			<DynamicCreatePost>
 			</DynamicCreatePost>);
-	} else if ( slug === 'update') {
-		return <UpdatePost></UpdatePost>;
-	} else if ( slug === 'delete') {
-		return <DeletePost></DeletePost>;
-	} else return <>{slug}</>
-}
+	} else return (
+			<section>
+				{slug}
+			</section>
+		);
+};

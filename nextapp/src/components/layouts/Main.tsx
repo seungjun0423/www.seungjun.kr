@@ -1,20 +1,16 @@
-// 'use client'
+
 import React from "react";
-// import styled from "styled-components";
 import Sidebar from "./Sidebar";
 import Content from "components/layouts/Content";
 import { Props } from "app/layout";
+import { CategoryData } from 'types/types'
 
-// const Mains = styled.main`
-// 	width: 100%;
-// 	height: calc(100vh - 129px);
-// 	display: flex;
-// `;
+export default async function Main ({ children }: Props) {
+	const categoryData: CategoryData[] = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`).then(res=>res.json());
 
-export default function Main ({ children }: Props) {
 	return (
 		<main style={{width:'100%',height:'calc(100vh - 129px)',display:'flex'}}>
-			<Sidebar />
+			<Sidebar data={categoryData}/>
 			<Content>
 				{children}
 			</Content>

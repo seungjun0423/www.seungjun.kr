@@ -13,4 +13,5 @@ export interface PostType {
 	img: string;
 	contents: string;
 	fold: boolean;
+	categoryId:number;
 };

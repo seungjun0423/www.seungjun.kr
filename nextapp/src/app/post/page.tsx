@@ -6,10 +6,10 @@ interface Post  {
 	};
 };
 
-export default function Post( { params: { slug } }: Post ): React.ReactElement {
+export default function Post() {
   return (
 		<section>
-			base post
+			base 
 		</section>
   )
 }

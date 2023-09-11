@@ -12,7 +12,7 @@ import Footer from "components/layouts/Footer";
 import localFont from 'next/font/local';
 
 const font = localFont({
-  src: './JalnanOTF.otf',
+  src: '../../public/font/JalnanOTF.otf',
   display: 'swap',
 })
 
@@ -26,7 +26,10 @@ export const metadata: Metadata = {
 		template: '개발 블로그 | %s'
 	},
   description: '웹 개발자, 리액트 개발자, 노드 개발자, 프론트엔드 개발자, 풀스택 개발자, 블록체인 개발자, 비전공자 개발자, web developer, react developer, node developer, fronted developer, fullstack developer, blockchain developer',
-	
+	openGraph: {
+		type: 'website',
+		description: '이승준의 개발 블로그',
+	},
 	viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -39,14 +42,10 @@ export const metadata: Metadata = {
 			"naver-site-verification":"ed9b5c6474ce11bd2641d3627ae889ce9a58c002"
 		}
 	},
-	icons: {
-		icon: '/favicon.ico',
-		shortcut: '/favicon.ico',
-		apple: '/favicon.ico',
-	}
 }
 
 export default function RootLayout ({ children }: Props) {
+
   return (
 		<html lang="ko" className={font.className}>
 			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />

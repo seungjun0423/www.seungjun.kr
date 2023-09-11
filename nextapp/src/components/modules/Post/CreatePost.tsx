@@ -89,6 +89,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			setOptionList([ ...optionList, ...optionEl]);
 		}
 		fetchCategory();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const contentsOnChange = () => {
