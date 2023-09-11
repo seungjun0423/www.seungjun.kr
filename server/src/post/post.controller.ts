@@ -1,6 +1,7 @@
+import { Response, Request } from 'express';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PostService } from './post.service';
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Req, Param } from '@nestjs/common';
 
 export interface Posts {
   id: number;
@@ -31,8 +32,14 @@ export default class PostController {
   async postList(): Promise<Posts[]> {
     return await this.postService.postList();
   }
-  @Post('/categoryPosts')
-  async categoryPost(@Body() data: { categoryId: number }): Promise<Posts[]> {
-    return await this.postService.categoryPost(data);
+
+  @Get('/categoryPosts/:id')
+  async categoryPost(@Param('id') id: string): Promise<Posts[]> {
+    return await this.postService.categoryPost(id);
+  }
+
+  @Get('/id/:id')
+  async targetPost(@Param('id') id: string): Promise<any> {
+    return await this.postService.targetPost(id);
   }
 }

@@ -20,9 +20,15 @@ export class PostService {
     return await this.prismaService.post.findMany();
   }
 
-  async categoryPost(data: { categoryId: number }): Promise<Posts[]> {
+  async categoryPost(id: string): Promise<Posts[]> {
     return await this.prismaService.post.findMany({
-      where: { categoryId: data.categoryId },
+      where: { categoryId: Number(id) },
+    });
+  }
+
+  async targetPost(id: string): Promise<any> {
+    return await this.prismaService.post.findUnique({
+      where: { id: Number(id) },
     });
   }
 }

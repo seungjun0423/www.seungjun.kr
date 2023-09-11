@@ -35,10 +35,12 @@
     "@types/passport-jwt": "^3.0.9",
     "@types/passport-local": "^1.0.35",
     "@yarnpkg/pnpify": "^4.0.0-rc.48",
+    "@yarnpkg/sdks": "^3.0.0-rc.50",
     "aws-sdk": "^2.1451.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cpx": "^1.5.0",
+    "dlx": "^0.2.1",
     "js-yaml": "^4.1.0",
     "multer": "^1.4.5-lts.1",
     "multer-s3": "^3.0.1",
@@ -46,7 +48,8 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "typescript": "latest"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
@@ -73,8 +76,7 @@
     "ts-jest": "29.0.5",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
-    "tsconfig-paths": "4.2.0",
-    "typescript": "^4.7.4"
+    "tsconfig-paths": "4.2.0"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -94,5 +96,5 @@
     "testEnvironment": "node"
   },
   "main": "index.js",
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.3"
 }
