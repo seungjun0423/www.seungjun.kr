@@ -20,12 +20,12 @@ const sildIn = keyframes`
 
 const Posts = styled.button`
 	width: 100%;
-	margin-top: 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border: none;
 	background-color: transparent;
+	font-size: inherit;
 	cursor: pointer;
 
 	@media (min-width:577px){
