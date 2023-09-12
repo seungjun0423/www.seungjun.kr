@@ -20,7 +20,7 @@ export default class PostController {
     private postService: PostService,
   ) {}
 
-  @Post('/createPost')
+  @Post('/write')
   async createPost(
     @Body()
     data: Posts,
