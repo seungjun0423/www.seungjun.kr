@@ -48,7 +48,7 @@ export default function RootLayout ({ children }: Props) {
 
   return (
 		<html lang="ko" className={font.className}>
-			<GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID as string} />
+			<GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} />
 			<StyledComponentsRegistry>
 				<body >
 					<Header/>
