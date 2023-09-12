@@ -16,9 +16,9 @@ const PostViewers = styled.div`
 	width: 100%;
 	height: min-content;
 	margin-top: 50px;
+	margin-bottom: 200px;
 	padding-left: 100px;
 	padding-right: 100px;
-	margin-bottom: 100px;
 	font-family: initial;
 	
 	@media (max-width: 768px){
@@ -30,7 +30,7 @@ const PostViewers = styled.div`
 	@media (max-width: 577px){
 		padding-left: 0;
 		padding-right: 0;
-		margin-bottom: 50px;
+		margin-bottom: 120px;
 	}
 
 `;
