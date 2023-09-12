@@ -78,7 +78,7 @@ export default function Auth () {
 	}
 
 	const signUpHandler = () => {
-		alert('현재는 회원가입이 불가능합니다.')
+		alert('현재 준비중입니다.')
 	}
 
 	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
