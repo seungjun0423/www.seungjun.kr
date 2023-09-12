@@ -98,9 +98,21 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 	}
 
 	const submitHandler = async () => {
-		await _axios.post('/post/createPost',{title, categoryId, contents})
-		window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
-		return 
+		if( !title || !categoryId || !contents){
+			alert('항목을 모두 작성해주세요'); 
+		} else if (title && categoryId && contents){
+			try {
+				const req = await _axios.post('/post/write',{title, categoryId, contents})
+				if(req){
+					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
+					return alert('새로운 게시물이 등록되었습니다')
+				} else if(!req){
+					alert('게시물 등록 실패')
+				}
+			} catch (err) {
+				alert(err);
+			}
+		}
 	};
 
 

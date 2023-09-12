@@ -13,6 +13,7 @@ export default async function Post({ params: { slug } }: Post) {
 	const data: PostType[] = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/categoryPosts/${slug}`,
 	{
 		method: 'GET',
+		cache: 'no-store',
 	})
 	.then(res=>res.json());
 
