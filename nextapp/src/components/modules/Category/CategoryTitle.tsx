@@ -40,6 +40,7 @@ export default async function CategoryTitle({ title, categoryId }: {title: strin
 		`${process.env.NEXT_PUBLIC_CORS_URL}/post/categoryPosts/${categoryId}`,
 		{
 			method: 'GET',
+			cache: 'no-store',
 		})
 		.then(res=>res.json());
 

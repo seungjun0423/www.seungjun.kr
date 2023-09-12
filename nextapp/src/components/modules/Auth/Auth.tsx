@@ -51,6 +51,17 @@ const Input = styled.input`
 	opacity:0.5;
 `;
 
+const Wrapper = styled.div`
+`;
+
+const SignUp = styled.button`
+	font-size: 0.8rem;
+	opacity: 0.5;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+`;
+
 
 export default function Auth () {
 	const [ id, setId ] = useState<string>('');
@@ -64,6 +75,10 @@ export default function Auth () {
 
 	const onChangePw = (val: string) => {
 		setPassword(val);
+	}
+
+	const signUpHandler = () => {
+		alert('현재는 회원가입이 불가능합니다.')
 	}
 
 	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
@@ -137,6 +152,11 @@ export default function Auth () {
 					/>
 				</Div>
 			</InputBox>
+			<Wrapper>
+				<SignUp onClick={signUpHandler}>
+					sign up
+				</SignUp>
+			</Wrapper>
 			<SubmitBtn 
 				handler={()=>{submitHandler({type:'login', email: id, password: password})}}
 			/>

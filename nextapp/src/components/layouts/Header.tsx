@@ -91,16 +91,14 @@ const draw = keyframes`
 `;
 
 const Borad = styled.nav`
-	display:	flex;
+	display: flex;
 	width: 100%;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 5px;
-	padding: 10px 0 13px 0;
 	background-color: beige;
 	border: 1px solid #eaecef;
 	border-radius: 10px;
-	gap: 1rem;
 	animation: ${draw} 0.5s ease forwards;
 `;
 
@@ -176,25 +174,33 @@ export default function Header () {
 				</NavContainers>
 				<NavBoxes onClick={()=>{setNavState(!navState)}}>
 					<NavBtn>
-						{/** 아래 표현은 HTML entity로 기호를 표현한다 */}
 						&#9776;
 					</NavBtn>
 					{ navState ? 
 						<Borad>
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{ color:'gray' }}>
+							<Link 
+								href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} 
+								style={{ color:'gray',fontSize:'1rem', marginTop:'1rem' }}
+							>
 								about
 							</Link>
 							{ sessionState?.isLogin ?
 								<>
-									<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/write` as Route} style={{ color:'gray'}}>
+									<Link 
+										href={`${process.env.NEXT_PUBLIC_REDIRECT}/write` as Route} 
+										style={{ color:'gray',fontSize:'1rem', marginTop:'1rem'}}
+									>
 										posting
 									</Link>
-									<div onClick={logoutHandler} style={{ color:'gray', cursor:'pointer' }}>
+									<div onClick={logoutHandler} style={{ color:'gray', cursor:'pointer',fontSize:'1.1rem', marginTop:'1rem', marginBottom: '6px' }}>
 										logout
 									</div>
 								</>
 								:
-								<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} style={{ color:'gray' }}>
+								<Link 
+									href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} 
+									style={{ color:'gray',fontSize:'1rem', marginTop:'1rem', marginBottom: '6px'}}
+								>
 									login
 								</Link>
 							}
@@ -215,7 +221,7 @@ export default function Header () {
 	return (
 		<Headers>
 			<Title>
-				<Image alt='이미지 에러' src={lottie} style={{marginRight:'1.5vw',marginTop:'3px'}} width={50} height={50}/>
+				<Image alt='lottie' src={lottie} style={{marginRight:'1.5vw',marginTop:'3px'}} width={50} height={50}/>
 				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}` as Route} style={{fontSize: '2rem'}} >
 					<LongText>
 						Seungjun&apos;s blog

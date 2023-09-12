@@ -30,6 +30,7 @@ export default function MetaMask () {
 			if(typeof window === 'object'){
 
 			/** 지갑 연결 확인 */
+				// const isInstalled = window.
 				const isConnected = window.ethereum?.isConnected();
 				if(isConnected){
 					const accountsAddress =  window.ethereum?.request({ method: "eth_requestAccounts", }) as unknown as string[];
