@@ -8,7 +8,8 @@ import { CategoryData } from 'types/types'
 export default async function Main ({ children }: Props) {
 	const categoryData: CategoryData[] = await fetch(
 		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
-		{	cache: 'no-store'})
+		{	cache: 'no-store'}
+	)
 		.then(res=>res.json());
 
 	return (

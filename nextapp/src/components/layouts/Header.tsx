@@ -159,7 +159,7 @@ export default function Header () {
 					</Link>
 					{ sessionState?.isLogin ?
 						<>
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/createPost` as Route} style={{fontSize:'1.5rem'}}>
+							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/write` as Route} style={{fontSize:'1.5rem'}}>
 								posting
 							</Link> 
 							<div onClick={logoutHandler} style={{color: '#5e5e5e', cursor:'pointer', fontSize: '1.5rem' }} >
