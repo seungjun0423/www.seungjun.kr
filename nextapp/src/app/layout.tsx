@@ -29,6 +29,8 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: 'website',
 		description: '이승준의 개발 블로그',
+		url: 'https://www.seungjun.kr/',
+		locale: "ko_KR",
 	},
 	viewport: {
     width: 'device-width',

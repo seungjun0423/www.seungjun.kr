@@ -7,22 +7,22 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { _axios } from "hooks/axios";
 import { PostType } from "types/interface";
 
-import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
+import Prism from 'styles/prism';
+import 'styles/prism.css';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
 const PostViewers = styled.div`
 	width: 100%;
 	height: min-content;
-	margin-top: 50px;
+	margin-top: 100px;
 	margin-bottom: 200px;
 	padding-left: 100px;
 	padding-right: 100px;
 	font-family: initial;
 	
 	@media (max-width: 768px){
-		margin-top: 40px;
+		margin-top: 70px;
 		padding-left: 50px;
 		padding-right: 50px;
 	}
@@ -30,6 +30,7 @@ const PostViewers = styled.div`
 	@media (max-width: 577px){
 		padding-left: 0;
 		padding-right: 0;
+		margin-top: 50px;
 		margin-bottom: 120px;
 	}
 

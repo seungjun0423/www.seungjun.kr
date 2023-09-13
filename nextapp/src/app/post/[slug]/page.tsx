@@ -9,7 +9,24 @@ interface Post  {
 	};
 };
 
-export default async function Post({ params: { slug } }: Post) {
+// export async function generateStaticParams() {
+//   const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/all`,
+// 	{
+// 		method: 'GET',
+// 		cache: 'no-store',
+// 	})
+// 	.then(res=>res.json());
+
+//   return postData.map((post: any) => ({
+//     slug: post.id,
+//   }))
+// }
+
+export default async function Post({ 
+	params: { slug } 
+}: {
+	params: {slug: number}
+}) {
 	const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
 	{
 		method: 'GET',

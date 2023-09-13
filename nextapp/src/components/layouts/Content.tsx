@@ -10,12 +10,10 @@ const Contents = styled.section`
 	overflow-x: auto;
 	overflow-y: auto;
 	padding: 0 20px 0 20px;
-	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
 
 	@media (max-width: 576px) {
-		margin-top: 30px;
 		padding: 0px 10px 0 10px;
 	}
 `;
