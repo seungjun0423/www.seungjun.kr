@@ -22,8 +22,9 @@ interface Post  {
 // }
 
 export default async function Post({ params: { slug } }: Post) {
-	if(slug === 'write'){
-		const DynamicCreatePost = dynamic(()=>import('components/modules/Post/CreatePost'),{ssr: false});
+	console.log(slug);
+	if(slug[0] === 'write'){
+		const DynamicCreatePost = dynamic(()=>import('components/modules/Post/WritePost'),{ssr: false});
 
 		return (
 			<DynamicCreatePost>
@@ -31,7 +32,7 @@ export default async function Post({ params: { slug } }: Post) {
 		)
 
 	} else if(slug[1] === 'edit'){
-		const DynamicUpdatePost = dynamic(()=>import('components/modules/Post/UpdatePost'),{ssr: false});
+		const DynamicUpdatePost = dynamic(()=>import('components/modules/Post/EditPost'),{ssr: false});
 
 		return (
 			<DynamicUpdatePost>
@@ -39,7 +40,7 @@ export default async function Post({ params: { slug } }: Post) {
 			</DynamicUpdatePost>
 		)
 
-	} else if (slug !== 'write' && slug[1] !== 'edit' ) {
+	} else if (slug[0] !== 'write' && slug[1] !== 'edit' ) {
 		const DynamicPostViewer = dynamic(()=>import('components/modules/Post/ReadPost'),{ssr: false});
 
 		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,

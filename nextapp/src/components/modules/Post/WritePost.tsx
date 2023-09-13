@@ -18,10 +18,9 @@ import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import { _axios } from "hooks/axios";
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import axios from "axios";
-import { PostType } from "types/interface";
 import { CategoryData } from "types/types";
 
-const CreatePosts = styled.section`
+const WritePosts = styled.section`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -60,21 +59,16 @@ const Label = styled.label`
 	margin-right: 10px;
 `;
 
-export default function UpdatePost ({ children }: {children: React.ReactNode}) {
-	const obj = window.sessionStorage.getItem('post-storage');
-	const data: PostType = JSON.parse(obj as string).state.nowPost;
-
+export default function CreatePost ({children}: {children: React.ReactNode}) {
 	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
 		<option key='init' value='선택'>
 			선택
 		</option>
 	]);
 	const editorRef = useRef<any>(null);
-	const [ title, setTitle] = useState<string>(data.title);
-	const [ categoryId, setCategoryId] = useState<string | number>(data.categoryId);
-	const [ contents, setContents] = useState<any>(data.contents);
-
-	// console.log(data.contents);
+	const [ title, setTitle] = useState<string>('');
+	const [ categoryId, setCategoryId] = useState<string>('');
+	const [ contents, setContents] = useState<any>();
 
 	useEffect(() => {
 		const fetchCategory = async () => {
@@ -86,9 +80,7 @@ export default function UpdatePost ({ children }: {children: React.ReactNode}) {
 					</option>
 				)
 			});
-			const initData = categoryData.filter(el=> el.id === data.categoryId)[0];
-			const initCategory = <option key='init' value={initData.id}>{initData.title}</option>
-			setOptionList([ initCategory,...optionEl]);
+			setOptionList([ ...optionList, ...optionEl]);
 		}
 		fetchCategory();
 	// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -104,8 +96,7 @@ export default function UpdatePost ({ children }: {children: React.ReactNode}) {
 			alert('항목을 모두 작성해주세요'); 
 		} else if (title && categoryId && contents){
 			try {
-				const req = await axios.patch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/update`,{ id: data.id, title, categoryId, contents})
-				console.log(req);
+				const req = await _axios.post('/post/write',{title, categoryId, contents})
 				if(req){
 					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
 					return alert('새로운 게시물이 등록되었습니다')
@@ -118,10 +109,11 @@ export default function UpdatePost ({ children }: {children: React.ReactNode}) {
 		}
 	};
 
+
 	return(
-		<CreatePosts>
+		<WritePosts>
 			<H1>
-				글 수정하기
+				글 작성하기
 			</H1>
 			<EditorBox>
 				<InfoBox>
@@ -129,7 +121,7 @@ export default function UpdatePost ({ children }: {children: React.ReactNode}) {
 					<input 
 						style={{borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem', opacity:'0.5'}} 
 						type="text" 
-						defaultValue={data.title}
+						placeholder="제목을 입력해주세요"
 						onChange={(e)=>{setTitle(e.target.value)}}
 					/>
 				</InfoBox>
@@ -146,7 +138,7 @@ export default function UpdatePost ({ children }: {children: React.ReactNode}) {
 					ref={editorRef}
 					height="100%"
 					initialEditType='markdown' 
-					initialValue={data.contents}	
+					initialValue='type here!!!'	
 					previewStyle="vertical"
 					hideModeSwitch={true}
 					plugins={[[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax ]}
@@ -173,6 +165,6 @@ export default function UpdatePost ({ children }: {children: React.ReactNode}) {
 				></Editor>
 				<SubmitBtn handler={submitHandler}/>
 			</EditorBox>
-		</CreatePosts>
+		</WritePosts>
 	)
 }
