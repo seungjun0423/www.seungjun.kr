@@ -64,6 +64,7 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 	const obj = window.sessionStorage.getItem('post-storage');
 	const data: PostType = JSON.parse(obj as string).state.nowPost;
 
+
 	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
 		<option key='init' value='선택'>
 			선택
@@ -77,6 +78,9 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 	// console.log(data.contents);
 
 	useEffect(() => {
+		const htmlString = data.contents;
+    editorRef.current?.getInstance().setHTML(htmlString);
+
 		const fetchCategory = async () => {
 			const categoryData: CategoryData[] = await _axios.get('/category/all');
 			const optionEl = categoryData.map((el: CategoryData, index: number)=>{
@@ -146,7 +150,6 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 					ref={editorRef}
 					height="100%"
 					initialEditType='markdown' 
-					initialValue={data.contents}	
 					previewStyle="vertical"
 					hideModeSwitch={true}
 					plugins={[[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax ]}

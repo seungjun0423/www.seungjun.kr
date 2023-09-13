@@ -22,7 +22,6 @@ interface Post  {
 // }
 
 export default async function Post({ params: { slug } }: Post) {
-	console.log(slug);
 	if(slug[0] === 'write'){
 		const DynamicCreatePost = dynamic(()=>import('components/modules/Post/WritePost'),{ssr: false});
 
