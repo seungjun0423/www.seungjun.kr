@@ -12,7 +12,7 @@ async function main() {
   app.enableCors({
     origin: `${process.env.CORS_URL}`,
     credentials: true,
-    methods: ['POST', 'PUT', 'DELETE', 'GET'],
+    methods: ['POST', 'PUT', 'PATCH', 'DELETE', 'GET'],
   });
   app.use(cookieParser());
   await app.listen(port);

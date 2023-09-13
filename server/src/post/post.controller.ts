@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PostService } from './post.service';
-import { Controller, Post, Body, Get, Req, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Req, Param, Patch } from '@nestjs/common';
 
 export interface Posts {
   id: number;
@@ -26,6 +26,12 @@ export default class PostController {
     data: Posts,
   ): Promise<Posts> {
     return await this.postService.createPost(data);
+  }
+
+  @Patch('/update')
+  async updatePost(@Body() data: Posts) {
+    console.log(data);
+    return await this.postService.updatePost(data);
   }
 
   @Get('/all')
