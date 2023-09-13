@@ -12,6 +12,7 @@ import 'styles/prism.css';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import Link from "next/link";
+import { Route } from "next";
 
 const PostViewers = styled.div`
 	width: 100%;
@@ -48,27 +49,34 @@ const Title = styled.div`
 `;
 
 export default function ReadPost({ children }: {children: number}) {
-	const obj = window.sessionStorage.getItem('post-storage');
-	const data: PostType = JSON.parse(obj as string).state.nowPost;
+	const postStorage = window.sessionStorage.getItem('post-storage');
+	const loginStorage = window.sessionStorage.getItem('state-storage');
+
+	const postData: PostType = JSON.parse(postStorage as string).state.nowPost;
+	const isLogin: boolean = JSON.parse(loginStorage as string).state.isLogin;
 
 	return (
 		<PostViewers id='viewer'>
 			<Title>
-				{data?.title}
-				<Link 
-					href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${children}/edit`}
-					style={{fontSize:'1.2rem'}}
-				>
-					Edit
-				</Link>
+				{postData?.title}
+				{ isLogin ?
+					<Link 
+						href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${postData.id}/edit` as Route}
+						style={{fontSize:'1.2rem'}}
+					>
+						Edit
+					</Link>
+					: 
+					<></>
+				}
 			</Title> 
 			<Viewer
 				plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
 				initialValue={
 					`<div>
-						<title>${data?.title}</title>
+						<title>${postData?.title}</title>
 						<span style="font-size: 16px;">
-							${data?.contents}
+							${postData?.contents}
 						</span>
 					</div>`
 				}
