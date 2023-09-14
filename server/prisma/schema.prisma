@@ -50,7 +50,7 @@ model Post {
 	id    Int     @id @default(autoincrement())
 	title String
 	contents String @db.LongText
-	img String?
+	desc String?
 	categoryId Int
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
