@@ -35,7 +35,6 @@ export class UploadsController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('image'))
   async uploadFile(@UploadedFile() file: Express.MulterS3.File): Promise<any> {
-    console.log(file);
     try {
       const key = `${Date.now() + file.originalname}`.replace(/ /g, '');
       const upload = await s3
@@ -49,7 +48,6 @@ export class UploadsController {
         .promise();
       return upload.Location;
     } catch (err) {
-      console.log('업로드 실패');
       throw err;
     }
   }

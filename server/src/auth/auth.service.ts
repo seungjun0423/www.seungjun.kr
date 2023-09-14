@@ -16,7 +16,6 @@ export class AuthService {
 
   // bcrypt: 비밀번호 암호화
   async transformPassword(data: Login): Promise<void> {
-		console.log("a");
 		data.password = await hash(data.password,10);
     // data.password = await bcrypt.hash(data.password,10);
 

@@ -11,7 +11,6 @@ const Auths = styled.div`
 
 export default function Auth () {
 	const { isAdmin, setIsAdmin } = authState();
-	console.log(isAdmin);
 	return(
 		<Auths>
 			오쓰!

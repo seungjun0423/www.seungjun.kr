@@ -30,7 +30,6 @@ export default class PostController {
 
   @Patch('/update')
   async updatePost(@Body() data: Posts) {
-    console.log(data);
     return await this.postService.updatePost(data);
   }
 
