@@ -43,7 +43,6 @@ export default function MetaMask () {
 								address  // 서명 요청을 받을 사람 주소
 							]
 						});
-						console.log(accountsAddress);
 					}
 				}
 			}

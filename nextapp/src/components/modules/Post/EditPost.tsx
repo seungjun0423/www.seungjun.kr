@@ -75,8 +75,6 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 	const [ categoryId, setCategoryId] = useState<string | number>(data.categoryId);
 	const [ contents, setContents] = useState<any>(data.contents);
 
-	// console.log(data.contents);
-
 	useEffect(() => {
 		const htmlString = data.contents;
     editorRef.current?.getInstance().setHTML(htmlString);
@@ -109,7 +107,6 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 		} else if (title && categoryId && contents){
 			try {
 				const req = await axios.patch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/update`,{ id: data.id, title, categoryId, contents})
-				console.log(req);
 				if(req){
 					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
 					return alert('게시물이 수정되었습니다')

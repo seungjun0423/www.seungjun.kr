@@ -2,15 +2,16 @@
 
 import React from "react";
 import styled from "styled-components";
-import { Viewer } from '@toast-ui/react-editor';
+// import { Viewer } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { _axios } from "hooks/axios";
 import { PostType } from "types/interface";
-
-import Prism from 'styles/prism';
+// import { Parser } from "@toast-ui/editor/types/toastmark";
+import HTMLReactParser from "html-react-parser";
+// import Prism from 'styles/prism';
 import 'styles/prism.css';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
-import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
+// import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import Link from "next/link";
 import { Route } from "next";
 
@@ -48,18 +49,20 @@ const Title = styled.div`
 	font-family: inherit;
 `;
 
-export default function ReadPost({ children }: {children: number}) {
-	const postStorage = window.sessionStorage.getItem('post-storage');
-	const loginStorage = window.sessionStorage.getItem('state-storage');
+export default function ReadPost({ children }: {children: PostType}) {
+	// const postData 
+	console.log(children)
+	// const postStorage = window.sessionStorage.getItem('post-storage');
+	// const loginStorage = window.sessionStorage.getItem('state-storage');
 
-	const postData: PostType = JSON.parse(postStorage as string).state.nowPost;
-	const isLogin: boolean = JSON.parse(loginStorage as string).state.isLogin;
+	// const postData: PostType = JSON.parse(postStorage as string).state.nowPost;
+	// const isLogin: boolean = JSON.parse(loginStorage as string).state.isLogin;
 
 	return (
 		<PostViewers id='viewer'>
 			<Title>
-				{postData?.title}
-				{ isLogin ?
+				{children?.title}
+				{/* { isLogin ?
 					<Link 
 						href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${postData.id}/edit` as Route}
 						style={{fontSize:'1.2rem'}}
@@ -68,9 +71,14 @@ export default function ReadPost({ children }: {children: number}) {
 					</Link>
 					: 
 					<></>
-				}
+				} */}
 			</Title> 
-			<Viewer
+					<div>
+						<span style={{fontSize: '16px'}}>
+							{ HTMLReactParser(children?.contents)}
+						</span>
+					</div>
+			{/* <Viewer
 				plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
 				initialValue={
 					`<div>
@@ -80,7 +88,7 @@ export default function ReadPost({ children }: {children: number}) {
 						</span>
 					</div>`
 				}
-			/>
+			/> */}
 		</PostViewers>
 	)
 }

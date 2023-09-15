@@ -1,6 +1,7 @@
 'use clinet'
 import React from "react";
 import dynamic from "next/dynamic";
+import ReadPost from "components/modules/Post/ReadPost";
 
 interface Post  {
 	params: {
@@ -54,9 +55,9 @@ export default async function Post({ params: { slug } }: Post) {
 				<title>
 					{postData.title}
 				</title>
-				<DynamicPostViewer>
-					{slug as number}
-				</DynamicPostViewer>
+				<ReadPost>
+					{postData}
+				</ReadPost>
 			</section>
 		)	
 	}

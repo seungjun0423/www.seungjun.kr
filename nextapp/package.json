@@ -17,6 +17,7 @@
     "axios": "^1.5.0",
     "eslint": "8.41.0",
     "eslint-config-next": "latest",
+    "html-react-parser": "^4.2.2",
     "next": "latest",
     "prismjs": "^1.29.0",
     "react": "latest",
