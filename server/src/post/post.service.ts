@@ -22,7 +22,9 @@ export class PostService {
         id: data.id,
       },
       data: {
-        ...data,
+        title: data.title,
+        contents: data.contents,
+        categoryId: Number(data.categoryId),
       },
     });
   }
