@@ -10,11 +10,12 @@ export default function EditBtn () {
 	// const isLogin: boolean = JSON.parse(loginStorage as string).state.isLogin;
 
 	return(
-		<Link 
-			href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${postData.id}/edit` as Route}
-			style={{fontSize:'1.2rem'}}
-		>
-			Edit
-		</Link>
+		<></>
+		// <Link 
+		// 	href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${postData.id}/edit` as Route}
+		// 	style={{fontSize:'1.2rem'}}
+		// >
+		// 	Edit
+		// </Link>
 	)
 }
