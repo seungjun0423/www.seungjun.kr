@@ -1,0 +1,39 @@
+.postViewer {
+	width: 100%;
+	height: min-content;
+	margin-top: 100px;
+	margin-bottom: 200px;
+	padding-left: 100px;
+	padding-right: 100px;
+	font-family: inherit;
+}
+
+.title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: none;
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 2rem;
+	font-family: inherit;
+}
+
+
+
+@media (max-width: 768px){
+	.postViewer {
+		margin-top: 70px;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+}
+
+@media (max-width: 577px){
+	.postViewer {
+		padding-left: 0;
+		padding-right: 0;
+		margin-top: 50px;
+		margin-bottom: 120px;
+	}
+}

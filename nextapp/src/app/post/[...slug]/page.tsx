@@ -41,8 +41,6 @@ export default async function Post({ params: { slug } }: Post) {
 		)
 
 	} else if (slug[0] !== 'write' && slug[1] !== 'edit' ) {
-		const DynamicPostViewer = dynamic(()=>import('components/modules/Post/ReadPost'),{ssr: false});
-
 		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
 			{
 				method: 'GET',
