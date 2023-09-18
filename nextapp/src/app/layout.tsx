@@ -21,11 +21,12 @@ export type Props = {
 }
 
 export const metadata: Metadata = {
+	metadataBase: new URL(`${process.env.NEXT_PUBLIC_REDIRECT}`),
   title: {
-		default: '이승준의 블로그',
-		template: '개발 블로그 | %s'
+		default: '이승준의 개발 블로그',
+		template: '이승준의 개발 블로그 | %s'
 	},
-  description: '웹 개발자, 리액트 개발자, 노드 개발자, 프론트엔드 개발자, 풀스택 개발자, 블록체인 개발자, 비전공자 개발자, web developer, react developer, node developer, fronted developer, fullstack developer, blockchain developer',
+  description: '웹 개발자, 리액트 개발자, 프론트엔드 개발자, 풀스택 개발자, 비전공자 개발자, web developer, react developer, fronted developer, fullstack developer',
 	openGraph: {
 		type: 'website',
 		description: '이승준의 개발 블로그',

@@ -8,9 +8,10 @@ export interface Submit {
 }
 
 export interface PostType {
+	map(arg0: (post: any) => { slug: any; }): unknown;
 	id: number;
 	title: string;
-	img: string;
+	desc: string;
 	contents: string;
 	fold: boolean;
 	categoryId:number;

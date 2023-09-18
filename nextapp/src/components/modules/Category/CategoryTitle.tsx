@@ -33,17 +33,7 @@ const CategoryTitles = styled.input`
 	cursor: pointer;
 `;
 
-
-/** 서버에서 카테고리와 작성글 목록을 받아와 열거해주는 컴포넌트 */
 export default async function CategoryTitle({ title, categoryId }: {title: string, categoryId: number}){
-	const postList: PostType[] = await fetch(
-		`${process.env.NEXT_PUBLIC_CORS_URL}/post/categoryPosts/${categoryId}`,
-		{
-			method: 'GET',
-			cache: 'no-store',
-		})
-		.then(res=>res.json());
-
 	return (
 		<PostLists>
 			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/category/${categoryId}` as Route}>

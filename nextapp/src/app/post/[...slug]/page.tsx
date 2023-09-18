@@ -1,34 +1,44 @@
-'use clinet'
 import React from "react";
 import dynamic from "next/dynamic";
 import ReadPost from "components/modules/Post/ReadPost";
+import type { Metadata, ResolvingMetadata } from 'next'
+import { PostType } from "types/interface";
 
-interface Post  {
+interface Props  {
 	params: {
 		slug: any;
 	};
 };
 
-// export async function generateStaticParams() {
-//   const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/all`,
-// 	{
-// 		method: 'GET',
-// 		cache: 'no-store',
-// 	})
-// 	.then(res=>res.json());
+const getPostData = async (slug: number) : Promise<PostType> => {
+	const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
+		{
+			method: 'GET',
+			next: { revalidate: 3600 }
+		})
+	.then(res=>res.json());
+	return postData;
+}
 
-//   return postData.map((post: any) => ({
-//     slug: post.id,
-//   }))
-// }
+export const generateMetadata = async ({ params }: any): Promise<Metadata | void> => {
+	const { slug } = params;
+	if(slug?.length){
+		const data = await getPostData(params?.slug[0]);
+		
+		return {
+			title: `${data.title}`,
+			description: `${data.desc}`,
+		}
+	};
+};
 
-export default async function Post({ params: { slug } }: Post) {
+export default async function Post({ params: { slug } }: Props) {
 	if(slug[0] === 'write'){
-		const DynamicCreatePost = dynamic(()=>import('components/modules/Post/WritePost'),{ssr: false});
+		const DynamicWritePost = dynamic(()=>import('components/modules/Post/WritePost'),{ssr: false});
 
 		return (
-			<DynamicCreatePost>
-			</DynamicCreatePost>
+			<DynamicWritePost>
+			</DynamicWritePost>
 		)
 
 	} else if(slug[1] === 'edit'){
@@ -41,22 +51,29 @@ export default async function Post({ params: { slug } }: Post) {
 		)
 
 	} else if (slug[0] !== 'write' && slug[1] !== 'edit' ) {
-		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
-			{
-				method: 'GET',
-				cache: 'no-store',
-			})
-		.then(res=>res.json());
+		// console.log(slug);
+		const postData = await getPostData(slug);
 		
 		return (
 			<section>
-				<title>
-					{postData.title}
-				</title>
 				<ReadPost>
 					{postData}
 				</ReadPost>
 			</section>
 		)	
 	}
-}
+};
+
+// export const generateStaticParams = async (): Promise<any> => {
+// 	const allPostData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/all`,
+// 		{
+// 			method: 'GET',
+// 			// cache: 'no-store'
+// 			// next: { revalidate: 10 }
+// 		})
+// 	.then(res=>res.json());
+
+// 	return allPostData.map((post: any) => ({
+// 		slug: [`${post.id}`],
+// 	}));
+// }

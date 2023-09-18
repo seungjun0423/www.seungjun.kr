@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Post( ){
+export default function Category( ){
   return (
 		<section>
 			category

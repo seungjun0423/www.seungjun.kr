@@ -6,7 +6,7 @@ import styled, { keyframes } from "styled-components";
 import { _axios } from "hooks/axios";
 
 // 컴포넌트와 기타 등등
-import PostList from "components/modules/Category/CategoryTitle";
+import CategoryTitle from "components/modules/Category/CategoryTitle";
 
 import { CategoryData } from 'types/types'
 
@@ -79,7 +79,7 @@ export default function Sidebar ({ data }: { data: CategoryData[] }) {
 				<ListBox>
 					{
 						data.map((el, index)=>{
-							return <PostList key={index} title={el.title} categoryId={el.id}/>
+							return <CategoryTitle key={index} title={el.title} categoryId={el.id}/>
 						})
 					}
 				</ListBox>

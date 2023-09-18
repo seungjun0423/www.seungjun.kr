@@ -2,7 +2,14 @@ import Image from "next/image";
 import styles from 'styles/about.module.css';
 import { FcGraduationCap, FcSupport } from 'react-icons/fc'
 
-export default function about ( ) {
+
+interface Props  {
+	params: {
+		slug: any;
+	};
+};
+
+export default function About ({ params }: Props) {
 	return(
 		<section className={styles.contents}>
 			<div className={styles.profileBox}>
@@ -50,4 +57,4 @@ export default function about ( ) {
 				</div>
 		</section>
 	)
-}
+};

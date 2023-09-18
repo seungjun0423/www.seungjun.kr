@@ -12,4 +12,4 @@ export default function Post() {
 			base 
 		</section>
   )
-}
+};
