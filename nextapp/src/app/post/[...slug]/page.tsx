@@ -14,7 +14,8 @@ const getPostData = async (slug: number) : Promise<PostType> => {
 	const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
 		{
 			method: 'GET',
-			next: { revalidate: 3600 }
+			cache: 'no-store'
+			// next: { revalidate: 3600 }
 		})
 	.then(res=>res.json());
 	return postData;
