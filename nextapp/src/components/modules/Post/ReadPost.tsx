@@ -7,7 +7,7 @@ import 'styles/prism.css';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import EditBtn from "components/ui/button/EditBtn";
 
-export default function ReadPost({ children }: {children: PostType}) {
+export default function ReadPost({ children }: {children: any}) {
 
 	return (
 		<div id="viewer" className={styles.postViewer}>

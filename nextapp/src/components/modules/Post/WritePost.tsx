@@ -69,6 +69,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 	const [ title, setTitle] = useState<string>('');
 	const [ categoryId, setCategoryId] = useState<string>('');
 	const [ contents, setContents] = useState<any>();
+	const [ desc, setDesc] = useState<string>('');
 
 	useEffect(() => {
 		const fetchCategory = async () => {
@@ -96,7 +97,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			alert('항목을 모두 작성해주세요'); 
 		} else if (title && categoryId && contents){
 			try {
-				const req = await _axios.post('/post/write',{title, categoryId, contents})
+				const req = await _axios.post('/post/write',{title, categoryId, contents, desc})
 				if(req){
 					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
 					return alert('새로운 게시물이 등록되었습니다')
@@ -134,6 +135,15 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 						{optionList}
 					</select>
 				</InfoBox>
+				<InfoBox>
+					<Label>게시물 요약</Label>
+					<input 
+						style={{width:'35%', borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem', opacity:'0.5'}} 
+						type="text" 
+						placeholder="게시물 요약"
+						onChange={(e)=>{setDesc(e.target.value)}}
+					/>
+				</InfoBox>
 				<Editor
 					ref={editorRef}
 					height="100%"
@@ -153,7 +163,8 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 								const res = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}/uploads/upload`,
 								formData, {headers: { 'Content-Type': 'multipart/formed-data'}}
 								) 
-								if(res.status === 200){
+								console.log(res);
+								if(res.data){
 									alert('이미지가 업로드 됐습니다.');
 									callback(res.data, 'image');		
 								}

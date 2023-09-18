@@ -10,25 +10,27 @@ interface Props  {
 	};
 };
 
-const getPostData = async (slug: number) : Promise<PostType> => {
-	const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
-		{
-			method: 'GET',
-			cache: 'no-store'
-			// next: { revalidate: 3600 }
-		})
-	.then(res=>res.json());
-	return postData;
+const getPostData = async (slug: number | string) : Promise<PostType | void> => {
+	if (slug !== 'write' && slug !== 'edit' ){
+		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
+			{
+				method: 'GET',
+				cache: 'no-store'
+				// next: { revalidate: 3600 }
+			})
+		.then(res=>res.json());
+		return postData;
+	}
 }
 
 export const generateMetadata = async ({ params }: any): Promise<Metadata | void> => {
 	const { slug } = params;
-	if(slug?.length){
+	if(slug?.length && slug !== 'write' && slug !== 'edit'){
 		const data = await getPostData(params?.slug[0]);
 		
 		return {
-			title: `${data.title}`,
-			description: `${data.desc}`,
+			title: `${data?.title}`,
+			description: `${data?.desc}`,
 		}
 	};
 };
@@ -64,17 +66,3 @@ export default async function Post({ params: { slug } }: Props) {
 		)	
 	}
 };
-
-// export const generateStaticParams = async (): Promise<any> => {
-// 	const allPostData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/all`,
-// 		{
-// 			method: 'GET',
-// 			// cache: 'no-store'
-// 			// next: { revalidate: 10 }
-// 		})
-// 	.then(res=>res.json());
-
-// 	return allPostData.map((post: any) => ({
-// 		slug: [`${post.id}`],
-// 	}));
-// }
