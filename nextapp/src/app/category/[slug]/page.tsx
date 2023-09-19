@@ -13,8 +13,8 @@ const getPostData = async (slug: number ) => {
 	const categoryPostData: PostType[] = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/categoryPosts/${slug}`,
 		{
 			method: 'GET',
-			// cache: 'no-store'
-			next: { revalidate: 3600 }
+			cache: 'no-store'
+			// next: { revalidate: 3600 }
 		})
 	.then(res=>res.json());
 	return categoryPostData;
@@ -51,8 +51,7 @@ export default async function Category({ params: { slug } }: Props) {
 export const generateStaticParams = async (): Promise<{ id: string }[]> => {
 	const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
-			method: 'GET',
-			// cache: 'no-store'
+			method: 'GET'
 		})
 	.then(res=>res.json());
 
