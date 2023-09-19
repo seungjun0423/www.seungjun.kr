@@ -23,7 +23,11 @@ const getPostData = async (slug: number | string) : Promise<PostType | void> => 
 
 export const generateMetadata = async ({ params }: any): Promise<Metadata | void> => {
 	const { slug } = params;
-	if(slug?.length && slug !== 'write' && slug !== 'edit'){
+	if(slug[0] === 'write' || slug[0] === 'edit'){
+		return{
+			title: slug[0].toUpperCase()
+		}
+	} else if(slug?.length){
 		const data = await getPostData(params?.slug[0]);
 		
 		return {
