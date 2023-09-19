@@ -11,7 +11,7 @@ interface Props  {
 };
 
 const getPostData = async (slug: string[]) : Promise<PostType | void> => {
-	if (slug[0] !== 'write' && slug[0] !== 'edit' ){
+	if (slug[0] !== 'write'){
 		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
 			{
 				method: 'GET',
