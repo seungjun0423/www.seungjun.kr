@@ -13,6 +13,7 @@ export interface PostType {
 	title: string;
 	desc: string;
 	contents: string;
-	fold: boolean;
 	categoryId:number;
+	createdAt: string;
+	updatedAt: string;
 };

@@ -3,13 +3,12 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
-import lottie from '../../../public/lottiefiles/animation_lmbr8j96_transparent.gif';
+import lottie from '../../../public/lottiefiles/kitty.gif';
 
 import Image from "next/image";
 
 import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
-import MetaMask from "components/lib/MetaMask";
 import { Route } from "next";
 
 const Headers = styled.header`
@@ -22,7 +21,7 @@ const Headers = styled.header`
 	padding: 5px 0 5px 0;
 	border: none;
 	box-shadow: 0 0 5px darkgray;
-	background-color: #ffffff;
+	background-color: rgb(255, 255, 255);
 	z-index: 99;
 `;
 
@@ -204,14 +203,10 @@ export default function Header () {
 									login
 								</Link>
 							}
-							<MetaMask />
 						</Borad>
 						: <></>
 					}
 				</NavBoxes>
-				<MetaMaskBox>
-					<MetaMask />
-				</MetaMaskBox>
 			</Div>
 		);
 

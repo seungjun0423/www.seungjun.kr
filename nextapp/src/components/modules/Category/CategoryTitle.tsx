@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-async-client-component */
 'use client'
 import styled from "styled-components";
-import { _axios } from "hooks/axios";
 import { Route } from "next";
 import Link from "next/link";
 

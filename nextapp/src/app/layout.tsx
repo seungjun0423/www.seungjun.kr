@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Metadata } from 'next';
 import '../styles/globals.css';
 
-import StyledComponentsRegistry from '../styles/registry';
+import StyledComponentsRegistry from '../components/lib/registry';
 
 import GoogleAnalytics from "../util/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
@@ -50,10 +50,10 @@ export const metadata: Metadata = {
 export default function RootLayout ({ children }: Props) {
 
   return (
-		<html lang="ko" className={font.className}>
+		<html lang="ko">
 			<GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} />
-			<StyledComponentsRegistry>
-				<body >
+			<StyledComponentsRegistry >
+				<body className={font.className}>
 					<Header/>
 					<Main>
 						{children}

@@ -15,7 +15,6 @@ import 'styles/prism.css';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
-import { _axios } from "hooks/axios";
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import axios from "axios";
 import { PostType } from "types/interface";
@@ -61,8 +60,8 @@ const Label = styled.label`
 `;
 
 export default function EditPost ({ children }: {children: React.ReactNode}) {
-	const obj = window.sessionStorage.getItem('post-storage');
-	const data: PostType = JSON.parse(obj as string).state.nowPost;
+	const json = window.sessionStorage.getItem('post-storage');
+	const data: PostType = JSON.parse(json as string).state.nowPost;
 
 
 	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
@@ -80,7 +79,14 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
     editorRef.current?.getInstance().setHTML(htmlString);
 
 		const fetchCategory = async () => {
-			const categoryData: CategoryData[] = await _axios.get('/category/all');
+				const categoryData: CategoryData[] = await fetch(
+					`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
+					{
+						method: 'GET',	
+						next: { revalidate: 3600 }
+					}
+				)
+				.then(res=>res.json());
 			const optionEl = categoryData.map((el: CategoryData, index: number)=>{
 				return (
 					<option key={index} value={el.id}>
@@ -161,7 +167,7 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 								const res = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}/uploads/upload`,
 								formData, {headers: { 'Content-Type': 'multipart/formed-data'}}
 								) 
-								if(res.status === 200){
+								if(res.data){
 									alert('이미지가 업로드 됐습니다.');
 									callback(res.data, 'image');		
 								}

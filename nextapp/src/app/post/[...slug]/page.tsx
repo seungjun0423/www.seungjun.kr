@@ -39,6 +39,8 @@ export const generateMetadata = async ({ params }: any): Promise<Metadata | void
 };
 
 export default async function Post({ params: { slug } }: Props) {
+	const postData = await getPostData(slug);
+	
 	if(slug[0] === 'write'){
 		const DynamicWritePost = dynamic(()=>import('components/modules/Post/WritePost'),{ssr: false});
 
@@ -48,23 +50,20 @@ export default async function Post({ params: { slug } }: Props) {
 		)
 
 	} else if(slug[1] === 'edit'){
-		const DynamicUpdatePost = dynamic(()=>import('components/modules/Post/EditPost'),{ssr: false});
-
+		const DynamicEditPost = dynamic(()=>import('components/modules/Post/EditPost'),{ssr: false});
 		return (
-			<DynamicUpdatePost>
+			<DynamicEditPost>
 				{slug}
-			</DynamicUpdatePost>
+			</DynamicEditPost>
 		)
 
-	} else if (slug[0] !== 'write' && slug[1] !== 'edit' ) {
-		const postData = await getPostData(slug);
+	} 
 		
-		return (
-			<section>
-				<ReadPost>
-					{postData}
-				</ReadPost>
-			</section>
-		)	
-	}
+	return (
+		<section>
+			<ReadPost>
+				{postData}
+			</ReadPost>
+		</section>
+	)	
 };

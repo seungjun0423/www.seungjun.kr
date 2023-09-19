@@ -3,7 +3,6 @@
 // 라이브러리 
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { _axios } from "hooks/axios";
 
 // 컴포넌트와 기타 등등
 import CategoryTitle from "components/modules/Category/CategoryTitle";
