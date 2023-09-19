@@ -45,4 +45,10 @@ export class PostService {
       where: { id: Number(id) },
     });
   }
+
+  async deletePost(id: string): Promise<any> {
+    return await this.prismaService.post.delete({
+      where: { id: Number(id) },
+    });
+  }
 }
