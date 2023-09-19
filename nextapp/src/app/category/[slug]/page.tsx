@@ -52,7 +52,7 @@ export const generateStaticParams = async (): Promise<{ id: string }[]> => {
 	const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
 			method: 'GET',
-			cache: 'no-store'
+			// cache: 'no-store'
 		})
 	.then(res=>res.json());
 
