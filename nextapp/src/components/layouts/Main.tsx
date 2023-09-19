@@ -10,7 +10,7 @@ export default async function Main ({ children }: Props) {
 		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
 			method: 'GET',	
-			// cache: 'no-store'
+			next: { revalidate: 3600 }
 		}
 	)
 		.then(res=>res.json());

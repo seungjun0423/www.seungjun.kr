@@ -15,8 +15,6 @@ const getPostData = async (slug: number | string) : Promise<PostType | void> => 
 		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
 			{
 				method: 'GET',
-				cache: 'no-store'
-				// next: { revalidate: 3600 }
 			})
 		.then(res=>res.json());
 		return postData;
@@ -54,7 +52,6 @@ export default async function Post({ params: { slug } }: Props) {
 		)
 
 	} else if (slug[0] !== 'write' && slug[1] !== 'edit' ) {
-		// console.log(slug);
 		const postData = await getPostData(slug);
 		
 		return (

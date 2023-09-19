@@ -13,7 +13,8 @@ const getPostData = async (slug: number ) => {
 	const categoryPostData: PostType[] = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/categoryPosts/${slug}`,
 		{
 			method: 'GET',
-			cache: 'no-store'
+			// cache: 'no-store'
+			next: { revalidate: 3600 }
 		})
 	.then(res=>res.json());
 	return categoryPostData;
