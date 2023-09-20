@@ -78,7 +78,7 @@ export default function Auth () {
 	}
 
 	const signUpHandler = () => {
-		alert('현재 준비중입니다.')
+		alert('현재는 운영자만 사용 가능합니다.')
 	}
 
 	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {

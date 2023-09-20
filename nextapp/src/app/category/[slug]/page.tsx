@@ -2,11 +2,17 @@ import React from "react";
 import { PostType } from "types/interface";
 import PostTitle from "components/modules/Post/PostTitle";
 import styles from 'styles/category.module.css';
+import { Metadata } from "next";
 
 interface Props  {
 	params: {
 		slug: number;
 	};
+};
+
+export const metadata: Metadata = {
+	title:'Category',
+	description: 'Category'
 };
 
 const getPostData = async (slug: number ) => {
