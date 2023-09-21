@@ -42,7 +42,7 @@ export class AuthService {
 
 	setCookie( res, name, value){
 		res.cookie(name,value,{
-			// httpOnly: true,
+			httpOnly: true,
 			sameSite: 'strict',
 			secure: true,
 			path: '/',
@@ -125,7 +125,7 @@ export class AuthService {
 	
 	async logout( data, res: Response){
 		res.cookie('accessToken', '', {
-			// httpOnly: true,
+			httpOnly: true,
 			sameSite: 'strict',
 			secure: true,
 			path: '/',
@@ -133,7 +133,7 @@ export class AuthService {
 		});
 	
 		res.cookie('refreshToken', '', {
-			// httpOnly: true,
+			httpOnly: true,
 			sameSite: 'strict',
 			secure: true,
 			path: '/',
