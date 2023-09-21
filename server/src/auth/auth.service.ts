@@ -43,7 +43,7 @@ export class AuthService {
 	setCookie( res, name, value){
 		res.cookie(name,value,{
 			httpOnly: true,
-			sameSite: 'none',
+			sameSite: 'strict',
 			secure: true,
 			path: '/',
 			maxAge: name === 'accessToken' ? 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000 * 14 ,
@@ -126,7 +126,7 @@ export class AuthService {
 	async logout( data, res: Response){
 		res.cookie('accessToken', '', {
 			httpOnly: true,
-			sameSite: 'none',
+			sameSite: 'strict',
 			secure: true,
 			path: '/',
 			maxAge: 0,
@@ -134,7 +134,7 @@ export class AuthService {
 	
 		res.cookie('refreshToken', '', {
 			httpOnly: true,
-			sameSite: 'none',
+			sameSite: 'strict',
 			secure: true,
 			path: '/',
 			maxAge: 0,
