@@ -1,6 +1,7 @@
 'use client';
 
 import axios from "axios";
+import { stateStore } from "data/store";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PostType } from "types/interface";
@@ -22,10 +23,10 @@ export default function DeleteBtn ({ children }: {children: PostType}) {
 		}
 	};
 	useEffect(()=>{
-		const loginSession = window?.sessionStorage.getItem('state-storage');
-		const isLogin: boolean = JSON?.parse(loginSession as string).state.isLogin;
+		const tokenState = stateStore.getState();
 
-		if(isLogin){
+
+		if(tokenState.accessToken){
 			const goDelete = (
 				<DeleteBtns onClick={()=>deleteHandler()}>
 					Delete

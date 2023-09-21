@@ -4,15 +4,16 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Route } from "next";
 import { PostType } from "types/interface";
+import { stateStore } from "data/store";
 
 export default function EditBtn ({ children }: {children: PostType}) {
 	const [btn, setBtn] = useState<React.ReactElement>(<></>);
 
 	useEffect(()=>{
-		const loginSession = window?.sessionStorage.getItem('state-storage');
-		const isLogin: boolean = JSON?.parse(loginSession as string).state.isLogin;
+		const tokenState = stateStore.getState();
 
-		if(isLogin){
+
+		if(tokenState.accessToken){
 			const goEdit = (
 				<Link 
 					href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${children.id}/edit` as Route}
