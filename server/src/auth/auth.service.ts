@@ -43,8 +43,8 @@ export class AuthService {
 	setCookie( res, name, value){
 		res.cookie(name,value,{
 			httpOnly: true,
-			sameSite: 'strict',
-			secure: true,
+			// sameSite: 'strict',
+			// secure: true,
 			maxAge: name === 'accessToken' ? 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000 * 14 ,
 		});
 	}
@@ -125,15 +125,15 @@ export class AuthService {
 	async logout( data, res: Response){
 		res.cookie('accessToken', '', {
 			httpOnly: true,
-			sameSite: 'strict',
-			secure: true,
+			// sameSite: 'strict',
+			// secure: true,
 			maxAge: 0,
 		});
 	
 		res.cookie('refreshToken', '', {
 			httpOnly: true,
-			sameSite: 'strict',
-			secure: true,
+			// sameSite: 'strict',
+			// secure: true,
 			maxAge: 0,
 		});
 		try {
