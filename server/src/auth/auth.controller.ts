@@ -1,7 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Get, Body, Res, Req, UseGuards, NotFoundException } from '@nestjs/common';
-// import { AuthGuard } from './security/auth.guard'
-// import { AuthGuard } from '@nestjs/passport';
+import { Controller, Post, Get, Body, Res, Req, UseGuards, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from './security/auth.guard';
 import { Response, Request } from 'express';
 import { AuthService } from './auth.service';
@@ -28,15 +26,9 @@ export class AuthController {
   }
 
   @Post('/logout')
-  logout(@Res() res: Response): any {
-    // 쿠키 만료 요청
-    res.cookie('jwt', '', {
-      maxAge: 0,
-    });
-    return res.send({
-      message: 'logout success',
-    });
-  }
+	async logout(@Body() data: number, @Res() res: Response): Promise<Response | UnauthorizedException> {
+		return await this.authService.logout( data, res);
+	}
 
   @Get('/authentication')
   @UseGuards(AuthGuard)

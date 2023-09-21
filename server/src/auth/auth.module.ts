@@ -10,7 +10,6 @@ import { PassportModule } from '@nestjs/passport';
   imports: [
     JwtModule.register({
       secret: `${process.env.SECRET_KEY}`,
-      signOptions: { expiresIn: '300m' },
     }),
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
