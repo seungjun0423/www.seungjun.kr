@@ -134,10 +134,9 @@ export default function Header () {
 
 	const logoutHandler = async () => {
 		try{
-			const req= await _axios.post('/auth/logout');
+			const req= await _axios.post('/auth/logout',{id: stateStore.getState().id });
 			if(req.message === 'logout success'){
-
-				stateStore.setState({isLogin: false},true);
+				stateStore.setState({ id:'', accessToken: '', refreshToken: ''},true);
 				window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
 			} else if(req.message !== 'logout success'){
 				alert('log out failed!')
@@ -148,7 +147,7 @@ export default function Header () {
 	}
 
 	useEffect(() => {
-		const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
+		const tokenState = stateStore.getState();
 
 		const NavContainer = (
 			<Div>
@@ -156,7 +155,7 @@ export default function Header () {
 					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
 						about
 					</Link>
-					{ sessionState?.isLogin ?
+					{ tokenState.accessToken ?
 						<>
 							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} style={{fontSize:'1.5rem'}}>
 								posting
@@ -183,7 +182,7 @@ export default function Header () {
 							>
 								about
 							</Link>
-							{ sessionState?.isLogin ?
+							{ tokenState.accessToken ?
 								<>
 									<Link 
 										href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 

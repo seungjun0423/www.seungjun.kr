@@ -18,11 +18,13 @@ export const postStore= create(
 export const stateStore: any = create(
   persist(
     (set, get): any => ({
-      isLogin: false,
+			id: '',
+			accessToken: '',
+			refreshToken: ''
     }),
     {
       name: 'state-storage', 
-      storage: createJSONStorage(() => sessionStorage), 
+      storage: createJSONStorage(() => localStorage), 
     }
   )
 )

@@ -91,16 +91,16 @@ export default function Auth () {
 					return alert('아이디를 입력해주세요');
 				} else if(!password){
 					return alert('비밀번호를 입력해주세요');
-				} else if(email && password) {
-					const req: {message: string} = await _axios.post(
-						`/auth/login`
-						,{ email:email, password: password}
-					);
+				}
+				
+				const req: {id: number, message: string, accessToken: string, refreshToken: string} = await _axios.post(
+					`/auth/login`
+					,{ email:email, password: password}
+				);
 
-					if(req.message === 'login success'){
-						stateStore.setState({isLogin: true},true);
-						window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
-					}
+				if(req.message === 'login success'){
+					stateStore.setState({ id: req.id,accessToken: req.accessToken, refreshToken: req.refreshToken},true);
+					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
 				}
 			}
 		} catch(err) {
