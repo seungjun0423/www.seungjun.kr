@@ -44,7 +44,7 @@ export class AuthService {
 		res.cookie(name,value,{
 			httpOnly: true,
 			sameSite: 'none',
-			// secure: true,
+			secure: true,
 			path: '/',
 			maxAge: name === 'accessToken' ? 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000 * 14 ,
 		});
@@ -127,7 +127,7 @@ export class AuthService {
 		res.cookie('accessToken', '', {
 			httpOnly: true,
 			sameSite: 'none',
-			// secure: true,
+			secure: true,
 			path: '/',
 			maxAge: 0,
 		});
@@ -135,7 +135,7 @@ export class AuthService {
 		res.cookie('refreshToken', '', {
 			httpOnly: true,
 			sameSite: 'none',
-			// secure: true,
+			secure: true,
 			path: '/',
 			maxAge: 0,
 		});
