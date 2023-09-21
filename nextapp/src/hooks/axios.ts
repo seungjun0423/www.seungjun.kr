@@ -28,7 +28,11 @@ export const _axios:Axios = {
 	},
 	post: async (path, data) => {
 		try {
-			const req = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}${path}`,data).then((res)=> {return res.data});
+			const req = await axios.post(
+				`${process.env.NEXT_PUBLIC_CORS_URL}${path}`,
+				data,
+				{withCredentials: true}, 
+				).then((res)=> {return res.data});
 			if(req){
 				return req
 			}
