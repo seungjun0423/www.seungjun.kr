@@ -54,7 +54,7 @@ export class AuthService {
     const userFind: User = await this.prismaService.user.findUnique({where: { email: data.email }});
 
     if (!userFind) {
-        throw new NotFoundException('user not founded');
+        throw new NotFoundException({ message : 'user not founded'});
     }
 
     const checkPassword: boolean = await compare(data.password, userFind.password);
@@ -92,14 +92,14 @@ export class AuthService {
 		try {
 				payload = this.jwtService.verify(oldToken);
 		} catch (e) {
-				throw new UnauthorizedException('Invalid refresh token');
+				throw new UnauthorizedException({ message : 'Invalid refresh token'});
 		}
 
 		// 데이터 베이스에서 일치하는 데이터가 있는 사람을 찾는다.
 		const userFind = await this.prismaService.user.findUnique({where: { id: payload.id , email: payload.email}});
 	
 		if (!userFind || userFind.token !== oldToken) {
-				throw new UnauthorizedException('Invalid refresh token');
+				throw new UnauthorizedException({ message : 'Invalid refresh token'});
 		}
 	
 		const newPayload = { id: userFind.id, email: userFind.email };
@@ -151,14 +151,17 @@ export class AuthService {
 				});
 			}
 		} catch(err) {
-			throw new UnauthorizedException('logout failed');
+			throw new UnauthorizedException({ message: 'logout failed'});
 		}
 	}
 
 	// async logout(data: Login)
-  async tokenValidateUser(payload: Omit<Login,'password'>) {
-    return await this.prismaService.admin.findUnique({
+  async tokenValidateUser(payload: any) {
+		const userFind = await this.prismaService.user.findUnique({
       where: { id: payload.id },
     });
+		if(userFind){
+			return userFind;
+		}
   }
 }

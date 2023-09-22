@@ -28,20 +28,20 @@ import { UploadsModule } from './uploads/uploads.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(LoggerMiddleware)
-      .forRoutes({ path: '/auth/login', method: RequestMethod.ALL });
-		consumer
-      .apply(LoggerMiddleware)
-      .forRoutes({ path: '/auth/logout', method: RequestMethod.ALL });
-    consumer
-      .apply(LoggerMiddleware)
-      .forRoutes({ path: '/post/write', method: RequestMethod.ALL });
-		consumer
-      .apply(LoggerMiddleware)
-      .forRoutes({ path: '/post/id:id/edit', method: RequestMethod.ALL });
-		consumer
-      .apply(LoggerMiddleware)
-      .forRoutes({ path: '/post/delete', method: RequestMethod.ALL });
+    // consumer
+    //   .apply(LoggerMiddleware)
+    //   .forRoutes({ path: '/auth/login', method: RequestMethod.ALL });
+		// consumer
+    //   .apply(LoggerMiddleware)
+    //   .forRoutes({ path: '/auth/logout', method: RequestMethod.ALL });
+    // consumer
+    //   .apply(LoggerMiddleware)
+    //   .forRoutes({ path: '/post/write', method: RequestMethod.ALL });
+		// consumer
+    //   .apply(LoggerMiddleware)
+    //   .forRoutes({ path: '/post/id:id/edit', method: RequestMethod.ALL });
+		// consumer
+    //   .apply(LoggerMiddleware)
+    //   .forRoutes({ path: '/post/delete', method: RequestMethod.ALL });
   }
 }

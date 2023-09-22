@@ -8,17 +8,18 @@ import { Login } from 'src/types/tpye';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: true,
+      jwtFromRequest: (req) => req.cookies['accessToken'],
+      ignoreExpiration: false,
       secretOrKey: process.env.SECRET_KEY,
     });
   }
 
   async validate(
-    payload: Omit<Login, 'password'>,
+    payload: any ,
     done: VerifiedCallback,
   ): Promise<any> {
     const user = await this.authService.tokenValidateUser(payload);
+		
     if (!user) {
       return done(
         new UnauthorizedException({ message: 'user data cannot found' }),

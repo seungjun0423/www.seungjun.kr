@@ -26,13 +26,9 @@ export class AuthController {
   }
 
   @Post('/logout')
-	async logout(@Body() data: number, @Res() res: Response): Promise<Response | UnauthorizedException> {
+	@UseGuards(AuthGuard)
+	async logout(@Body() data: number, @Res() res: Response)
+	: Promise<Response | UnauthorizedException> {
 		return await this.authService.logout( data, res);
 	}
-
-  @Get('/authentication')
-  @UseGuards(AuthGuard)
-  isAuthenticated(@Req() req: Request): any {
-    return req.user;
-  }
 }

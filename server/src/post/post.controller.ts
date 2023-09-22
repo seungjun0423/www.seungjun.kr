@@ -2,7 +2,8 @@ import { Response, Request } from 'express';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PostService } from './post.service';
 // eslint-disable-next-line prettier/prettier
-import { Controller, Post, Body, Get, Req, Param, Patch, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Req, Param, Patch, Delete, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 export interface Posts {
   id: number;
@@ -17,11 +18,11 @@ export interface Posts {
 @Controller('post')
 export default class PostController {
   constructor(
-    private prismaService: PrismaService,
     private postService: PostService,
   ) {}
 
   @Post('/write')
+	@UseGuards(AuthGuard())
   async createPost(
     @Body()
     data: Posts,
@@ -30,6 +31,7 @@ export default class PostController {
   }
 
   @Patch('/update')
+	@UseGuards(AuthGuard())
   async updatePost(@Body() data: Posts) {
     return await this.postService.updatePost(data);
   }
@@ -50,6 +52,7 @@ export default class PostController {
   }
 
   @Delete('/delete/:id')
+	@UseGuards(AuthGuard())
   async deletePost(@Param('id') id: string): Promise<any> {
     return await this.postService.deletePost(id);
   }
