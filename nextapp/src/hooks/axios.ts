@@ -1,7 +1,6 @@
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
-// const sessionState = JSON.parse(`${window.sessionStorage.getItem('state-storage')}`)?.state;
 type Input = {
 	[key: string]:(path:string, data?:object) => Promise<any>;
 }
