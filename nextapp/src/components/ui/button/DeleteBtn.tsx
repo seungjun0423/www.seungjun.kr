@@ -26,7 +26,7 @@ export default function DeleteBtn ({ children }: {children: PostType}) {
 		const tokenState = stateStore.getState();
 
 
-		if(tokenState.accessToken){
+		if(tokenState.id){
 			const goDelete = (
 				<DeleteBtns onClick={()=>deleteHandler()}>
 					Delete

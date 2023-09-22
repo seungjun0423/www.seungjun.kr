@@ -19,8 +19,6 @@ export const stateStore: any = create(
   persist(
     (set, get): any => ({
 			id: '',
-			accessToken: '',
-			refreshToken: ''
     }),
     {
       name: 'state-storage', 

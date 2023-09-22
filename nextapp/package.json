@@ -25,6 +25,7 @@
     "react-icons": "^4.10.1",
     "styled-components": "^6.0.5",
     "supports-color": "^9.4.0",
+    "swr": "^2.2.2",
     "tui-color-picker": "^2.2.8",
     "typescript": "^5.2.2",
     "zustand": "^4.4.1"

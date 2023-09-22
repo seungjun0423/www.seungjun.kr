@@ -155,7 +155,7 @@ export default function Header () {
 					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
 						about
 					</Link>
-					{ tokenState.accessToken ?
+					{ tokenState.id ?
 						<>
 							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} style={{fontSize:'1.5rem'}}>
 								posting
@@ -182,7 +182,7 @@ export default function Header () {
 							>
 								about
 							</Link>
-							{ tokenState.accessToken ?
+							{ tokenState.id ?
 								<>
 									<Link 
 										href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 

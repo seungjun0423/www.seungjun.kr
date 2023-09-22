@@ -99,7 +99,7 @@ export default function Auth () {
 				);
 
 				if(req.message === 'login success'){
-					stateStore.setState({ id: req.id,accessToken: req.accessToken, refreshToken: req.refreshToken},true);
+					stateStore.setState({ id: req.id  },true);
 					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
 				}
 			}

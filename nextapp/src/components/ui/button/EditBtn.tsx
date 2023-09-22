@@ -13,7 +13,7 @@ export default function EditBtn ({ children }: {children: PostType}) {
 		const tokenState = stateStore.getState();
 
 
-		if(tokenState.accessToken){
+		if(tokenState.id){
 			const goEdit = (
 				<Link 
 					href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${children.id}/edit` as Route}
