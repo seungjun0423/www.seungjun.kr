@@ -46,6 +46,7 @@ export class AuthService {
 			sameSite: 'strict',
 			secure: true,
 			path: '/',
+			domain: 'seungjun.kr',
 			maxAge: name === 'accessToken' ? 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000 * 14 ,
 		});
 	}
@@ -80,8 +81,6 @@ export class AuthService {
 		return res.send({
 			message:'login success',
 			id: userFind.id,
-			accessToken :accessToken,
-			refreshToken :refreshToken,
 		});
 	}
 
@@ -129,6 +128,7 @@ export class AuthService {
 			sameSite: 'strict',
 			secure: true,
 			path: '/',
+			domain: 'seungjun.kr',
 			maxAge: 0,
 		});
 	
@@ -137,6 +137,7 @@ export class AuthService {
 			sameSite: 'strict',
 			secure: true,
 			path: '/',
+			domain: 'seungjun.kr',
 			maxAge: 0,
 		});
 		try {
