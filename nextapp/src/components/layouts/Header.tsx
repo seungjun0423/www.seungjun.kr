@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
-import lottie from '../../../public/lottiefiles/kitty.gif';
-
 import Image from "next/image";
 
+import Lottie from 'react-lottie-player';
+import lottie from '../../../public/lottiefiles/kitty.gif';
+import lottieJson from '../../../public/lottiefiles/darkmode.json';
 import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
 import { Route } from "next";
@@ -110,7 +111,6 @@ const MetaMaskBox = styled.div`
 	}
 `;
 
-
 const sildIn = keyframes`
   from {
 		transform: translateX(100%);
@@ -131,12 +131,11 @@ const Div = styled.div`
 export default function Header () {
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const [ navConatiner, setNavConatiner] = useState<React.ReactElement>(<></>);
-
 	const logoutHandler = async () => {
 		try{
 			const req= await _axios.post('/auth/logout',{id: stateStore.getState().id });
 			if(req.message === 'logout success'){
-				stateStore.setState({ id:'', accessToken: '', refreshToken: ''},true);
+				stateStore.setState({ id:''},true);
 				window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
 			} else if(req.message !== 'logout success'){
 				alert('log out failed!')
@@ -146,16 +145,27 @@ export default function Header () {
 		}
 	}
 
+	const darkModeHandler = () => {
+		const localStorage = stateStore.getState();
+		const isDarkMode = localStorage.darkMode;
+		stateStore.setState({darkMode: !isDarkMode});
+	}
+	
 	useEffect(() => {
-		const tokenState = stateStore.getState();
-
+		const localStorage = stateStore.getState();
+		// console.log(localStorage);
 		const NavContainer = (
 			<Div>
+				<Lottie 
+					onClick={()=>{darkModeHandler()}}
+					animationData={lottieJson}
+					style={{ width: 50, height: 50 }}
+				/>
 				<NavContainers>
 					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
 						about
 					</Link>
-					{ tokenState.id ?
+					{ localStorage.id ?
 						<>
 							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} style={{fontSize:'1.5rem'}}>
 								posting
@@ -182,7 +192,7 @@ export default function Header () {
 							>
 								about
 							</Link>
-							{ tokenState.id ?
+							{ localStorage.id ?
 								<>
 									<Link 
 										href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 
@@ -215,8 +225,17 @@ export default function Header () {
 	return (
 		<Headers>
 			<Title>
-				<Image alt='lottie' src={lottie} style={{marginRight:'1.5vw',marginTop:'3px'}} width={50} height={50}/>
-				<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}` as Route} style={{fontSize: '2rem'}} >
+				<Image 
+					alt='lottie' 
+					src={lottie} 
+					style={{marginRight:'1.5vw',marginTop:'3px'}} 
+					width={50} 
+					height={50}
+				/>
+				<Link 
+					href={`${process.env.NEXT_PUBLIC_REDIRECT}` as Route} 
+					style={{fontSize: '2rem'}} 
+				>
 					<LongText>
 						Seungjun&apos;s blog
 					</LongText>

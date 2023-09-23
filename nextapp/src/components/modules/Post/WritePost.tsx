@@ -59,6 +59,27 @@ const Label = styled.label`
 	margin-right: 10px;
 `;
 
+const TextInput = styled.input`
+	border-radius: 5px; 
+	padding:5px;
+	border:1px solid gray; 
+	font-size: 0.7rem; 
+	color: '#5e5e5e';
+	&::placeholder{
+		color: #b8b8b8;
+	}
+`;
+
+const Select = styled.select`
+	border-radius: 5px; 
+	border:1px solid gray; 
+	font-size: 0.7rem; 
+	height: 30px; 
+	font-family: inherit;
+	color: #5e5e5e;
+`;
+
+
 export default function CreatePost ({children}: {children: React.ReactNode}) {
 	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
 		<option key='init' value='선택'>
@@ -119,8 +140,7 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 			<EditorBox>
 				<InfoBox>
 					<Label>글 제목</Label>
-					<input 
-						style={{borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem', opacity:'0.5'}} 
+					<TextInput 
 						type="text" 
 						placeholder="제목을 입력해주세요"
 						onChange={(e)=>{setTitle(e.target.value)}}
@@ -128,17 +148,15 @@ export default function CreatePost ({children}: {children: React.ReactNode}) {
 				</InfoBox>
 				<InfoBox>
 					<Label>카테고리 선택하기</Label>
-					<select 
-						style={{borderRadius: '5px', border:'1px solid gray', height:'30px', fontFamily:'inherit',color: '#5e5e5e',opacity:'0.5'}}
+					<Select 
 						onChange={(e)=>{setCategoryId(e.target.value)}}
 					>
 						{optionList}
-					</select>
+					</Select>
 				</InfoBox>
 				<InfoBox>
 					<Label>게시물 요약</Label>
-					<input 
-						style={{width:'35%', borderRadius: '5px', padding:'5px', border:'1px solid gray', fontSize:'0.7rem', opacity:'0.5'}} 
+					<TextInput 
 						type="text" 
 						placeholder="게시물 요약"
 						onChange={(e)=>{setDesc(e.target.value)}}

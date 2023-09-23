@@ -19,6 +19,7 @@ export const stateStore: any = create(
   persist(
     (set, get): any => ({
 			id: '',
+			darkMode: false,
     }),
     {
       name: 'state-storage', 

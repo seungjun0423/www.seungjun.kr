@@ -23,10 +23,10 @@ export default function DeleteBtn ({ children }: {children: PostType}) {
 		}
 	};
 	useEffect(()=>{
-		const tokenState = stateStore.getState();
+		const localStorage = stateStore.getState();
 
 
-		if(tokenState.id){
+		if(localStorage.id){
 			const goDelete = (
 				<DeleteBtns onClick={()=>deleteHandler()}>
 					Delete

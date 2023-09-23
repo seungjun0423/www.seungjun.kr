@@ -1,12 +1,11 @@
 'use client'
 
 // 라이브러리 
-import React from "react";
+import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 
 // 컴포넌트와 기타 등등
-import CategoryTitle from "components/modules/Category/CategoryTitle";
-
+import CategoryTitle from "components/modules/CategoryTitle";
 import { CategoryData } from 'types/types'
 
 const sildIn = keyframes`
@@ -26,7 +25,7 @@ const Sidebars = styled.aside`
 	min-width: 160px;
 	
 	@media (min-width:577px){
-		animation: ${sildIn} 1.5s ease-in-out forwards;
+		animation: ${sildIn} 1.5s ease-out forwards;
 	}
 
 	@media (max-width: 576px) {
@@ -71,7 +70,6 @@ const ListBox = styled.div`
 
 /** List 컴포넌트의 뷰를 담당*/
 export default function Sidebar ({ data }: { data: CategoryData[] }) {
-
   return (
 		<Sidebars>
 			<Wrapper>

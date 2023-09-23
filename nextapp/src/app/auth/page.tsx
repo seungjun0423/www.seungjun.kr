@@ -1,4 +1,4 @@
-import Auth from "components/modules/Auth/Auth";
+import Auth from "components/modules/Auth";
 
 export default function Admin () {
   return (

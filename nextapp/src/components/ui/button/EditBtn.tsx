@@ -10,10 +10,10 @@ export default function EditBtn ({ children }: {children: PostType}) {
 	const [btn, setBtn] = useState<React.ReactElement>(<></>);
 
 	useEffect(()=>{
-		const tokenState = stateStore.getState();
+		const localStorage = stateStore.getState();
 
 
-		if(tokenState.id){
+		if(localStorage.id){
 			const goEdit = (
 				<Link 
 					href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${children.id}/edit` as Route}

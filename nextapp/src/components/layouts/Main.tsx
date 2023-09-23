@@ -1,10 +1,8 @@
-
-import React from "react";
+import React,{ useContext } from "react";
 import Sidebar from "./Sidebar";
 import Content from "components/layouts/Content";
 import { Props } from "app/layout";
 import { CategoryData } from 'types/types'
-
 export default async function Main ({ children }: Props) {
 	const categoryData: CategoryData[] = await fetch(
 		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
