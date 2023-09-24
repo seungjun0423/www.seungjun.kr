@@ -1,6 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import ReadPost from "components/modules/Post/ReadPost";
+import ReadPost from "components/page/Post/ReadPost";
 import type { Metadata, ResolvingMetadata } from 'next'
 import { PostType } from "types/interface";
 
@@ -11,11 +11,11 @@ interface Props  {
 };
 
 const getPostData = async (slug: string[]) : Promise<PostType | void> => {
-	if (slug[0] !== 'write'){
+	if (slug[0] !== 'write' && slug[1] !== 'edit'){
 		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
 			{
 				method: 'GET',
-				cache: 'no-store'
+				cache: 'no-cache'
 			})
 		.then(res=>res.json());
 		return postData;
@@ -43,7 +43,7 @@ export default async function Post({ params: { slug } }: Props) {
 	const postData = await getPostData(slug);
 	
 	if(slug[0] === 'write'){
-		const DynamicWritePost = dynamic(()=>import('components/modules/Post/WritePost'),{ssr: false});
+		const DynamicWritePost = dynamic(()=>import('components/page/Post/WritePost'),{ssr: false});
 
 		return (
 			<DynamicWritePost>
@@ -51,7 +51,7 @@ export default async function Post({ params: { slug } }: Props) {
 		)
 
 	} else if(slug[1] === 'edit'){
-		const DynamicEditPost = dynamic(()=>import('components/modules/Post/EditPost'),{ssr: false});
+		const DynamicEditPost = dynamic(()=>import('components/page/Post/EditPost'),{ssr: false});
 		return (
 			<DynamicEditPost>
 				{slug}

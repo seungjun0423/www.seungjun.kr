@@ -1,6 +1,6 @@
 import React from "react";
 import { PostType } from "types/interface";
-import PostTitle from "components/modules/Post/PostTitle";
+import PostTitle from "components/page/Post/PostTitle";
 import styles from 'styles/category.module.css';
 import { Metadata } from "next";
 
@@ -19,8 +19,7 @@ const getPostData = async (slug: number ) => {
 	const categoryPostData: PostType[] = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/categoryPosts/${slug}`,
 		{
 			method: 'GET',
-			cache: 'no-store'
-			// next: { revalidate: 3600 }
+			cache: 'no-cache'
 		})
 	.then(res=>res.json());
 	return categoryPostData;
@@ -57,7 +56,8 @@ export default async function Category({ params: { slug } }: Props) {
 export const generateStaticParams = async (): Promise<{ id: string }[]> => {
 	const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
-			method: 'GET'
+			method: 'GET',
+			cache: 'no-cache'
 		})
 	.then(res=>res.json());
 

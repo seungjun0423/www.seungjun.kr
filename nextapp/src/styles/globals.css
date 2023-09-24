@@ -21,7 +21,6 @@ html {
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
-	background-color: #fafafa;
 }
 
 body {
@@ -30,7 +29,9 @@ body {
 	height: 100%;
   padding: 0;
   margin: 0;
+	background: var(--body-color);
 }
+
 
 a,input {
   text-decoration: none;

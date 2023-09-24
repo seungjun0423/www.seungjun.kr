@@ -26,7 +26,8 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-	reactStrictMode:true,
+	swcMinify: true,
+	// reactStrictMode:true,
 	// async redirects(){
   //   return [
   //     {

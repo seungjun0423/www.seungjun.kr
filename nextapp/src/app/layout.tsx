@@ -1,15 +1,20 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Metadata } from 'next';
+import Script from "next/script";
 import '../styles/globals.css';
 
 import StyledComponentsRegistry from '../components/lib/registry';
 
-import GoogleAnalytics from "../util/GoogleAnalytics";
+import GoogleAnalytics from "util/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
 import Header from "components/layouts/Header";
 import Footer from "components/layouts/Footer";
 
 import localFont from 'next/font/local';
+import { ScriptTag } from "util/InlineScript";
+import { ColorModeProvider } from "data/ColorModeContext";
+import ThemeContext from "data/ThemeContext";
+// import AuthContext from "data/AuthContext";
 
 const font = localFont({
   src: '../../public/font/JalnanOTF.otf',
@@ -17,7 +22,7 @@ const font = localFont({
 })
 
 export type Props = {
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -40,7 +45,7 @@ export const metadata: Metadata = {
   },
 	
 	verification: {
-		google:"1W_oTVzw1T7HBJ1qU74euJ4kUOqKIOaSGMqYCN3jF",
+	google:"1W_oTVzw1T7HBJ1qU74euJ4kUOqKIOaSGMqYCN3jF",
 		other: {
 			"naver-site-verification":"ed9b5c6474ce11bd2641d3627ae889ce9a58c002"
 		}
@@ -51,15 +56,28 @@ export default function RootLayout ({ children }: Props) {
 
   return (
 		<html lang="ko">
-			<GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} />
+			<head>
+				<GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} />
+				<Script
+				strategy="beforeInteractive"
+				>
+					<ScriptTag />
+				</Script>
+			</head>
 			<StyledComponentsRegistry >
-				<body className={font.className}>
-					<Header/>
-					<Main>
-						{children}
-					</Main>
-					<Footer/>
-				</body>
+				<ColorModeProvider>
+					<ThemeContext>
+						{/* <AuthContext> */}
+							<body className={font.className}>
+								<Header/>
+								<Main>
+									{children}
+								</Main>
+								<Footer/>
+							</body>
+						{/* </AuthContext> */}
+					</ThemeContext>
+				</ColorModeProvider>
 			</StyledComponentsRegistry>
     </html>
   );

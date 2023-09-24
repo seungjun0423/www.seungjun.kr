@@ -14,10 +14,12 @@ type Axios = {
 }
 
 /** _axios( path: string, data?: object): path 입력시 '/' 를 꼭 붙여야 한다 */
-export const _axios:Axios = {
+export const _axios: Axios = {
 	get: async (path) => {
 		try {	
+			
 			const req = await axios.get(`${process.env.NEXT_PUBLIC_CORS_URL}${path}`).then((res)=> {return res.data});
+
 			if(req){
 				return req
 			}

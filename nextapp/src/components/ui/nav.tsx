@@ -8,6 +8,7 @@ import Image from "next/image";
 import Lottie from 'react-lottie-player';
 import lottie from '../../../public/lottiefiles/kitty.gif';
 import lottieJson from '../../../public/lottiefiles/darkmode.json';
+import { _axios } from "hooks/axios";
 import { stateStore } from "data/store";
 import { Route } from "next";
 
@@ -126,46 +127,8 @@ const Div = styled.div`
   animation: ${sildIn} 0.5s ease-out forwards;
 `;
 
-/** Header 컴포넌트 */
-export default function Header () {
-	const [ navState, setNavState ] = useState<boolean>(false);
-	const [ navConatiner, setNavConatiner] = useState<React.ReactElement>(<></>);
-
-	const logoutHandler = async () => {
-		try{
-			const req: any = await fetch(
-				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/logout`,
-				{
-					method: 'POST',
-					body: JSON.stringify({id: stateStore.getState().id }),
-					headers: { 'Content-Type': 'application/json' },
-					credentials: 'include',
-					cache:'no-cache',
-				}
-			)
-			.then(res=>res.json());
-			console.log(req);
-			if(req.message === 'logout success'){
-				stateStore.setState({ id:''},true);
-				window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
-			} else if(req.message !== 'logout success'){
-				alert('log out failed!')
-			}
-		} catch(err){
-			throw err;
-		}
-	}
-
-	const darkModeHandler = () => {
-		const localStorage = stateStore.getState();
-		const isDarkMode = localStorage.darkMode;
-		stateStore.setState({darkMode: !isDarkMode});
-	};
-
-	useEffect(() => {
-		const localStorage = stateStore.getState();
-
-		const NavContainer = (
+export default function Nav(){
+	return(
 			<Div>
 				<Lottie 
 					onClick={()=>{darkModeHandler()}}
@@ -230,34 +193,5 @@ export default function Header () {
 					}
 				</NavBoxes>
 			</Div>
-		);
-
-		setNavConatiner(NavContainer);
-	}, [navState])
-	
-	return (
-		<Headers>
-			<Title>
-				<Image 
-					alt='lottie' 
-					src={lottie} 
-					style={{marginRight:'1.5vw',marginTop:'3px'}} 
-					width={50} 
-					height={50}
-				/>
-				<Link 
-					href={`${process.env.NEXT_PUBLIC_REDIRECT}` as Route} 
-					style={{fontSize: '2rem'}} 
-				>
-					<LongText>
-						Seungjun&apos;s blog
-					</LongText>
-					<ShortText>
-						blog
-					</ShortText>
-				</Link>
-			</Title>
-			{navConatiner}
-		</Headers>
-	);
-};
+	)
+}

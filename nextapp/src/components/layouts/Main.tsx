@@ -8,7 +8,7 @@ export default async function Main ({ children }: Props) {
 		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
 			method: 'GET',	
-			next: { revalidate: 3600 }
+			cache: 'no-cache',
 		}
 	)
 		.then(res=>res.json());

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { Editor } from '@toast-ui/react-editor';
@@ -16,7 +16,6 @@ import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
 import SubmitBtn from "components/ui/button/SubmitBtn";
-import axios from "axios";
 import { PostType } from "types/interface";
 import { CategoryData } from "types/types";
 
@@ -79,7 +78,7 @@ const Select = styled.select`
 	color: #5e5e5e;
 `;
 
-export default function EditPost ({ children }: {children: React.ReactNode}) {
+export default function EditPost ({ children }: {children: ReactNode}) {
 	const json = window.sessionStorage.getItem('post-storage');
 	const data: PostType = JSON.parse(json as string).state.nowPost;
 
@@ -103,7 +102,7 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 					`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 					{
 						method: 'GET',	
-						next: { revalidate: 3600 }
+						cache: 'no-cache'
 					}
 				)
 				.then(res=>res.json());
@@ -132,7 +131,18 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 			alert('항목을 모두 작성해주세요'); 
 		} else if (title && categoryId && contents){
 			try {
-				const req = await axios.patch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/update`,{ id: data.id, title, categoryId, contents})
+				const req: any = await fetch(
+					`${process.env.NEXT_PUBLIC_CORS_URL}/post/update`,
+					{
+						method: 'PATCH',
+						body: JSON.stringify({ id: data.id, title, categoryId, contents}),
+						headers: { 'Content-Type': 'application/json' },
+						credentials: 'include',
+						cache:'no-cache',
+					}
+				)
+				.then(req=>req.json());
+
 				if(req){
 					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
 					return alert('게시물이 수정되었습니다')
@@ -182,12 +192,20 @@ export default function EditPost ({ children }: {children: React.ReactNode}) {
 							try{
 								const formData = new FormData();
 								formData.append('image', blob);
-								const res = await axios.post(`${process.env.NEXT_PUBLIC_CORS_URL}/uploads/upload`,
-								formData, {headers: { 'Content-Type': 'multipart/formed-data'}}
-								) 
-								if(res.data){
+
+								const req: any = await fetch(
+									`${process.env.NEXT_PUBLIC_CORS_URL}/uploads/upload`,
+									{
+										method: 'POST',
+										body: formData,
+										credentials: 'include',
+										cache:'no-cache',
+									}
+								)
+								.then(req=>req.json());
+								if(req.url){
 									alert('이미지가 업로드 됐습니다.');
-									callback(res.data, 'image');		
+									callback(req.url, 'image');		
 								}
 							} catch(err) {
 								alert('파일 업로드 실패');

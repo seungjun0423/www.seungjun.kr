@@ -5,28 +5,17 @@ import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 
 // 컴포넌트와 기타 등등
-import CategoryTitle from "components/modules/CategoryTitle";
+import CategoryTitle from "components/page/CategoryTitle";
 import { CategoryData } from 'types/types'
 
-const sildIn = keyframes`
-  from {
-		transform: translateY(-100%);
-	}
-	to {
-		transform: translateY(0);
-	}
-`;
 
 const Sidebars = styled.aside`
-	border-right: 1px solid #eaecef;
+	box-shadow: 2px 0 2px var(--border-color);
 	overflow-y: auto;
 	width: 30%;
 	max-width: 220px;
 	min-width: 160px;
-	
-	@media (min-width:577px){
-		animation: ${sildIn} 1.5s ease-out forwards;
-	}
+	border:none;
 
 	@media (max-width: 576px) {
 		border-right: 0;
@@ -42,14 +31,13 @@ const Wrapper = styled.div`
 	@media (max-width: 576px) {
 		position: fixed; 
 		bottom: 0;
-		border-top: 1px solid #eaecef;
+		border-top: 1px solid var(--border-color);
 		width: 100%;
 		border-right: 0;
 		gap: 3rem;
 		align-items: center;
 		overflow-x: auto;
 		z-index: 99;
-		background-color:#ffffff;
 	}
 `;
 
