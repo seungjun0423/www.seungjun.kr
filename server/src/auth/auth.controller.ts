@@ -20,6 +20,7 @@ export class AuthController {
   async login(
     @Body() data: { email: string; password: string },
     @Res() res: Response,
+		@Req() req: Request,
   ): Promise<Response | NotFoundException> {
     return await this.authService.login(data,res);
 
