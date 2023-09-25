@@ -32,4 +32,11 @@ export class AuthController {
 	: Promise<Response | UnauthorizedException> {
 		return await this.authService.logout( data, res);
 	}
+
+	@Get('/validate')
+	@UseGuards(AuthGuard)
+	async validate(@Req() req: Response,@Res() res: Response)
+	: Promise<Response | UnauthorizedException> {
+		return res.send({message: 'auth user'})
+	}
 }
