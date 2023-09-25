@@ -23,7 +23,7 @@ export default function ReadPost({ children }: {children: any}) {
 				</div>
 			</div> 
 			<div className="toastui-editor-contents">
-				<span style={{fontSize: '16px', fontFamily:'initial'}}>
+				<span className={styles.post} style={{fontSize: '16px', fontFamily:'initial'}}>
 					{ HTMLReactParser(children?.contents)}
 				</span>
 			</div>

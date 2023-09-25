@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { stateStore } from "data/store";
+import { useStore, stateStore } from "data/store";
 
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { Submit } from "types/interface";
@@ -70,7 +70,7 @@ export default function Auth () {
 	const [ password, setPassword ] = useState<string>('');
 	const focusId = useRef<HTMLInputElement>(null);
 	const focusPw = useRef<HTMLInputElement>(null);
-
+	
 	const router = useRouter();
 	function onChangeId(val: string) {
 		setId(val);
@@ -85,7 +85,6 @@ export default function Auth () {
 	}
 
 	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
-		
 		try{
 			if(type === 'login'){
 				if(!email && !password){
@@ -94,7 +93,7 @@ export default function Auth () {
 					return alert('아이디를 입력해주세요');
 				} else if(!password){
 					return alert('비밀번호를 입력해주세요');
-				}
+				};
 				
 				const req: any = await fetch(
 					`${process.env.NEXT_PUBLIC_CORS_URL}/auth/login`,
@@ -107,10 +106,11 @@ export default function Auth () {
 					}
 				)
 				.then(res=>res.json());
+
 				if(req.message === 'login success'){
 					stateStore.setState({ id: req.id  },true);
-					// router.push('/',{ scroll: true });
-					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`);
+					useStore.setState({ id: req.id  },true);
+					router.push('/');
 				}
 			}
 		} catch(err) {

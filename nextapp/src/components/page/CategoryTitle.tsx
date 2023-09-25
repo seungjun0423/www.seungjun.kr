@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-async-client-component */
-'use client'
+'use client';
+
 import styled from "styled-components";
 import { Route } from "next";
 import Link from "next/link";
@@ -29,7 +30,7 @@ const CategoryTitles = styled.input`
 	cursor: pointer;
 `;
 
-export default async function CategoryTitle({ title, categoryId }: {title: string, categoryId: number}){
+export default function CategoryTitle({ title, categoryId }: {title: string, categoryId: number}){
 	return (
 		<PostLists>
 			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/category/${categoryId}` as Route}>

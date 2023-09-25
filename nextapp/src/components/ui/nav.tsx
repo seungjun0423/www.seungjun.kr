@@ -1,50 +1,15 @@
 'use client';
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
-import Image from "next/image";
 
 import Lottie from 'react-lottie-player';
-import lottie from '../../../public/lottiefiles/kitty.gif';
 import lottieJson from '../../../public/lottiefiles/darkmode.json';
-import { _axios } from "hooks/axios";
-import { stateStore } from "data/store";
+import { useStore, stateStore } from "../../data/store";
+
 import { Route } from "next";
-
-const Headers = styled.header`
-	display: flex;
-	justify-content: space-between;
-	position: sticky;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding: 5px 0 5px 0;
-	border: none;
-	box-shadow: 0 0 5px darkgray;
-	background-color: var(--header-color);
-	z-index: 99;
-`;
-
-const Title = styled.span`
-	display: flex;
-	margin-left: 3vw;
-	font-weight: bold;
-	align-items: center;
-	z-index:999;
-`;
-
-const LongText = styled.div`
-	@media (max-width: 980px){
-		display:none;
-	}
-`;
-
-const ShortText = styled.div`
-	@media (min-width: 980px) {
-		display:none;
-	}
-`;
+import { useRouter } from "next/navigation";
 
 const NavContainers = styled.nav`
 	margin-right: 2vw;
@@ -103,45 +68,86 @@ const Borad = styled.nav`
 	animation: ${draw} 0.5s ease forwards;
 `;
 
-const MetaMaskBox = styled.div`
-	margin-right: auto;
-	margin-left: auto;
-	width: 5rem;
-	@media (max-width: 576px){
-		display: none;
-	}
-`;
-
-const sildIn = keyframes`
-  from {
-		transform: translateX(100%);
-	}
-	to {
-		transform: translateX(0);
-	}
-`;
+// const MetaMaskBox = styled.div`
+// 	margin-right: auto;
+// 	margin-left: auto;
+// 	width: 5rem;
+// 	@media (max-width: 576px){
+// 		display: none;
+// 	}
+// `;
 
 const Div = styled.div`
 	display: flex;
 	align-items: center;
-  animation: ${sildIn} 0.5s ease-out forwards;
 `;
 
 export default function Nav(){
+	const [ navState, setNavState ] = useState<boolean>(false);
+	const id = useStore((state: any) => state.id);
+	const router = useRouter();
+	
+	useLayoutEffect(() => {
+		const isLogin = async () => {
+			const req: any = await fetch(
+				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
+				{
+					method: 'GET',
+					credentials: 'include',
+					cache:'no-cache',
+				}
+			)
+			.then(res=>res.json());
+			if(req.message === 'auth user'){
+				const userId = stateStore.getState().id;
+				useStore.setState({id: userId}, true);
+			}
+		}
+		isLogin();
+	}, []);
+
+	const logoutHandler = async () => {
+		try{
+			const req: any = await fetch(
+				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/logout`,
+				{
+					method: 'POST',
+					body: JSON.stringify({id: stateStore.getState().id }),
+					headers: { 'Content-Type': 'application/json' },
+					credentials: 'include',
+					cache:'no-cache',
+				}
+			)
+			.then(res=>res.json());
+			if(req.message === 'logout success'){
+				useStore.setState({id: null}, true);
+				router.push('/');
+			} else if(req.message !== 'logout success'){
+				alert('log out failed!')
+			}
+		} catch(err){
+			throw err;
+		}
+	}
+
+	const darkModeHandler = () => {
+		// setDarkMode(!isDarkMode);
+	};
+	
 	return(
 			<Div>
-				<Lottie 
+				{/* <Lottie 
 					onClick={()=>{darkModeHandler()}}
 					animationData={lottieJson}
-					// play={stateStore.getState().darkMode}
-					// loop={false}
+					play={stateStore.getState().darkMode}
+					loop={false}
 					style={{ width: 50, height: 50 ,cursor:'pointer', marginRight:'20px'}}
-				/>
+				/> */}
 				<NavContainers>
 					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
 						about
 					</Link>
-					{ localStorage.id ?
+					{ id ?
 						<>
 							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} style={{fontSize:'1.5rem'}}>
 								posting
@@ -168,7 +174,7 @@ export default function Nav(){
 							>
 								about
 							</Link>
-							{ localStorage.id ?
+							{ id ?
 								<>
 									<Link 
 										href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 

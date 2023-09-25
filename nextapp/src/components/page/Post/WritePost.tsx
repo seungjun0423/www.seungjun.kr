@@ -78,7 +78,7 @@ const Select = styled.select`
 `;
 
 
-export default function CreatePost ({children}: {children: ReactNode}) {
+export default function WritePost ({children}: {children: ReactNode}) {
 	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
 		<option key='init' value='선택'>
 			선택
@@ -148,7 +148,7 @@ export default function CreatePost ({children}: {children: ReactNode}) {
 
 
 	return(
-		<WritePosts>
+		<WritePosts key='writePosts'>
 			<H1>
 				글 작성하기
 			</H1>

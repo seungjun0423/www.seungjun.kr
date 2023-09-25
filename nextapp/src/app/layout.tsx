@@ -14,7 +14,6 @@ import localFont from 'next/font/local';
 import { ScriptTag } from "util/InlineScript";
 import { ColorModeProvider } from "data/ColorModeContext";
 import ThemeContext from "data/ThemeContext";
-// import AuthContext from "data/AuthContext";
 
 const font = localFont({
   src: '../../public/font/JalnanOTF.otf',
@@ -55,30 +54,26 @@ export const metadata: Metadata = {
 export default function RootLayout ({ children }: Props) {
 
   return (
+		<ColorModeProvider>
+		<ThemeContext>
 		<html lang="ko">
 			<head>
-				<GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} />
-				<Script
-				strategy="beforeInteractive"
-				>
-					<ScriptTag />
-				</Script>
+				<GoogleAnalytics 
+					GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
+				/>
+				<ScriptTag />
 			</head>
 			<StyledComponentsRegistry >
-				<ColorModeProvider>
-					<ThemeContext>
-						{/* <AuthContext> */}
-							<body className={font.className}>
-								<Header/>
-								<Main>
-									{children}
-								</Main>
-								<Footer/>
-							</body>
-						{/* </AuthContext> */}
-					</ThemeContext>
-				</ColorModeProvider>
+				<body className={font.className}>
+					<Header/>
+						<Main>
+							{children}
+						</Main>
+					<Footer/>
+				</body>
 			</StyledComponentsRegistry>
     </html>
+		</ThemeContext>
+		</ColorModeProvider>
   );
 };

@@ -8,7 +8,7 @@ interface Post  {
 
 export default function Post() {
   return (
-		<section>
+		<section key='postBase'>
 			base 
 		</section>
   )

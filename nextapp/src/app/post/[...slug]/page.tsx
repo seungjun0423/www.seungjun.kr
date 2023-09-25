@@ -24,7 +24,7 @@ const getPostData = async (slug: string[]) : Promise<PostType | void> => {
 
 export const generateMetadata = async ({ params }: any): Promise<Metadata | void> => {
 	const { slug } = params;
-	if(slug[0] === 'write' || slug[0] === 'edit'){
+	if(slug[0] === 'write' || slug[1] === 'edit'){
 		return{
 			title: slug[0].toUpperCase(),
 			description: slug[0].toUpperCase(),
@@ -40,7 +40,7 @@ export const generateMetadata = async ({ params }: any): Promise<Metadata | void
 };
 
 export default async function Post({ params: { slug } }: Props) {
-	const postData = await getPostData(slug);
+	const postData: any = await getPostData(slug);
 	
 	if(slug[0] === 'write'){
 		const DynamicWritePost = dynamic(()=>import('components/page/Post/WritePost'),{ssr: false});
@@ -61,7 +61,7 @@ export default async function Post({ params: { slug } }: Props) {
 	} 
 		
 	return (
-		<section>
+		<section key={`readPost : ${postData.id}`}>
 			<ReadPost>
 				{postData}
 			</ReadPost>

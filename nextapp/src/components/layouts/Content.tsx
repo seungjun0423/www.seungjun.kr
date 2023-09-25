@@ -19,6 +19,7 @@ const Contents = styled.section`
 `;
 
 export default function Content ({ children }: Props) {
+
 	return (	
 		<Contents>
 			{children}

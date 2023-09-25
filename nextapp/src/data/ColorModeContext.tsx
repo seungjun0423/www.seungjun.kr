@@ -31,11 +31,11 @@ const lightTheme: Theme = {
 
 const darkTheme: Theme = {
   mode: 'dark',
-  text: 'white',
-	headerColor: 'gray',
+  text: '#eaeaea',
+	headerColor: '#292e2e',
   background: '#a9a9a9',
-  borderColor: '#eaecef',
-  bodyColor: '#a9a9a9',
+  borderColor: '#a9a9a9',
+  bodyColor: 'gray',
 };
 
 const COLOR_MODE_KEY = 'color-mode';

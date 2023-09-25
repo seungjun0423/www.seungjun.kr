@@ -5,7 +5,7 @@ import styles from 'styles/home.module.css';
 
 export default function Home() {
   return (
-    <section className={styles.home}>
+    <section key='home' className={styles.home}>
 			<div className={styles.box}>
 				방문해주셔서 감사합니다.<br/> 
 			</div>

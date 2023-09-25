@@ -11,7 +11,7 @@ interface Props  {
 
 export default function About ({ params }: Props) {
 	return(
-		<section className={styles.contents}>
+		<section key='about' className={styles.contents}>
 			<div className={styles.profileBox}>
 				<Image
 					className={styles.profile}

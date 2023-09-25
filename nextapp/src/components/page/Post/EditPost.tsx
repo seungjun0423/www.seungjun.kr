@@ -19,6 +19,8 @@ import SubmitBtn from "components/ui/button/SubmitBtn";
 import { PostType } from "types/interface";
 import { CategoryData } from "types/types";
 
+import { useRouter } from "next/navigation";
+
 const EditPosts = styled.section`
 	display: flex;
 	flex-direction: column;
@@ -81,6 +83,7 @@ const Select = styled.select`
 export default function EditPost ({ children }: {children: ReactNode}) {
 	const json = window.sessionStorage.getItem('post-storage');
 	const data: PostType = JSON.parse(json as string).state.nowPost;
+	const router = useRouter();
 
 
 	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
@@ -138,14 +141,15 @@ export default function EditPost ({ children }: {children: ReactNode}) {
 						body: JSON.stringify({ id: data.id, title, categoryId, contents}),
 						headers: { 'Content-Type': 'application/json' },
 						credentials: 'include',
-						cache:'no-cache',
-					}
+						cache: 'no-cache'					}
 				)
 				.then(req=>req.json());
 
 				if(req){
-					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
-					return alert('게시물이 수정되었습니다')
+					router.push('/')
+					alert('게시물이 수정되었습니다')
+					
+					return;
 				} else if(!req){
 					alert('게시물 수정 실패')
 				}
@@ -156,7 +160,7 @@ export default function EditPost ({ children }: {children: ReactNode}) {
 	};
 
 	return(
-		<EditPosts>
+		<EditPosts key='editPosts'>
 			<H1>
 				글 수정하기
 			</H1>
@@ -199,7 +203,7 @@ export default function EditPost ({ children }: {children: ReactNode}) {
 										method: 'POST',
 										body: formData,
 										credentials: 'include',
-										cache:'no-cache',
+										cache: 'no-cache'
 									}
 								)
 								.then(req=>req.json());

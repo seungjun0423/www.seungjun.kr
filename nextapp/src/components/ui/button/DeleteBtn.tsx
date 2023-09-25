@@ -4,6 +4,7 @@ import { stateStore } from "data/store";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PostType } from "types/interface";
+import { useRouter } from "next/navigation";
 
 const DeleteBtns = styled.button`
 	font-size: 1.2rem;
@@ -13,7 +14,7 @@ const DeleteBtns = styled.button`
 `;
 export default function DeleteBtn ({ children }: {children: PostType}) {
 	const [btn, setBtn] = useState<React.ReactElement>(<></>);
-
+	const router = useRouter();
 	const deleteHandler = async () => {
 		const req: any = await fetch(
 			`${process.env.NEXT_PUBLIC_CORS_URL}/post/delete/${children.id}`,
@@ -21,14 +22,14 @@ export default function DeleteBtn ({ children }: {children: PostType}) {
 				method: 'DELETE',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
-				cache:'no-cache',
+				cache:'no-store',
 			}
 		)
 		.then(res=>res.json());
 
 		if(req.id === children.id){
+			router.push('/');
 			alert('게시물이 삭제되었습니다')
-			window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}/`)
 		}
 	};
 	useEffect(()=>{

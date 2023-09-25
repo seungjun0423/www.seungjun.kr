@@ -1,5 +1,6 @@
 // import Script from "next/script";
 import { themeProperties } from "data/ColorModeContext";
+import Script from "next/script";
 
 const COLOR_MODE_KEY = 'color-mode';
 const INITIAL_COLOR_MODE_CSS_PROP = '--initial-color-mode';
@@ -53,6 +54,5 @@ export function ScriptTag():any{
     .replace('[COLORMODECSSPROP]', INITIAL_COLOR_MODE_CSS_PROP);
 
   const fnToRunOnClient = `(${stringifyFn})()`;
-    // return <Script 	strategy="beforeInteractive" dangerouslySetInnerHTML={{__html: fnToRunOnClient,}}/>;
-    return <><script  dangerouslySetInnerHTML={{__html: fnToRunOnClient,}}/></>
+    return <Script dangerouslySetInnerHTML={{__html: fnToRunOnClient,}}/>
 }
