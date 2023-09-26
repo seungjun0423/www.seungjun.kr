@@ -4,6 +4,8 @@ import React, { useState, useLayoutEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
 
+import useSWR from 'swr';
+
 import Lottie from 'react-lottie-player';
 import lottieJson from '../../../public/lottiefiles/darkmode.json';
 import { useStore, stateStore } from "../../data/store";
@@ -84,25 +86,87 @@ const Div = styled.div`
 
 export default function Nav(){
 	const [ navState, setNavState ] = useState<boolean>(false);
-	const id = useStore((state: any) => state.id);
+	const [auth, setAuth] = useState(<></>)
+	const [authMobile, setAuthMobile] = useState(<></>)
 	const router = useRouter();
 	
 	useLayoutEffect(() => {
 		const isLogin = async () => {
+			
 			const req: any = await fetch(
 				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
 				{
 					method: 'GET',
 					credentials: 'include',
-					cache:'no-cache',
 				}
 			)
 			.then(res=>res.json());
+
 			if(req.message === 'auth user'){
 				const userId = stateStore.getState().id;
-				useStore.setState({id: userId}, true);
-			}
+				
+				if(userId){
+					useStore.setState({id: userId}, true);
+
+					setAuth(
+						<>
+							<Link 
+								style={{ fontSize: '1.5rem' }}
+								href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 
+							>
+								posting
+							</Link>
+							<div 
+								style={{ color: '#5e5e5e', cursor: 'pointer', fontSize: '1.5rem' }}
+								onClick={logoutHandler} 
+							>
+								logout
+							</div>
+						</>
+					);
+
+					setAuthMobile(
+						<>
+							<Link 
+								href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 
+								style={{ color:'gray',fontSize:'1rem', marginTop:'1rem'}}
+							>
+								posting
+							</Link>
+							<div 
+								style={{ 
+									color:'gray', cursor:'pointer',fontSize:'1.1rem', marginTop:'1rem', marginBottom: '6px'
+								}}
+								onClick={logoutHandler}
+								>
+								logout
+							</div>
+						</>
+					);
+				}
+			};
+
+			setAuth(
+				<Link 
+					href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} 
+					style={{fontSize:'1.5rem'}}
+				>
+					login
+				</Link>
+			);
+
+			setAuthMobile(
+				<Link 
+					style={{ 
+						color:'gray',fontSize:'1rem', marginTop:'1rem', marginBottom: '6px'
+					}}
+					href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} 
+				>
+					login
+				</Link>
+			);
 		}
+
 		isLogin();
 	}, []);
 
@@ -147,20 +211,7 @@ export default function Nav(){
 					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
 						about
 					</Link>
-					{ id ?
-						<>
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} style={{fontSize:'1.5rem'}}>
-								posting
-							</Link> 
-							<div onClick={logoutHandler} style={{color: '#5e5e5e', cursor:'pointer', fontSize: '1.5rem' }} >
-								logout
-							</div>
-						</>
-						:
-						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} style={{fontSize:'1.5rem'}}>
-							login
-						</Link>
-					}
+					{auth}
 				</NavContainers>
 				<NavBoxes onClick={()=>{setNavState(!navState)}}>
 					<NavBtn>
@@ -174,26 +225,7 @@ export default function Nav(){
 							>
 								about
 							</Link>
-							{ id ?
-								<>
-									<Link 
-										href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 
-										style={{ color:'gray',fontSize:'1rem', marginTop:'1rem'}}
-									>
-										posting
-									</Link>
-									<div onClick={logoutHandler} style={{ color:'gray', cursor:'pointer',fontSize:'1.1rem', marginTop:'1rem', marginBottom: '6px' }}>
-										logout
-									</div>
-								</>
-								:
-								<Link 
-									href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} 
-									style={{ color:'gray',fontSize:'1rem', marginTop:'1rem', marginBottom: '6px'}}
-								>
-									login
-								</Link>
-							}
+							{ authMobile }
 						</Borad>
 						: <></>
 					}
