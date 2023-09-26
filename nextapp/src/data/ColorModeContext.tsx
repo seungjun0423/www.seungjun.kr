@@ -10,66 +10,7 @@ import {
   useCallback,
 } from 'react';
 import useMediaQuery from '../util/useMediaQuery';
-
-type Theme = {
-	mode: string;
-	text: string;
-	headerColor: string;
-	background: string;
-	borderColor: string;
-	bodyColor: string;
-}; 
-
-const lightTheme: Theme = {
-  mode: 'light',
-  text: 'black',
-	headerColor: '#ffffff',
-  background: '#fafafa',
-  borderColor: '#eaeaea',
-  bodyColor: '#fafafa',
-};
-
-const darkTheme: Theme = {
-  mode: 'dark',
-  text: '#eaeaea',
-	headerColor: '#292e2e',
-  background: '#a9a9a9',
-  borderColor: '#a9a9a9',
-  bodyColor: 'gray',
-};
-
-const COLOR_MODE_KEY = 'color-mode';
-const INITIAL_COLOR_MODE_CSS_PROP = '--initial-color-mode';
-
-const themeProperties = {
-  'mode-color': {
-    light: lightTheme.mode,
-    dark: darkTheme.mode,
-  },
-  'text-color': {
-    light: lightTheme.text,
-    dark: darkTheme.text,
-  },
-  'background-color': {
-    light: lightTheme.background,
-    dark: darkTheme.background,
-  },
-  'border-color': {
-    light: lightTheme.borderColor,
-    dark: darkTheme.borderColor,
-  },
-  'body-color': {
-    light: lightTheme.bodyColor,
-    dark: darkTheme.bodyColor,
-  },
-	'header-color':{
-		light: lightTheme.headerColor,
-    dark: darkTheme.headerColor,
-	}
-};
-
-export { lightTheme, darkTheme, themeProperties, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP };
-
+import { COLOR_MODE_KEY, themeProperties } from '../styles/theme';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -80,7 +21,7 @@ interface ColorModeContextValue {
 
 const ColorModeContext = createContext<ColorModeContextValue | null>(null);
 
-const ColorModeProvider = ({ children }: { children: ReactNode }) => {
+export const ColorModeProvider = ({ children }: { children: ReactNode }) => {
   const [colorMode, setRawColorMode] = useState<string | undefined>(undefined);
   const systemPrefers = useMediaQuery('(prefers-color-scheme: dark)');
   const firstRender = useRef(true);
@@ -116,7 +57,7 @@ const ColorModeProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const useColorModeContext = () => {
+export const useColorModeContext = () => {
   const context = useContext(ColorModeContext);
   if (context === null) {
     throw new Error('useColorModeContext must be used within a ThemeProvider');
@@ -124,5 +65,4 @@ const useColorModeContext = () => {
   return context;
 };
 
-export { ColorModeProvider, useColorModeContext };
 

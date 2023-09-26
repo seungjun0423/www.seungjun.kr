@@ -13,7 +13,7 @@ import Footer from "components/layouts/Footer";
 import localFont from 'next/font/local';
 import { ScriptTag } from "util/InlineScript";
 import { ColorModeProvider } from "data/ColorModeContext";
-import ThemeContext from "data/ThemeContext";
+import ThemeProvider from "data/ThemeProvider";
 
 const font = localFont({
   src: '../../public/font/JalnanOTF.otf',
@@ -54,26 +54,33 @@ export const metadata: Metadata = {
 export default function RootLayout ({ children }: Props) {
 
   return (
-		<html lang="ko">
+		<html lang="en">
 			<head>
-				<GoogleAnalytics 
-					GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
-				/>
+				{/* <Script strategy="afterInteractive">
+					<GoogleAnalytics 
+						GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
+						/>
+				</Script> */}
 			</head>
-			<StyledComponentsRegistry >
 			<ColorModeProvider>
-			<ThemeContext>
+			<ThemeProvider>
+			<StyledComponentsRegistry >
 				<body className={font.className}>
-					{/* <ScriptTag /> */}
+					<Script>
+						<ScriptTag />
+					</Script>
+					<GoogleAnalytics 
+						GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
+					/>
 					<Header/>
 						<Main>
 							{children}
 						</Main>
 					<Footer/>
 				</body>
-			</ThemeContext>
-			</ColorModeProvider>
 			</StyledComponentsRegistry>
-    </html>
+			</ThemeProvider>
+			</ColorModeProvider>
+			</html>
   );
 };

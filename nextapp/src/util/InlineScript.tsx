@@ -1,8 +1,4 @@
-import Script from "next/script";
-import { themeProperties } from "data/ColorModeContext";
-
-const COLOR_MODE_KEY = 'color-mode';
-const INITIAL_COLOR_MODE_CSS_PROP = '--initial-color-mode';
+import { COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP, themeProperties } from "styles/theme";
 
 export function setColorsByTheme():any{
 	const modeProperties = '[modeProperties]';
@@ -54,5 +50,5 @@ export function ScriptTag():any{
 
   const fnToRunOnClient = `(${stringifyFn})()`;
 	
-	return <script dangerouslySetInnerHTML={{__html: fnToRunOnClient}}/>
+	return (<script dangerouslySetInnerHTML={{__html: fnToRunOnClient}}/>)
 }

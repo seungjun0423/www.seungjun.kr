@@ -23,7 +23,6 @@ export const stateStore = create(
   persist(
     (set, get): any => ({
 			id: null,
-			darkMode: false,
 			setStore: (input: number | null)=> set({id: input})
     }),
     {
