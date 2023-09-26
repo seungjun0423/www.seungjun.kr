@@ -1,0 +1,25 @@
+.home {
+	display: flex;
+	flex-direction: column;
+	font-size: 1.2rem;
+	margin-top: 50px;
+	margin-left: 100px;
+	background-color: var(--body-color);
+}
+
+.box {
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.link {
+	color: purple;
+	opacity: 0.4;
+}
+
+@media (max-width:767px) {
+	.home {
+		margin-left: 0;
+	}
+}

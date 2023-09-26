@@ -1,0 +1,39 @@
+.contents {
+	padding-top: 5vh;
+}
+
+.profileBox{
+	display: flex;
+	justify-content: center;
+}
+.profile {
+	box-shadow: 2px 2px 2px 3px lightgray;
+	border-radius: 100%;
+}
+
+.textBox{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 5vh;
+}
+
+.desc {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+}
+
+@media (max-width: 576px) {
+	.profile {
+		box-shadow: 2px 2px 2px 3px lightgray;
+		border-radius: 100%;
+		width: 200px;
+		height: 210px;
+	}
+}

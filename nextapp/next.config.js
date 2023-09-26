@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-	// images: {
-	// 	remotePatterns: [
-	// 		{
-	// 			protocol: 'https',
-	// Todo : 호스트 네임 추후 설정 필요 
-	// 			hostname: '추후 설정'
-	// 		}
-	// 	]
-	// },
+	experimental: {
+    // typedRoutes: true,
+  },
+	// typescript: {
+  //   ignoreBuildErrors: true,
+  // },
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 's3.ap-northeast-2.amazonaws.com',
+			}
+		]
+	},
 	// async redirects(){
 	// 	return [
 	// 		{
@@ -21,6 +26,33 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+	swcMinify: true,
+	// reactStrictMode:true,
+	// async redirects(){
+  //   return [
+  //     {
+  //       source: "/auth",
+  //       destination: "/",
+  //       permanent: false
+  //     }
+  //   ]
+  // }
+	// dAppMetadata: {
+  //   name: "blog",
+  //   // url: "https://seungjun.kr",
+  //   url: "http://localhost:3000",
+  // },
 };
+
+// module.exports = {
+//   async rewrites() {
+//     return [
+//       {
+//         source: '/auth',
+//         destination: '/',
+//       },
+//     ]
+//   },
+// }
 
 module.exports = nextConfig

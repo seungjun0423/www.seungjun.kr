@@ -15,8 +15,8 @@
 	/* 파이어폭스 스크롤바 숨기기*/
 	scrollbar-width: none; 
 }
+
 html {
-  font-size: 18px;
 	width: 100%;
 	height: 100%;
 	overflow-y: auto;
@@ -24,32 +24,39 @@ html {
 }
 
 body {
+	font-size: 22px;
 	width: 100%;
 	height: 100%;
   padding: 0;
   margin: 0;
+	background: var(--body-color);
 }
 
-a {
+
+a,input {
   text-decoration: none;
-	color: black;
+	color: #5e5e5e;
 }
 
+button,input {
+	font-family: inherit;
+	font-size: 1rem;
+	color: #5e5e5e;
+}
 
-@media(max-width: 1200px){
-	html {
-		font-size: 16px;
+@media(min-width: 1200px){
+	html, body, button, input {
+		font-size: 20px;
 	}
 }
 
-@media(max-width: 768px){
-	html {
-		font-size: 14px;
+@media(min-width: 768px){
+	html, body, button, input {
+		font-size: 18px; 
 	}
 }
 
-@media(max-width: 576px){
-	html {
-		font-size: 13px;
-	}
+.toastui-editor-contents,.toastui-editor-defaultUI, .ProseMirror {
+	/* font-family: inherit !important; */
+	font-size: 16px !important;
 }

@@ -5,19 +5,17 @@ import React from "react";
 import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
-import { authState, editState } from "data/store";
-import CategoryTitle from "components/modules/Category/CategoryTitle";
-import EditCategory from "components/ui/EditCategory";
+import CategoryTitle from "components/page/CategoryTitle";
+import { CategoryData } from 'types/types'
 
-import { SidebarDummy } from "data/dummy";
-import UpdatCategory from "components/modules/Category/UpdateCategory";
 
 const Sidebars = styled.aside`
-	border-right: 1px solid #eaecef;
+	box-shadow: 2px 0 2px var(--border-color);
 	overflow-y: auto;
 	width: 30%;
 	max-width: 220px;
 	min-width: 160px;
+	border:none;
 
 	@media (max-width: 576px) {
 		border-right: 0;
@@ -33,17 +31,13 @@ const Wrapper = styled.div`
 	@media (max-width: 576px) {
 		position: fixed; 
 		bottom: 0;
-		display: flex;
-		flex-direction: row;
-		border-top: 1px solid #eaecef;
+		border-top: 1px solid var(--border-color);
 		width: 100%;
 		border-right: 0;
 		gap: 3rem;
-		padding: 1rem;
 		align-items: center;
 		overflow-x: auto;
 		z-index: 99;
-		background-color:#ffffff;
 	}
 `;
 
@@ -63,27 +57,19 @@ const ListBox = styled.div`
 `;
 
 /** List 컴포넌트의 뷰를 담당*/
-export default function Sidebar () {
-	const { isAdmin, setIsAdmin } = authState();
-	const { isEdit, setIsEdit } = editState();
-
+export default function Sidebar ({ data }: { data: CategoryData[] }) {
   return (
-    <Sidebars>
+		<Sidebars>
 			<Wrapper>
-				{ isAdmin?  <EditCategory/>: <></> }
 				<ListBox>
-					{ isEdit ?
-						SidebarDummy.map((el, index)=>{
-							return <UpdatCategory key={index} title={el.title} posts={el.post}/>
+					{
+						data.map((el, index)=>{
+							return <CategoryTitle key={index} title={el.title} categoryId={el.id}/>
 						})
-						: SidebarDummy.map((el, index)=>{
-							return <CategoryTitle key={index} title={el.title} posts={el.post}/>
-						})
-						
 					}
 				</ListBox>
 
 			</Wrapper>
-    </Sidebars>
+		</Sidebars>
   );
 };
