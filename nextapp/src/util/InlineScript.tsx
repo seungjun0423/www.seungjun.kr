@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP, themeProperties } from "styles/theme";
 
 export function setColorsByTheme():any{
@@ -50,5 +51,10 @@ export function ScriptTag():any{
 
   const fnToRunOnClient = `(${stringifyFn})()`;
 	
-	return (<script dangerouslySetInnerHTML={{__html: fnToRunOnClient}}/>)
+	return (
+		<Script 
+			strategy="beforeInteractive"
+			dangerouslySetInnerHTML={{__html: fnToRunOnClient}}
+		/>
+	)
 }

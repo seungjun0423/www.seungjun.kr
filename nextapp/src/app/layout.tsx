@@ -54,21 +54,17 @@ export const metadata: Metadata = {
 export default function RootLayout ({ children }: Props) {
 
   return (
-		<html lang="en">
-			<head>
-				{/* <Script strategy="afterInteractive">
-					<GoogleAnalytics 
-						GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
-						/>
-				</Script> */}
-			</head>
+		<html 
+			lang="en"
+			suppressHydrationWarning={true}
+		>
 			<ColorModeProvider>
 			<ThemeProvider>
 			<StyledComponentsRegistry >
-				<body className={font.className}>
-					<Script>
-						<ScriptTag />
-					</Script>
+				<body 
+					className={font.className}  
+				>
+					<ScriptTag />
 					<GoogleAnalytics 
 						GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
 					/>
