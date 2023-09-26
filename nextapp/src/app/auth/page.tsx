@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useStore, stateStore } from "data/store";
 
@@ -70,7 +70,8 @@ export default function Auth () {
 	const [ password, setPassword ] = useState<string>('');
 	const focusId = useRef<HTMLInputElement>(null);
 	const focusPw = useRef<HTMLInputElement>(null);
-	
+	const store : any = useStore(state=>state);
+	const localStorage : any = stateStore(state=>state);
 	const router = useRouter();
 	function onChangeId(val: string) {
 		setId(val);
@@ -108,8 +109,8 @@ export default function Auth () {
 				.then(res=>res.json());
 
 				if(req.message === 'login success'){
-					stateStore.setState({ id: req.id  },true);
-					useStore.setState({ id: req.id  },true);
+					store.setStore(req.id);
+					localStorage.setStore(req.id);
 					router.push('/');
 				}
 			}

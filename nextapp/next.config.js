@@ -2,7 +2,7 @@
 
 const nextConfig = {
 	experimental: {
-    typedRoutes: true,
+    // typedRoutes: true,
   },
 	// typescript: {
   //   ignoreBuildErrors: true,

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
 import Image from "next/image";

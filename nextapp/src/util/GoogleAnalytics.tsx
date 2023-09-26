@@ -6,12 +6,12 @@ export default function GoogleAnalytics({GA_TRACKING_ID} : {GA_TRACKING_ID : str
     return (
         <>
 					<Script 
-						strategy="afterInteractive" 
+						strategy="lazyOnload" 
 						src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
 					/>
 					<Script 
 						id='google-analytics' 
-						strategy="afterInteractive"
+						strategy="lazyOnload"
 						dangerouslySetInnerHTML={{
 							__html: `
 							window.dataLayer = window.dataLayer || [];

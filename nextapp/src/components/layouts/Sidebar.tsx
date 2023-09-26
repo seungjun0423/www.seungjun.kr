@@ -1,8 +1,8 @@
 'use client'
 
 // 라이브러리 
-import React, { useContext } from "react";
-import styled, { keyframes } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 
 // 컴포넌트와 기타 등등
 import CategoryTitle from "components/page/CategoryTitle";

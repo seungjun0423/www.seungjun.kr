@@ -1,7 +1,7 @@
 'use client';
 
 import { stateStore } from "data/store";
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import { PostType } from "types/interface";
 import { useRouter } from "next/navigation";
@@ -15,6 +15,8 @@ const DeleteBtns = styled.button`
 export default function DeleteBtn ({ children }: {children: PostType}) {
 	const [btn, setBtn] = useState<React.ReactElement>(<></>);
 	const router = useRouter();
+	const localStorage: any = stateStore(state=>state);
+
 	const deleteHandler = async () => {
 		const req: any = await fetch(
 			`${process.env.NEXT_PUBLIC_CORS_URL}/post/delete/${children.id}`,
@@ -32,10 +34,8 @@ export default function DeleteBtn ({ children }: {children: PostType}) {
 			alert('게시물이 삭제되었습니다')
 		}
 	};
-	useEffect(()=>{
-		const localStorage = stateStore.getState();
 
-
+	useLayoutEffect(()=>{
 		if(localStorage.id){
 			const goDelete = (
 				<DeleteBtns onClick={()=>deleteHandler()}>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Link from "next/link";
 import { Route } from "next";
 import { PostType } from "types/interface";
@@ -8,11 +8,8 @@ import { stateStore } from "data/store";
 
 export default function EditBtn ({ children }: {children: PostType}) {
 	const [btn, setBtn] = useState<React.ReactElement>(<></>);
-
-	useEffect(()=>{
-		const localStorage = stateStore.getState();
-
-
+	const localStorage: any = stateStore(state=>state);
+	useLayoutEffect(()=>{
 		if(localStorage.id){
 			const goEdit = (
 				<Link 

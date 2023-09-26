@@ -2,16 +2,15 @@ import { PostType } from 'types/interface';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware'
 
-export const useStore = create((set) => ({
+export const useStore = create((set, get) => ({
   id: null,
-	setStore: (input: number)=> set((state: any) => {id: input})
+	setStore: (input: number | null)=> set({id: input})
 }))
 
 export const postStore= create(
   persist(
     (set, get): any => ({
       nowPost: {},
-			setNowPost: (input: PostType) => {nowPost: input}
     }),
     {
       name: 'post-storage', 
@@ -20,11 +19,12 @@ export const postStore= create(
   )
 )
 
-export const stateStore: any = create(
+export const stateStore = create(
   persist(
     (set, get): any => ({
 			id: null,
 			darkMode: false,
+			setStore: (input: number | null)=> set({id: input})
     }),
     {
       name: 'state-storage', 
