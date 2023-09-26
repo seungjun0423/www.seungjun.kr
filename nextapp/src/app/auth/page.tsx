@@ -4,9 +4,14 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useStore, stateStore } from "data/store";
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { Submit } from "types/interface";
 import { useRouter } from "next/navigation";
+import CustomToastContainer from "components/ui/CustomToastContainer";
 
 const Auths = styled.div`
 	width: 100%;
@@ -73,6 +78,7 @@ export default function Auth () {
 	const store : any = useStore(state=>state);
 	const localStorage : any = stateStore(state=>state);
 	const router = useRouter();
+
 	function onChangeId(val: string) {
 		setId(val);
 	}
@@ -82,18 +88,22 @@ export default function Auth () {
 	}
 
 	const signUpHandler = () => {
-		alert('현재는 운영자만 사용 가능합니다.')
+		const notify = () => toast("현재는 운영자만 사용 가능합니다.");
+		return notify();
 	}
 
 	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
 		try{
 			if(type === 'login'){
 				if(!email && !password){
-					return alert('아이디와 비밀번호를 입력해주세요');
+					const notify = () => toast('아이디와 비밀번호를 입력해주세요');
+					return notify()
 				} else if(!email){
-					return alert('아이디를 입력해주세요');
+					const notify = () => toast('아이디를 입력해주세요');
+					return notify()
 				} else if(!password){
-					return alert('비밀번호를 입력해주세요');
+					const notify = () => toast('비밀번호를 입력해주세요');
+					return notify()
 				};
 				
 				const req: any = await fetch(
@@ -115,7 +125,8 @@ export default function Auth () {
 				}
 			}
 		} catch(err) {
-			alert('비밀번호를 확인해주세요');
+			const notify = () => toast('비밀번호를 확인해주세요');
+			return notify()
 		}
 	};
 
@@ -171,6 +182,7 @@ export default function Auth () {
 			<SubmitBtn 
 				handler={()=>{submitHandler({type:'login', email: id, password: password})}}
 			/>
+			<CustomToastContainer />
 		</Auths>
 	)
 }
