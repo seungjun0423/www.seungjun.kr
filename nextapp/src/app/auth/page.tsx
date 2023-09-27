@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { Submit } from "types/interface";
 import { useRouter } from "next/navigation";
-import CustomToastContainer from "components/ui/CustomAlert";
 
 const Auths = styled.div`
 	width: 100%;
@@ -67,7 +66,6 @@ const SignUp = styled.button`
 	cursor: pointer;
 `;
 
-
 export default function Auth () {
 	const [ id, setId ] = useState<string>('');
 	const [ password, setPassword ] = useState<string>('');
@@ -120,11 +118,19 @@ export default function Auth () {
 					store.setStore(req.id);
 					localStorage.setStore(req.id);
 					router.push('/');
+					const notify = () => toast('로그인 성공');
+					return notify();
+				} else if(req.message === 'user not founded'){
+					const notify = () => toast('아이디를 확인해주세요');
+					return notify();
+				} else if(req.message === 'wrong password'){
+					const notify = () => toast('비밀번호를 확인해주세요');
+					return notify();
 				}
 			}
 		} catch(err) {
-			const notify = () => toast('비밀번호를 확인해주세요');
-			return notify()
+			const notify = () => toast('로그인 과정에서 에러가 발생했습니다.');
+			return notify();
 		}
 	};
 
@@ -180,7 +186,6 @@ export default function Auth () {
 			<SubmitBtn 
 				handler={()=>{submitHandler({type:'login', email: id, password: password})}}
 			/>
-			<CustomToastContainer />
 		</Auths>
 	)
 }

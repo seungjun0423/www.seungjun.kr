@@ -44,17 +44,6 @@ const ShortText = styled.div`
 	}
 `;
 
-const draw = keyframes`
-  from {
-		transform: translateY(-10px);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-`;
-
 /** Header 컴포넌트 */
 export default function Header () {
 	

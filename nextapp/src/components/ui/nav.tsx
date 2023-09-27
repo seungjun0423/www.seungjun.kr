@@ -1,95 +1,23 @@
 'use client';
-
-import React, { useState, useLayoutEffect } from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useLayoutEffect, useState } from "react";
 import Link from "next/link";
+import { Route } from "next";
+import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
 
 import Lottie from 'react-lottie-player';
 import lottieJson from '../../../public/lottiefiles/darkmode.json';
 import { useStore, stateStore } from "../../data/store";
+import { NavContainers, NavBoxes, NavBtn, draw, Borad, Div } from '../../styles/NavStyled';
 
-import { Route } from "next";
-import { useRouter } from "next/navigation";
-
-const NavContainers = styled.nav`
-	margin-right: 2vw;
-	display: flex;
-	align-items: center;
-	gap: 2.5rem;
-
-	@media (max-width: 576px) {
-		display: none;
-	}
-`;
-
-const NavBoxes = styled.div`
-	margin-right: 3vw;
-	width: 3.8rem;
-	height: 3rem;
-	border-radius: 7px;
-	box-shadow: 0px 1px 1px 0 gray;
-
-	@media (min-width: 576px) {
-		display: none;
-	}
-`;
-
-const NavBtn = styled.button`
-	width: 100%;
-	height: 100%;
-	font-size: 1.5rem;
-	border: 1px solid #eaecef;
-	border-radius: 5px;
-	color: gray;
-	justify-content: center;
-	cursor: pointer;
-`;
-
-const draw = keyframes`
-  from {
-		transform: translateY(-10px);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-`;
-
-const Borad = styled.nav`
-	display: flex;
-	width: 100%;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 5px;
-	background-color: beige;
-	border: 1px solid #eaecef;
-	border-radius: 10px;
-	animation: ${draw} 0.5s ease forwards;
-`;
-
-// const MetaMaskBox = styled.div`
-// 	margin-right: auto;
-// 	margin-left: auto;
-// 	width: 5rem;
-// 	@media (max-width: 576px){
-// 		display: none;
-// 	}
-// `;
-
-const Div = styled.div`
-	display: flex;
-	align-items: center;
-`;
-
-export default function Nav(){
+export default  function Nav(){
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
 	const router = useRouter();
 
 	useLayoutEffect(() => {
-		const isLogin = async () => {
+		const authCheck = async () => {
 			const req: any = await fetch(
 				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
 				{
@@ -103,9 +31,11 @@ export default function Nav(){
 				if(userId){
 					store.setStore(userId);
 				}
+			} else if(req.message === 'Unauthorized'){
+				return;
 			}
 		}
-		isLogin();
+		authCheck();
 	}, []);
 
 	const logoutHandler = async () => {
@@ -126,7 +56,9 @@ export default function Nav(){
 				store.setStore(null);
 				router.push('/');
 			} else if(req.message !== 'logout success'){
-				alert('log out failed!')
+				console.log(req.message);
+				const notify = () => toast('비밀번호를 확인해주세요');
+				return notify()
 			}
 		} catch(err){
 			throw err;
@@ -139,13 +71,13 @@ export default function Nav(){
 	
 	return(
 			<Div>
-				{/* <Lottie 
+				<Lottie 
 					onClick={()=>{darkModeHandler()}}
 					animationData={lottieJson}
-					play={stateStore.getState().darkMode}
+					play={false}
 					loop={false}
 					style={{ width: 50, height: 50 ,cursor:'pointer', marginRight:'20px'}}
-				/> */}
+				/>
 				<NavContainers>
 					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
 						about

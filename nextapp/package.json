@@ -19,7 +19,6 @@
     "eslint-config-next": "latest",
     "html-react-parser": "^4.2.2",
     "next": "canary",
-    "next-themes": "^0.2.1",
     "prismjs": "^1.29.0",
     "react": "latest",
     "react-dom": "latest",

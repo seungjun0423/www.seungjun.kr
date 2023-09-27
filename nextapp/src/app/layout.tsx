@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Metadata } from 'next';
-import Script from "next/script";
+
 import '../styles/globals.css';
 
 import StyledComponentsRegistry from '../components/lib/registry';
@@ -14,6 +14,7 @@ import localFont from 'next/font/local';
 import { ScriptTag } from "util/InlineScript";
 import { ColorModeProvider } from "data/ColorModeContext";
 import ThemeProvider from "data/ThemeProvider";
+import CustomAlert from "components/ui/CustomAlert";
 
 const font = localFont({
   src: '../../public/font/JalnanOTF.otf',
@@ -51,16 +52,12 @@ export const metadata: Metadata = {
 	},
 }
 
-export default function RootLayout ({ children }: Props) {
-
+export default async function RootLayout ({ children }: Props) {
   return (
 		<html 
 			lang="en"
 			suppressHydrationWarning={true}
 		>
-			<ColorModeProvider>
-			<ThemeProvider>
-			<StyledComponentsRegistry >
 				<body 
 					className={font.className}  
 				>
@@ -68,15 +65,19 @@ export default function RootLayout ({ children }: Props) {
 					<GoogleAnalytics 
 						GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
 					/>
+					<ColorModeProvider>
+					<ThemeProvider>
+					<StyledComponentsRegistry >
 					<Header/>
 						<Main>
 							{children}
 						</Main>
 					<Footer/>
+					<CustomAlert/>
+					</StyledComponentsRegistry>
+					</ThemeProvider>
+					</ColorModeProvider>
 				</body>
-			</StyledComponentsRegistry>
-			</ThemeProvider>
-			</ColorModeProvider>
 			</html>
   );
 };
