@@ -5,13 +5,11 @@ import styled from "styled-components";
 import { useStore, stateStore } from "data/store";
 
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { toast } from 'react-toastify';
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { Submit } from "types/interface";
 import { useRouter } from "next/navigation";
-import CustomToastContainer from "components/ui/CustomToastContainer";
+import CustomToastContainer from "components/ui/CustomAlert";
 
 const Auths = styled.div`
 	width: 100%;

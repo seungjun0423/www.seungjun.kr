@@ -57,6 +57,36 @@ button,input {
 }
 
 .toastui-editor-contents,.toastui-editor-defaultUI, .ProseMirror {
-	/* font-family: inherit !important; */
 	font-size: 16px !important;
+}
+.Toastify__toast{
+	font-family: inherit !important;
+}
+.Toastify__toast-body {
+	font-family: inherit !important;
+	font-size: 16px;
+	padding-left: 23px !important;
+}
+
+.Toastify__toast-container {
+	margin-left: 6rem;
+}
+
+@media(max-width: 1000px) {
+	.Toastify__toast-container {
+		margin-left: 5rem;
+	}
+}
+
+@media(max-width: 576px){
+	.Toastify__toast-container {
+		margin-left: 0;
+	}
+}
+
+@media(max-width: 480px){
+	.Toastify__toast-body {
+		font-family: inherit !important;
+		padding-left: 70px !important;
+	}
 }

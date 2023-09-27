@@ -4,7 +4,7 @@ const lightTheme = {
   text: 'black',
 	headerColor: '#ffffff',
   background: '#fafafa',
-  borderColor: '#eaeaea',
+  borderColor: '#a9a9a93c',
   bodyColor: '#fafafa',
 };
 
