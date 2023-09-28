@@ -16,27 +16,27 @@ export default  function Nav(){
 	const localStorage : any = stateStore(state => state);
 	const router = useRouter();
 
-	useLayoutEffect(() => {
-		const authCheck = async () => {
-			const req: any = await fetch(
-				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
-				{
-					method: 'GET',
-					credentials: 'include',
-				}
-			)
-			.then(res=>res.json());
-			if(req.message === 'auth user'){
-				const userId = localStorage.id;
-				if(userId){
-					store.setStore(userId);
-				}
-			} else if(req.message === 'Unauthorized'){
-				return;
-			}
-		}
-		authCheck();
-	}, []);
+	// useLayoutEffect(() => {
+	// 	const authCheck = async () => {
+	// 		const req: any = await fetch(
+	// 			`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
+	// 			{
+	// 				method: 'GET',
+	// 				credentials: 'include',
+	// 			}
+	// 		)
+	// 		.then(res=>res.json());
+	// 		if(req.message === 'auth user'){
+	// 			const userId = localStorage.id;
+	// 			if(userId){
+	// 				store.setStore(userId);
+	// 			}
+	// 		} else if(req.message === 'Unauthorized'){
+	// 			return;
+	// 		}
+	// 	}
+	// 	authCheck();
+	// }, []);
 
 	const logoutHandler = async () => {
 		try{

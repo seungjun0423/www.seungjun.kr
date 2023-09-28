@@ -54,30 +54,25 @@ export const metadata: Metadata = {
 
 export default async function RootLayout ({ children }: Props) {
   return (
-		<html 
-			lang="en"
-			suppressHydrationWarning={true}
-		>
-				<body 
-					className={font.className}  
-				>
+		<html lang="en">
+			<body className={font.className}>
+				<GoogleAnalytics 
+					GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
+				/>
+				<ColorModeProvider>
+				<ThemeProvider>
+				<StyledComponentsRegistry >
 					<ScriptTag />
-					<GoogleAnalytics 
-						GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
-					/>
-					<ColorModeProvider>
-					<ThemeProvider>
-					<StyledComponentsRegistry >
 					<Header/>
 						<Main>
 							{children}
 						</Main>
 					<Footer/>
 					<CustomAlert/>
-					</StyledComponentsRegistry>
-					</ThemeProvider>
-					</ColorModeProvider>
-				</body>
-			</html>
+				</StyledComponentsRegistry>
+				</ThemeProvider>
+				</ColorModeProvider>
+			</body>
+		</html>
   );
 };

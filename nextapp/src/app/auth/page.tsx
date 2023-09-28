@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useStore, stateStore } from "data/store";
 
-
 import { toast } from 'react-toastify';
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { Submit } from "types/interface";
@@ -184,7 +183,7 @@ export default function Auth () {
 				</SignUp>
 			</Wrapper>
 			<SubmitBtn 
-				handler={()=>{submitHandler({type:'login', email: id, password: password})}}
+				handler={()=>{ submitHandler({type:'login', email: id, password: password}) }}
 			/>
 		</Auths>
 	)

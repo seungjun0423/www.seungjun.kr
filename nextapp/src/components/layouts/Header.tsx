@@ -1,7 +1,7 @@
 'use client';
 
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React,{ useLayoutEffect, useState } from "react";
+import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,6 +9,7 @@ import lottie from '../../../public/lottiefiles/kitty.gif';
 import { Route } from "next";
 
 import Nav from "components/ui/Nav";
+import {  useStore, stateStore } from "data/store";
 
 const Headers = styled.header`
 	display: flex;
@@ -46,6 +47,31 @@ const ShortText = styled.div`
 
 /** Header 컴포넌트 */
 export default function Header () {
+	const [nav, setNav] = useState(<></>);
+	const store = useStore((state: any) => state);
+	const localStorage : any = stateStore(state => state);
+	useLayoutEffect(() => {
+		const authCheck = async () => {
+			const req: any = await fetch(
+				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
+				{
+					method: 'GET',
+					credentials: 'include',
+				}
+			)
+			.then(res=>res.json());
+			if(req.message === 'auth user'){
+				setNav(<Nav />);
+				const userId = localStorage.id;
+				if(userId){
+					store.setStore(userId);
+				}
+			} else if(req.message === 'Unauthorized'){
+				return;
+			}
+		}
+		authCheck();
+	}, []);
 	
 	return (
 			<Headers>
@@ -69,7 +95,7 @@ export default function Header () {
 						</ShortText>
 					</Link>
 				</Title>
-				<Nav />
+				{nav}
 			</Headers>
 	);
 };
