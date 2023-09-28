@@ -16,28 +16,6 @@ export default  function Nav(){
 	const localStorage : any = stateStore(state => state);
 	const router = useRouter();
 
-	// useLayoutEffect(() => {
-	// 	const authCheck = async () => {
-	// 		const req: any = await fetch(
-	// 			`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
-	// 			{
-	// 				method: 'GET',
-	// 				credentials: 'include',
-	// 			}
-	// 		)
-	// 		.then(res=>res.json());
-	// 		if(req.message === 'auth user'){
-	// 			const userId = localStorage.id;
-	// 			if(userId){
-	// 				store.setStore(userId);
-	// 			}
-	// 		} else if(req.message === 'Unauthorized'){
-	// 			return;
-	// 		}
-	// 	}
-	// 	authCheck();
-	// }, []);
-
 	const logoutHandler = async () => {
 		try{
 			const req: any = await fetch(
@@ -62,7 +40,7 @@ export default  function Nav(){
 		} catch(err){
 			throw err;
 		}
-	}
+	};
 
 	const darkModeHandler = () => {
 		// setDarkMode(!isDarkMode);
@@ -96,7 +74,7 @@ export default  function Nav(){
 						</Link>
 					}
 				</NavContainers>
-				{/* <NavBoxes onClick={()=>{setNavState(!navState)}}>
+				<NavBoxes onClick={()=>{setNavState(!navState)}}>
 					<NavBtn>
 						&#9776;
 					</NavBtn>
@@ -131,7 +109,7 @@ export default  function Nav(){
 						</Borad>
 						: <></>
 					}
-				</NavBoxes> */}
+				</NavBoxes>
 			</Div>
 	)
 }

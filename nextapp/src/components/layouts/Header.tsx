@@ -5,13 +5,16 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
+import Lottie from 'react-lottie-player';
 import lottie from '../../../public/lottiefiles/kitty.gif';
+import lottieJson from '../../../public/lottiefiles/darkmode.json';
+
 import { Route } from "next";
 
 import Nav from "components/ui/Nav";
 import {  useStore, stateStore } from "data/store";
 
-import { NavContainers, NavBoxes, NavBtn, draw, Borad, Div } from '../../styles/NavStyled';
+import { NavContainers, Div } from '../../styles/NavStyled';
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -71,64 +74,53 @@ export default function Header () {
 				const userId = localStorage.id;
 				if(userId){
 					store.setStore(userId);
-				}
-				setNav(<Nav />);
-			} else if(req.message === 'Unauthorized'){
-				setNav(
-					<Div>
-					{/* <Lottie 
-						onClick={()=>{darkModeHandler()}}
-						animationData={lottieJson}
-						play={false}
-						loop={false}
-						style={{ width: 50, height: 50 ,cursor:'pointer', marginRight:'20px'}}
-					/> */}
-					<NavContainers>
-						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
-							about
-						</Link>
-						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} style={{fontSize:'1.5rem'}}>
-							login
-						</Link>
-					</NavContainers>
-					</Div>
-					)
-				return;
-			}
-		}
-		authCheck();
+				};
+			}; 
+		};
+
+		if(localStorage.id){
+			authCheck();
+		};
+
+		setNav( 
+			<Nav 
+				// logoutHandler={logoutHandler} 
+				// darkModeHandler={darkModeHandler}
+			/>
+		);
+
 	}, []);
 
-	const logoutHandler = async () => {
-		try{
-			const req: any = await fetch(
-				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/logout`,
-				{
-					method: 'POST',
-					body: JSON.stringify({id: localStorage.id }),
-					headers: { 'Content-Type': 'application/json' },
-					credentials: 'include',
-					cache:'no-cache',
-				}
-			)
-			.then(res=>res.json());
+	// const logoutHandler = async () => {
+	// 	try{
+	// 		const req: any = await fetch(
+	// 			`${process.env.NEXT_PUBLIC_CORS_URL}/auth/logout`,
+	// 			{
+	// 				method: 'POST',
+	// 				body: JSON.stringify({id: localStorage.id }),
+	// 				headers: { 'Content-Type': 'application/json' },
+	// 				credentials: 'include',
+	// 				cache:'no-cache',
+	// 			}
+	// 		)
+	// 		.then(res=>res.json());
 
-			if(req.message === 'logout success'){
-				store.setStore(null);
-				router.push('/');
-			} else if(req.message !== 'logout success'){
-				console.log(req.message);
-				const notify = () => toast('비밀번호를 확인해주세요');
-				return notify()
-			}
-		} catch(err){
-			throw err;
-		}
-	}
+	// 		if(req.message === 'logout success'){
+	// 			store.setStore(null);
+	// 			localStorage.setStore(null);
+	// 			router.push('/');
+	// 		} else if(req.message !== 'logout failed'){
+	// 			const notify = () => toast('로그아웃 에러 발생');
+	// 			return notify()
+	// 		}
+	// 	} catch(err){
+	// 		throw err;
+	// 	}
+	// }
 
-	const darkModeHandler = () => {
-		// setDarkMode(!isDarkMode);
-	};
+	// const darkModeHandler = () => {
+	// 	// setDarkMode(!isDarkMode);
+	// };
 	
 	return (
 			<Headers>
