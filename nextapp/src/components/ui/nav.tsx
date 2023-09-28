@@ -56,7 +56,6 @@ export default  function Nav(){
 				store.setStore(null);
 				router.push('/');
 			} else if(req.message !== 'logout success'){
-				console.log(req.message);
 				const notify = () => toast('비밀번호를 확인해주세요');
 				return notify()
 			}
@@ -97,7 +96,7 @@ export default  function Nav(){
 						</Link>
 					}
 				</NavContainers>
-				<NavBoxes onClick={()=>{setNavState(!navState)}}>
+				{/* <NavBoxes onClick={()=>{setNavState(!navState)}}>
 					<NavBtn>
 						&#9776;
 					</NavBtn>
@@ -132,7 +131,7 @@ export default  function Nav(){
 						</Borad>
 						: <></>
 					}
-				</NavBoxes>
+				</NavBoxes> */}
 			</Div>
 	)
 }

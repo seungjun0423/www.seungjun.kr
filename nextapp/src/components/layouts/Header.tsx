@@ -11,6 +11,11 @@ import { Route } from "next";
 import Nav from "components/ui/Nav";
 import {  useStore, stateStore } from "data/store";
 
+import { NavContainers, NavBoxes, NavBtn, draw, Borad, Div } from '../../styles/NavStyled';
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+
+
 const Headers = styled.header`
 	display: flex;
 	justify-content: space-between;
@@ -50,6 +55,8 @@ export default function Header () {
 	const [nav, setNav] = useState(<></>);
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
+	const router = useRouter();
+
 	useLayoutEffect(() => {
 		const authCheck = async () => {
 			const req: any = await fetch(
@@ -61,17 +68,67 @@ export default function Header () {
 			)
 			.then(res=>res.json());
 			if(req.message === 'auth user'){
-				setNav(<Nav />);
 				const userId = localStorage.id;
 				if(userId){
 					store.setStore(userId);
 				}
+				setNav(<Nav />);
 			} else if(req.message === 'Unauthorized'){
+				setNav(
+					<Div>
+					{/* <Lottie 
+						onClick={()=>{darkModeHandler()}}
+						animationData={lottieJson}
+						play={false}
+						loop={false}
+						style={{ width: 50, height: 50 ,cursor:'pointer', marginRight:'20px'}}
+					/> */}
+					<NavContainers>
+						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
+							about
+						</Link>
+						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} style={{fontSize:'1.5rem'}}>
+							login
+						</Link>
+					</NavContainers>
+					</Div>
+					)
 				return;
 			}
 		}
 		authCheck();
 	}, []);
+
+	const logoutHandler = async () => {
+		try{
+			const req: any = await fetch(
+				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/logout`,
+				{
+					method: 'POST',
+					body: JSON.stringify({id: localStorage.id }),
+					headers: { 'Content-Type': 'application/json' },
+					credentials: 'include',
+					cache:'no-cache',
+				}
+			)
+			.then(res=>res.json());
+
+			if(req.message === 'logout success'){
+				store.setStore(null);
+				router.push('/');
+			} else if(req.message !== 'logout success'){
+				console.log(req.message);
+				const notify = () => toast('비밀번호를 확인해주세요');
+				return notify()
+			}
+		} catch(err){
+			throw err;
+		}
+	}
+
+	const darkModeHandler = () => {
+		// setDarkMode(!isDarkMode);
+	};
 	
 	return (
 			<Headers>
