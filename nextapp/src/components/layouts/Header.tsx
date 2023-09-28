@@ -83,45 +83,11 @@ export default function Header () {
 		};
 
 		setNav( 
-			<Nav 
-				// logoutHandler={logoutHandler} 
-				// darkModeHandler={darkModeHandler}
-			/>
+			<Nav />
 		);
 
 	}, []);
 
-	// const logoutHandler = async () => {
-	// 	try{
-	// 		const req: any = await fetch(
-	// 			`${process.env.NEXT_PUBLIC_CORS_URL}/auth/logout`,
-	// 			{
-	// 				method: 'POST',
-	// 				body: JSON.stringify({id: localStorage.id }),
-	// 				headers: { 'Content-Type': 'application/json' },
-	// 				credentials: 'include',
-	// 				cache:'no-cache',
-	// 			}
-	// 		)
-	// 		.then(res=>res.json());
-
-	// 		if(req.message === 'logout success'){
-	// 			store.setStore(null);
-	// 			localStorage.setStore(null);
-	// 			router.push('/');
-	// 		} else if(req.message !== 'logout failed'){
-	// 			const notify = () => toast('로그아웃 에러 발생');
-	// 			return notify()
-	// 		}
-	// 	} catch(err){
-	// 		throw err;
-	// 	}
-	// }
-
-	// const darkModeHandler = () => {
-	// 	// setDarkMode(!isDarkMode);
-	// };
-	
 	return (
 			<Headers>
 				<Title>
