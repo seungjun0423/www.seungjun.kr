@@ -1,4 +1,4 @@
-import React,{ useContext } from "react";
+import React from "react";
 import Sidebar from "./Sidebar";
 import Content from "components/layouts/Content";
 import { Props } from "app/layout";

@@ -2,19 +2,18 @@ import React, { ReactNode } from "react";
 import { Metadata } from 'next';
 
 import '../styles/globals.css';
-
 import StyledComponentsRegistry from '../components/lib/registry';
 
 import GoogleAnalytics from "util/GoogleAnalytics";
 import Main  from 'components/layouts/Main';
 import Header from "components/layouts/Header";
 import Footer from "components/layouts/Footer";
+import CustomAlert from "components/ui/CustomAlert";
 
 import localFont from 'next/font/local';
 import { ScriptTag } from "util/InlineScript";
 import { ColorModeProvider } from "data/ColorModeContext";
 import ThemeProvider from "data/ThemeProvider";
-import CustomAlert from "components/ui/CustomAlert";
 
 const font = localFont({
   src: '../../public/font/JalnanOTF.otf',
@@ -59,9 +58,9 @@ export default async function RootLayout ({ children }: Props) {
 				<GoogleAnalytics 
 					GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
 				/>
-				<ColorModeProvider>
-				<ThemeProvider>
 				<StyledComponentsRegistry >
+				{/* <ColorModeProvider> */}
+				{/* <ThemeProvider> */}
 					<ScriptTag />
 					<Header/>
 						<Main>
@@ -69,9 +68,9 @@ export default async function RootLayout ({ children }: Props) {
 						</Main>
 					<Footer/>
 					<CustomAlert/>
+				{/* </ThemeProvider> */}
+				{/* </ColorModeProvider> */}
 				</StyledComponentsRegistry>
-				</ThemeProvider>
-				</ColorModeProvider>
 			</body>
 		</html>
   );

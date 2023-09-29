@@ -21,65 +21,6 @@ import { CategoryData } from "types/types";
 
 import { useRouter } from "next/navigation";
 
-const EditPosts = styled.section`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	overflow-y: auto;
-	overflow-x: auto;
-	margin-top: 30px;
-`;
-
-const H1 = styled.h1`
-	display: flex;
-	justify-content: center;
-`;
-
-const EditorBox = styled.div`
-	width: 100%;
-	max-width:1000px;
-	height: 80%;
-	margin-top: 30px;
-
-	@media (max-width: 576px){
-		height: 55%;
-	}
-`;
-
-const InfoBox = styled.div`
-	width: 100%;
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	margin: 1rem 0 1rem 0;
-`;
-
-const Label = styled.label`
-	margin-right: 10px;
-`;
-
-const TextInput = styled.input`
-	border-radius: 5px; 
-	padding:5px;
-	border:1px solid gray; 
-	font-size: 0.7rem; 
-	color: '#5e5e5e';
-	&::placeholder{
-		color: #b8b8b8;
-	}
-`;
-
-const Select = styled.select`
-	border-radius: 5px; 
-	border:1px solid gray; 
-	font-size: 0.7rem; 
-	height: 30px; 
-	font-family: inherit;
-	color: #5e5e5e;
-`;
-
 export default function EditPost ({ children }: {children: ReactNode}) {
 	const json = window.sessionStorage.getItem('post-storage');
 	const data: PostType = JSON.parse(json as string).state.nowPost;
@@ -221,4 +162,63 @@ export default function EditPost ({ children }: {children: ReactNode}) {
 			</EditorBox>
 		</EditPosts>
 	)
-}
+};
+
+const EditPosts = styled.section`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: auto;
+	margin-top: 30px;
+`;
+
+const H1 = styled.h1`
+	display: flex;
+	justify-content: center;
+`;
+
+const EditorBox = styled.div`
+	width: 100%;
+	max-width:1000px;
+	height: 80%;
+	margin-top: 30px;
+
+	@media (max-width: 576px){
+		height: 55%;
+	}
+`;
+
+const InfoBox = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	margin: 1rem 0 1rem 0;
+`;
+
+const Label = styled.label`
+	margin-right: 10px;
+`;
+
+const TextInput = styled.input`
+	border-radius: 5px; 
+	padding:5px;
+	border:1px solid gray; 
+	font-size: 0.7rem; 
+	color: '#5e5e5e';
+	&::placeholder{
+		color: #b8b8b8;
+	}
+`;
+
+const Select = styled.select`
+	border-radius: 5px; 
+	border:1px solid gray; 
+	font-size: 0.7rem; 
+	height: 30px; 
+	font-family: inherit;
+	color: #5e5e5e;
+`;

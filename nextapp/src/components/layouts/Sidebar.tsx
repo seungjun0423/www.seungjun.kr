@@ -1,13 +1,24 @@
-'use client'
-
-// 라이브러리 
+'use client'; 
 import React from "react";
 import styled from "styled-components";
-
-// 컴포넌트와 기타 등등
 import CategoryTitle from "components/page/CategoryTitle";
 import { CategoryData } from 'types/types'
 
+export default function Sidebar ({ data }: { data: CategoryData[] }) {
+  return (
+		<Sidebars>
+			<Wrapper>
+				<ListBox>
+					{
+						data.map((el, index)=>{
+							return <CategoryTitle key={index} title={el.title} categoryId={el.id}/>
+						})
+					}
+				</ListBox>
+			</Wrapper>
+		</Sidebars>
+  );
+};
 
 const Sidebars = styled.aside`
 	box-shadow: 2px 0 2px var(--border-color);
@@ -55,21 +66,3 @@ const ListBox = styled.div`
 		padding: 0;
 	}
 `;
-
-/** List 컴포넌트의 뷰를 담당*/
-export default function Sidebar ({ data }: { data: CategoryData[] }) {
-  return (
-		<Sidebars>
-			<Wrapper>
-				<ListBox>
-					{
-						data.map((el, index)=>{
-							return <CategoryTitle key={index} title={el.title} categoryId={el.id}/>
-						})
-					}
-				</ListBox>
-
-			</Wrapper>
-		</Sidebars>
-  );
-};

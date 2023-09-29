@@ -16,7 +16,7 @@ const NavContainers = styled.nav`
 
 const NavBoxes = styled.div`
 	margin-right: 3vw;
-	width: 3.8rem;
+	width: 4.5rem;
 	height: 3rem;
 	border-radius: 7px;
 	box-shadow: 0px 1px 1px 0 gray;
@@ -29,7 +29,6 @@ const NavBoxes = styled.div`
 const NavBtn = styled.button`
 	width: 100%;
 	height: 100%;
-	font-size: 1.5rem;
 	border: 1px solid #eaecef;
 	border-radius: 5px;
 	color: gray;

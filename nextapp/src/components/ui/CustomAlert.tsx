@@ -5,9 +5,6 @@ import { ToastContainer } from "react-toastify";
 import { styled } from "styled-components";
 import 'react-toastify/dist/ReactToastify.css';
 
-const CustomAlerts = styled.div`
-	font-family: inherit !important;
-`;
 export default function CustomAlert () {
 	return (
 		<CustomAlerts>
@@ -21,4 +18,8 @@ export default function CustomAlert () {
 			/>
 		</CustomAlerts>
 	)
-}
+};
+
+const CustomAlerts = styled.div`
+	font-family: inherit !important;
+`;

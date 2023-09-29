@@ -6,12 +6,6 @@ import styled from "styled-components";
 import { PostType } from "types/interface";
 import { useRouter } from "next/navigation";
 
-const DeleteBtns = styled.button`
-	font-size: 1.2rem;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-`;
 export default function DeleteBtn ({ children }: {children: PostType}) {
 	const [btn, setBtn] = useState<React.ReactElement>(<></>);
 	const router = useRouter();
@@ -51,4 +45,11 @@ export default function DeleteBtn ({ children }: {children: PostType}) {
 		{btn}
 		</>
 	)
-}
+};
+
+const DeleteBtns = styled.button`
+	font-size: 1.2rem;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+`;

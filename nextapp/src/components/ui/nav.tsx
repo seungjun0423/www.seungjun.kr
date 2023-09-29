@@ -106,14 +106,19 @@ export default  function Nav(){
 									>
 										posting
 									</Link>
-									<div onClick={logoutHandler} style={{ color:'gray', cursor:'pointer',fontSize:'1.1rem', marginTop:'1rem', marginBottom: '6px' }}>
+									<div onClick={logoutHandler} style={{ color:'gray', cursor:'pointer',fontSize:'1rem', marginTop:'1rem', marginBottom: '6px' }}>
 										logout
 									</div>
 								</>
 								:
 								<Link 
 									href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} 
-									style={{ color:'gray',fontSize:'1rem', marginTop:'1rem', marginBottom: '6px'}}
+									style={{ 
+										color:'gray',
+										fontSize:'1rem', 
+										marginTop:'1rem', 
+										marginBottom: '6px'
+									}}
 								>
 									login
 								</Link>

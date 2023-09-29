@@ -2,6 +2,14 @@
 import React from "react";
 import styled from "styled-components";
 
+export default function SubmitBtn({ handler }: { handler:() => any }){
+	return (
+		<BtnBox>
+			<Submit type="submit" value={'확인'} onClick={()=>handler()}/>
+		</BtnBox>
+	);
+};
+
 const BtnBox = styled.div`
 	width: 100%;
 	height: 100px;
@@ -27,11 +35,3 @@ const Submit = styled.input`
 		width: 8rem;
 	}
 `;
-
-export default function SubmitBtn({ handler }: { handler:() => any }){
-	return (
-		<BtnBox>
-			<Submit type="submit" value={'확인'} onClick={()=>handler()}/>
-		</BtnBox>
-	);
-};

@@ -5,6 +5,16 @@ import styled from "styled-components";
 import { Route } from "next";
 import Link from "next/link";
 
+export default function CategoryTitle({ title, categoryId }: {title: string, categoryId: number}){
+	return (
+		<PostLists>
+			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/category/${categoryId}` as Route}>
+				<CategoryTitles type="button" value={title} />
+			</Link>
+		</PostLists>
+	)
+};
+
 const PostLists = styled.div`
 	width: 100%;
 	text-align: center;
@@ -29,13 +39,3 @@ const CategoryTitles = styled.input`
 	background-color: transparent;
 	cursor: pointer;
 `;
-
-export default function CategoryTitle({ title, categoryId }: {title: string, categoryId: number}){
-	return (
-		<PostLists>
-			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/category/${categoryId}` as Route}>
-				<CategoryTitles type="button" value={title} />
-			</Link>
-		</PostLists>
-	)
-}
