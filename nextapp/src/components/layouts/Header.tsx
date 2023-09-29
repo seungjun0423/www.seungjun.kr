@@ -4,19 +4,13 @@ import React,{ useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-
-import Lottie from 'react-lottie-player';
-import lottie from '../../../public/lottiefiles/kitty.gif';
-import lottieJson from '../../../public/lottiefiles/darkmode.json';
-
 import { Route } from "next";
-
+import { useRouter } from "next/navigation";
+import lottie from '../../../public/lottiefiles/kitty.gif';
+import dynamic from "next/dynamic";
 import Nav from "components/ui/Nav";
 import {  useStore, stateStore } from "data/store";
 
-import { NavContainers, Div } from '../../styles/NavStyled';
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 
 
 const Headers = styled.header`
@@ -55,10 +49,9 @@ const ShortText = styled.div`
 
 /** Header 컴포넌트 */
 export default function Header () {
-	const [nav, setNav] = useState(<></>);
+	const DynamicNav = dynamic(()=>import('../ui/Nav'),{ssr:false})
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
-	const router = useRouter();
 
 	useLayoutEffect(() => {
 		const authCheck = async () => {
@@ -81,11 +74,6 @@ export default function Header () {
 		if(localStorage.id){
 			authCheck();
 		};
-
-		setNav( 
-			<Nav />
-		);
-
 	}, []);
 
 	return (
@@ -110,7 +98,7 @@ export default function Header () {
 						</ShortText>
 					</Link>
 				</Title>
-				{nav}
+				<DynamicNav />
 			</Headers>
 	);
 };

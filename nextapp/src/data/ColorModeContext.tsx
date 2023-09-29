@@ -8,6 +8,7 @@ import {
   useContext,
   useState,
   useCallback,
+	useLayoutEffect,
 } from 'react';
 import useMediaQuery from '../util/useMediaQuery';
 import { COLOR_MODE_KEY, themeProperties } from '../styles/theme';
@@ -38,7 +39,7 @@ export const ColorModeProvider = ({ children }: { children: ReactNode }) => {
     window.localStorage.setItem(COLOR_MODE_KEY, value);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (firstRender.current) {
       const osTheme = systemPrefers ? 'dark' : 'light';
       const userTheme = window.localStorage.getItem(COLOR_MODE_KEY);

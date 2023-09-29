@@ -44,8 +44,7 @@ export function setColorsByTheme():any{
 
 export function ScriptTag():any{
 	const stringifyFn = String(setColorsByTheme)
-    // eslint-disable-next-line quotes
-    .replace('"[MODEPROPERTIES]"', JSON.stringify(themeProperties))
+    .replace('[MODEPROPERTIES]', JSON.stringify(themeProperties))
     .replace('[COLORMODEKEY]', COLOR_MODE_KEY) 
     .replace('[COLORMODECSSPROP]', INITIAL_COLOR_MODE_CSS_PROP);
 

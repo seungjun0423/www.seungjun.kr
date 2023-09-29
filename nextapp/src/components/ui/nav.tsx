@@ -32,7 +32,10 @@ export default  function Nav(){
 
 			if(req.message === 'logout success'){
 				store.setStore(null);
+				localStorage.setStore(null);
 				router.push('/');
+				const notify = () => toast('로그아웃 되었습니다.');
+				return notify()
 			} else if(req.message !== 'logout success'){
 				const notify = () => toast('비밀번호를 확인해주세요');
 				return notify()
@@ -43,7 +46,16 @@ export default  function Nav(){
 	};
 
 	const darkModeHandler = () => {
-		// setDarkMode(!isDarkMode);
+		// console.log(window.localStorage.getItem('color-mode'));
+		const theme = window.localStorage.getItem('color-mode');
+		if(theme === 'dark'){
+			window.localStorage.setItem('color-mode','light')
+			window.location.reload();
+		} else if(theme === 'light') {
+			window.localStorage.setItem('color-mode','dark')
+			window.location.reload();
+		}
+		// console.log(window.localStorage.getItem('color-mode'));
 	};
 	
 	return(

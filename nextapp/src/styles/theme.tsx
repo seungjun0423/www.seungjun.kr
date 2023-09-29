@@ -19,6 +19,7 @@ const darkTheme = {
 
 const COLOR_MODE_KEY = 'color-mode';
 const INITIAL_COLOR_MODE_CSS_PROP = '--initial-color-mode';
+// const INITIAL_COLOR_MODE_CSS_PROP = 'light';
 
 const themeProperties = {
   'mode-color': {

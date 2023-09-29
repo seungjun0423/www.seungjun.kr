@@ -117,7 +117,7 @@ export default function Auth () {
 					store.setStore(req.id);
 					localStorage.setStore(req.id);
 					router.push('/');
-					const notify = () => toast('로그인 성공');
+					const notify = () => toast('로그인 되었습니다.');
 					return notify();
 				} else if(req.message === 'user not founded'){
 					const notify = () => toast('아이디를 확인해주세요');
