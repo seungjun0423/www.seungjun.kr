@@ -18,7 +18,7 @@ export default function Footer(): React.ReactElement {
 					</span>
 					<FaGithubSquare style={{width: '35px',height:'35px', cursor:'pointer'}} onClick={()=>window.open('https://github.com/seungjun0423')}/>
 					<FaInstagram style={{width: '35px',height:'35px', cursor:'pointer'}} onClick={()=>window.open('https://www.instagram.com/azzacha00/')}/>
-					<FiMail style={{width: '35px',height:'35px', cursor:'pointer'}} onClick={()=>window.location.href='mailto: tmdwns0423@nate.com'}/>
+					<FiMail style={{width: '35px',height:'35px', cursor:'pointer'}} onClick={()=>window.location.href='mailto: tmdwns4783@gmail.com'}/>
 				</Contact>
 			</Wrapper>
 		</Footers>
@@ -30,11 +30,12 @@ const Footers = styled.footer`
 	bottom: 0;
 	display: flex;
 	width: 100%;
-	border-top: 1px solid #eaecef;
+	border-top: 1px solid ${ props => props.theme.borderColor};
 	flex-direction: row-reverse;
 	align-items: center;
 	font-size: 13px;
 	opacity: 0.7;
+	background-color:${ props => props.theme.bodyColor};
 	
 	@media(max-width: 576px){
 		display: none;
@@ -42,7 +43,7 @@ const Footers = styled.footer`
 `;
 
 const Wrapper = styled.div`
-	padding: 10px;
+	padding: 12.5px;
 	display: flex;
 	flex-direction: row-reverse;
 `;
@@ -51,7 +52,6 @@ const Contact = styled.div`
 	display: flex;
 	align-items:center;
 	font-weight: bold;
-	color: gray;
 	margin-right: 30px;
 
 	@media (max-width: 768px) {
@@ -61,7 +61,6 @@ const Contact = styled.div`
 
 const CopyRight = styled.p`
 	font-weight: bold;
-	color: gray;
 	margin-right: 30px;
 
 	@media (max-width: 768px) {

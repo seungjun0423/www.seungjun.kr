@@ -7,9 +7,9 @@ import { Route } from "next";
 import { useRouter } from "next/navigation";
 import lottie from '../../../public/lottiefiles/kitty.gif';
 import dynamic from "next/dynamic";
-// import Nav from "components/ui/Nav";
 import {  useStore, stateStore } from "data/store";
 import { toast } from "react-toastify";
+import useSWR from 'swr'
 
 /** Header 컴포넌트 */
 export default function Header () {
@@ -35,7 +35,7 @@ export default function Header () {
 				};
 			} else if (req.message === 'Unauthorized'){
 				router.push('/');
-				return toast('로그인이 만료되었습니다.')
+				return toast('로그인이 만료되었습니다.');
 			}
 		};
 
@@ -81,7 +81,7 @@ const Headers = styled.header`
 	padding: 5px 0 5px 0;
 	border: none;
 	box-shadow: 0 0 5px darkgray;
-	background-color: var(--header-color);
+	background-color: ${ props => props.theme.headerColor};
 	z-index: 99;
 `;
 
@@ -94,12 +94,14 @@ const Title = styled.span`
 `;
 
 const LongText = styled.div`
+	color: ${ props => props.theme.text};
 	@media (max-width: 980px){
 		display:none;
 	}
 `;
 
 const ShortText = styled.div`
+	color: ${ props => props.theme.text};
 	@media (min-width: 980px) {
 		display:none;
 	}

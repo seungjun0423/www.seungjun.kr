@@ -59,17 +59,16 @@ export default async function RootLayout ({ children }: Props) {
 					GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
 				/>
 				<StyledComponentsRegistry >
-				{/* <ColorModeProvider> */}
-				{/* <ThemeProvider> */}
-					<ScriptTag />
+				<ColorModeProvider>
+				<ThemeProvider>
 					<Header/>
 						<Main>
 							{children}
 						</Main>
 					<Footer/>
 					<CustomAlert/>
-				{/* </ThemeProvider> */}
-				{/* </ColorModeProvider> */}
+				</ThemeProvider>
+				</ColorModeProvider>
 				</StyledComponentsRegistry>
 			</body>
 		</html>

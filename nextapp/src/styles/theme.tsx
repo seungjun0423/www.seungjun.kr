@@ -1,7 +1,7 @@
 
 const lightTheme = {
   mode: 'light',
-  text: 'black',
+  text: '#5e5e5e',
 	headerColor: '#ffffff',
   background: '#fafafa',
   borderColor: '#a9a9a93c',
@@ -13,13 +13,12 @@ const darkTheme = {
   text: '#eaeaea',
 	headerColor: '#292e2e',
   background: '#a9a9a9',
-  borderColor: '#a9a9a9',
+  borderColor: '#eaeaea',
   bodyColor: 'gray',
 };
 
 const COLOR_MODE_KEY = 'color-mode';
 const INITIAL_COLOR_MODE_CSS_PROP = '--initial-color-mode';
-// const INITIAL_COLOR_MODE_CSS_PROP = 'light';
 
 const themeProperties = {
   'mode-color': {

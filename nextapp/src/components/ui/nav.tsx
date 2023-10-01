@@ -2,19 +2,17 @@
 import React, { useLayoutEffect, useState } from "react";
 import Link from "next/link";
 import { Route } from "next";
-import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
 
 import Lottie from 'react-lottie-player';
 import lottieJson from '../../../public/lottiefiles/darkmode.json';
 import { useStore, stateStore } from "../../data/store";
-import { NavContainers, NavBoxes, NavBtn, draw, Borad, Div } from '../../styles/NavStyled';
+import { NavContainers, NavBoxes, NavBtn, Borad, Div, StyledLink } from '../../styles/NavStyled';
 
 export default  function Nav(){
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
-	const router = useRouter();
 
 	const logoutHandler = async () => {
 		try{
@@ -33,8 +31,7 @@ export default  function Nav(){
 			if(req.message === 'logout success'){
 				store.setStore(null);
 				localStorage.setStore(null);
-				router.push('/');
-				return toast.success('로그아웃 되었습니다.');
+				return toast.success('로그아웃 되었습니다. 👌');
 			} else if(req.message !== 'logout success'){
 				return toast.error('비밀번호를 확인해주세요');
 			}
@@ -66,22 +63,22 @@ export default  function Nav(){
 					style={{ width: 50, height: 50 ,cursor:'pointer', marginRight:'20px'}}
 				/>
 				<NavContainers>
-					<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} style={{fontSize:'1.5rem'}}>
+					<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route}>
 						about
-					</Link>
+					</StyledLink>
 					{ store.id ?
 						<>
-							<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} style={{fontSize:'1.5rem'}}>
+							<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route}>
 								posting
-							</Link> 
-							<div onClick={logoutHandler} style={{color: '#5e5e5e', cursor:'pointer', fontSize: '1.5rem' }} >
+							</StyledLink> 
+							<StyledLink  href={`${process.env.NEXT_PUBLIC_REDIRECT}/` as Route} onClick={logoutHandler} >
 								logout
-							</div>
+							</StyledLink>
 						</>
 						:
-						<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} style={{fontSize:'1.5rem'}}>
+						<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route}>
 							login
-						</Link>
+						</StyledLink>
 					}
 				</NavContainers>
 				<NavBoxes onClick={()=>{setNavState(!navState)}}>
@@ -90,36 +87,28 @@ export default  function Nav(){
 					</NavBtn>
 					{ navState ? 
 						<Borad>
-							<Link 
+							<StyledLink 
 								href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} 
-								style={{ color:'gray',fontSize:'1rem', marginTop:'1rem' }}
 							>
 								about
-							</Link>
+							</StyledLink>
 							{ store.id ?
 								<>
-									<Link 
+									<StyledLink 
 										href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 
-										style={{ color:'gray',fontSize:'1rem', marginTop:'1rem'}}
 									>
 										posting
-									</Link>
-									<div onClick={logoutHandler} style={{ color:'gray', cursor:'pointer',fontSize:'1rem', marginTop:'1rem', marginBottom: '6px' }}>
+									</StyledLink>
+									<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/` as Route} onClick={logoutHandler}>
 										logout
-									</div>
+									</StyledLink>
 								</>
 								:
-								<Link 
+								<StyledLink 
 									href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} 
-									style={{ 
-										color:'gray',
-										fontSize:'1rem', 
-										marginTop:'1rem', 
-										marginBottom: '6px'
-									}}
 								>
 									login
-								</Link>
+								</StyledLink>
 							}
 						</Borad>
 						: <></>
@@ -127,4 +116,4 @@ export default  function Nav(){
 				</NavBoxes>
 			</Div>
 	)
-}
+};

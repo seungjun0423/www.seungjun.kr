@@ -5,6 +5,7 @@ import React, { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import { PostType } from "types/interface";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function DeleteBtn ({ children }: {children: PostType}) {
 	const [btn, setBtn] = useState<React.ReactElement>(<></>);
@@ -25,7 +26,7 @@ export default function DeleteBtn ({ children }: {children: PostType}) {
 
 		if(req.id === children.id){
 			router.push('/');
-			alert('게시물이 삭제되었습니다')
+			return toast.success('게시물이 삭제되었습니다. 👌');
 		}
 	};
 

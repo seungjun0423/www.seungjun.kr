@@ -54,7 +54,7 @@ export function ScriptTag():any{
 	return (
 		<Script 
 			id='darkModeScript'
-			// strategy="beforeInteractive"
+			strategy="beforeInteractive"
 			dangerouslySetInnerHTML={{__html: fnToRunOnClient}}
 		/>
 	)

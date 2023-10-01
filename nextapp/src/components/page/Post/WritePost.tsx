@@ -16,6 +16,7 @@ import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { CategoryData } from "types/types";
+import { toast } from "react-toastify";
 
 export default function WritePost ({children}: {children: ReactNode}) {
 	const [ optionList, setOptionList] = useState<React.ReactElement[]>([
@@ -59,7 +60,7 @@ export default function WritePost ({children}: {children: ReactNode}) {
 
 	const submitHandler = async () => {
 		if( !title || !categoryId || !contents){
-			alert('항목을 모두 작성해주세요'); 
+			return toast.error('항목을 모두 작성해주세요'); 
 		} else if (title && categoryId && contents){
 			try {
 				const req: any = await fetch(
@@ -75,12 +76,12 @@ export default function WritePost ({children}: {children: ReactNode}) {
 				.then(req=>req.json());
 				if(req){
 					window.location.replace(`${process.env.NEXT_PUBLIC_REDIRECT}`)
-					return alert('새로운 게시물이 등록되었습니다')
+					return toast.success('새로운 게시물이 등록되었습니다. 👌')
 				} else if(!req){
-					alert('게시물 등록 실패')
+					return toast.error('게시물 등록 실패')
 				}
 			} catch (err) {
-				alert(err);
+				return toast.error('게시물 등록 실패')
 			}
 		}
 	};
@@ -144,11 +145,11 @@ export default function WritePost ({children}: {children: ReactNode}) {
 								)
 								.then(req=>req.json());
 								if(req.url){
-									alert('이미지가 업로드 됐습니다.');
+									toast.success('이미지가 업로드 됐습니다. 👌');
 									callback(req.url, 'image');		
 								}
 							} catch(err) {
-								alert('파일 업로드 실패');
+								return toast.error('파일 업로드 실패');
 							}
 						}
 					}}
