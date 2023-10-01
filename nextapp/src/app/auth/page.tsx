@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useStore, stateStore } from "data/store";
@@ -8,6 +7,114 @@ import { toast } from 'react-toastify';
 import SubmitBtn from "components/ui/button/SubmitBtn";
 import { Submit } from "types/interface";
 import { useRouter } from "next/navigation";
+
+export default function Auth () {
+	const [ id, setId ] = useState<string>('');
+	const [ password, setPassword ] = useState<string>('');
+	const focusId = useRef<HTMLInputElement>(null);
+	const focusPw = useRef<HTMLInputElement>(null);
+	const store : any = useStore(state=>state);
+	const localStorage : any = stateStore(state=>state);
+	const router = useRouter();
+
+	const signUpHandler = () => {
+		return toast("현재는 운영자만 사용 가능합니다.");
+	}
+
+	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
+		try{
+			if(type === 'login'){
+				if(!email && !password){
+					return toast.error('아이디와 비밀번호를 입력해주세요');
+				} else if(!email){
+					return toast.error('아이디를 입력해주세요');
+				} else if(!password){
+					return toast.error('비밀번호를 입력해주세요');
+				};
+				
+				const req: any = await fetch(
+					`${process.env.NEXT_PUBLIC_CORS_URL}/auth/login`,
+					{
+						method: 'POST',
+						body: JSON.stringify({ email:email, password: password}),
+						headers: { 'Content-Type': 'application/json' },
+						credentials: 'include',
+						cache:'no-cache',
+					}
+				)
+				.then(res=>res.json());
+
+				if(req.message === 'login success'){
+					store.setStore(req.id);
+					localStorage.setStore(req.id);
+					router.push('/');
+					return toast.success('로그인 되었습니다. 👌');
+				} else if(req.message === 'user not founded'){
+					return toast.error('아이디를 확인해주세요');
+				} else if(req.message === 'wrong password'){
+					return toast.error('비밀번호를 확인해주세요');
+				}
+			}
+		} catch(err) {
+			return toast.error('로그인 과정에서 에러가 발생했습니다.')
+		}
+	};
+
+	const enterHandler = ( type: string, e: React.KeyboardEvent ): void | Promise<any> => {
+		if(e.key !== 'Enter'){
+			return;
+		} else if(e.key === 'Enter'){
+			if(type === 'email'){
+				focusPw.current?.focus();
+				return;
+			} else if(type === 'password') {
+				return submitHandler({type:'login', 'email': id,'password': password});
+			}
+		}
+	}
+	
+	return(
+		<Auths>
+			<H>
+				LOGIN
+			</H>
+			<InputBox>
+				<Div>
+					<Label>ID</Label>
+					<Input 
+						id='id' 
+						type="email" 
+						placeholder="email" 
+						ref={focusId}
+						onChange={(e)=>setId(e.target.value)} 
+						onKeyPress={(e)=>{enterHandler('email',e)}} 
+						required
+					/>
+				</Div>
+				<Div>
+					<Label>PW</Label>
+					<Input 
+						id='password' 
+						type="password"
+						placeholder="password" 
+						ref={focusPw} 
+						onChange={(e)=>setPassword(e.target.value)} 
+						onKeyPress={(e)=>{enterHandler('password',e)}} 
+						required
+					/>
+				</Div>
+			</InputBox>
+			<Wrapper>
+				<SignUp onClick={signUpHandler}>
+					sign up
+				</SignUp>
+			</Wrapper>
+			<SubmitBtn 
+				handler={()=>{ submitHandler({type:'login', email: id, password: password}) }}
+			/>
+		</Auths>
+	)
+};
 
 const Auths = styled.div`
 	width: 100%;
@@ -64,127 +171,3 @@ const SignUp = styled.button`
 	background-color: transparent;
 	cursor: pointer;
 `;
-
-export default function Auth () {
-	const [ id, setId ] = useState<string>('');
-	const [ password, setPassword ] = useState<string>('');
-	const focusId = useRef<HTMLInputElement>(null);
-	const focusPw = useRef<HTMLInputElement>(null);
-	const store : any = useStore(state=>state);
-	const localStorage : any = stateStore(state=>state);
-	const router = useRouter();
-
-	function onChangeId(val: string) {
-		setId(val);
-	}
-
-	const onChangePw = (val: string) => {
-		setPassword(val);
-	}
-
-	const signUpHandler = () => {
-		const notify = () => toast("현재는 운영자만 사용 가능합니다.");
-		return notify();
-	}
-
-	const submitHandler = async ({type, email, password}: Partial<Submit>): Promise<void | unknown> => {
-		try{
-			if(type === 'login'){
-				if(!email && !password){
-					const notify = () => toast('아이디와 비밀번호를 입력해주세요');
-					return notify()
-				} else if(!email){
-					const notify = () => toast('아이디를 입력해주세요');
-					return notify()
-				} else if(!password){
-					const notify = () => toast('비밀번호를 입력해주세요');
-					return notify()
-				};
-				
-				const req: any = await fetch(
-					`${process.env.NEXT_PUBLIC_CORS_URL}/auth/login`,
-					{
-						method: 'POST',
-						body: JSON.stringify({ email:email, password: password}),
-						headers: { 'Content-Type': 'application/json' },
-						credentials: 'include',
-						cache:'no-cache',
-					}
-				)
-				.then(res=>res.json());
-
-				if(req.message === 'login success'){
-					store.setStore(req.id);
-					localStorage.setStore(req.id);
-					router.push('/');
-					const notify = () => toast('로그인 되었습니다.');
-					return notify();
-				} else if(req.message === 'user not founded'){
-					const notify = () => toast('아이디를 확인해주세요');
-					return notify();
-				} else if(req.message === 'wrong password'){
-					const notify = () => toast('비밀번호를 확인해주세요');
-					return notify();
-				}
-			}
-		} catch(err) {
-			const notify = () => toast('로그인 과정에서 에러가 발생했습니다.');
-			return notify();
-		}
-	};
-
-	const enterHandler = ( type: string, e: React.KeyboardEvent ): void | Promise<any> => {
-		if(e.key !== 'Enter'){
-			return;
-		} else if(e.key === 'Enter'){
-			if(type === 'email'){
-				focusPw.current?.focus();
-				return;
-			} else if(type === 'password') {
-				return submitHandler({type:'login', 'email': id,'password': password});
-			}
-		}
-	}
-	
-	return(
-		<Auths>
-			<H>
-				LOGIN
-			</H>
-			<InputBox>
-				<Div>
-					<Label>ID</Label>
-					<Input 
-						id='id' 
-						type="email" 
-						placeholder="email" 
-						ref={focusId}
-						onChange={(e)=>onChangeId(e.target.value)} 
-						onKeyPress={(e)=>{enterHandler('email',e)}} 
-						required
-					/>
-				</Div>
-				<Div>
-					<Label>PW</Label>
-					<Input 
-						id='password' 
-						type="password"
-						placeholder="password" 
-						ref={focusPw} 
-						onChange={(e)=>onChangePw(e.target.value)} 
-						onKeyPress={(e)=>{enterHandler('password',e)}} 
-						required
-					/>
-				</Div>
-			</InputBox>
-			<Wrapper>
-				<SignUp onClick={signUpHandler}>
-					sign up
-				</SignUp>
-			</Wrapper>
-			<SubmitBtn 
-				handler={()=>{ submitHandler({type:'login', email: id, password: password}) }}
-			/>
-		</Auths>
-	)
-}

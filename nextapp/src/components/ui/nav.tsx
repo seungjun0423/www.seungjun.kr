@@ -34,11 +34,9 @@ export default  function Nav(){
 				store.setStore(null);
 				localStorage.setStore(null);
 				router.push('/');
-				const notify = () => toast('로그아웃 되었습니다.');
-				return notify()
+				return toast.success('로그아웃 되었습니다.');
 			} else if(req.message !== 'logout success'){
-				const notify = () => toast('비밀번호를 확인해주세요');
-				return notify()
+				return toast.error('비밀번호를 확인해주세요');
 			}
 		} catch(err){
 			throw err;

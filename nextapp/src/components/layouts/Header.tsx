@@ -1,5 +1,5 @@
 'use client';
-import React,{ useLayoutEffect } from "react";
+import React,{ useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,9 +7,11 @@ import { Route } from "next";
 import { useRouter } from "next/navigation";
 import lottie from '../../../public/lottiefiles/kitty.gif';
 import dynamic from "next/dynamic";
+// import Nav from "components/ui/Nav";
 import {  useStore, stateStore } from "data/store";
 import { toast } from "react-toastify";
 
+/** Header 컴포넌트 */
 export default function Header () {
 	const DynamicNav = dynamic(()=>import('../ui/Nav'),{ssr:false})
 	const store = useStore((state: any) => state);
@@ -33,8 +35,7 @@ export default function Header () {
 				};
 			} else if (req.message === 'Unauthorized'){
 				router.push('/');
-				const notify = () => toast('로그인이 만료되었습니다.');
-				return notify()
+				return toast('로그인이 만료되었습니다.')
 			}
 		};
 
