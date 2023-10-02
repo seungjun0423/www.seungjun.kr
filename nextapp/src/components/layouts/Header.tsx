@@ -8,7 +8,6 @@ import lottie from '../../../public/lottiefiles/kitty.gif';
 import dynamic from "next/dynamic";
 import {  useStore, stateStore } from "data/store";
 
-/** Header 컴포넌트 */
 export default function Header () {
 	const DynamicNav = dynamic(()=>import('../ui/Nav'),{ssr:false})
 	const store = useStore((state: any) => state);

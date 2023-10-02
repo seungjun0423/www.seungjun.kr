@@ -9,9 +9,9 @@ import { Route } from "next";
 export default function PostTitle ({ data }: { data: PostType}) {
 	return (
 		<Posts onClick={()=>{postStore.setState({nowPost: data},true);}}>
-			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}post/${data.id}` as Route}>
+			<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}post/${data.id}` as Route}>
 				{data.title}
-			</Link>
+			</StyledLink>
 		</Posts>
 	)
 };
@@ -25,4 +25,8 @@ const Posts = styled.button`
 	background-color: transparent;
 	font-size: inherit;
 	cursor: pointer;
+`;
+
+const StyledLink =styled(Link)`
+	color: ${ props => props.theme.borderColor};
 `;
