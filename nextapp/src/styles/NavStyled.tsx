@@ -39,13 +39,13 @@ const NavBtn = styled.button`
 const Borad = styled.nav`
 	display: flex;
 	width: 100%;
-	height: 7.5rem;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 5px;
-	background-color: ${ props => props.theme.background};
+	background-color: ${ props => props.theme.background };
 	border: 1px solid #eaecef;
 	border-radius: 10px;
+	padding-top: 1rem;
 `;
 
 // const MetaMaskBox = styled.div`
@@ -64,11 +64,12 @@ const Div = styled.div`
 
 const StyledLink = styled(Link)`
 font-size: 1.5rem;
+height: 2rem;
 color: ${ props => props.theme.text};
 
 	@media (max-width: 576px ) {
 		font-size: 1rem;
-		margin-top: 1rem;
+		/* margin-top: 1rem; */
 	}
 `;
 
