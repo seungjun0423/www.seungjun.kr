@@ -42,7 +42,6 @@ const Wrapper = styled.div`
 	@media (max-width: 576px) {
 		position: fixed; 
 		bottom: 0;
-		border-top: 1px solid ${ props => props.theme.borderColor};
 		width: 100%;
 		border-right: 0;
 		gap: 3rem;

@@ -34,8 +34,8 @@ const Footers = styled.footer`
 	flex-direction: row-reverse;
 	align-items: center;
 	font-size: 13px;
-	opacity: 0.7;
-	background-color:${ props => props.theme.bodyColor};
+	color:  ${ props => props.theme.text};
+	background-color:${ props => props.theme.background};
 	
 	@media(max-width: 576px){
 		display: none;

@@ -14,6 +14,7 @@
 	-ms-overflow-style: none; 
 	/* 파이어폭스 스크롤바 숨기기*/
 	scrollbar-width: none; 
+	text-shadow: none !important;
 }
 
 html {
@@ -88,4 +89,16 @@ button,input {
 		font-family: inherit !important;
 		padding-left: 70px !important;
 	}
+}
+
+.token.operator {
+	background-color: transparent !important;
+}
+
+.comment{
+	color: #484754 !important;
+}
+
+pre{
+	background: #48475426 !important;
 }

@@ -34,7 +34,8 @@ const PostLists = styled.div`
 const CategoryTitles = styled.input`
 	font-size: 1.5rem;
 	font-weight: bold;
-	color: #5e5e5e;
+	/* color: #5e5e5e; */
+	color: ${ props => props.theme.text};
 	border: none;
 	background-color: transparent;
 	cursor: pointer;

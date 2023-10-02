@@ -43,7 +43,7 @@ const Borad = styled.nav`
 	flex-direction: column;
 	align-items: center;
 	margin-top: 5px;
-	background-color: ${ props => props.theme.bodyColor};
+	background-color: ${ props => props.theme.background};
 	border: 1px solid #eaecef;
 	border-radius: 10px;
 `;

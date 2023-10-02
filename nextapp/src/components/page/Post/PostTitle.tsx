@@ -16,17 +16,6 @@ export default function PostTitle ({ data }: { data: PostType}) {
 	)
 };
 
-const sildIn = keyframes`
-  from {
-		transform: translateY(-90%);
-		opacity: 0.1;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-`;
-
 const Posts = styled.button`
 	width: 100%;
 	display: flex;
@@ -36,8 +25,4 @@ const Posts = styled.button`
 	background-color: transparent;
 	font-size: inherit;
 	cursor: pointer;
-
-	@media (min-width:577px){
-		animation: ${sildIn} 0.5s ease forwards;
-	}
 `;

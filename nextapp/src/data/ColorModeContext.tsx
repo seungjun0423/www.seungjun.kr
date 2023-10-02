@@ -3,7 +3,6 @@
 import {
   ReactNode,
   createContext,
-  useEffect,
   useRef,
   useContext,
   useState,

@@ -10,9 +10,9 @@ const lightTheme = {
 
 const darkTheme = {
   mode: 'dark',
-  text: '#eaeaea',
+  text: '#484754',
 	headerColor: '#292e2e',
-  background: '#a9a9a9',
+  background: 'gray',
   borderColor: '#eaeaea',
   bodyColor: 'gray',
 };
