@@ -1,8 +1,8 @@
 'use client';
-import React, { useLayoutEffect, useState } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import { Route } from "next";
 import { toast } from 'react-toastify';
+import { useRouter } from "next/navigation";
 
 import Lottie from 'react-lottie-player';
 import lottieJson from '../../../public/lottiefiles/darkmode.json';
@@ -13,6 +13,7 @@ export default  function Nav(){
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
+	const router = useRouter();
 
 	const logoutHandler = async () => {
 		try{
@@ -41,16 +42,15 @@ export default  function Nav(){
 	};
 
 	const darkModeHandler = () => {
-		// console.log(window.localStorage.getItem('color-mode'));
 		const theme = window.localStorage.getItem('color-mode');
 		if(theme === 'dark'){
 			window.localStorage.setItem('color-mode','light')
 			window.location.reload();
+
 		} else if(theme === 'light') {
 			window.localStorage.setItem('color-mode','dark')
 			window.location.reload();
-		}
-		// console.log(window.localStorage.getItem('color-mode'));
+		};
 	};
 	
 	return(
