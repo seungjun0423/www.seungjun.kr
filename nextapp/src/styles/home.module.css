@@ -17,8 +17,13 @@
 	opacity: 0.4;
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
 	.home {
 		margin-left: 0;
+		font-size: 1rem;
 	}
+}
+
+@media (max-width: 576px){
+	
 }

@@ -11,9 +11,9 @@ export default function WelcomeLoading () {
 
 const Loadings =styled.div`
 	width: 100%;
-	height: 100%;
+	height: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 3rem;
+	font-size: 2rem;
 `;

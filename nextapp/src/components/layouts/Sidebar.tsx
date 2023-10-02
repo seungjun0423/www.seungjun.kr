@@ -61,6 +61,7 @@ const ListBox = styled.div`
 
 	@media (max-width: 576px) {
 		margin-top: 0;
+		margin-left: 1.5rem;
 		display: flex;
 		flex-direction: row;
 		padding: 0;

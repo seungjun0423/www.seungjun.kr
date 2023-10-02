@@ -2,14 +2,7 @@ import Image from "next/image";
 import styles from 'styles/about.module.css';
 import { FcGraduationCap, FcSupport } from 'react-icons/fc'
 
-
-interface Props  {
-	params: {
-		slug: any;
-	};
-};
-
-export default function About ({ params }: Props) {
+export default function About () {
 	return(
 		<section key='about' className={styles.contents}>
 			<div className={styles.profileBox}>
