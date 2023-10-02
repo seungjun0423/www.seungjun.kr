@@ -11,9 +11,9 @@ import Footer from "components/layouts/Footer";
 import CustomAlert from "components/ui/CustomAlert";
 
 import localFont from 'next/font/local';
-import { ScriptTag } from "util/InlineScript";
 import { ColorModeProvider } from "data/ColorModeContext";
 import ThemeProvider from "data/ThemeProvider";
+import { CategoryData } from "types/types";
 
 const font = localFont({
   src: '../../public/font/JalnanOTF.otf',
@@ -52,6 +52,14 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout ({ children }: Props) {
+	const categoryData: CategoryData[] = await fetch(
+		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
+		{
+			method: 'GET',	
+			cache: 'no-cache',
+		}
+	).then(res=>res.json());
+	
   return (
 		<html lang="en">
 			<body className={font.className}>
@@ -62,7 +70,7 @@ export default async function RootLayout ({ children }: Props) {
 				<ColorModeProvider>
 				<ThemeProvider>
 					<Header/>
-						<Main>
+						<Main categoryData={categoryData}>
 							{children}
 						</Main>
 					<Footer/>

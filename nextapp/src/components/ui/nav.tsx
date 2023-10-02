@@ -63,20 +63,20 @@ export default  function Nav(){
 					style={{ width: 50, height: 50 ,cursor:'pointer', marginRight:'20px'}}
 				/>
 				<NavContainers>
-					<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route}>
+					<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}about` as Route}>
 						about
 					</StyledLink>
 					{ store.id ?
 						<>
-							<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route}>
+							<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}post/write` as Route}>
 								posting
 							</StyledLink> 
-							<StyledLink  href={`${process.env.NEXT_PUBLIC_REDIRECT}/` as Route} onClick={logoutHandler} >
+							<StyledLink  href={`${process.env.NEXT_PUBLIC_REDIRECT}` as Route} onClick={logoutHandler} >
 								logout
 							</StyledLink>
 						</>
 						:
-						<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route}>
+						<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}auth` as Route}>
 							login
 						</StyledLink>
 					}
@@ -88,24 +88,24 @@ export default  function Nav(){
 					{ navState ? 
 						<Borad>
 							<StyledLink 
-								href={`${process.env.NEXT_PUBLIC_REDIRECT}/about` as Route} 
+								href={`${process.env.NEXT_PUBLIC_REDIRECT}about` as Route} 
 							>
 								about
 							</StyledLink>
 							{ store.id ?
 								<>
 									<StyledLink 
-										href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/write` as Route} 
+										href={`${process.env.NEXT_PUBLIC_REDIRECT}post/write` as Route} 
 									>
 										posting
 									</StyledLink>
-									<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}/` as Route} onClick={logoutHandler}>
+									<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}` as Route} onClick={logoutHandler}>
 										logout
 									</StyledLink>
 								</>
 								:
 								<StyledLink 
-									href={`${process.env.NEXT_PUBLIC_REDIRECT}/auth` as Route} 
+									href={`${process.env.NEXT_PUBLIC_REDIRECT}auth` as Route} 
 								>
 									login
 								</StyledLink>

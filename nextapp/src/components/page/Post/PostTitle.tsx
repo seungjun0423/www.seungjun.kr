@@ -9,7 +9,7 @@ import { Route } from "next";
 export default function PostTitle ({ data }: { data: PostType}) {
 	return (
 		<Posts onClick={()=>{postStore.setState({nowPost: data},true);}}>
-			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${data.id}` as Route}>
+			<Link href={`${process.env.NEXT_PUBLIC_REDIRECT}post/${data.id}` as Route}>
 				{data.title}
 			</Link>
 		</Posts>

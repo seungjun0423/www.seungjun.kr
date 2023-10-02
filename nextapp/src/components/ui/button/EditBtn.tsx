@@ -13,7 +13,7 @@ export default function EditBtn ({ children }: {children: PostType}) {
 		if(localStorage.id){
 			const goEdit = (
 				<Link 
-					href={`${process.env.NEXT_PUBLIC_REDIRECT}/post/${children.id}/edit` as Route}
+					href={`${process.env.NEXT_PUBLIC_REDIRECT}post/${children.id}/edit` as Route}
 					style={{fontSize:'1.2rem'}}
 				>
 					Edit
