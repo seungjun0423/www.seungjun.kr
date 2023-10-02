@@ -48,6 +48,7 @@ const Wrapper = styled.div`
 		align-items: center;
 		overflow-x: auto;
 		z-index: 99;
+		background-color: #f5f2f0;
 	}
 `;
 

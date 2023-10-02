@@ -17,7 +17,8 @@ export default function Main ({ categoryData, children }: {categoryData: any, ch
 
 const Mains = styled.main`
 	width: 100%;
-	height: calc(100vh - 129px);
+	/* height: calc(100vh - 110px); */
+	height: 100vh;
 	display: flex;
 	background-color: ${ props => props.theme.background };
 `;
