@@ -28,5 +28,5 @@ const Posts = styled.button`
 `;
 
 const StyledLink =styled(Link)`
-	color: ${ props => props.theme.borderColor};
+	color: ${ props => props.theme.categoryColor} !important;
 `;

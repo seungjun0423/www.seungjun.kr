@@ -6,6 +6,7 @@ const lightTheme = {
   background: '#fafafa',
   borderColor: '#a9a9a93c',
   bodyColor: '#fafafa',
+	categoryColor: '#5e5e5e',
 };
 
 const darkTheme = {
@@ -15,6 +16,7 @@ const darkTheme = {
   background: 'gray',
   borderColor: '#eaeaea',
   bodyColor: 'gray',
+	categoryColor: '#eaeaea',
 };
 
 const COLOR_MODE_KEY = 'color-mode';
