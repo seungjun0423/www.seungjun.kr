@@ -1,5 +1,5 @@
 'use client';
-import React,{ useLayoutEffect, useState } from "react";
+import React,{ Suspense, useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,31 +18,39 @@ export default function Header () {
 	const localStorage : any = stateStore(state => state);
 	const router = useRouter();
 
-	useLayoutEffect(() => {
-		const authCheck = async () => {
-			const req: any = await fetch(
-				`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
-				{
-					method: 'GET',
-					credentials: 'include',
-				}
-			)
-			.then(res=>res.json());
-			if(req.message === 'auth user'){
-				const userId = localStorage.id;
-				if(userId){
-					store.setStore(userId);
-				};
-			} else if (req.message === 'Unauthorized'){
-				router.push('/');
-				return toast('로그인이 만료되었습니다.');
-			}
-		};
+	// useLayoutEffect(() => {
+	// 	const authCheck = async () => {
+	// 		const req: any = await fetch(
+	// 			`${process.env.NEXT_PUBLIC_CORS_URL}/auth/validate`,
+	// 			{
+	// 				method: 'GET',
+	// 				credentials: 'include',
+	// 			}
+	// 		)
+	// 		.then(res=>res.json());
+	// 		if(req.message === 'auth user'){
+	// 			const userId = localStorage.id;
+	// 			if(userId){
+	// 				store.setStore(userId);
+	// 			};
+	// 		} else if (req.message === 'Unauthorized'){
+	// 			router.push('/');
+	// 			return toast('로그인이 만료되었습니다.');
+	// 		}
+	// 	};
 
+	// 	if(localStorage.id){
+	// 		authCheck();
+	// 	};
+	// }, []);
+	useLayoutEffect(() => {
 		if(localStorage.id){
-			authCheck();
-		};
-	}, []);
+			store.setStore(localStorage.id);
+		} else if(localStorage.id === null){
+			router.push('/');
+			toast.error('로그인이 만료되었습니다.');
+		}
+	}, [])
 
 	return (
 			<Headers>
@@ -66,7 +74,9 @@ export default function Header () {
 						</ShortText>
 					</Link>
 				</Title>
-				<DynamicNav />
+				{/* <Suspense> */}
+					<DynamicNav />
+				{/* </Suspense> */}
 			</Headers>
 	);
 };
