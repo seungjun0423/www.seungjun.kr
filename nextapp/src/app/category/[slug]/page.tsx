@@ -3,7 +3,6 @@ import { PostType } from "types/interface";
 import PostTitle from "components/page/Post/PostTitle";
 import styles from 'styles/category.module.css';
 import { Metadata } from "next";
-import useSWR from "swr";
 
 interface Props  {
 	params: {

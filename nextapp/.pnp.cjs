@@ -54,7 +54,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-toastify", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:9.1.3"],\
             ["styled-components", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:6.0.7"],\
             ["supports-color", "npm:9.4.0"],\
-            ["swr", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.2.2"],\
             ["tui-color-picker", "npm:2.2.8"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
             ["zustand", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.4.1"]\
@@ -7209,7 +7208,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-toastify", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:9.1.3"],\
             ["styled-components", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:6.0.7"],\
             ["supports-color", "npm:9.4.0"],\
-            ["swr", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.2.2"],\
             ["tui-color-picker", "npm:2.2.8"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
             ["zustand", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:4.4.1"]\
@@ -8795,30 +8793,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["swr", [\
-        ["npm:2.2.2", {\
-          "packageLocation": "./.yarn/cache/swr-npm-2.2.2-94216f6639-afb3d4824f.zip/node_modules/swr/",\
-          "packageDependencies": [\
-            ["swr", "npm:2.2.2"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.2.2", {\
-          "packageLocation": "./.yarn/__virtual__/swr-virtual-3e0b063012/0/cache/swr-npm-2.2.2-94216f6639-afb3d4824f.zip/node_modules/swr/",\
-          "packageDependencies": [\
-            ["swr", "virtual:2fcba625244eb1ed0ca05fd455884f5174aa9199e101cc54832c271563aa4c50d0dcc13359a3d6e40de754406dea1437ae956787e52c2f485afe4df9e118223a#npm:2.2.2"],\
-            ["@types/react", "npm:18.2.20"],\
-            ["client-only", "npm:0.0.1"],\
-            ["react", "npm:18.2.0"],\
-            ["use-sync-external-store", "virtual:3e0b06301294738f552a0882638933fe89c1b7bee87de9b560d5e056caf213597442ea07d19be08c5eb5081f6d2eebdfa3b9a07bf7cc6c5f21cae40fcbd30ba5#npm:1.2.0"]\
-          ],\
-          "packagePeers": [\
-            "@types/react",\
-            "react"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["tapable", [\
         ["npm:2.2.1", {\
           "packageLocation": "./.yarn/cache/tapable-npm-2.2.1-8cf5ff3039-3b7a1b4d86.zip/node_modules/tapable/",\
@@ -9125,10 +9099,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:3e0b06301294738f552a0882638933fe89c1b7bee87de9b560d5e056caf213597442ea07d19be08c5eb5081f6d2eebdfa3b9a07bf7cc6c5f21cae40fcbd30ba5#npm:1.2.0", {\
-          "packageLocation": "./.yarn/__virtual__/use-sync-external-store-virtual-2ddbd35d18/0/cache/use-sync-external-store-npm-1.2.0-44f75d2564-5c639e0f8d.zip/node_modules/use-sync-external-store/",\
+        ["virtual:25c00b58e84ce07d424f6c9bfc9c23139a3d25a00c48301ecf0ec846b00dfe96dddc4f7b2b1cfad48a6b00e1adc3e451d5210f03a90ac93ce03f6cc63a8a480d#npm:1.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/use-sync-external-store-virtual-ca9a2abd27/0/cache/use-sync-external-store-npm-1.2.0-44f75d2564-5c639e0f8d.zip/node_modules/use-sync-external-store/",\
           "packageDependencies": [\
-            ["use-sync-external-store", "virtual:3e0b06301294738f552a0882638933fe89c1b7bee87de9b560d5e056caf213597442ea07d19be08c5eb5081f6d2eebdfa3b9a07bf7cc6c5f21cae40fcbd30ba5#npm:1.2.0"],\
+            ["use-sync-external-store", "virtual:25c00b58e84ce07d424f6c9bfc9c23139a3d25a00c48301ecf0ec846b00dfe96dddc4f7b2b1cfad48a6b00e1adc3e451d5210f03a90ac93ce03f6cc63a8a480d#npm:1.2.0"],\
             ["@types/react", "npm:18.2.20"],\
             ["react", "npm:18.2.0"]\
           ],\
@@ -9410,7 +9384,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.2.20"],\
             ["immer", null],\
             ["react", "npm:18.2.0"],\
-            ["use-sync-external-store", "virtual:3e0b06301294738f552a0882638933fe89c1b7bee87de9b560d5e056caf213597442ea07d19be08c5eb5081f6d2eebdfa3b9a07bf7cc6c5f21cae40fcbd30ba5#npm:1.2.0"]\
+            ["use-sync-external-store", "virtual:25c00b58e84ce07d424f6c9bfc9c23139a3d25a00c48301ecf0ec846b00dfe96dddc4f7b2b1cfad48a6b00e1adc3e451d5210f03a90ac93ce03f6cc63a8a480d#npm:1.2.0"]\
           ],\
           "packagePeers": [\
             "@types/immer",\

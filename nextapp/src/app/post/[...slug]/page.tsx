@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import ReadPost from "components/page/Post/ReadPost";
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata } from 'next'
 import { PostType } from "types/interface";
 
 interface Props  {
@@ -15,7 +15,7 @@ const getPostData = async (slug: string[]) : Promise<PostType | void> => {
 		const postData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/id/${slug}`,
 			{
 				method: 'GET',
-				cache: 'no-cache'
+				// cache: 'no-cache'
 			})
 		.then(res=>res.json());
 		return postData;
@@ -73,7 +73,7 @@ export const generateStaticParams = async (): Promise<any | void> => {
 	const data = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/all`,
 			{
 				method: 'GET',
-				cache: 'no-cache'
+				// cache: 'no-cache'
 			})
 		.then(res=>res.json());
 	return data.map((post: any) =>({
