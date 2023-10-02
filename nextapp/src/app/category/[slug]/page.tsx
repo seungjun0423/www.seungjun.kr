@@ -3,6 +3,7 @@ import { PostType } from "types/interface";
 import PostTitle from "components/page/Post/PostTitle";
 import styles from 'styles/category.module.css';
 import { Metadata } from "next";
+import useSWR from "swr";
 
 interface Props  {
 	params: {
@@ -56,6 +57,7 @@ export const generateStaticParams = async (): Promise<{ id: string }[]> => {
 	const categoryData = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
 			method: 'GET',
+			cache: 'no-cache'
 		})
 	.then(res=>res.json());
 

@@ -56,29 +56,28 @@ export default async function RootLayout ({ children }: Props) {
 		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
 			method: 'GET',	
-			// cache: 'no-cache',
 		}
 	).then(res=>res.json());
 	
   return (
 		<html lang="en">
+		<StyledComponentsRegistry >
+		<ColorModeProvider>
+		<ThemeProvider>
 			<body className={font.className}>
 				<GoogleAnalytics 
 					GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
 				/>
-				<StyledComponentsRegistry >
-				<ColorModeProvider>
-				<ThemeProvider>
 					<Header/>
 						<Main categoryData={categoryData}>
 							{children}
 						</Main>
 					<Footer/>
 					<CustomAlert/>
-				</ThemeProvider>
-				</ColorModeProvider>
-				</StyledComponentsRegistry>
 			</body>
+			</ThemeProvider>
+			</ColorModeProvider>
+			</StyledComponentsRegistry>
 		</html>
   );
 };
