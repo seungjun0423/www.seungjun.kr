@@ -69,14 +69,14 @@ export default async function Post({ params: { slug } }: Props) {
 	)	
 };
 
-export const generateStaticParams = async (): Promise<any | void> => {
-	const data = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/all`,
-			{
-				method: 'GET',
-				cache: 'no-cache'
-			})
-		.then(res=>res.json());
-	return data.map((post: any) =>({
-		params: { slug: `${post.id}` }
-	}));
-};
+// export const generateStaticParams = async (): Promise<any | void> => {
+// 	const data = await fetch(`${process.env.NEXT_PUBLIC_CORS_URL}/post/all`,
+// 			{
+// 				method: 'GET',
+// 				cache: 'no-cache'
+// 			})
+// 		.then(res=>res.json());
+// 	return data.map((post: any) =>({
+// 		params: { slug: `${post.id}` }
+// 	}));
+// };

@@ -13,7 +13,6 @@ export default  function Nav(){
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
-	console.log(localStorage);
 
 	const logoutHandler = async () => {
 		try{
