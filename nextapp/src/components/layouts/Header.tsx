@@ -1,5 +1,5 @@
 'use client';
-import React,{ useLayoutEffect } from "react";
+import React,{ useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,14 +8,18 @@ import lottie from '../../../public/lottiefiles/kitty.gif';
 import dynamic from "next/dynamic";
 import {  useStore, stateStore } from "data/store";
 
+import Nav from "../ui/Nav";
+
 export default function Header () {
-	const DynamicNav = dynamic(()=>import('../ui/Nav'),{ssr:false})
+	// const DynamicNav = dynamic(()=>import('../ui/Nav'),{ssr:false})
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
+	const [nav, setNav] = useState(<></>);
 	useLayoutEffect(() => {
 		if(localStorage.id){
 			store.setStore(localStorage.id);
 		} 
+		setNav(<Nav />)
 	}, [])
 
 	return (
@@ -40,9 +44,7 @@ export default function Header () {
 						</ShortText>
 					</Link>
 				</Title>
-				{/* <Suspense> */}
-					<DynamicNav />
-				{/* </Suspense> */}
+				{nav}
 			</Headers>
 	);
 };

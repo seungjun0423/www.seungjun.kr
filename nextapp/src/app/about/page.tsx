@@ -12,6 +12,8 @@ export default function About () {
 					src={'https://s3.ap-northeast-2.amazonaws.com/www.seungjun.kr/prod/PHOTO_001128.jpg'} 
 					width={300}
 					height={315}
+					placeholder={'blur'}
+					blurDataURL={''}
 					/>
 				</div>
 				<div className={styles.textBox}>

@@ -13,7 +13,7 @@ export default  function Nav(){
 	const [ navState, setNavState ] = useState<boolean>(false);
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
-	const router = useRouter();
+	console.log(localStorage);
 
 	const logoutHandler = async () => {
 		try{
@@ -66,7 +66,7 @@ export default  function Nav(){
 					<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}about` as Route}>
 						about
 					</StyledLink>
-					{ store.id ?
+					{ localStorage.id ?
 						<>
 							<StyledLink href={`${process.env.NEXT_PUBLIC_REDIRECT}post/write` as Route}>
 								posting
@@ -92,7 +92,7 @@ export default  function Nav(){
 							>
 								about
 							</StyledLink>
-							{ store.id ?
+							{ localStorage.id ?
 								<>
 									<StyledLink 
 										href={`${process.env.NEXT_PUBLIC_REDIRECT}post/write` as Route} 

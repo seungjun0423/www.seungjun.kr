@@ -61,6 +61,8 @@ export default function MetaMask () {
 				width={50}
 				height={50}
 				style={{cursor:'pointer'}}
+				placeholder={'blur'}
+				blurDataURL={''}
 			/>
 		</MetaMasks>
 	)
