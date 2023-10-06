@@ -3520,6 +3520,17 @@ eslint-config-next@latest:
   languageName: node
   linkType: hard
 
+"eslint-config-prettier@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "eslint-config-prettier@npm:9.0.0"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: 362e991b6cb343f79362bada2d97c202e5303e6865888918a7445c555fb75e4c078b01278e90be98aa98ae22f8597d8e93d48314bec6824f540f7efcab3ce451
+  languageName: node
+  linkType: hard
+
 "eslint-import-resolver-node@npm:^0.3.6, eslint-import-resolver-node@npm:^0.3.7":
   version: 0.3.9
   resolution: "eslint-import-resolver-node@npm:0.3.9"
@@ -5240,6 +5251,7 @@ eslint-config-next@latest:
     debug: ^4.3.4
     eslint: 8.41.0
     eslint-config-next: latest
+    eslint-config-prettier: ^9.0.0
     html-react-parser: ^4.2.2
     next: canary
     prismjs: ^1.29.0

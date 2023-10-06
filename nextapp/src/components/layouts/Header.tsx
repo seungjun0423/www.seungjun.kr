@@ -5,13 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Route } from "next";
 import lottie from '../../../public/lottiefiles/kitty.gif';
-import dynamic from "next/dynamic";
 import {  useStore, stateStore } from "data/store";
 
 import Nav from "../ui/Nav";
 
 export default function Header () {
-	// const DynamicNav = dynamic(()=>import('../ui/Nav'),{ssr:false})
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
 	const [nav, setNav] = useState(<></>);
