@@ -60,7 +60,7 @@ export default function Auth () {
 		}
 	};
 
-	const enterHandler = ( type: string, e: React.KeyboardEvent ): void | Promise<any> => {
+	const enterHandler = ( type: string, e: React.KeyboardEvent ): void | any => {
 		if(e.key !== 'Enter'){
 			return;
 		} else if(e.key === 'Enter'){

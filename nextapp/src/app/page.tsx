@@ -9,7 +9,7 @@ export default function Home() {
 			<div className={styles.box}>
 				방문해주셔서 감사합니다.<br/> 
 			</div>
-			<div className={styles.box}>
+			{/* <div className={styles.box}>
 				현재는 
 				<Link 
 					className={styles.link}
@@ -48,7 +48,7 @@ export default function Home() {
 						style={{width: '35px',height:'35px', cursor:'pointer'}} 
 					/>
 				</Link>
-			</div>
+			</div> */}
     </section>
   );
 }
