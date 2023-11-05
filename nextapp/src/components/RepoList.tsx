@@ -9,7 +9,7 @@ export default function RepoList({children}:{children: Trepo[]}) {
 			createdAt: new Intl.DateTimeFormat('ko-KR').format(new Date(el.createdAt as any)).replaceAll(' ',''),
 			updatedAt: new Intl.DateTimeFormat('ko-KR').format(new Date(el.updatedAt as any)).replaceAll(' ',''),
 		};
-	}).sort((a,b)=>new Date(b.updatedAt) - new Date(a.updatedAt))];
+	}).sort((a,b)=>(new Date(b.updatedAt) as any) - (new Date(a.updatedAt) as any))];
 	return (
 		<div className={styles.repoBox}>
 			<div className={styles.repo} style={{color:'white'}}>
