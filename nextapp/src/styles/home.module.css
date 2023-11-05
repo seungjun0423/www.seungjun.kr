@@ -1,6 +1,8 @@
 .home {
 	display: flex;
-	height: 50%;
+	width: 100%;
+	height: 80%;
+	margin-top: 7%;
 	flex-direction: column;
 	font-size: 1.5rem !important;
 	align-items: center;
@@ -9,7 +11,7 @@
 }
 
 .box {
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	display: flex;
 	align-items: center;
 }
@@ -17,6 +19,49 @@
 .link {
 	color: purple;
 	opacity: 0.4;
+}
+
+.repoBox {
+	width: 100%;
+	height: 100%;
+	border: 2px solid black;
+	border-radius: 30px;
+	padding: 30px;
+	background-color: rgba(225, 225, 225, 0.697);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	font-size: 0.9rem;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.repo {
+	width: 100%;
+	display: flex;
+	gap: 10px;
+}
+
+.repoName {
+	width: 30%;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.desc {
+	width: 50%;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.updatedAt {
+	width: 20%;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 
 @media (max-width: 767px) {

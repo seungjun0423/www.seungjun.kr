@@ -6,3 +6,14 @@ export type CategoryData = {
 	createdAt: string;
 	updatedAt: string;
 }
+
+export type Trepo = {
+	name: string;
+	private: boolean;
+	githubUrl: string;
+	description: string | null;
+	createdAt: string | null | undefined;
+	updatedAt: string | null | undefined;
+	hompage: string | null | undefined;
+	langauge: string | any;
+};

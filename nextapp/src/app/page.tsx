@@ -1,6 +1,8 @@
 import Link from "next/link";
+import RepoList from "components/RepoList";
 import styles from 'styles/home.module.css';
 import { Octokit } from "octokit";
+import { Trepo } from "types/types";
 
 export default async function Home() {
 	const octokit = new Octokit({
@@ -15,7 +17,7 @@ export default async function Home() {
 		}
 	});
 	
-	const repoList = data.data.filter(el=>!el.fork).map(el=>{
+	const repoList: Trepo[] = data.data.filter(el=>!el.fork).map(el=>{
 		return {
 			name: el.name,
 			private: el.private,
@@ -31,8 +33,11 @@ export default async function Home() {
   return (
     <section key='home' className={styles.home}>
 			<div className={styles.box}>
-				방문해주셔서 감사합니다.<br/> 
+				Github Repository
 			</div>
+			<RepoList>
+				{repoList}
+			</RepoList>
     </section>
   );
 }
