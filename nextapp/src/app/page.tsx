@@ -6,7 +6,7 @@ export default async function Home() {
 	const octokit = new Octokit({
 		auth: process.env.NEXT_GITHUB_TOKEN
 	});
-	
+
 	const data = await octokit.request('GET /users/{username}/repos', {
 		username: "seungjun0423",
 		per_page:100,
@@ -14,14 +14,25 @@ export default async function Home() {
 			'X-GitHub-Api-Version': '2022-11-28'
 		}
 	});
-	console.log("여기 부터 시작입니다",data.data.filter(el=>!el.fork));
+	
+	const repoList = data.data.filter(el=>!el.fork).map(el=>{
+		return {
+			name: el.name,
+			private: el.private,
+			githubUrl: el.html_url,
+			description: el.description,
+			createdAt: el.created_at,
+			updatedAt: el.pushed_at,
+			hompage: el.homepage,
+			langauge: el.language,
+		}
+	});
 	
   return (
     <section key='home' className={styles.home}>
 			<div className={styles.box}>
 				방문해주셔서 감사합니다.<br/> 
 			</div>
-			
     </section>
   );
 }
