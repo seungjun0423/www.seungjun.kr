@@ -1,1 +1,0 @@
-# www.seungjun.kr

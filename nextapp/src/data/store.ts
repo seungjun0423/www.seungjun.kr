@@ -1,21 +1,33 @@
+import { PostType } from 'types/interface';
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware'
 
-interface IAuth {
-	isAdmin: boolean;
-	setIsAdmin: (value: boolean) => void;
-};
+export const useStore = create((set, get) => ({
+  id: null,
+	setStore: (input: number | null)=> set({id: input})
+}))
 
-export const authState = create<IAuth>((set) => ({
-	isAdmin: false,
-	setIsAdmin: (value) => set({ isAdmin: value })
-}));
+export const postStore= create(
+  persist(
+    (set, get): any => ({
+      nowPost: {},
+    }),
+    {
+      name: 'post-storage', 
+      storage: createJSONStorage(() => sessionStorage), 
+    }
+  )
+)
 
-interface IEdit {
-	isEdit: boolean;
-	setIsEdit: (value: boolean) => void;
-};
-
-export const editState = create<IEdit>((set) => ({
-	isEdit: false,
-	setIsEdit: (value) => set({ isEdit: value })
-}));
+export const stateStore = create(
+  persist(
+    (set, get): any => ({
+			id: null,
+			setStore: (input: number | null)=> set({id: input})
+    }),
+    {
+      name: 'state-storage', 
+      storage: createJSONStorage(() => localStorage), 
+    }
+  )
+)

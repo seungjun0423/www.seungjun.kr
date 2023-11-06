@@ -14,9 +14,10 @@
 	-ms-overflow-style: none; 
 	/* 파이어폭스 스크롤바 숨기기*/
 	scrollbar-width: none; 
+	text-shadow: none !important;
 }
+
 html {
-  font-size: 18px;
 	width: 100%;
 	height: 100%;
 	overflow-y: auto;
@@ -24,32 +25,80 @@ html {
 }
 
 body {
+	font-size: 22px;
 	width: 100%;
 	height: 100%;
   padding: 0;
   margin: 0;
 }
 
-a {
+
+a,input {
   text-decoration: none;
-	color: black;
+	color: #5e5e5e;
 }
 
+button,input {
+	font-family: inherit;
+	font-size: 1rem;
+	color: #5e5e5e;
+}
 
-@media(max-width: 1200px){
-	html {
-		font-size: 16px;
+@media(min-width: 1200px){
+	html, body, button, input {
+		font-size: 20px;
 	}
 }
 
-@media(max-width: 768px){
-	html {
-		font-size: 14px;
+@media(min-width: 768px){
+	html, body, button, input {
+		font-size: 18px; 
+	}
+}
+
+.toastui-editor-contents,.toastui-editor-defaultUI, .ProseMirror {
+	font-size: 16px !important;
+}
+.Toastify__toast{
+	font-family: inherit !important;
+}
+.Toastify__toast-body {
+	font-family: inherit !important;
+	font-size: 16px;
+	padding-left: 23px !important;
+}
+
+.Toastify__toast-container {
+	margin-left: 6rem;
+}
+
+@media(max-width: 1000px) {
+	.Toastify__toast-container {
+		margin-left: 5rem;
 	}
 }
 
 @media(max-width: 576px){
-	html {
-		font-size: 13px;
+	.Toastify__toast-container {
+		margin-left: 0;
 	}
+}
+
+@media(max-width: 480px){
+	.Toastify__toast-body {
+		font-family: inherit !important;
+		padding-left: 70px !important;
+	}
+}
+
+.token.operator {
+	background-color: transparent !important;
+}
+
+.comment{
+	color: #484754 !important;
+}
+
+pre{
+	background: #48475426 !important;
 }
