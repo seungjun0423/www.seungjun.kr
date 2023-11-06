@@ -16,6 +16,9 @@ export default function RepoList({children}:{children: Trepo[]}) {
 				<div className={styles.repoName}>
 					레포지토리 명
 				</div>
+				<div className={styles.repoLanguage}>
+					언어
+				</div>
 				<div className={styles.desc}>
 					설명
 				</div>
@@ -25,14 +28,17 @@ export default function RepoList({children}:{children: Trepo[]}) {
 			</div>
 			{ data.map(el=>{
 				return(
-					<div className={styles.repo}>
+					<div className={styles.repo} key={el.name}>
 						<div className={styles.repoName}>
 							<Link href={el.githubUrl}>
 								{el.name}
 							</Link>
 						</div>
+						<div className={styles.repoLanguage}>
+							{el.langauge}
+						</div>
 						<div className={styles.desc}>
-							{el.description}
+							{el.description ?? '없음'}
 						</div>
 						<div className={styles.updatedAt}>
 							{el.updatedAt.slice(0,-1)}

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import RepoList from "components/RepoList";
 import styles from 'styles/home.module.css';
 import { Octokit } from "octokit";
@@ -12,9 +11,6 @@ export default async function Home() {
 	const data = await octokit.request('GET /users/{username}/repos', {
 		username: "seungjun0423",
 		per_page:100,
-		headers: {
-			'X-GitHub-Api-Version': '2022-11-28'
-		}
 	});
 	
 	const repoList: Trepo[] = data.data.filter(el=>!el.fork).map(el=>{
@@ -33,7 +29,7 @@ export default async function Home() {
   return (
     <section key='home' className={styles.home}>
 			<div className={styles.box}>
-				Github Repository
+				Github Repo
 			</div>
 			<RepoList>
 				{repoList}
