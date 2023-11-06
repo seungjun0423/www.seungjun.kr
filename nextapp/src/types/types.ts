@@ -13,7 +13,7 @@ export type Trepo = {
 	githubUrl: string;
 	description: string | null;
 	createdAt: string | null | undefined;
-	updatedAt: string | null | undefined;
+	updatedAt: string 
 	hompage: string | null | undefined;
 	langauge: string | any;
 };

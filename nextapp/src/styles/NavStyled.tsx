@@ -65,7 +65,7 @@ const Div = styled.div`
 const StyledLink = styled(Link)`
 font-size: 1.5rem;
 height: 2rem;
-color: ${ props => props.theme.text};
+color: var(--category-color);
 
 	@media (max-width: 576px ) {
 		font-size: 1rem;

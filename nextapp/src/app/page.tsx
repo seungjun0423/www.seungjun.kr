@@ -12,30 +12,29 @@ export default async function Home() {
 		username: "seungjun0423",
 		per_page:100,
 	});
-	
+
 	const repoList: Trepo[] = data.data.filter(el=>!el.fork).map(el=>{
 		return {
 			name: el.name,
 			private: el.private,
 			githubUrl: el.html_url,
 			description: el.description,
-			createdAt: el.created_at,
-			updatedAt: el.pushed_at,
+			createdAt: new Intl.DateTimeFormat('ko-KR').format(new Date(el.created_at as any)).replaceAll(' ',''),
+			updatedAt: new Intl.DateTimeFormat('ko-KR').format(new Date(el.pushed_at as any)).replaceAll(' ',''),
 			hompage: el.homepage,
 			langauge: el.language,
 		}
 	});
-	
   return (
     <section key='home' className={styles.home}>
 			<div className={styles.box}>
 				Github Repo
 			</div>
-			<div className={styles.allPostList}>
+			{/* <div className={styles.allPostList}>
 				<button className={styles.btn}>
 					전체 글목록 보러가기
 				</button>
-			</div>
+			</div> */}
 			<RepoList>
 				{repoList}
 			</RepoList>

@@ -3,26 +3,21 @@ import styles from 'styles/home.module.css';
 import { Trepo } from "types/types";
 export default function RepoList({children}:{children: Trepo[]}) {
 
-	const data = [...children.map(el=>{
-		return {
-			...el,
-			createdAt: new Intl.DateTimeFormat('ko-KR').format(new Date(el.createdAt as any)).replaceAll(' ',''),
-			updatedAt: new Intl.DateTimeFormat('ko-KR').format(new Date(el.updatedAt as any)).replaceAll(' ',''),
-		};
-	}).sort((a,b)=>(new Date(b.updatedAt) as any) - (new Date(a.updatedAt) as any))];
+	const data = [...children.sort((a,b)=>(new Date(b.updatedAt as any) as any) - (new Date(a.updatedAt as any) as any))];
+	
 	return (
 		<div className={styles.repoBox}>
-			<div className={styles.repo} style={{color:'white'}}>
-				<div className={styles.repoName}>
-					레포지토리 명
+			<div className={styles.repo}>
+				<div className={styles.repoName} style={{color:'var(--category-color)',fontSize:'1rem'}}>
+					레포지토리
 				</div>
-				<div className={styles.repoLanguage}>
+				<div className={styles.repoLanguage} style={{color:'var(--category-color)',fontSize:'1rem'}}>
 					언어
 				</div>
-				<div className={styles.desc}>
+				<div className={styles.desc} style={{color:'var(--category-color)',fontSize:'1rem'}}>
 					설명
 				</div>
-				<div className={styles.updatedAt}>
+				<div className={styles.updatedAt} style={{color:'var(--category-color)',fontSize:'1rem'}}>
 					업데이트
 				</div>
 			</div>

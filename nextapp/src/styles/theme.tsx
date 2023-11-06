@@ -47,6 +47,10 @@ const themeProperties = {
     light: lightTheme.bodyColor,
     dark: darkTheme.bodyColor,
   },
+	'category-color': {
+		light: lightTheme.categoryColor,
+    dark: darkTheme.categoryColor,
+	}
 };
 
 export { lightTheme, darkTheme, themeProperties, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP };

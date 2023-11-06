@@ -13,6 +13,7 @@ export default function Header () {
 	const store = useStore((state: any) => state);
 	const localStorage : any = stateStore(state => state);
 	const [nav, setNav] = useState(<></>);
+	
 	useLayoutEffect(() => {
 		if(localStorage.id){
 			store.setStore(localStorage.id);
@@ -70,14 +71,14 @@ const Title = styled.span`
 `;
 
 const LongText = styled.div`
-	color: ${ props => props.theme.text};
+	color: var(--category-color);
 	@media (max-width: 980px){
 		display:none;
 	}
 `;
 
 const ShortText = styled.div`
-	color: ${ props => props.theme.text};
+	color: var(--category-color);
 	@media (min-width: 980px) {
 		display:none;
 	}
