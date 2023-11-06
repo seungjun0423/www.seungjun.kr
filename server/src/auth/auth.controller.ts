@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Get, Body, Res, Req, UseGuards, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Controller, Post, Get, Body, Res, UseGuards, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from './security/auth.guard';
-import { Response, Request } from 'express';
+import { Response } from 'express';
 import { AuthService } from './auth.service';
 import { User } from '@prisma';
 
@@ -20,10 +20,8 @@ export class AuthController {
   async login(
     @Body() data: { email: string; password: string },
     @Res() res: Response,
-		@Req() req: Request,
   ): Promise<Response | NotFoundException> {
     return await this.authService.login(data,res);
-
   }
 
   @Post('/logout')
@@ -35,8 +33,8 @@ export class AuthController {
 
 	@Get('/validate')
 	@UseGuards(AuthGuard)
-	async validate(@Req() req: Response,@Res() res: Response)
+	async validate(@Res() res: Response)
 	: Promise<Response | UnauthorizedException> {
-		return res.send({message: 'auth user'})
+		return res.send({message: 'auth user'});
 	}
 }

@@ -1,25 +1,20 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { ExtractJwt, Strategy, VerifiedCallback } from 'passport-jwt';
+import { Strategy, VerifiedCallback } from 'passport-jwt';
 import { AuthService } from '../auth.service';
-import { Login } from 'src/types/tpye';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {
     super({
-      jwtFromRequest: (req) => req.cookies['accessToken'],
+      jwtFromRequest: (req) => req.cookies['refreshToken'],
       ignoreExpiration: false,
       secretOrKey: process.env.SECRET_KEY,
     });
   }
 
-  async validate(
-    payload: any ,
-    done: VerifiedCallback,
-  ): Promise<any> {
+  async validate(payload: any, done: VerifiedCallback): Promise<any> {
     const user = await this.authService.tokenValidateUser(payload);
-		
     if (!user) {
       return done(
         new UnauthorizedException({ message: 'user data cannot found' }),

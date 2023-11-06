@@ -1,5 +1,9 @@
-// eslint-disable-next-line prettier/prettier
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
@@ -30,17 +34,14 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // consumer
     //   .apply(LoggerMiddleware)
-    //   .forRoutes({ path: '/auth/login', method: RequestMethod.ALL });
-		// consumer
-    //   .apply(LoggerMiddleware)
     //   .forRoutes({ path: '/auth/logout', method: RequestMethod.ALL });
     // consumer
     //   .apply(LoggerMiddleware)
     //   .forRoutes({ path: '/post/write', method: RequestMethod.ALL });
-		// consumer
+    // consumer
     //   .apply(LoggerMiddleware)
     //   .forRoutes({ path: '/post/id:id/edit', method: RequestMethod.ALL });
-		// consumer
+    // consumer
     //   .apply(LoggerMiddleware)
     //   .forRoutes({ path: '/post/delete', method: RequestMethod.ALL });
   }

@@ -1,6 +1,6 @@
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 /* eslint-disable prettier/prettier */
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { hash, compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
@@ -164,5 +164,5 @@ export class AuthService {
 		if(userFind){
 			return userFind;
 		}
-  }
+  };
 }
