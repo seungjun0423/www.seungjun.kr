@@ -31,6 +31,11 @@ export default async function Home() {
 			<div className={styles.box}>
 				Github Repo
 			</div>
+			<div className={styles.allPostList}>
+				<button className={styles.btn}>
+					전체 글목록 보러가기
+				</button>
+			</div>
 			<RepoList>
 				{repoList}
 			</RepoList>

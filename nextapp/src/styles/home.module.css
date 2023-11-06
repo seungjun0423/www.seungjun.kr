@@ -16,6 +16,23 @@
 	align-items: center;
 }
 
+.allPostList {
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	margin-right: 10%;
+	margin-bottom: 10px;
+	/* font-size: 0.8rem; */
+}
+
+.btn {
+	background-color: transparent;
+	font-size: 0.8rem;
+	border: none;
+	cursor: pointer;
+	color: rgb(103, 16, 123);
+}
+
 .link {
 	color: purple;
 	opacity: 0.4;
