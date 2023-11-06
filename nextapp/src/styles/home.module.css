@@ -20,7 +20,6 @@
 .allPostList {
 	width: 100%;
 	display: flex;
-	justify-content: end;
 	margin-right: 10%;
 	margin-bottom: 10px;
 	/* font-size: 0.8rem; */
