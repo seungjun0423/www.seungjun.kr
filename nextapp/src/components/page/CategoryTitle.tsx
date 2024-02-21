@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function CategoryTitle({ title, categoryId }: {title: string, categoryId: number}){
 	return (
-		<PostLists>
+		<PostLists key={categoryId}>
 			<Link key={categoryId} href={`${process.env.NEXT_PUBLIC_REDIRECT}category/${categoryId}` as Route}>
 				<CategoryTitles key={categoryId} type="button" value={title} />
 			</Link>
