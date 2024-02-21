@@ -56,7 +56,7 @@ export default async function RootLayout ({ children }: Props) {
 		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
 			method: 'GET',
-			cache: 'no-cache'	
+			cache: 'reload'
 		}
 	).then(res=>res.json());
 	
