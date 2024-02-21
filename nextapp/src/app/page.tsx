@@ -35,9 +35,9 @@ export default async function Home() {
 					전체 글목록 보러가기
 				</button>
 			</div> */}
-			<RepoList>
+			{/* <RepoList>
 				{repoList}
-			</RepoList>
+			</RepoList> */}
     </section>
   );
 }
