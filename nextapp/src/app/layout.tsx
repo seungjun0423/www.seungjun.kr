@@ -55,8 +55,7 @@ export default async function RootLayout ({ children }: Props) {
 	const categoryData: CategoryData[] = await fetch(
 		`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 		{
-			method: 'GET',
-			cache: 'reload'
+			method: 'GET',	
 		}
 	).then(res=>res.json());
 	
