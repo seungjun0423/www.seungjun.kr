@@ -5,6 +5,7 @@ import Content from "components/layouts/Content";
 import { styled } from "styled-components";
 
 export default function Main ({ categoryData, children }: {categoryData: any, children: ReactNode}) {
+	console.log(categoryData);
 	return (
 		<Mains>
 			<Sidebar data={categoryData}/>
