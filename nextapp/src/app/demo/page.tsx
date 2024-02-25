@@ -1,15 +1,12 @@
 import React from "react";
+import Meal from "components/page/Meal";
+import { Props } from "app/layout";
 
-interface Demo  {
-	params: {
-		slug: string;
-	};
-};
-
-export default function Demo() {
+export default function Demo(){
   return (
-		<section key='Demo'>
-			demo
+		<section key='demo'>
+			<Meal>
+			</Meal>
 		</section>
   )
-};
+}

@@ -64,7 +64,7 @@ export default async function RootLayout ({ children }: Props) {
 		<StyledComponentsRegistry >
 		<ColorModeProvider>
 		<ThemeProvider>
-			<body key={"test"} className={font.className}>
+			<body className={font.className}>
 				<GoogleAnalytics 
 					GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID as string} 
 				/>
