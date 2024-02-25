@@ -3,7 +3,7 @@ import { Props } from "app/layout";
 import React from "react";
 import { styled } from "styled-components";
 
-export default function Meal ({children}: Props) {
+export default function Meal () {
 	return (
 		<Meals>
 			<JoinSurvey>

@@ -1,12 +1,12 @@
 import React from "react";
-import Meal from "components/page/Meal";
-import { Props } from "app/layout";
+import dynamic from "next/dynamic";
 
 export default function Demo(){
+	const DynamicMeal = dynamic(()=>import("components/page/Meal"),{ssr: false});
+
   return (
 		<section key='demo'>
-			<Meal>
-			</Meal>
+			<DynamicMeal/>
 		</section>
   )
 }
