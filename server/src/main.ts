@@ -9,7 +9,7 @@ async function main() {
   const port = configService.get<string>('server.port');
 
   app.enableCors({
-    origin: `${process.env.CORS_URL}`,
+    origin: [`${process.env.CORS_URL}`,`https://mail.google.com/`],
     credentials: true,
     methods: ['POST', 'PUT', 'PATCH', 'DELETE', 'GET'],
   });
