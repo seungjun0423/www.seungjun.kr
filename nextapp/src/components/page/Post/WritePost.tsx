@@ -37,7 +37,6 @@ export default function WritePost ({children}: {children: ReactNode}) {
 				{
 					method: 'GET',
 					credentials: 'include',
-					cache:'no-cache',
 				}
 				).then(res=>res.json());
 			const optionEl = categoryData.map((el: CategoryData, index: number)=>{
