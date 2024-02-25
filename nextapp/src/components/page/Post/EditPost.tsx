@@ -47,7 +47,6 @@ export default function EditPost ({ children }: {children: ReactNode}) {
 					`${process.env.NEXT_PUBLIC_CORS_URL}/category/all`,
 					{
 						method: 'GET',	
-						// cache: 'no-cache'
 					}
 				)
 				.then(res=>res.json());
